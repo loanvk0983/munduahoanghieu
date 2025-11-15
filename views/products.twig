@@ -230,6 +230,33 @@
       transform: translateY(0);
     }
   }
+  
+  /* Responsive gallery styles for mobile */
+  @media (max-width: 576px) {
+    /* Change gallery to 2 columns with 45% width each */
+    .grid.grid-cols-5 {
+      grid-template-columns: repeat(2, 45%);
+      gap: 10px;
+      justify-content: space-between;
+    }
+    
+    /* Increase title font size */
+    .gallery-item-title {
+      font-size: 14px !important;
+    }
+    
+    /* Ensure images maintain aspect ratio and cover properly */
+    .gallery-item img {
+      width: 100% !important;
+      height: 120px !important; /* Slightly taller for better visibility */
+      object-fit: cover !important;
+    }
+    
+    /* Adjust item container height */
+    .gallery-item .h-40 {
+      height: 120px !important;
+    }
+  }
 </style>
 {% endblock %}
 
@@ -879,7 +906,7 @@ function loadProductImages(productType) {
   
   if (galleryContainer && images.length > 0) {
     const htmlContent = images.map(img => `
-      <div class="bg-white rounded-lg border-2 border-transparent overflow-hidden hover:shadow-lg hover:-translate-y-1 hover:scale-[1.02] hover:border-green-500 transition-all duration-300 ease-in-out group cursor-pointer">
+      <div class="bg-white rounded-lg border-2 border-transparent overflow-hidden hover:shadow-lg hover:-translate-y-1 hover:scale-[1.02] hover:border-green-500 transition-all duration-300 ease-in-out group cursor-pointer gallery-item">
         <div class="w-full h-40 overflow-hidden">
           <img src="${img.src}" alt="${img.alt}" 
                class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out" 
@@ -887,7 +914,7 @@ function loadProductImages(productType) {
                loading="lazy">
         </div>
         <div class="p-2 bg-gray-50">
-          <p class="text-xs text-gray-600 text-center font-medium leading-tight">${img.alt}</p>
+          <p class="text-xs text-gray-600 text-center font-medium leading-tight gallery-item-title">${img.alt}</p>
         </div>
       </div>
     `).join('');
