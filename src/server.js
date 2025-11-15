@@ -432,7 +432,7 @@ app.get('/debug', (req, res) => {
 });
 
 // Khởi động server
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
   console.log(greet('Khách')); 
   console.log(`Server đang chạy trên:`);
   console.log(`- Local: http://localhost:${PORT}`);
