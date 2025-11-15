@@ -1,0 +1,320 @@
+{
+  "_metadata": {
+    "exportedAt": "2025-11-08T04:32:22.316Z",
+    "version": "2.0.0",
+    "source": "migration_backup_20251108",
+    "description": "Preview generated from backups/migration_20251108_093716/content.json.backup"
+  },
+  "banners": [
+    {
+      "id": 1,
+      "image": "/assets/image/banner/banner1.jpg",
+      "title": "MỤN DỪA HOÀNG HIẾU",
+      "subtitle": "Giá thể sạch – Năng suất vượt trội",
+      "buttonText": "Khám phá sản phẩm",
+      "buttonLink": "/san-pham",
+      "buttonColor": "orange",
+      "active": true
+    },
+    {
+      "id": 2,
+      "image": "/assets/image/banner/banner2.jpg",
+      "title": "NÔNG NGHIỆP XANH",
+      "subtitle": "Sản phẩm thân thiện với môi trường",
+      "buttonText": "Tìm hiểu thêm",
+      "buttonLink": "/gioi-thieu",
+      "buttonColor": "green",
+      "active": true
+    },
+    {
+      "id": 3,
+      "image": "/assets/image/banner/banner3.jpg",
+      "title": "CHẤT LƯỢNG ĐẢM BẢO",
+      "subtitle": "Cam kết 100% sản phẩm tự nhiên",
+      "buttonText": "Liên hệ ngay",
+      "buttonLink": "/lien-he",
+      "buttonColor": "green",
+      "active": true
+    }
+  ],
+  "about": {
+    "title": "MỤN DỪA HOÀNG HIẾU",
+    "subtitle": "GIẢI PHÁP NÔNG NGHIỆP XANH",
+    "mission": "ĐỒNG HÀNH CÙNG\nPHÁT TRIỂN BỀN VỮNG!",
+    "paragraphs": [
+      "Chúng tôi hiểu rằng mỗi hạt giống, mỗi cây trồng đều là tâm huyết của bạn và để cây khỏe, đất phải lành.",
+      "Từng sản phẩm ở đây đều được làm ra bằng cái tâm và sự chân thật, mong muốn mang đến cho bạn những gì tốt nhất để chăm sóc đất đai, cây trồng bằng những giải pháp nông nghiệp bền vững, hiệu quả và thân thiện với môi trường.",
+      "Không cần những lời hoa mỹ, chúng tôi tin rằng chất lượng và sự tận tâm sẽ nói lên tất cả."
+    ],
+    "buttonText": "Tìm hiểu thêm về chúng tôi →",
+    "buttonLink": "/gioi-thieu"
+  },
+  "featuredProducts": [
+    {
+      "id": 1,
+      "name": "Mụn dừa đã xử lý",
+      "slug": "mun-dua-xu-ly",
+      "description": "Tỷ lệ xơ-mụn đáp ứng theo yêu cầu",
+      "image": "/assets/image/products/noi-bat/1-Mun dua xu ly.jpg",
+      "link": "/san-pham#mun-dua-xu-ly",
+      "features": []
+    },
+    {
+      "id": 2,
+      "name": "Vỏ dừa cắt chip",
+      "slug": "vo-dua-cat-chip",
+      "description": "Phủ gốc, giữ ẩm hiệu quả",
+      "image": "/assets/image/products/noi-bat/2-Vo dua cat chip.jpg",
+      "link": "/san-pham#vo-dua-cat-chip",
+      "features": []
+    },
+    {
+      "id": 3,
+      "name": "Mụn dừa thô",
+      "slug": "mun-dua-tho",
+      "description": "Nguyên liệu tự nhiên chất lượng",
+      "image": "/assets/image/products/noi-bat/3-Mun dua tho.jpg",
+      "link": "/san-pham#mun-dua-tho",
+      "features": []
+    },
+    {
+      "id": 4,
+      "name": "Sản xuất theo yêu cầu",
+      "slug": "san-xuat-theo-yeu-cau",
+      "description": "Phối trộn linh hoạt theo nhu cầu",
+      "image": "/assets/image/products/noi-bat/4-Theo yeu cau.jpg",
+      "link": "/san-pham#san-xuat-theo-yeu-cau",
+      "features": []
+    }
+  ],
+  "services": {
+    "title": "Mụn Dừa Hoàng Hiếu - Chuyên Cung Cấp",
+    "mainDescription": "Chúng tôi chuyên cung cấp mụn dừa xử lý (tỷ lệ xơ-mụn đáp ứng theo yêu cầu của bạn). Ngoài ra còn có mụn dừa thô, vỏ dừa cắt chip, phân hữu cơ, trấu, tro trấu và đất sạch... Tất cả đều được làm cẩn thận, kỹ lưỡng, để bạn yên tâm sử dụng mà không phải bận lòng.",
+    "features": [
+      { "icon": "✅", "text": "Sản phẩm đạt tiêu chuẩn chất lượng cao - pH ổn định, không mùi hôi" },
+      { "icon": "💰", "text": "Giá cả hợp túi tiền - Phù hợp với mọi quy mô nhà vườn" },
+      { "icon": "🚚", "text": "Giao hàng nhanh chóng - Hỗ trợ vận chuyển toàn quốc" },
+      { "icon": "💚", "text": "Tư vấn tận tình - Hỗ trợ kỹ thuật 24/7" }
+    ],
+    "highlight": {
+      "icon": "🌱",
+      "title": "Hoàng Hiếu – Gieo chân thành, gặt niềm tin!",
+      "description": "Dù bạn là khách hàng lâu năm hay lần đầu ghé thăm, chúng tôi đều trân trọng như nhau. Hãy để Hoàng Hiếu là bạn đồng hành tin cậy trên hành trình nông nghiệp của bạn!"
+    }
+  },
+  "products": {
+    "main": [
+      {
+        "id": 1,
+        "slug": "mun-dua-xu-ly",
+        "name": "Mụn dừa đã xử lý",
+        "description": "Tỷ lệ xơ-mụn đáp ứng theo yêu cầu của bạn",
+        "features": [
+          "Chất lượng cao, được xử lý kỹ lưỡng",
+          "Tỷ lệ xơ-mụn linh hoạt theo nhu cầu",
+          "Sạch sẽ, không mùi hôi",
+          "Phù hợp cho nhiều loại cây trồng"
+        ],
+        "price": "Liên hệ",
+        "category": "main",
+        "image": "/assets/image/products/noi-bat/1-Mun dua xu ly.jpg"
+      },
+      {
+        "id": 2,
+        "slug": "vo-dua-cat-chip",
+        "name": "Vỏ dừa cắt chip",
+        "description": "Vỏ dừa được cắt thành từng miếng nhỏ, tiện lợi sử dụng",
+        "features": [
+          "Kích thước đồng đều",
+          "Thoát nước tốt",
+          "Giữ ẩm hiệu quả",
+          "Thân thiện với môi trường"
+        ],
+        "price": "Liên hệ",
+        "category": "secondary",
+        "image": "/assets/image/products/noi-bat/2-Vo dua cat chip.jpg"
+      },
+      {
+        "id": 3,
+        "slug": "mun-dua-tho",
+        "name": "Mụn dừa thô",
+        "description": "Nguyên liệu mụn dừa tự nhiên chưa qua xử lý",
+        "features": [
+          "100% tự nhiên",
+          "Giá thành hợp lý",
+          "Phù hợp xử lý tại nhà",
+          "Số lượng lớn"
+        ],
+        "price": "Liên hệ",
+        "category": "main",
+        "image": "/assets/image/products/noi-bat/3-Mun dua tho.jpg"
+      },
+      {
+        "id": 4,
+        "slug": "san-xuat-theo-yeu-cau",
+        "name": "Hỗn hợp theo yêu cầu",
+        "description": "Phối trộn theo tỷ lệ và yêu cầu cụ thể của khách hàng",
+        "features": [
+          "Tùy chỉnh theo nhu cầu",
+          "Tư vấn miễn phí",
+          "Đảm bảo chất lượng",
+          "Giao hàng tận nơi"
+        ],
+        "price": "Liên hệ",
+        "category": "custom",
+        "image": "/assets/image/products/noi-bat/4-Theo yeu cau.jpg"
+      }
+    ],
+    "categories": []
+  },
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Anh Minh",
+      "location": "Đồng Tháp",
+      "region": "mien-tay",
+      "rating": 5,
+      "text": "Tôi trồng dưa lưới và đã sử dụng mụn dừa của Hoàng Hiếu được 2 năm. Cây phát triển tốt, quả to và ngọt hơn hẳn. Tư vấn nhiệt tình, giao hàng đúng hẹn!",
+      "crop": "Dưa lưới",
+      "usageDuration": "2 năm",
+      "avatarColor": "bg-green-600"
+    },
+    {
+      "id": 2,
+      "name": "Chị Lan",
+      "location": "Cần Thơ",
+      "region": "mien-tay",
+      "rating": 5,
+      "text": "Mụn dừa sạch sẽ, không mùi hôi như những nơi khác. Trồng rau màu cho kết quả vượt mong đợi. Giá cả hợp lý, sẽ tiếp tục ủng hộ Hoàng Hiếu!",
+      "crop": "Rau màu",
+      "usageDuration": "1 năm",
+      "avatarColor": "bg-yellow-600"
+    },
+    {
+      "id": 3,
+      "name": "Anh Tài",
+      "location": "An Giang",
+      "region": "mien-tay",
+      "rating": 5,
+      "text": "Lần đầu dùng mụn dừa để trồng hoa lan. Kết quả ngoài mong đợi! Hoa nở đều, đẹp hơn. Anh Hiếu tư vấn rất tận tâm và chuyên nghiệp.",
+      "crop": "Hoa lan",
+      "usageDuration": "6 tháng",
+      "avatarColor": "bg-blue-600"
+    },
+    {
+      "id": 4,
+      "name": "Chị Hương",
+      "location": "Long An",
+      "region": "mien-dong",
+      "rating": 5,
+      "text": "Vừa chất lượng vừa giá rẻ. Giao hàng nhanh, đóng gói cẩn thận. Trồng dâu tây cho năng suất cao. Cảm ơn team Hoàng Hiếu rất nhiều!",
+      "crop": "Dâu tây",
+      "usageDuration": "8 tháng",
+      "avatarColor": "bg-emerald-600"
+    }
+  ],
+  "news": [
+    {
+      "id": "news-1",
+      "title": "Làm thế nào để phân biệt mụn dừa đã xử lý và mụn dừa chưa xử lý",
+      "slug": "phan-biet-mun-dua-xu-ly-chua-xu-ly",
+      "excerpt": "Hướng dẫn chi tiết cách nhận biết mụn dừa đã qua xử lý để đảm bảo chất lượng cho cây trồng...",
+      "content": "Mụn dừa đã xử lý thường có màu nâu sẫm đồng đều, không có mùi hôi, độ pH ổn định từ 5.5-6.5. Trong khi đó, mụn dừa chưa xử lý có màu sáng hơn, còn mùi hăng của tannin và pH thường cao hơn 7.0.",
+      "category": "Kỹ Thuật",
+      "categorySlug": "ky-thuat",
+      "author": "Hoàng Hiếu",
+      "date": "2025-10-23",
+      "readTime": "5 phút",
+      "views": 1250,
+      "image": "/assets/image/News/1.1-Mun da xu ly.jpg",
+      "tags": ["mụn dừa", "kỹ thuật", "chất lượng"]
+    },
+    {
+      "id": "news-2",
+      "title": "Những tác dụng của xơ dừa đối với cây trồng",
+      "slug": "tac-dung-xo-dua-cay-trong",
+      "excerpt": "Xơ dừa không chỉ giúp đảm bảo thoát nước tốt, giữ ẩm hiệu quả mà còn cải thiện cấu trúc giá thể trồng...",
+      "content": "Xơ dừa có khả năng giữ nước gấp 8-10 lần trọng lượng, tạo độ thoáng khí tuyệt vời cho rễ cây. Ngoài ra, xơ dừa còn chứa kali, magiê và các khoáng chất vi lượng có lợi cho cây trồng.",
+      "category": "Kinh Nghiệm",
+      "categorySlug": "kinh-nghiem",
+      "author": "Hoàng Hiếu",
+      "date": "2025-10-22",
+      "readTime": "4 phút",
+      "views": 980,
+      "image": "/assets/image/News/2.2-Tac dung cua xo dua.jpg",
+      "tags": ["xơ dừa", "cây trồng", "kỹ thuật"]
+    }
+  ],
+  "quickNews": [
+    "🌱 Mụn dừa sạch, pH ổn định – lựa chọn hàng đầu cho nông nghiệp hữu cơ",
+    "💧 Giữ ẩm tốt, thoáng khí – phù hợp trồng dưa lưới, ớt, cà chua, hoa lan",
+    "🌾 Sản phẩm đã qua xử lý, an toàn cho cây trồng và môi trường",
+    "📦 Cung cấp mụn dừa sỉ & lẻ – hỗ trợ phối trộn theo yêu cầu",
+    "🍀 Ứng dụng hiệu quả cho nhà vườn, nông trại, và vườn ươm giống",
+    "🚚 Giao hàng nhanh trong 24-48h cho khu vực ĐBSCL",
+    "🌍 Góp phần lan tỏa nông nghiệp xanh – bền vững cùng Mụn Dừa Hoàng Hiếu",
+    "📞 Tư vấn tận tâm – chọn loại mụn dừa phù hợp với cây trồng của bạn",
+    "🍃 Một lần đầu tư – sử dụng nhiều vụ, tiết kiệm đáng kể",
+    "💚 Sản phẩm 100% tự nhiên, thân thiện môi trường",
+    "💰 Giá tận xưởng – chất lượng cao, tối ưu chi phí nhà vườn"
+  ],
+  "tips": [
+    "Không ngâm xả mụn dừa quá lâu – dễ mất chất dinh dưỡng.",
+    "Mụn dừa có mùi hăng là do còn tannin, cần rửa và phơi thêm 1–2 ngày nắng nhẹ.",
+    "Giữ ẩm mụn dừa vừa phải, tránh để đọng nước vì sẽ gây úng rễ.",
+    "Trộn mụn dừa với trấu hun tỉ lệ 70/30 giúp giá thể thoáng khí hơn.",
+    "Kiểm tra pH giá thể trước khi gieo hạt – khoảng 5.8 đến 6.5 là lý tưởng.",
+    "Tưới vào buổi sáng giúp cây hấp thu nước và chất dinh dưỡng tốt nhất.",
+    "Hạn chế tưới nước vào buổi chiều tối – dễ sinh nấm và bệnh rễ.",
+    "Duy trì độ ẩm 60–70% cho giá thể để rễ cây phát triển đều.",
+    "Bón phân hữu cơ định kỳ giúp cải thiện độ tơi xốp của giá thể.",
+    "Không bón phân khi trời nắng gắt – dễ cháy rễ."
+  ],
+  "homepage": {
+    "hero": {
+      "title": "MỤN DỪA HOÀNG HIẾU",
+      "subtitle": "GIẢI PHÁP NÔNG NGHIỆP XANH",
+      "description": "ĐỒNG HÀNH CÙNG PHÁT TRIỂN BỀN VỮNG!"
+    },
+    "intro": {
+      "content": "Hoàng Hiếu tự hào là đối tác tin cậy của hàng ngàn nông dân trên khắp Đồng bằng sông Cửu Long. Chúng tôi chuyên cung cấp các sản phẩm mụn dừa chất lượng cao, giúp cải thiện đất trồng và nâng cao năng suất cây trồng. Không cần những lời hoa mỹ, chúng tôi tin rằng chất lượng và sự tận tâm sẽ nói lên tất cả.",
+      "cta_text": "Tìm hiểu thêm về chúng tôi →",
+      "cta_link": "/gioi-thieu"
+    }
+  },
+  "gallery": {
+    "products": [
+      {"image": "/assets/image/gallery/products/1-Xu ly.jpg", "alt": "Mụn dừa xử lý", "caption": "Mụn dừa xử lý chất lượng cao"},
+      {"image": "/assets/image/gallery/products/2-Xu ly.jpg", "alt": "Mụn dừa xử lý", "caption": "Sản phẩm đạt tiêu chuẩn"},
+      {"image": "/assets/image/gallery/products/3-Chip.jpg", "alt": "Vỏ dừa cắt chip", "caption": "Vỏ dừa cắt chip đồng đều"}
+    ],
+    "results": [
+      {"image": "/assets/image/gallery/results/dưa lưới.png", "alt": "Dưa lưới", "caption": "Dưa lưới phát triển tốt"}
+    ]
+  },
+  "whyChooseUs": {
+    "title": "Tại Sao Chọn Mụn Dừa Hoàng Hiếu?",
+    "reasons": [
+      { "icon": "check", "iconColor": "green", "title": "Chất Lượng Đảm Bảo", "description": "Sản phẩm được xử lý kỹ lưỡng, pH ổn định, không mùi hôi, an toàn cho mọi loại cây trồng" },
+      { "icon": "money", "iconColor": "yellow", "title": "Giá Cả Hợp Lý", "description": "Giá tận xưởng, không qua trung gian, tiết kiệm chi phí cho nhà vườn" }
+    ]
+  },
+  "contact": {
+    "company": "MỤN DỪA HOÀNG HIẾU",
+    "address": "Ấp Hội An, Xã Đa Phước Hội, Huyện Mỏ Cày Nam, Tỉnh Bến Tre",
+    "phone": "0984288512",
+    "email": "munduahoanghieu.vn@gmail.com",
+    "facebook": "https://www.facebook.com/mun.dua.hoang.hieu",
+    "zalo": "https://zalo.me/112949426040780264",
+    "youtube": "https://www.youtube.com/channel/UCyBxXvx4Y8SvFeFFIHQ0xqg"
+  },
+  "contactSection": {
+    "title": "Liên Hệ Với Chúng Tôi Ngay Hôm Nay!",
+    "subtitle": "Chúng tôi luôn sẵn sàng tư vấn và hỗ trợ bạn",
+    "buttons": [
+      { "text": "📞 Gọi Ngay: 0984.288.512", "link": "tel:0984288512", "color": "green", "type": "phone" },
+      { "text": "💬 Chat Zalo", "link": "https://zalo.me/112949426040780264", "color": "blue", "type": "zalo" },
+      { "text": "✉️ Gửi Email", "link": "mailto:munduahoanghieu.vn@gmail.com", "color": "orange", "type": "email" }
+    ]
+  }
+}

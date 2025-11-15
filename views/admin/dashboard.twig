@@ -1,0 +1,141 @@
+{% extends "layouts/admin.twig" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto">
+  <!-- Page Header -->
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-2">Dashboard</h1>
+    <p class="text-gray-600">Tổng quan hệ thống CMS</p>
+  </div>
+  
+  <!-- Stats Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <!-- Logs Count -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-blue-500">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-semibold text-gray-600 mb-1">Tổng Logs</p>
+          <p class="text-3xl font-bold text-gray-800">{{ stats.logsCount }}</p>
+        </div>
+        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+          <span class="text-2xl">📋</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Products Count -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-green-500">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-semibold text-gray-600 mb-1">Sản phẩm</p>
+          <p class="text-3xl font-bold text-gray-800">{{ stats.productsCount }}</p>
+        </div>
+        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+          <span class="text-2xl">📦</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Last Update -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-orange-500">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-semibold text-gray-600 mb-1">Cập nhật cuối</p>
+          <p class="text-sm font-bold text-gray-800">
+            {% if stats.lastUpdate %}
+              {{ stats.lastUpdate|date('d/m/Y H:i') }}
+            {% else %}
+              Chưa có
+            {% endif %}
+          </p>
+        </div>
+        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+          <span class="text-2xl">🕒</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- System Status -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-purple-500">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-semibold text-gray-600 mb-1">Trạng thái</p>
+          <p class="text-lg font-bold text-green-600">Hoạt động tốt</p>
+        </div>
+        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+          <span class="text-2xl">✅</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Quick Actions -->
+  <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">Thao tác nhanh</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <a href="/admin/banners" 
+         class="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-1">
+        <span class="text-4xl mb-2">🎨</span>
+        <span class="text-sm font-semibold text-gray-700">Quản lý Banner</span>
+        <span class="text-xs text-gray-500 mt-1">Slideshow trang chủ</span>
+      </a>
+      
+      <a href="/admin/content" 
+         class="flex flex-col items-center justify-center p-6 bg-green-50 hover:bg-green-100 rounded-xl transition-colors">
+        <span class="text-4xl mb-2">📝</span>
+        <span class="text-sm font-semibold text-gray-700">Sửa nội dung</span>
+      </a>
+      
+      <a href="/admin/images" 
+         class="flex flex-col items-center justify-center p-6 bg-blue-50 hover:bg-blue-100 rounded-xl transition-colors">
+        <span class="text-4xl mb-2">🖼️</span>
+        <span class="text-sm font-semibold text-gray-700">Upload ảnh</span>
+      </a>
+      
+      <a href="/admin/data" 
+         class="flex flex-col items-center justify-center p-6 bg-purple-50 hover:bg-purple-100 rounded-xl transition-colors">
+        <span class="text-4xl mb-2">📦</span>
+        <span class="text-sm font-semibold text-gray-700">Quản lý dữ liệu</span>
+      </a>
+      
+      <a href="/admin/logs" 
+         class="flex flex-col items-center justify-center p-6 bg-orange-50 hover:bg-orange-100 rounded-xl transition-colors">
+        <span class="text-4xl mb-2">📋</span>
+        <span class="text-sm font-semibold text-gray-700">Xem logs</span>
+      </a>
+    </div>
+  </div>
+  
+  <!-- Recent Logs -->
+  <div class="bg-white rounded-2xl shadow-lg p-6">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-xl font-bold text-gray-800">Hoạt động gần đây</h2>
+      <a href="/admin/logs" class="text-green-600 hover:text-green-700 font-semibold text-sm">
+        Xem tất cả →
+      </a>
+    </div>
+    
+    {% if stats.recentLogs|length > 0 %}
+      <div class="space-y-3">
+        {% for log in stats.recentLogs %}
+        <div class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+          <div class="flex-shrink-0 w-2 h-2 mt-2 rounded-full 
+                      {% if log.action == 'login_success' %}bg-green-500
+                      {% elseif log.action == 'login_failed' %}bg-red-500
+                      {% else %}bg-blue-500{% endif %}"></div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold text-gray-800">{{ log.user }}</p>
+            <p class="text-sm text-gray-600">{{ log.action }} - {{ log.details }}</p>
+            <p class="text-xs text-gray-500 mt-1">{{ log.timestamp|date('d/m/Y H:i:s') }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-gray-500 text-center py-8">Chưa có hoạt động nào</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

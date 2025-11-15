@@ -1,0 +1,87 @@
+{
+  "homepage": {
+    "hero": {
+      "title": "MỤN DỪA HOÀNG HIẾU",
+      "subtitle": "GIẢI PHÁP NÔNG NGHIỆP XANH",
+      "description": "ĐỒNG HÀNH CÙNG PHÁT TRIỂN BỀN VỮNG!"
+    },
+    "intro": {
+      "content": "Hoàng Hiếu tự hào là đối tác tin cậy của hàng ngàn nông dân trên khắp Đồng bằng sông Cửu Long. Chúng tôi chuyên cung cấp các sản phẩm mụn dừa chất lượng cao, giúp cải thiện đất trồng và nâng cao năng suất cây trồng. Không cần những lời hoa mỹ, chúng tôi tin rằng chất lượng và sự tận tâm sẽ nói lên tất cả.",
+      "cta_text": "Tìm hiểu thêm về chúng tôi →",
+      "cta_link": "/gioi-thieu"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Cơ Sở Sản Xuất Mụn Dừa Hoàng Hiếu",
+      "subtitle": "Niềm Tin Là Giá Trị Cốt Lõi!",
+      "badge": "🌟 Uy Tín - Chất Lượng - Tận Tâm 🌟"
+    },
+    "philosophy": {
+      "title": "Triết Lý Của Chúng Tôi",
+      "content": [
+        "Hoàng Hiếu hiểu rằng sự tin tưởng của khách hàng là nền tảng vững chắc cho sự phát triển lâu dài. Vì thế, chúng tôi luôn lấy niềm tin và sự hài lòng của khách hàng làm kim chỉ nam cho mọi hoạt động.",
+        "Kinh doanh không chỉ là bán sản phẩm, mà còn là gửi gắm sự chân thành",
+        "Chính vì vậy, suốt những năm qua, chúng tôi không ngừng nỗ lực để mang đến những sản phẩm tốt nhất, giá cả hợp lý nhất và dịch vụ tận tâm nhất."
+      ]
+    },
+    "commitments": [
+      {
+        "title": "🏆 Sản phẩm đạt tiêu chuẩn chất lượng cao",
+        "description": "Chúng tôi chuyên cung cấp mụn dừa xử lý (tỷ lệ xơ-mụn đáp ứng theo yêu cầu của bạn). Ngoài ra còn có mụn dừa thô, vỏ dừa cắt chip, phân hữu cơ, trấu, tro trấu và đất sạch... Tất cả đều được làm cẩn thận, kỹ lưỡng, để bạn yên tâm sử dụng mà không phải bận lòng.",
+        "color": "green"
+      },
+      {
+        "title": "💰 Giá cả hợp túi tiền",
+        "description": "Hoàng Hiếu hiểu rằng làm nông không dễ, nên chúng tôi luôn giữ mức giá phù hợp để mọi người đều có thể tiếp cận được những sản phẩm tốt mà không lo chi phí quá cao.",
+        "color": "yellow"
+      },
+      {
+        "title": "❤️ Dịch vụ tận tình như người nhà",
+        "description": "Khi bạn cần, chúng tôi sẵn sàng có mặt để hỗ trợ. Từ tư vấn chọn sản phẩm cho đến giao hàng tận nơi, chúng tôi luôn cố gắng làm mọi thứ nhanh gọn, chu đáo để bạn hài lòng.",
+        "color": "blue"
+      },
+      {
+        "title": "🌱 Đồng hành cùng môi trường",
+        "description": "Mỗi sản phẩm của Hoàng Hiếu không chỉ giúp bạn cải thiện đất trồng hay nâng cao năng suất, mà còn góp phần làm xanh sạch môi trường – vì chúng tôi tin rằng, bảo vệ thiên nhiên chính là bảo vệ tương lai.",
+        "color": "emerald"
+      }
+    ],
+    "process": [
+      {
+        "step": 1,
+        "title": "🥥 Thu Mua Nguyên Liệu",
+        "description": "Tuyển chọn trái dừa tươi từ các vườn dừa địa phương, đảm bảo nguồn gốc sạch và chất lượng đồng đều.",
+        "color": "green"
+      },
+      {
+        "step": 2,
+        "title": "⚙️ Xử Lý & Tách Mụn",
+        "description": "Sử dụng công nghệ hiện đại để tách xơ và mụn theo tỷ lệ yêu cầu, vệ sinh sạch sẽ và an toàn thực phẩm.",
+        "color": "yellow"
+      },
+      {
+        "step": 3,
+        "title": "📦 Đóng Gói & Giao Hàng",
+        "description": "Đóng gói cẩn thận, bảo quản đúng cách và giao hàng tận nơi với cam kết chất lượng không thay đổi.",
+        "color": "blue"
+      }
+    ],
+    "cta": {
+      "title": "🌱 Hoàng Hiếu – Gieo chân thành, gặt niềm tin! 🌱",
+      "description": "Dù bạn là khách hàng lâu năm hay lần đầu ghé thăm, chúng tôi đều trân trọng như nhau. Hãy để Hoàng Hiếu là bạn đồng hành tin cậy trên hành trình nông nghiệp của bạn!",
+      "buttons": [
+        {
+          "text": "🛒 Xem Sản Phẩm",
+          "link": "/san-pham",
+          "style": "primary"
+        },
+        {
+          "text": "📞 Liên Hệ Ngay",
+          "link": "/lien-he",
+          "style": "secondary"
+        }
+      ]
+    }
+  }
+}

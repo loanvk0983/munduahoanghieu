@@ -1,0 +1,173 @@
+{% extends "layouts/admin.twig" %}
+
+{% block title %}Quản lý Backups{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+  <div class="mb-6">
+    <h1 class="text-2xl font-bold">Quản lý Backups</h1>
+    <p class="text-gray-600">Danh sách các bản sao lưu của file <code>content.json</code>. Bạn có thể phục hồi về một bản sao lưu nếu cần.</p>
+  </div>
+
+  <div class="bg-white rounded-lg shadow p-6">
+    <div id="backupsList">Đang tải danh sách backups...</div>
+  </div>
+
+  <div class="mt-4 text-sm text-gray-500">
+    <p>Lưu ý: Restore sẽ ghi đè file trên website. Nếu muốn đồng bộ trở lại CMS, chọn "Restore to CMS" khi phục hồi.</p>
+  </div>
+</div>
+
+<style>
+.diff-add { background:#e6ffed; color:#22863a; }
+.diff-remove { background:#ffeef0; color:#b31d28; }
+.diff-modified { background:#fff5b1; color:#735c0f; }
+pre.diff-block { padding:8px; border-radius:6px; font-size:13px; white-space:pre-wrap; word-break:break-word; line-height:1.45; }
+
+.diff-legend { display:flex; gap:12px; align-items:center; margin-top:8px; }
+.diff-legend-item { display:flex; gap:8px; align-items:center; font-size:13px; color:#374151 }
+.diff-legend-swatch { width:14px; height:14px; border-radius:3px; display:inline-block; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04); }
+.legend-add { background:#e6ffed; }
+.legend-remove { background:#ffeef0; }
+.legend-changed { background:#fff5b1; }
+</style>
+
+<div class="max-w-4xl mx-auto mt-3 text-sm text-gray-600">
+  <div class="diff-legend">
+    <div class="diff-legend-item"><span class="diff-legend-swatch legend-add"></span> <strong class="ml-1">Added</strong> <span class="text-gray-500 ml-2">(+ new value)</span></div>
+    <div class="diff-legend-item"><span class="diff-legend-swatch legend-remove"></span> <strong class="ml-1">Removed</strong> <span class="text-gray-500 ml-2">(- old value)</span></div>
+    <div class="diff-legend-item"><span class="diff-legend-swatch legend-changed"></span> <strong class="ml-1">Changed</strong> <span class="text-gray-500 ml-2">(old → new)</span></div>
+  </div>
+</div>
+
+<script>
+async function fetchBackups() {
+  const container = document.getElementById('backupsList');
+  try {
+    const res = await fetch('/api/backups', { credentials: 'same-origin' });
+    if (!res.ok) throw new Error('Không thể lấy danh sách backups');
+    const data = await res.json();
+    const files = data.files || [];
+    if (!files.length) {
+      container.innerHTML = '<p class="text-gray-500">Không tìm thấy backups.</p>';
+      return;
+    }
+
+    const rows = files.map(f => {
+      const mtime = new Date(f.mtime).toLocaleString();
+      return `
+        <div class="flex items-center justify-between border-b py-3">
+          <div>
+            <div class="font-semibold">${f.name}</div>
+            <div class="text-xs text-gray-500">${mtime} • ${f.size} bytes</div>
+          </div>
+          <div class="flex gap-2">
+            <button class="px-3 py-1 bg-blue-500 text-white rounded" onclick="previewDiff('${f.name}')">🔎 Xem Diff</button>
+            <button class="px-3 py-1 bg-yellow-500 text-white rounded" onclick="restoreBackup('${f.name}', false)">🔁 Restore</button>
+            <button class="px-3 py-1 bg-green-600 text-white rounded" onclick="restoreBackup('${f.name}', true)">🔁 Restore to CMS</button>
+            <a href="/admin/logs/download?file=${encodeURIComponent(f.name)}" class="px-3 py-1 bg-gray-200 text-gray-700 rounded">📥 Download</a>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    container.innerHTML = rows;
+  } catch (e) {
+    container.innerHTML = '<p class="text-red-600">Lỗi khi tải backups: ' + e.message + '</p>';
+  }
+}
+
+async function restoreBackup(fname, toCMS) {
+  if (!confirm('Bạn có chắc muốn phục hồi backup: ' + fname + '\n\nHành động này sẽ ghi đè file content.json trên website.')) return;
+  try {
+    const res = await fetch('/api/restore', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ filename: fname, toCMS: !!toCMS })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || data.error || 'Restore failed');
+    alert('Restore thành công: ' + fname);
+    // optional: reload page or notify
+    window.location.reload();
+  } catch (e) {
+    alert('Lỗi khi restore: ' + e.message);
+  }
+}
+
+// Load on page ready
+window.addEventListener('DOMContentLoaded', fetchBackups);
+</script>
+<div id="diffModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-lg w-11/12 md:w-3/4 max-h-[80vh] overflow-auto p-4">
+    <div class="flex justify-between items-center mb-3">
+      <h3 class="text-lg font-semibold">Diff preview</h3>
+      <button onclick="closeDiff()" class="px-3 py-1 bg-gray-200 rounded">Đóng</button>
+    </div>
+    <div id="diffContent" class="text-sm text-gray-800"></div>
+  </div>
+</div>
+
+<script>
+async function previewDiff(fname) {
+  const modal = document.getElementById('diffModal');
+  const content = document.getElementById('diffContent');
+  content.innerHTML = 'Đang tải...';
+  modal.classList.remove('hidden');
+  try {
+    const res = await fetch('/api/backup-diff?file=' + encodeURIComponent(fname), { credentials: 'same-origin' });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.message || 'Không thể lấy diff');
+    const diffs = data.diffs || [];
+    if (!diffs.length) {
+      content.innerHTML = '<div class="text-green-700">Không có khác biệt giữa backup và nội dung hiện tại.</div>';
+      return;
+    }
+    const rows = diffs.map(d => {
+      const oldStr = JSON.stringify(d.oldValue, null, 2);
+      const newStr = JSON.stringify(d.newValue, null, 2);
+      const pathEsc = escapeHtml(d.path);
+      if (d.type === 'added') {
+        return `
+          <div class="border-b py-2">
+            <div class="flex items-center justify-between"><div class="font-mono text-xs">${pathEsc}</div><span class="diff-modified px-2 py-1 rounded">ADDED</span></div>
+            <div class="mt-2">
+              <pre class="diff-block diff-add">+ ${escapeHtml(newStr)}</pre>
+            </div>
+          </div>
+        `;
+      } else if (d.type === 'removed') {
+        return `
+          <div class="border-b py-2">
+            <div class="flex items-center justify-between"><div class="font-mono text-xs">${pathEsc}</div><span class="diff-modified px-2 py-1 rounded">REMOVED</span></div>
+            <div class="mt-2">
+              <pre class="diff-block diff-remove">- ${escapeHtml(oldStr)}</pre>
+            </div>
+          </div>
+        `;
+      } else {
+        return `
+          <div class="border-b py-2">
+            <div class="flex items-center justify-between"><div class="font-mono text-xs">${pathEsc}</div><span class="diff-modified px-2 py-1 rounded">CHANGED</span></div>
+            <div class="grid grid-cols-2 gap-3 mt-2">
+              <pre class="diff-block diff-remove">- ${escapeHtml(oldStr)}</pre>
+              <pre class="diff-block diff-add">+ ${escapeHtml(newStr)}</pre>
+            </div>
+          </div>
+        `;
+      }
+    }).join('');
+    content.innerHTML = rows;
+  } catch (e) {
+    content.innerHTML = '<div class="text-red-600">Lỗi: ' + e.message + '</div>';
+  }
+}
+
+function closeDiff(){ document.getElementById('diffModal').classList.add('hidden'); }
+
+function escapeHtml(str) { return str.replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"})[m]; }); }
+</script>
+{% endblock %}

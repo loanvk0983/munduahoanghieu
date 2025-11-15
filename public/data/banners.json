@@ -1,0 +1,25 @@
+{
+  "banners": [
+    {
+      "id": 1,
+      "image": "/assets/image/banner/banner1.jpg",
+      "title": "Sản phẩm Mụn Dừa Xử Lý",
+      "subtitle": "Chất lượng cao - Giá cả phải chăng",
+      "active": true
+    },
+    {
+      "id": 2,
+      "image": "/assets/image/banner/banner2.jpg",
+      "title": "Giải Pháp Nông Nghiệp Xanh",
+      "subtitle": "Tự nhiên - Hữu cơ - Bền vững",
+      "active": true
+    },
+    {
+      "id": 3,
+      "image": "/assets/image/banner/banner3.jpg",
+      "title": "Đồng Hành Phát Triển",
+      "subtitle": "Uy tín - Chuyên nghiệp - Hiệu quả",
+      "active": true
+    }
+  ]
+}

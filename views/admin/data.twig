@@ -1,0 +1,502 @@
+{% extends "layouts/admin.twig" %}
+
+{% block title %}Quản Lý Dữ Liệu{% endblock %}
+
+{% block content %}
+<div class="p-6">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6">📊 Quản Lý Dữ Liệu Website</h1>
+  
+  {% if success %}
+  <div class="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded mb-4">
+    ✓ {{ success }}
+  </div>
+  {% endif %}
+  
+  {% if error %}
+  <div class="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded mb-4">
+    ✗ {{ error }}
+  </div>
+  {% endif %}
+
+  {# Tabs #}
+  <div class="mb-6 border-b border-gray-200">
+    <nav class="flex space-x-4">
+      <button data-tab="products" class="tab-btn px-4 py-2 font-semibold border-b-2 transition {% if tab == 'products' %}border-green-600 text-green-600{% else %}border-transparent text-gray-600 hover:text-green-600{% endif %}">
+        🛒 Sản Phẩm ({{ products|length }})
+      </button>
+      <button data-tab="banners" class="tab-btn px-4 py-2 font-semibold border-b-2 transition {% if tab == 'banners' %}border-green-600 text-green-600{% else %}border-transparent text-gray-600 hover:text-green-600{% endif %}">
+        🖼️ Banner ({{ banners|length }})
+      </button>
+      <button data-tab="testimonials" class="tab-btn px-4 py-2 font-semibold border-b-2 transition {% if tab == 'testimonials' %}border-green-600 text-green-600{% else %}border-transparent text-gray-600 hover:text-green-600{% endif %}">
+        ⭐ Đánh Giá ({{ testimonials|length }})
+      </button>
+    </nav>
+  </div>
+
+  {# Products Tab #}
+  <div id="products-tab" class="tab-content {% if tab != 'products' %}hidden{% endif %}">
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+      <h2 class="text-xl font-bold mb-4">➕ Thêm Sản Phẩm Mới</h2>
+      <form method="POST" action="/admin/data/products/add" class="space-y-4">
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-2">Tên sản phẩm *</label>
+            <input type="text" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium mb-2">Danh mục</label>
+            <select name="category" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500">
+              <option value="main">Chính</option>
+              <option value="secondary">Phụ</option>
+              <option value="custom">Tùy chỉnh</option>
+            </select>
+          </div>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium mb-2">Mô tả *</label>
+          <textarea name="description" required rows="3" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500"></textarea>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium mb-2">Đặc điểm (phân cách bằng dấu phẩy)</label>
+          <input type="text" name="features" placeholder="Ví dụ: Độ ẩm thấp, Chất lượng cao, Giá cạnh tranh" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500">
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-2">Giá</label>
+            <input type="text" name="price" value="Liên hệ" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium mb-2">Đường dẫn hình ảnh</label>
+            <input type="text" name="image" placeholder="/assets/image/products/..." class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500">
+          </div>
+        </div>
+        
+        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-semibold transition">
+          Thêm Sản Phẩm
+        </button>
+      </form>
+    </div>
+
+    {# Products List #}
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tên sản phẩm</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Danh mục</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Giá</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          {% for product in products %}
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ product.id }}</td>
+            <td class="px-6 py-4 text-sm font-medium">{{ product.name }}</td>
+            <td class="px-6 py-4 text-sm">
+              <span class="px-2 py-1 rounded text-xs {% if product.category == 'main' %}bg-green-100 text-green-800{% elseif product.category == 'secondary' %}bg-blue-100 text-blue-800{% else %}bg-purple-100 text-purple-800{% endif %}">
+                {{ product.category }}
+              </span>
+            </td>
+            <td class="px-6 py-4 text-sm">{{ product.price }}</td>
+            <td class="px-6 py-4 text-sm space-x-2">
+              <button data-edit-product="{{ product.id }}" class="text-blue-600 hover:text-blue-800">✏️ Sửa</button>
+              <form method="POST" action="/admin/data/products/delete" class="inline">
+                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                <input type="hidden" name="id" value="{{ product.id }}">
+                <button type="submit" onclick="return confirm('Xác nhận xóa sản phẩm này?')" class="text-red-600 hover:text-red-800">🗑️ Xóa</button>
+              </form>
+            </td>
+          </tr>
+          {# Edit modal row #}
+          <tr id="edit-product-{{ product.id }}" class="hidden bg-gray-50">
+            <td colspan="5" class="px-6 py-4">
+              <form method="POST" action="/admin/data/products/update" class="space-y-4">
+                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                <input type="hidden" name="id" value="{{ product.id }}">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Tên sản phẩm</label>
+                    <input type="text" name="name" value="{{ product.name }}" required class="w-full px-3 py-2 border rounded">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Danh mục</label>
+                    <select name="category" class="w-full px-3 py-2 border rounded">
+                      <option value="main" {% if product.category == 'main' %}selected{% endif %}>Chính</option>
+                      <option value="secondary" {% if product.category == 'secondary' %}selected{% endif %}>Phụ</option>
+                      <option value="custom" {% if product.category == 'custom' %}selected{% endif %}>Tùy chỉnh</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium mb-2">Mô tả</label>
+                  <textarea name="description" required rows="3" class="w-full px-3 py-2 border rounded">{{ product.description }}</textarea>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium mb-2">Đặc điểm (phân cách bằng dấu phẩy)</label>
+                  <input type="text" name="features" value="{{ product.features|join(', ') }}" class="w-full px-3 py-2 border rounded">
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Giá</label>
+                    <input type="text" name="price" value="{{ product.price }}" class="w-full px-3 py-2 border rounded">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2">Đường dẫn hình ảnh</label>
+                    <input type="text" name="image" value="{{ product.image }}" class="w-full px-3 py-2 border rounded">
+                  </div>
+                </div>
+                
+                <div class="flex space-x-2">
+                  <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Cập nhật</button>
+                  <button type="button" data-cancel-edit="{{ product.id }}" class="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded">Hủy</button>
+                </div>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {# Banners Tab #}
+  <div id="banners-tab" class="tab-content {% if tab != 'banners' %}hidden{% endif %}">
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+      <h2 class="text-xl font-bold mb-4">➕ Thêm Banner Mới</h2>
+      <form method="POST" action="/admin/data/banners/add" class="space-y-4">
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        
+        <div>
+          <label class="block text-sm font-medium mb-2">Đường dẫn hình ảnh *</label>
+          <input type="text" name="image" required placeholder="/assets/image/banner/..." class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500">
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium mb-2">Tiêu đề *</label>
+          <input type="text" name="title" required class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500">
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium mb-2">Phụ đề</label>
+          <input type="text" name="subtitle" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500">
+        </div>
+        
+        <div class="flex items-center">
+          <input type="checkbox" name="active" value="true" checked class="mr-2">
+          <label class="text-sm font-medium">Kích hoạt banner</label>
+        </div>
+        
+        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-semibold transition">
+          Thêm Banner
+        </button>
+      </form>
+    </div>
+
+    {# Banners List #}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for banner in banners %}
+      <div class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="h-48 bg-gray-200 overflow-hidden">
+          <img src="{{ banner.image }}" alt="{{ banner.title }}" class="w-full h-full object-cover" onerror="this.src='/assets/image/default-banner.jpg'">
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-semibold px-2 py-1 rounded {% if banner.active %}bg-green-100 text-green-800{% else %}bg-gray-100 text-gray-600{% endif %}">
+              {% if banner.active %}✓ Đang hiển thị{% else %}✗ Đã ẩn{% endif %}
+            </span>
+            <span class="text-xs text-gray-500">ID: {{ banner.id }}</span>
+          </div>
+          <h3 class="font-bold text-lg mb-1">{{ banner.title }}</h3>
+          <p class="text-sm text-gray-600 mb-4">{{ banner.subtitle }}</p>
+          
+          <div class="flex space-x-2">
+            <button data-edit-banner="{{ banner.id }}" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-sm">✏️ Sửa</button>
+            <form method="POST" action="/admin/data/banners/delete" class="flex-1">
+              <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+              <input type="hidden" name="id" value="{{ banner.id }}">
+              <button type="submit" onclick="return confirm('Xác nhận xóa banner này?')" class="w-full bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded text-sm">🗑️ Xóa</button>
+            </form>
+          </div>
+        </div>
+        
+        {# Edit form (hidden by default) #}
+        <div id="edit-banner-{{ banner.id }}" class="hidden p-4 bg-gray-50 border-t">
+          <form method="POST" action="/admin/data/banners/update" class="space-y-3">
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <input type="hidden" name="id" value="{{ banner.id }}">
+            
+            <div>
+              <label class="block text-sm font-medium mb-1">Đường dẫn hình ảnh</label>
+              <input type="text" name="image" value="{{ banner.image }}" required class="w-full px-2 py-1 border rounded text-sm">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium mb-1">Tiêu đề</label>
+              <input type="text" name="title" value="{{ banner.title }}" required class="w-full px-2 py-1 border rounded text-sm">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium mb-1">Phụ đề</label>
+              <input type="text" name="subtitle" value="{{ banner.subtitle }}" class="w-full px-2 py-1 border rounded text-sm">
+            </div>
+            
+            <div class="flex items-center">
+              <input type="checkbox" name="active" value="true" {% if banner.active %}checked{% endif %} class="mr-2">
+              <label class="text-sm">Kích hoạt</label>
+            </div>
+            
+            <div class="flex space-x-2">
+              <button type="submit" class="flex-1 bg-blue-600 text-white px-3 py-1 rounded text-sm">Cập nhật</button>
+              <button type="button" data-cancel-banner="{{ banner.id }}" class="flex-1 bg-gray-400 text-white px-3 py-1 rounded text-sm">Hủy</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {# Testimonials Tab #}
+  <div id="testimonials-tab" class="tab-content {% if tab != 'testimonials' %}hidden{% endif %}">
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+      <h2 class="text-xl font-bold mb-4">➕ Thêm Đánh Giá Mới</h2>
+      <form method="POST" action="/admin/data/testimonials/add" class="space-y-4">
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-2">Tên khách hàng *</label>
+            <input type="text" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium mb-2">Địa điểm *</label>
+            <input type="text" name="location" required placeholder="Ví dụ: Bến Tre" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500">
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-2">Đánh giá (sao)</label>
+            <select name="rating" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500">
+              <option value="5" selected>⭐⭐⭐⭐⭐ (5 sao)</option>
+              <option value="4">⭐⭐⭐⭐ (4 sao)</option>
+              <option value="3">⭐⭐⭐ (3 sao)</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium mb-2">Loại cây trồng</label>
+            <input type="text" name="crop" placeholder="Ví dụ: Sầu riêng" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium mb-2">Thời gian sử dụng</label>
+            <input type="text" name="usage_duration" placeholder="Ví dụ: 2 năm" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500">
+          </div>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium mb-2">Nội dung đánh giá *</label>
+          <textarea name="content" required rows="4" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500"></textarea>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium mb-2">Màu avatar (Tailwind class)</label>
+          <select name="avatar_color" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500">
+            <option value="bg-green-600">Xanh lá</option>
+            <option value="bg-blue-600">Xanh dương</option>
+            <option value="bg-orange-600">Cam</option>
+            <option value="bg-purple-600">Tím</option>
+            <option value="bg-red-600">Đỏ</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-semibold transition">
+          Thêm Đánh Giá
+        </button>
+      </form>
+    </div>
+
+    {# Testimonials List #}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% for testimonial in testimonials %}
+      <div class="bg-white rounded-lg shadow p-6">
+        <div class="flex items-start mb-4">
+          <div class="{{ testimonial.avatar_color }} text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mr-4">
+            {{ testimonial.name|slice(0, 1) }}
+          </div>
+          <div class="flex-1">
+            <h3 class="font-bold text-lg">{{ testimonial.name }}</h3>
+            <p class="text-sm text-gray-600">📍 {{ testimonial.location }}</p>
+            <p class="text-yellow-500 text-sm">{% for i in 1..testimonial.rating %}⭐{% endfor %}</p>
+          </div>
+          <span class="text-xs text-gray-500">ID: {{ testimonial.id }}</span>
+        </div>
+        
+        <p class="text-gray-700 mb-4 italic">"{{ testimonial.content }}"</p>
+        
+        <div class="flex items-center text-sm text-gray-600 mb-4 space-x-4">
+          <span>🌱 {{ testimonial.crop }}</span>
+          <span>⏱️ {{ testimonial.usage_duration }}</span>
+        </div>
+        
+        <div class="flex space-x-2">
+          <button data-edit-testimonial="{{ testimonial.id }}" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-sm">✏️ Sửa</button>
+          <form method="POST" action="/admin/data/testimonials/delete" class="flex-1">
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <input type="hidden" name="id" value="{{ testimonial.id }}">
+            <button type="submit" onclick="return confirm('Xác nhận xóa đánh giá này?')" class="w-full bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded text-sm">🗑️ Xóa</button>
+          </form>
+        </div>
+        
+        {# Edit form (hidden by default) #}
+        <div id="edit-testimonial-{{ testimonial.id }}" class="hidden mt-4 pt-4 border-t">
+          <form method="POST" action="/admin/data/testimonials/update" class="space-y-3">
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <input type="hidden" name="id" value="{{ testimonial.id }}">
+            
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-sm font-medium mb-1">Tên</label>
+                <input type="text" name="name" value="{{ testimonial.name }}" required class="w-full px-2 py-1 border rounded text-sm">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Địa điểm</label>
+                <input type="text" name="location" value="{{ testimonial.location }}" required class="w-full px-2 py-1 border rounded text-sm">
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-3">
+              <div>
+                <label class="block text-sm font-medium mb-1">Sao</label>
+                <select name="rating" class="w-full px-2 py-1 border rounded text-sm">
+                  <option value="5" {% if testimonial.rating == 5 %}selected{% endif %}>5 ⭐</option>
+                  <option value="4" {% if testimonial.rating == 4 %}selected{% endif %}>4 ⭐</option>
+                  <option value="3" {% if testimonial.rating == 3 %}selected{% endif %}>3 ⭐</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Cây trồng</label>
+                <input type="text" name="crop" value="{{ testimonial.crop }}" class="w-full px-2 py-1 border rounded text-sm">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Thời gian</label>
+                <input type="text" name="usage_duration" value="{{ testimonial.usage_duration }}" class="w-full px-2 py-1 border rounded text-sm">
+              </div>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium mb-1">Nội dung</label>
+              <textarea name="content" required rows="3" class="w-full px-2 py-1 border rounded text-sm">{{ testimonial.content }}</textarea>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium mb-1">Màu avatar</label>
+              <select name="avatar_color" class="w-full px-2 py-1 border rounded text-sm">
+                <option value="bg-green-600" {% if testimonial.avatar_color == 'bg-green-600' %}selected{% endif %}>Xanh lá</option>
+                <option value="bg-blue-600" {% if testimonial.avatar_color == 'bg-blue-600' %}selected{% endif %}>Xanh dương</option>
+                <option value="bg-orange-600" {% if testimonial.avatar_color == 'bg-orange-600' %}selected{% endif %}>Cam</option>
+                <option value="bg-purple-600" {% if testimonial.avatar_color == 'bg-purple-600' %}selected{% endif %}>Tím</option>
+                <option value="bg-red-600" {% if testimonial.avatar_color == 'bg-red-600' %}selected{% endif %}>Đỏ</option>
+              </select>
+            </div>
+            
+            <div class="flex space-x-2">
+              <button type="submit" class="flex-1 bg-blue-600 text-white px-3 py-1 rounded text-sm">Cập nhật</button>
+              <button type="button" data-cancel-testimonial="{{ testimonial.id }}" class="flex-1 bg-gray-400 text-white px-3 py-1 rounded text-sm">Hủy</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script nonce="{{ cspNonce }}">
+document.addEventListener('DOMContentLoaded', function() {
+  // Tab switching
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const tabName = this.getAttribute('data-tab');
+      
+      // Update button styles
+      tabButtons.forEach(btn => {
+        btn.classList.remove('border-green-600', 'text-green-600');
+        btn.classList.add('border-transparent', 'text-gray-600');
+      });
+      this.classList.add('border-green-600', 'text-green-600');
+      this.classList.remove('border-transparent', 'text-gray-600');
+      
+      // Show/hide content
+      tabContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+      document.getElementById(tabName + '-tab').classList.remove('hidden');
+    });
+  });
+  
+  // Product edit toggle
+  document.querySelectorAll('[data-edit-product]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const id = this.getAttribute('data-edit-product');
+      document.getElementById('edit-product-' + id).classList.toggle('hidden');
+    });
+  });
+  
+  document.querySelectorAll('[data-cancel-edit]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const id = this.getAttribute('data-cancel-edit');
+      document.getElementById('edit-product-' + id).classList.add('hidden');
+    });
+  });
+  
+  // Banner edit toggle
+  document.querySelectorAll('[data-edit-banner]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const id = this.getAttribute('data-edit-banner');
+      document.getElementById('edit-banner-' + id).classList.toggle('hidden');
+    });
+  });
+  
+  document.querySelectorAll('[data-cancel-banner]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const id = this.getAttribute('data-cancel-banner');
+      document.getElementById('edit-banner-' + id).classList.add('hidden');
+    });
+  });
+  
+  // Testimonial edit toggle
+  document.querySelectorAll('[data-edit-testimonial]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const id = this.getAttribute('data-edit-testimonial');
+      document.getElementById('edit-testimonial-' + id).classList.toggle('hidden');
+    });
+  });
+  
+  document.querySelectorAll('[data-cancel-testimonial]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const id = this.getAttribute('data-cancel-testimonial');
+      document.getElementById('edit-testimonial-' + id).classList.add('hidden');
+    });
+  });
+});
+</script>
+{% endblock %}

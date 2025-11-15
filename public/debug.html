@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug Test</title>
+  <link href="/styles.css" rel="stylesheet">
+</head>
+<body class="font-sans bg-gray-100 p-8">
+  
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-8">🔍 Debug Test</h1>
+    
+    <div class="bg-white p-6 rounded-lg shadow mb-8">
+      <h2 class="text-xl font-bold mb-4">CSS Test</h2>
+      <p class="text-green-700">Nếu bạn thấy text này màu xanh lá cây, CSS đã load thành công.</p>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+        Button Test
+      </button>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow mb-8">
+      <h2 class="text-xl font-bold mb-4">JavaScript Test</h2>
+      <button onclick="testJS()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
+        Test JavaScript
+      </button>
+      <div id="js-result" class="mt-4 p-4 bg-gray-100 rounded">
+        Chưa test JavaScript...
+      </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow mb-8">
+      <h2 class="text-xl font-bold mb-4">Content Manager Test</h2>
+      <button onclick="testContentManager()" class="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors">
+        Test Content Manager
+      </button>
+      <div id="content-manager-result" class="mt-4 p-4 bg-gray-100 rounded">
+        Chưa test Content Manager...
+      </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow mb-8">
+      <h2 class="text-xl font-bold mb-4">JSON Fetch Test</h2>
+      <button onclick="testJSONFetch()" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition-colors">
+        Test JSON Fetch
+      </button>
+      <div id="json-result" class="mt-4 p-4 bg-gray-100 rounded">
+        Chưa test JSON fetch...
+      </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-bold mb-4">Navigation Test</h2>
+      <div class="space-x-4">
+        <a href="/" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors inline-block">
+          Trang Chủ
+        </a>
+        <a href="/gioi-thieu" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors inline-block">
+          Giới Thiệu
+        </a>
+        <a href="/demo-json" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors inline-block">
+          Demo JSON
+        </a>
+        <a href="/admin" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors inline-block">
+          Admin
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function testJS() {
+      document.getElementById('js-result').innerHTML = `
+        <div class="text-green-600">✅ JavaScript hoạt động tốt!</div>
+        <div class="text-sm text-gray-600 mt-2">Thời gian: ${new Date().toLocaleString()}</div>
+      `;
+    }
+
+    async function testContentManager() {
+      const resultDiv = document.getElementById('content-manager-result');
+      
+      try {
+        // Check if ContentManager class exists
+        if (typeof ContentManager === 'undefined' && typeof contentManager === 'undefined') {
+          resultDiv.innerHTML = '<div class="text-red-600">❌ ContentManager class không tồn tại</div>';
+          return;
+        }
+
+        // Try to create instance
+        const cm = window.contentManager || new ContentManager();
+        resultDiv.innerHTML = '<div class="text-green-600">✅ ContentManager class tồn tại</div>';
+
+        // Test a simple method
+        const company = await cm.getCompanyInfo();
+        if (company && company.name) {
+          resultDiv.innerHTML = `
+            <div class="text-green-600">✅ ContentManager hoạt động tốt!</div>
+            <div class="text-sm text-gray-600 mt-2">Company: ${company.name}</div>
+          `;
+        } else {
+          resultDiv.innerHTML = '<div class="text-yellow-600">⚠️ ContentManager load nhưng không có data</div>';
+        }
+
+      } catch (error) {
+        resultDiv.innerHTML = `
+          <div class="text-red-600">❌ ContentManager lỗi:</div>
+          <div class="text-sm text-red-500 mt-2">${error.message}</div>
+        `;
+      }
+    }
+
+    async function testJSONFetch() {
+      const resultDiv = document.getElementById('json-result');
+      
+      try {
+        const response = await fetch('/data/company.json');
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        resultDiv.innerHTML = `
+          <div class="text-green-600">✅ JSON fetch thành công!</div>
+          <div class="text-sm text-gray-600 mt-2">Company: ${data.company?.name || 'N/A'}</div>
+          <details class="mt-2">
+            <summary class="cursor-pointer text-blue-600">Xem raw data</summary>
+            <pre class="text-xs mt-2 p-2 bg-gray-200 rounded overflow-auto">${JSON.stringify(data, null, 2)}</pre>
+          </details>
+        `;
+        
+      } catch (error) {
+        resultDiv.innerHTML = `
+          <div class="text-red-600">❌ JSON fetch lỗi:</div>
+          <div class="text-sm text-red-500 mt-2">${error.message}</div>
+        `;
+      }
+    }
+
+    // Auto-load content manager if available
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('🔍 Debug page loaded');
+      console.log('ContentManager available:', typeof ContentManager !== 'undefined');
+      console.log('contentManager instance available:', typeof contentManager !== 'undefined');
+    });
+  </script>
+
+  <!-- Try to load Content Manager -->
+  <script src="/js/content-manager.js"></script>
+
+</body>
+</html>

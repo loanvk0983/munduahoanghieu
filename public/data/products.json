@@ -1,0 +1,60 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Mụn dừa đã xử lý",
+      "description": "Tỷ lệ xơ-mụn đáp ứng theo yêu cầu của bạn",
+      "features": [
+        "Chất lượng cao, được xử lý kỹ lưỡng",
+        "Tỷ lệ xơ-mụn linh hoạt theo nhu cầu",
+        "Sạch sẽ, không mùi hôi",
+        "Phù hợp cho nhiều loại cây trồng"
+      ],
+      "price": "Liên hệ",
+      "category": "main",
+      "image": "/assets/image/products/mun-dua-xu-ly.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Vỏ dừa cắt chip",
+      "description": "Vỏ dừa được cắt thành từng miếng nhỏ, tiện lợi sử dụng",
+      "features": [
+        "Kích thước đồng đều",
+        "Thoát nước tốt",
+        "Giữ ẩm hiệu quả",
+        "Thân thiện với môi trường"
+      ],
+      "price": "Liên hệ",
+      "category": "secondary",
+      "image": "/assets/image/products/vo-dua-cat-chip.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Xơ dừa tự nhiên",
+      "description": "Xơ dừa nguyên chất, không pha trộn",
+      "features": [
+        "100% tự nhiên",
+        "Độ bền cao",
+        "Thoáng khí tốt",
+        "Phù hợp trồng lan, rau màu"
+      ],
+      "price": "Liên hệ",
+      "category": "main",
+      "image": "/assets/image/products/xo-dua-tu-nhien.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Hỗn hợp theo yêu cầu",
+      "description": "Phối trộn theo tỷ lệ và yêu cầu cụ thể của khách hàng",
+      "features": [
+        "Tùy chỉnh theo nhu cầu",
+        "Tư vấn miễn phí",
+        "Đảm bảo chất lượng",
+        "Giao hàng tận nơi"
+      ],
+      "price": "Liên hệ",
+      "category": "custom",
+      "image": "/assets/image/products/hon-hop-yeu-cau.jpg"
+    }
+  ]
+}

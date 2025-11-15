@@ -1,0 +1,44 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Anh Minh",
+      "location": "Đồng Tháp",
+      "rating": 5,
+      "content": "Tôi trồng dưa lưới và đã sử dụng mụn dừa của Hoàng Hiếu được 2 năm. Cây phát triển tốt, quả to và ngọt hơn hẳn. Tư vấn nhiệt tình, giao hàng đúng hẹn!",
+      "crop": "Dưa lưới",
+      "usage_duration": "2 năm",
+      "avatar_color": "bg-green-600"
+    },
+    {
+      "id": 2,
+      "name": "Chị Lan",
+      "location": "Cần Thơ",
+      "rating": 5,
+      "content": "Mụn dừa sạch sẽ, không mùi hôi như những nơi khác. Trồng rau màu cho kết quả vượt mong đợi. Giá cả hợp lý, sẽ tiếp tục ủng hộ Hoàng Hiếu!",
+      "crop": "Rau màu",
+      "usage_duration": "1 năm",
+      "avatar_color": "bg-yellow-600"
+    },
+    {
+      "id": 3,
+      "name": "Anh Tài",
+      "location": "An Giang",
+      "rating": 5,
+      "content": "Lần đầu dùng mụn dừa để trồng hoa lan. Kết quả ngoài mong đợi! Hoa nở đều, đẹp hơn. Anh Hiếu tư vấn rất tận tâm và chuyên nghiệp.",
+      "crop": "Hoa lan",
+      "usage_duration": "6 tháng",
+      "avatar_color": "bg-blue-600"
+    },
+    {
+      "id": 4,
+      "name": "Chị Hương",
+      "location": "Long An",
+      "rating": 5,
+      "content": "Vừa chất lượng vừa giá rẻ. Giao hàng nhanh, đóng gói cẩn thận. Trồng dâu tây cho năng suất cao. Cảm ơn team Hoàng Hiếu rất nhiều!",
+      "crop": "Dâu tây",
+      "usage_duration": "8 tháng",
+      "avatar_color": "bg-emerald-600"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "munduahoanghieu",
+  "version": "1.0.0",
+  "description": "Mụn Dừa Hoàng Hiếu - Microservices Architecture (Website + CMS)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "build-css": "npx @tailwindcss/cli -i src/styles.css -o public/styles.css",
+    "check-images": "node scripts/check-image-paths.js",
+    "fix-images": "node scripts/fix-image-paths.js",
+    "sync:content": "node scripts/sync-content.js",
+    "start:web": "cd website && npm start",
+    "start:cms": "cd cms && npm start",
+    "start:all": "concurrently -n WEB,CMS -c blue,magenta \"npm run start:web\" \"npm run start:cms\"",
+    "dev:web": "cd website && npm run dev",
+    "dev:cms": "cd cms && npm run dev",
+    "dev:all": "concurrently -n WEB,CMS -c blue,magenta \"npm run dev:web\" \"npm run dev:cms\"",
+    "install:all": "npm install && cd website && npm install && cd ../cms && npm install"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.13",
+    "axios": "^1.13.2",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.2.0",
+    "express-session": "^1.18.2",
+    "express-validator": "^7.3.0",
+    "helmet": "^8.1.0",
+    "json2csv": "^6.0.0-alpha.2",
+    "multer": "^2.0.2",
+    "node-cache": "^5.1.2",
+    "twig": "^1.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Banner Mobile</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+            font-family: sans-serif;
+        }
+        
+        .banner-container {
+            background: green;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .banner-title {
+            font-size: clamp(0.5rem, 3.5vw, 3.75rem);
+            font-weight: 700;
+            letter-spacing: -0.07em;
+            line-height: 1.1;
+            color: white;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            margin-bottom: clamp(0.5rem, 2vw, 1rem);
+            white-space: nowrap;
+            overflow: visible;
+            max-width: 100%;
+            display: inline-block;
+        }
+        
+        @media (max-width: 768px) {
+            .banner-title {
+                font-size: clamp(0.48rem, 3.3vw, 2.5rem);
+                letter-spacing: -0.07em;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .banner-title {
+                font-size: clamp(0.45rem, 3.1vw, 1.8rem);
+                letter-spacing: -0.08em;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .banner-title {
+                font-size: clamp(0.43rem, 3vw, 1.5rem);
+                letter-spacing: -0.09em;
+            }
+        }
+        
+        @media (max-width: 340px) {
+            .banner-title {
+                font-size: clamp(0.4rem, 2.8vw, 1.3rem);
+                letter-spacing: -0.1em;
+            }
+        }
+        
+        .banner-subtitle {
+            font-size: clamp(0.4rem, 2.8vw, 1.5rem);
+            line-height: 1.3;
+            color: white;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+            letter-spacing: -0.03em;
+            text-align: center;
+            margin-bottom: clamp(0.75rem, 2.5vw, 1.25rem);
+            white-space: nowrap;
+            font-weight: 500;
+            max-width: 100%;
+            display: inline-block;
+        }
+        
+        @media (max-width: 768px) {
+            .banner-subtitle {
+                font-size: clamp(0.38rem, 2.5vw, 1.2rem);
+                letter-spacing: -0.03em;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .banner-subtitle {
+                font-size: clamp(0.36rem, 2.3vw, 1rem);
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .banner-subtitle {
+                font-size: clamp(0.34rem, 2.2vw, 0.9rem);
+            }
+        }
+        
+        .cta-orange {
+            padding: clamp(0.3rem, 0.8vw, 0.875rem) clamp(0.4rem, 1.5vw, 2rem);
+            font-size: clamp(0.35rem, 1.2vw, 1.125rem);
+            font-weight: 600;
+            border-radius: 0.5rem;
+            display: inline-block;
+            white-space: nowrap;
+            margin-top: 0.5rem;
+            min-width: auto;
+            max-width: 98%;
+            text-align: center;
+            line-height: 1.2;
+            letter-spacing: -0.04em;
+            background: #E65100;
+            color: white;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .cta-orange {
+                font-size: clamp(0.34rem, 1.15vw, 0.9rem);
+                padding: 0.3rem clamp(0.4rem, 1.3vw, 1rem);
+                letter-spacing: -0.04em;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .cta-orange {
+                font-size: clamp(0.32rem, 1.1vw, 0.75rem);
+                padding: 0.28rem 0.4rem;
+                letter-spacing: -0.05em;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .cta-orange {
+                font-size: clamp(0.3rem, 1vw, 0.7rem);
+                padding: 0.26rem 0.38rem;
+                letter-spacing: -0.06em;
+            }
+        }
+        
+        @media (max-width: 340px) {
+            .cta-orange {
+                font-size: clamp(0.28rem, 0.95vw, 0.65rem);
+                padding: 0.25rem 0.35rem;
+                letter-spacing: -0.07em;
+            }
+        }
+        
+        .info {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Banner Mobile - Resize window để test</h1>
+    
+    <div class="banner-container">
+        <h1 class="banner-title">Mụn Dừa Hoàng Hiếu</h1>
+        <p class="banner-subtitle">Niềm Tin Là Giá Trị Cốt Lõi!</p>
+        <a href="#" class="cta-orange">⭐ Uy Tín - Chất Lượng - Tận Tâm ⭐</a>
+    </div>
+    
+    <div class="info">
+        <h2>Viewport Info:</h2>
+        <p>Width: <span id="width"></span>px</p>
+        <p>Height: <span id="height"></span>px</p>
+        
+        <h3>Computed Font Sizes:</h3>
+        <p>Title: <span id="title-size"></span></p>
+        <p>Subtitle: <span id="subtitle-size"></span></p>
+        <p>Button: <span id="button-size"></span></p>
+    </div>
+    
+    <script>
+        function updateInfo() {
+            document.getElementById('width').textContent = window.innerWidth;
+            document.getElementById('height').textContent = window.innerHeight;
+            
+            const title = document.querySelector('.banner-title');
+            const subtitle = document.querySelector('.banner-subtitle');
+            const button = document.querySelector('.cta-orange');
+            
+            if (title) {
+                const titleSize = window.getComputedStyle(title).fontSize;
+                document.getElementById('title-size').textContent = titleSize;
+            }
+            
+            if (subtitle) {
+                const subtitleSize = window.getComputedStyle(subtitle).fontSize;
+                document.getElementById('subtitle-size').textContent = subtitleSize;
+            }
+            
+            if (button) {
+                const buttonSize = window.getComputedStyle(button).fontSize;
+                document.getElementById('button-size').textContent = buttonSize;
+            }
+        }
+        
+        updateInfo();
+        window.addEventListener('resize', updateInfo);
+    </script>
+</body>
+</html>

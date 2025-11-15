@@ -1,0 +1,639 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Tin Tức Nông Nghiệp - Mụn Dừa Hoàng Hiếu{% endblock %}
+
+{% block head %}
+  <meta property="og:title" content="Tin Tức Nông Nghiệp - Mụn Dừa Hoàng Hiếu">
+  <meta property="og:description" content="Cập nhật tin tức mới nhất về kỹ thuật trồng cây và nông nghiệp bền vững">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  
+  <style>
+    /* Top Info Bar */
+    .top-info-bar{background:linear-gradient(135deg,#15803d,#16a34a);color:#fff;padding:0.75rem 0;font-size:0.9rem}
+    .top-info-content{width:100%;max-width:1200px;margin:0 auto;padding:0 5%;display:grid;grid-template-columns:auto 1fr 1fr auto;align-items:center;column-gap:2.5rem}
+    .info-item{display:flex;align-items:center;gap:0.6rem;flex-shrink:1;min-width:0}
+    .info-item span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .top-info-content > .info-item:nth-child(2),
+    .top-info-content > .info-item:nth-child(3){justify-self:center;max-width:60vw}
+    .tip-icon{display:inline-block;margin-right:0.45rem;opacity:0.98}
+    .info-quick-news{font-weight:600;font-size:0.95rem;padding:0.4rem 1rem;background:rgba(255,255,255,0.12);border-radius:6px;backdrop-filter:blur(6px);transition:all 0.28s ease;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .info-slogan{font-weight:700;font-size:1rem;text-align:right;white-space:nowrap;padding-right:0.75rem}
+    
+    /* Hero Banner */
+    .hero-banner{position:relative;width:100%;height:500px;overflow:hidden;background:#1a4d2e}
+    .swiper-hero{width:100%;height:100%}
+    .hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom,rgba(0,0,0,0.4),rgba(0,0,0,0.2));z-index:1;pointer-events:none}
+    .hero-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;text-align:center;width:90%;max-width:800px}
+    .hero-title{font-size:3.5rem;font-weight:800;color:#fff;margin-bottom:1rem;text-shadow:2px 2px 8px rgba(0,0,0,0.5);line-height:1.2}
+    .hero-subtitle{font-size:1.2rem;color:#f0f0f0;margin-bottom:1.5rem;text-shadow:1px 1px 4px rgba(0,0,0,0.5);line-height:1.6}
+    .hero-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;background:#16a34a;color:#fff;font-size:1.1rem;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+    .hero-btn:hover{background:#15803d;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.4)}
+    
+    /* Category Menu Bar */
+    .category-bar{width:100%;background:#f0fdf4;border-top:1px solid rgba(0,0,0,0.06);border-bottom:1px solid rgba(0,0,0,0.04);padding:1rem 0}
+    .category-bar-inner{width:100%;padding:0 5%;display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;align-items:center}
+    .cat-btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;min-width:140px;padding:0.75rem 1.5rem;background:#fff;border:2px solid #e5e7eb;border-radius:12px;cursor:pointer;font-size:0.95rem;font-weight:600;color:#1f2937;transition:all 0.2s ease;box-shadow:0 2px 4px rgba(0,0,0,0.08);white-space:nowrap}
+    .cat-btn:hover{background:#dcfce7;border-color:#16a34a;color:#166534;transform:translateY(-2px);box-shadow:0 4px 12px rgba(22,163,74,0.15)}
+    .cat-btn.active{background:#16a34a;border-color:#15803d;color:#fff;box-shadow:0 4px 12px rgba(22,163,74,0.2)}
+    
+    /* Main Layout Container */
+    .main-container{max-width:1200px;margin:0 auto;padding:2rem 5%}
+    
+    /* Section 1: 3 Newest Posts + Tip */
+    .section-newest{display:grid;grid-template-columns:2fr 1fr;gap:2rem;margin-bottom:3rem}
+    .newest-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:1.5rem}
+    
+    /* Section 2: Category Posts + Related Sidebar */
+    .section-category{display:grid;grid-template-columns:2fr 1fr;gap:2rem;margin-bottom:3rem}
+    .category-posts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+    
+    /* News Card */
+    .news-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1);transition:all 0.3s;cursor:pointer;display:flex;flex-direction:column}
+    .news-card:hover{transform:translateY(-4px);box-shadow:0 8px 16px rgba(0,0,0,0.15)}
+    .news-card-img{width:100%;height:200px;object-fit:cover}
+    .news-card-content{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+    .news-card-title{font-size:1.1rem;font-weight:700;color:#15803d;margin-bottom:0.75rem;line-height:1.4}
+    .news-card-excerpt{font-size:0.9rem;color:#6b7280;line-height:1.6;flex:1}
+    .news-card-meta{display:flex;gap:1rem;font-size:0.85rem;color:#9ca3af;margin-top:0.75rem}
+    
+    /* Tip Card - Mẹo canh tác */
+    .tip-card{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-radius:12px;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,0.1);position:sticky;top:20px}
+    .tip-title{font-size:1.25rem;font-weight:700;color:#15803d;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+    .tip-content{font-size:0.95rem;color:#374151;line-height:1.7;padding:1rem;background:#fff;border-radius:8px;margin-bottom:1rem;min-height:150px}
+    .tip-nav{display:flex;justify-content:space-between;gap:0.5rem}
+    .tip-nav-btn{padding:0.5rem 1rem;background:#fff;border:2px solid #e5e7eb;border-radius:8px;cursor:pointer;font-weight:600;transition:all 0.2s;color:#374151}
+    .tip-nav-btn:hover{background:#dcfce7;border-color:#16a34a;color:#16a34a}
+    
+    /* Related Sidebar */
+    .related-card{background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,0.1);position:sticky;top:20px}
+    .related-title{font-size:1.1rem;font-weight:700;color:#15803d;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+    .related-item{padding:0.75rem;border-bottom:1px solid #e5e7eb;cursor:pointer;transition:all 0.2s}
+    .related-item:last-child{border-bottom:none}
+    .related-item:hover{background:#f0fdf4;padding-left:1rem}
+    .related-item-title{font-size:0.9rem;font-weight:600;color:#374151;margin-bottom:0.25rem}
+    .related-item-date{font-size:0.75rem;color:#9ca3af}
+    
+    /* Post Detail View */
+    .post-detail{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-top:2rem;display:none}
+    .post-detail.active{display:block}
+    .back-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;background:#15803d;color:#fff;border:none;border-radius:10px;cursor:pointer;font-weight:600;transition:all 0.2s;margin-bottom:1.5rem}
+    .back-btn:hover{background:#166534;transform:translateX(-4px)}
+    .post-detail-title{font-size:2rem;font-weight:800;color:#15803d;margin-bottom:1rem}
+    .post-detail-meta{display:flex;gap:1.5rem;font-size:0.9rem;color:#9ca3af;padding-bottom:1rem;border-bottom:2px solid #e5e7eb;margin-bottom:2rem}
+    .post-detail-content{line-height:1.8;color:#374151;font-size:1.05rem}
+    .post-detail-content h2{font-size:1.5rem;font-weight:700;color:#15803d;margin:2rem 0 1rem}
+    .post-detail-content p{margin-bottom:1rem}
+    .post-detail-content ul{list-style:disc;margin-left:2rem;margin-bottom:1rem}
+    
+    /* Interaction Buttons */
+    .interaction-bar{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:2rem;padding-top:2rem;border-top:2px solid #e5e7eb}
+    .interaction-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:10px;border:2px solid #e5e7eb;background:#fff;cursor:pointer;font-weight:600;transition:all 0.2s;color:#374151}
+    .interaction-btn:hover{background:#f0fdf4;border-color:#16a34a;color:#16a34a;transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+    .interaction-btn.active{background:#16a34a;border-color:#15803d;color:#fff}
+    
+    /* Fade transitions */
+    #quickNews{transition:opacity 0.22s ease-in-out,transform 0.22s ease-in-out}
+    #quickNews.quick-fade-out{opacity:0;transform:translateY(-3px)}
+    #quickNews.quick-fade-in{opacity:1;transform:translateY(0)}
+    
+    /* Responsive */
+    @media (max-width:768px){
+      .top-info-content{grid-template-columns:1fr;gap:0.5rem}
+      .hero-banner{height:400px}
+      .hero-title{font-size:2rem}
+      .hero-subtitle{font-size:1rem}
+      .category-bar-inner{padding:0 3%;gap:0.6rem}
+      .cat-btn{min-width:120px;padding:0.6rem 1rem;font-size:0.88rem}
+      .main-container{padding:1.5rem 3%}
+      .section-newest,.section-category{grid-template-columns:1fr}
+      .category-posts-grid,.newest-grid{grid-template-columns:1fr}
+      .news-card-img{height:160px}
+      .tip-card,.related-card{position:static;margin-bottom:2rem}
+      .post-detail{padding:1.5rem}
+      .post-detail-title{font-size:1.5rem}
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+<!-- Top Info Bar -->
+<section class="top-info-bar">
+  <div class="top-info-content">
+    <div class="info-item">
+      <span id="top-info-time">Đang tải...</span>
+    </div>
+    <div class="info-item tip-item">
+      <span class="tip-icon">💡</span>
+      <span id="top-info-tip">Giữ ẩm cho mụn dừa trước khi sử dụng</span>
+    </div>
+    <div class="info-item">
+      <span id="quickNews" class="info-quick-news">Đang tải tin nhanh...</span>
+    </div>
+    <div class="info-slogan">
+      💚 Đồng hành cùng nhà nông - Lan tỏa nông nghiệp xanh 🌿
+    </div>
+  </div>
+</section>
+
+<!-- Hero Banner -->
+<section class="hero-banner">
+  <div class="swiper swiper-hero">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="/assets/image/News/Banner/1-dua.jpg" alt="Banner 1" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="swiper-slide"><img src="/assets/image/News/Banner/2-Dua kho.jpg" alt="Banner 2" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="swiper-slide"><img src="/assets/image/News/Banner/3-xo-dua.jpg" alt="Banner 3" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="swiper-slide"><img src="/assets/image/News/Banner/4-Xa chat.jpg" alt="Banner 4" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="swiper-slide"><img src="/assets/image/News/Banner/5-Nong trai.jpg" alt="Banner 5" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="swiper-slide"><img src="/assets/image/News/Banner/6-Mam xanh.jpg" alt="Banner 6" style="width:100%;height:100%;object-fit:cover;"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Tin Tức Nông Nghiệp</h1>
+    <p class="hero-subtitle">Cập nhật những thông tin mới nhất về kỹ thuật trồng cây, chăm sóc vườn, và các giải pháp nông nghiệp bền vững với mụn dừa.</p>
+    <button class="hero-btn" onclick="document.querySelector('.main-container').scrollIntoView({behavior:'smooth'})">
+      <span>📖</span>
+      <span>Đọc Ngay</span>
+    </button>
+  </div>
+</section>
+
+<!-- Full-width Category Menu Bar -->
+<nav class="category-bar">
+  <div class="category-bar-inner">
+    <button class="cat-btn category-tag active" data-category="all">📌 Tất cả</button>
+    <button class="cat-btn category-tag" data-category="techniques">🌱 Kỹ Thuật</button>
+    <button class="cat-btn category-tag" data-category="experience">💡 Kinh Nghiệm</button>
+    <button class="cat-btn category-tag" data-category="environment">🌍 Môi Trường</button>
+    <button class="cat-btn category-tag" data-category="other">📂 Khác</button>
+    <button class="cat-btn category-tag" data-category="sharing">📸 Góc Chia Sẻ</button>
+  </div>
+</nav>
+
+<!-- Main Content Container -->
+<div class="main-container">
+  
+  <!-- Section 1: 3 Newest Posts (Left) + Mẹo canh tác (Right) -->
+  <section class="section-newest" id="section-newest">
+    <div>
+      <h2 style="font-size:1.75rem;font-weight:700;color:#15803d;margin-bottom:1.5rem;">⭐ Tin Mới Nhất</h2>
+      <div class="newest-grid" id="newest-posts-grid">
+        <!-- 3 newest posts will be rendered here by JS -->
+      </div>
+    </div>
+    
+    <div class="tip-card">
+      <h3 class="tip-title">
+        <span>💡</span>
+        <span>Mẹo Canh Tác Hôm Nay</span>
+      </h3>
+      <div class="tip-content" id="daily-tip-content">
+        Đang tải mẹo canh tác...
+      </div>
+      <div class="tip-nav">
+        <button class="tip-nav-btn" onclick="previousTip()">← Trước</button>
+        <button class="tip-nav-btn" onclick="nextTip()">Sau →</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Section 2: Category Posts (Left) + Related Titles (Right) -->
+  <section class="section-category" id="section-category">
+    <div>
+      <h2 style="font-size:1.75rem;font-weight:700;color:#15803d;margin-bottom:1.5rem;" id="category-title">📚 Tất Cả Bài Viết</h2>
+      <div class="category-posts-grid" id="category-posts-grid">
+        <!-- Category posts will be rendered here by JS -->
+      </div>
+    </div>
+    
+    <div class="related-card">
+      <h3 class="related-title">
+        <span>📋</span>
+        <span>Bài Viết Liên Quan</span>
+      </h3>
+      <div id="related-posts-list">
+        <!-- Related posts will be rendered here by JS -->
+      </div>
+    </div>
+  </section>
+  
+  <!-- Post Detail View (Hidden by default) -->
+  <div class="post-detail" id="post-detail-view">
+    <button class="back-btn" onclick="closePostDetail()">
+      <span>←</span>
+      <span>Quay lại danh sách</span>
+    </button>
+    
+    <article>
+      <h1 class="post-detail-title" id="post-title"></h1>
+      <div class="post-detail-meta" id="post-meta">
+        <span id="post-date"></span>
+        <span id="post-category"></span>
+        <span id="post-views"></span>
+      </div>
+      <div class="post-detail-content" id="post-content">
+        <!-- Full post content will be rendered here -->
+      </div>
+    </article>
+    
+    <!-- Interaction Buttons -->
+    <div class="interaction-bar">
+      <button class="interaction-btn" id="btn-useful" onclick="markUseful()">
+        <span>👍</span>
+        <span>Hữu ích</span>
+      </button>
+      <button class="interaction-btn" id="btn-save" onclick="savePost()">
+        <span>💾</span>
+        <span>Lưu</span>
+      </button>
+      <button class="interaction-btn" onclick="shareZalo()">
+        <span>💬</span>
+        <span>Zalo</span>
+      </button>
+      <button class="interaction-btn" onclick="shareFacebook()">
+        <span>📘</span>
+        <span>Facebook</span>
+      </button>
+      <button class="interaction-btn" onclick="copyLink()">
+        <span>🔗</span>
+        <span>Copy link</span>
+      </button>
+    </div>
+  </div>
+  
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% if quickNewsData is defined %}
+<script>
+  try {
+    window.__QUICK_NEWS__ = {{ quickNewsData|raw }};
+  } catch (e) {
+    console.warn('Error parsing quickNewsData', e);
+    window.__QUICK_NEWS__ = null;
+  }
+</script>
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+// ============ Time Display ============
+function updateTopInfoTime() {
+  const el = document.getElementById('top-info-time');
+  if (!el) return;
+  const now = new Date();
+  const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const day = now.getDate();
+  const month = now.getMonth() + 1;
+  const year = now.getFullYear();
+  el.textContent = `${hours}:${minutes} ${days[now.getDay()]}, ${day}/${month}/${year}`;
+}
+
+// ============ Tip Rotation ============
+const tips = [
+  'Giữ ẩm cho mụn dừa trước khi sử dụng',
+  'Xả muối kỹ trước khi trồng',
+  'Phối trộn đúng tỉ lệ theo loại cây',
+  'Bổ sung phân bón định kỳ',
+  'Kiểm tra độ pH thường xuyên'
+];
+let currentTipIndex = 0;
+
+function rotateTip() {
+  const el = document.getElementById('top-info-tip');
+  if (!el) return;
+  currentTipIndex = (currentTipIndex + 1) % tips.length;
+  el.classList.add('quick-fade-out');
+  setTimeout(()=>{
+    el.textContent = tips[currentTipIndex];
+    el.classList.remove('quick-fade-out');
+    el.classList.add('quick-fade-in');
+    setTimeout(()=>el.classList.remove('quick-fade-in'), 220);
+  }, 220);
+}
+
+// ============ Daily Tip (Mẹo canh tác) ============
+const dailyTips = [
+  'Giữ độ ẩm ổn định cho mụn dừa bằng cách phun sương nhẹ hàng ngày. Độ ẩm lý tưởng giúp rễ cây phát triển mạnh mẽ.',
+  'Khi sử dụng mụn dừa lần đầu, ngâm trong nước sạch 30 phút để loại bỏ muối dư thừa và tạp chất.',
+  'Trộn mụn dừa với đất vườn theo tỉ lệ 3:1 cho cây trồng trong chậu để đảm bảo thoát nước tốt.',
+  'Bổ sung phân bón hữu cơ mỗi 2 tuần một lần để cung cấp dinh dưỡng cho cây trồng trên mụn dừa.',
+  'Kiểm tra pH của mụn dừa định kỳ. pH lý tưởng nên trong khoảng 5.5-6.5 cho hầu hết các loại cây.',
+  'Tránh để mụn dừa khô hoàn toàn. Luôn duy trì độ ẩm vừa phải để cây hấp thụ nước và dinh dưỡng hiệu quả.'
+];
+let currentDailyTipIndex = 0;
+
+function showDailyTip() {
+  const el = document.getElementById('daily-tip-content');
+  if (!el) return;
+  el.textContent = dailyTips[currentDailyTipIndex];
+}
+
+function nextTip() {
+  currentDailyTipIndex = (currentDailyTipIndex + 1) % dailyTips.length;
+  showDailyTip();
+}
+
+function previousTip() {
+  currentDailyTipIndex = (currentDailyTipIndex - 1 + dailyTips.length) % dailyTips.length;
+  showDailyTip();
+}
+
+// ============ Quick News Rotation ============
+function initQuickNewsRotator() {
+  const el = document.getElementById('quickNews');
+  if(!el) return;
+  let list = window.__QUICK_NEWS__||[];
+  if(!list.length){ el.textContent='Chưa có tin nhanh'; return; }
+  let idx=-1; 
+  const next = ()=>{ 
+    idx=(idx+1)%list.length; 
+    el.classList.add('quick-fade-out');
+    setTimeout(()=>{
+      el.textContent = list[idx]; 
+      el.classList.remove('quick-fade-out');
+      el.classList.add('quick-fade-in');
+      setTimeout(()=>el.classList.remove('quick-fade-in'), 220);
+    }, 220);
+  }; 
+  next(); 
+  setInterval(next,4000);
+}
+
+// ============ Banner Slider ============
+function initBannerSlider(){
+  if(typeof Swiper==='undefined') return;
+  try{
+    new Swiper('.swiper-hero', {
+      loop:true,
+      speed:800,
+      effect:'fade',
+      autoplay:{delay:5000,disableOnInteraction:false,pauseOnMouseEnter:true},
+      navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'},
+      pagination:{el:'.swiper-pagination',clickable:true},
+      keyboard:{enabled:true}
+    });
+  }catch(e){console.warn('Swiper init failed',e);}
+}
+
+// ============ Mock News Data ============
+const mockNewsData = [
+  {
+    id: 1,
+    title: 'Làm thế nào để phân biệt mụn dừa đã xử lý và mụn dừa chưa xử lý',
+    excerpt: 'Hướng dẫn chi tiết cách nhận biết mụn dừa đã qua xử lý để đảm bảo chất lượng cho cây trồng...',
+    category: 'techniques',
+    categoryName: 'Kỹ Thuật',
+    date: '23/10/2025',
+    views: 1250,
+    image: '/assets/image/News/1-Làm thế nào để phân biệt mụn dừa đã xử lý và mụn dừa chưa xử lý.txt',
+    content: '<h2>Giới thiệu</h2><p>Mụn dừa là giá thể trồng cây phổ biến trong nông nghiệp hiện đại. Việc phân biệt mụn dừa đã xử lý và chưa xử lý rất quan trọng...</p><h2>Đặc điểm mụn dừa đã xử lý</h2><p>Mụn dừa đã xử lý có màu nâu đồng đều, độ ẩm ổn định khoảng 60-65%, pH từ 5.5-6.5...</p><h2>Cách kiểm tra</h2><ul><li>Kiểm tra màu sắc và mùi</li><li>Thử độ pH bằng giấy quỳ</li><li>Ngâm nước để xem độ giữ ẩm</li></ul>'
+  },
+  {
+    id: 2,
+    title: 'Những tác dụng của xơ dừa đối với cây trồng',
+    excerpt: 'Xơ dừa không chỉ giúp giữ ẩm mà còn cải thiện cấu trúc đất, tăng cường hệ vi sinh...',
+    category: 'experience',
+    categoryName: 'Kinh Nghiệm',
+    date: '22/10/2025',
+    views: 980,
+    image: '/assets/image/News/2-Những tác dụng của xơ dừa đối với cây trồng.txt',
+    content: '<h2>Lợi ích của xơ dừa</h2><p>Xơ dừa là vật liệu hữu cơ tuyệt vời cho cây trồng...</p>'
+  },
+  {
+    id: 3,
+    title: 'Một số lưu ý khi sử dụng mụn dừa',
+    excerpt: 'Để tối ưu hiệu quả sử dụng mụn dừa, bạn cần chú ý đến độ ẩm, pH, và cách trộn phối...',
+    category: 'techniques',
+    categoryName: 'Kỹ Thuật',
+    date: '21/10/2025',
+    views: 1100,
+    image: '/assets/image/News/3-MỘT SỐ LƯU Ý 3-KHI SỬ DỤNG MỤN DỪA.txt',
+    content: '<h2>Lưu ý quan trọng</h2><p>Khi sử dụng mụn dừa cần chú ý các điểm sau...</p>'
+  },
+  {
+    id: 4,
+    title: 'Mụn dừa là gì và tại sao nó được sử dụng trong trồng cây',
+    excerpt: 'Tìm hiểu về nguồn gốc, đặc tính và ứng dụng của mụn dừa trong nông nghiệp hiện đại...',
+    category: 'other',
+    categoryName: 'Khác',
+    date: '20/10/2025',
+    views: 1450,
+    image: '/assets/image/News/4-Mụn dừa là gì và tại sao nó được sử dụng trong trồng cây.txt',
+    content: '<h2>Mụn dừa là gì?</h2><p>Mụn dừa là phần xơ bên trong vỏ dừa...</p>'
+  },
+  {
+    id: 5,
+    title: 'Những lợi ích của mụn dừa cho cây trồng và môi trường',
+    excerpt: 'Mụn dừa không chỉ tốt cho cây trồng mà còn góp phần bảo vệ môi trường bền vững...',
+    category: 'environment',
+    categoryName: 'Môi Trường',
+    date: '19/10/2025',
+    views: 890,
+    image: '/assets/image/News/5-Những lợi ích của mụn dừa cho cây trồng và môi trường.txt',
+    content: '<h2>Lợi ích môi trường</h2><p>Sử dụng mụn dừa giúp giảm rác thải nông nghiệp...</p>'
+  }
+];
+
+let filteredNews = [...mockNewsData];
+let currentCategory = 'all';
+
+// ============ Render Functions ============
+function renderNewestPosts() {
+  const container = document.getElementById('newest-posts-grid');
+  if (!container) return;
+  
+  const newest = mockNewsData.slice(0, 3);
+  container.innerHTML = newest.map(post => `
+    <div class="news-card" onclick="showPostDetail(${post.id})">
+      <div class="news-card-content">
+        <h3 class="news-card-title">${post.title}</h3>
+        <p class="news-card-excerpt">${post.excerpt}</p>
+        <div class="news-card-meta">
+          <span>📅 ${post.date}</span>
+          <span>👁️ ${post.views} lượt xem</span>
+          <span>📁 ${post.categoryName}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderCategoryPosts() {
+  const container = document.getElementById('category-posts-grid');
+  if (!container) return;
+  
+  if (filteredNews.length === 0) {
+    container.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#9ca3af;padding:2rem;">Không có bài viết nào trong danh mục này.</p>';
+    return;
+  }
+  
+  container.innerHTML = filteredNews.map(post => `
+    <div class="news-card" onclick="showPostDetail(${post.id})">
+      <div class="news-card-content">
+        <h3 class="news-card-title">${post.title}</h3>
+        <p class="news-card-excerpt">${post.excerpt}</p>
+        <div class="news-card-meta">
+          <span>📅 ${post.date}</span>
+          <span>👁️ ${post.views}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderRelatedPosts() {
+  const container = document.getElementById('related-posts-list');
+  if (!container) return;
+  
+  const related = mockNewsData.slice(0, 5);
+  container.innerHTML = related.map(post => `
+    <div class="related-item" onclick="showPostDetail(${post.id})">
+      <div class="related-item-title">${post.title}</div>
+      <div class="related-item-date">📅 ${post.date}</div>
+    </div>
+  `).join('');
+}
+
+// ============ Category Filtering ============
+function filterByCategory(category) {
+  currentCategory = category;
+  
+  // Update active button
+  document.querySelectorAll('.category-tag').forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.getAttribute('data-category') === category) {
+      btn.classList.add('active');
+    }
+  });
+  
+  // Filter news
+  if (category === 'all') {
+    filteredNews = [...mockNewsData];
+    document.getElementById('category-title').textContent = '📚 Tất Cả Bài Viết';
+  } else {
+    filteredNews = mockNewsData.filter(post => post.category === category);
+    const categoryNames = {
+      techniques: '🌱 Kỹ Thuật',
+      experience: '💡 Kinh Nghiệm',
+      environment: '🌍 Môi Trường',
+      other: '📂 Khác',
+      sharing: '📸 Góc Chia Sẻ'
+    };
+    document.getElementById('category-title').textContent = categoryNames[category] || 'Bài Viết';
+  }
+  
+  renderCategoryPosts();
+  renderRelatedPosts();
+}
+
+// ============ Post Detail View ============
+function showPostDetail(postId) {
+  const post = mockNewsData.find(p => p.id === postId);
+  if (!post) return;
+  
+  // Hide sections
+  document.getElementById('section-newest').style.display = 'none';
+  document.getElementById('section-category').style.display = 'none';
+  
+  // Show detail
+  const detailView = document.getElementById('post-detail-view');
+  detailView.classList.add('active');
+  
+  // Populate content
+  document.getElementById('post-title').textContent = post.title;
+  document.getElementById('post-date').textContent = '📅 ' + post.date;
+  document.getElementById('post-category').textContent = '📁 ' + post.categoryName;
+  document.getElementById('post-views').textContent = '👁️ ' + post.views + ' lượt xem';
+  document.getElementById('post-content').innerHTML = post.content;
+  
+  // Scroll to top
+  detailView.scrollIntoView({behavior: 'smooth'});
+}
+
+function closePostDetail() {
+  document.getElementById('post-detail-view').classList.remove('active');
+  document.getElementById('section-newest').style.display = 'grid';
+  document.getElementById('section-category').style.display = 'grid';
+  
+  // Scroll to sections
+  document.querySelector('.main-container').scrollIntoView({behavior: 'smooth'});
+}
+
+// ============ Interaction Functions ============
+function markUseful() {
+  const btn = document.getElementById('btn-useful');
+  btn.classList.toggle('active');
+  if (btn.classList.contains('active')) {
+    alert('Cảm ơn bạn đã đánh giá bài viết hữu ích!');
+  }
+}
+
+function savePost() {
+  const btn = document.getElementById('btn-save');
+  btn.classList.toggle('active');
+  if (btn.classList.contains('active')) {
+    alert('Đã lưu bài viết!');
+  } else {
+    alert('Đã bỏ lưu bài viết!');
+  }
+}
+
+function shareZalo() {
+  const url = window.location.href;
+  const title = document.getElementById('post-title').textContent;
+  window.open(`https://zalo.me/share?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`, '_blank');
+}
+
+function shareFacebook() {
+  const url = window.location.href;
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+}
+
+function copyLink() {
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    alert('Đã copy link bài viết!');
+  });
+}
+
+// ============ Initialize ============
+document.addEventListener('DOMContentLoaded', function() {
+  // Time and tips
+  updateTopInfoTime();
+  setInterval(updateTopInfoTime, 30000);
+  const tipEl = document.getElementById('top-info-tip');
+  if(tipEl) tipEl.textContent = tips[0];
+  setInterval(rotateTip, 5000);
+  
+  // Daily tip
+  showDailyTip();
+  
+  // Quick news
+  initQuickNewsRotator();
+  
+  // Banner
+  initBannerSlider();
+  
+  // Render content
+  renderNewestPosts();
+  renderCategoryPosts();
+  renderRelatedPosts();
+  
+  // Category filter listeners
+  document.querySelectorAll('.category-tag').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.getAttribute('data-category');
+      filterByCategory(category);
+    });
+  });
+});
+</script>
+{% endblock %}

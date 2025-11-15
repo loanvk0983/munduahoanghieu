@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Cache & Update</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <style>
+        body { font-family: Arial; padding: 20px; background: #f0f8ff; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; }
+        .button { background: #007bff; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; margin: 10px; font-size: 16px; }
+        .button:hover { background: #0056b3; }
+        .success { background: #28a745; }
+        .success:hover { background: #218838; }
+        .status { margin: 20px 0; padding: 15px; border-radius: 5px; background: #d4edda; color: #155724; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🔄 Clear Cache & Force Update</h2>
+        
+        <div class="status">
+            <strong>📞 Số điện thoại mong muốn:</strong> 0984.288.512<br>
+            <strong>📍 Vị trí:</strong> Footer trang chủ
+        </div>
+        
+        <button class="button success" onclick="clearCacheAndUpdate()">
+            🧹 Clear Cache & Update Ngay
+        </button>
+        
+        <button class="button" onclick="openMainSite()">
+            🌐 Mở Trang Chủ (Hard Refresh)
+        </button>
+        
+        <button class="button" onclick="forceReload()">
+            ⚡ Force Reload Trang Này
+        </button>
+        
+        <div id="result"></div>
+        
+        <hr style="margin: 30px 0;">
+        
+        <h3>📋 Các bước thực hiện:</h3>
+        <ol>
+            <li><strong>Click "Clear Cache & Update Ngay"</strong></li>
+            <li><strong>Click "Mở Trang Chủ (Hard Refresh)"</strong></li>
+            <li><strong>Trong trang chủ, nhấn Ctrl+F5</strong> để hard refresh</li>
+            <li><strong>Cuộn xuống footer</strong> để xem số điện thoại</li>
+        </ol>
+        
+        <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin-top: 20px;">
+            <strong>⚠️ Lưu ý:</strong><br>
+            - Đã tắt tính năng auto-update để hiển thị HTML tĩnh<br>
+            - Số điện thoại sẽ hiển thị: <strong>0984.288.512</strong><br>
+            - Nếu vẫn không thấy, hãy clear cache trình duyệt
+        </div>
+    </div>
+
+    <script>
+        function clearCacheAndUpdate() {
+            // Clear localStorage
+            localStorage.clear();
+            sessionStorage.clear();
+            
+            // Clear any cached data
+            if ('caches' in window) {
+                caches.keys().then(function(names) {
+                    names.forEach(function(name) {
+                        caches.delete(name);
+                    });
+                });
+            }
+            
+            document.getElementById('result').innerHTML = 
+                '<div style="background: #d4edda; color: #155724; padding: 10px; border-radius: 5px; margin-top: 15px;">' +
+                '✅ Cache đã được clear! Bây giờ hãy mở trang chủ để xem kết quả.' +
+                '</div>';
+        }
+
+        function openMainSite() {
+            // Open with cache-busting parameter
+            const timestamp = new Date().getTime();
+            window.open(`http://localhost:3000?v=${timestamp}&nocache=1`, '_blank');
+        }
+
+        function forceReload() {
+            location.reload(true);
+        }
+
+        // Auto clear cache when page loads
+        window.addEventListener('load', function() {
+            console.log('Auto clearing cache...');
+            clearCacheAndUpdate();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+{% extends "layouts/admin.twig" %}
+
+{% block title %}Chỉnh sửa Banner{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto">
+  <!-- Page Header -->
+  <div class="mb-8 flex items-center justify-between">
+    <div>
+      <h1 class="text-3xl font-bold text-gray-800 mb-2">Chỉnh Sửa Banner</h1>
+      <p class="text-gray-600">Quản lý nội dung slideshow trang chủ</p>
+    </div>
+    <a href="/admin/dashboard" class="inline-flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors">
+      ← Quay lại Dashboard
+    </a>
+  </div>
+
+  <!-- Success/Error Messages -->
+  {% if message %}
+  <div class="mb-6 p-4 rounded-lg {% if message.type == 'success' %}bg-green-50 border-l-4 border-green-500 text-green-700{% else %}bg-red-50 border-l-4 border-red-500 text-red-700{% endif %}">
+    <p class="font-semibold">{{ message.text }}</p>
+  </div>
+  {% endif %}
+
+  <!-- Banner List -->
+  <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">Danh Sách Banner</h2>
+    
+    {% if banners and banners|length > 0 %}
+    <div class="space-y-4">
+      {% for banner in banners %}
+      <div class="border border-gray-200 rounded-lg p-4 {% if not banner.active %}opacity-60{% endif %}">
+        <form action="/admin/banners/update" method="POST" class="space-y-4">
+          <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+          <input type="hidden" name="bannerId" value="{{ banner.id }}">
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Left Column: Image Preview -->
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-2">
+                Hình Ảnh Banner
+              </label>
+              <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
+                <img src="{{ banner.image }}" alt="{{ banner.title }}" class="w-full h-48 object-cover rounded-lg mb-2" onerror="this.src='/assets/image/placeholder.jpg'">
+                <input type="text" name="image" value="{{ banner.image }}" 
+                       class="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm"
+                       placeholder="/assets/image/banner/banner.jpg" required>
+                <p class="text-xs text-gray-500 mt-1">Đường dẫn tới hình ảnh</p>
+              </div>
+            </div>
+
+            <!-- Right Column: Content -->
+            <div class="space-y-3">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">
+                  Tiêu Đề <span class="text-red-500">*</span>
+                </label>
+                <input type="text" name="title" value="{{ banner.title }}" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                       placeholder="MỤN DỪA HOÀNG HIẾU" required>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">
+                  Phụ Đề <span class="text-red-500">*</span>
+                </label>
+                <input type="text" name="subtitle" value="{{ banner.subtitle }}" 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                       placeholder="Giá thể sạch – Năng suất vượt trội" required>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">
+                    Text Nút <span class="text-red-500">*</span>
+                  </label>
+                  <input type="text" name="buttonText" value="{{ banner.buttonText }}" 
+                         class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                         placeholder="Khám phá sản phẩm" required>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">
+                    Link Nút <span class="text-red-500">*</span>
+                  </label>
+                  <input type="text" name="buttonLink" value="{{ banner.buttonLink }}" 
+                         class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                         placeholder="/san-pham" required>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">
+                    Màu Nút
+                  </label>
+                  <select name="buttonColor" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    <option value="orange" {% if banner.buttonColor == 'orange' %}selected{% endif %}>Cam (Orange)</option>
+                    <option value="green" {% if banner.buttonColor == 'green' %}selected{% endif %}>Xanh (Green)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">
+                    Trạng Thái
+                  </label>
+                  <select name="active" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    <option value="true" {% if banner.active %}selected{% endif %}>Hiển thị</option>
+                    <option value="false" {% if not banner.active %}selected{% endif %}>Ẩn</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex items-center justify-end space-x-3 pt-2">
+                <button type="submit" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors">
+                  💾 Lưu thay đổi
+                </button>
+                <button type="button" onclick="if(confirm('Xóa banner này?')) { document.getElementById('delete-form-{{ banner.id }}').submit(); }" 
+                        class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-colors">
+                  🗑️ Xóa
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Hidden Delete Form -->
+        <form id="delete-form-{{ banner.id }}" action="/admin/banners/delete" method="POST" style="display: none;">
+          <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+          <input type="hidden" name="bannerId" value="{{ banner.id }}">
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-gray-500 text-center py-8">Chưa có banner nào</p>
+    {% endif %}
+  </div>
+
+  <!-- Add New Banner -->
+  <div class="bg-white rounded-2xl shadow-lg p-6">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">➕ Thêm Banner Mới</h2>
+    
+    <form action="/admin/banners/add" method="POST" class="space-y-4">
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">
+            Đường Dẫn Hình Ảnh <span class="text-red-500">*</span>
+          </label>
+          <input type="text" name="image" 
+                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                 placeholder="/assets/image/banner/banner-new.jpg" required>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">
+            Tiêu Đề <span class="text-red-500">*</span>
+          </label>
+          <input type="text" name="title" 
+                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                 placeholder="MỤN DỪA HOÀNG HIẾU" required>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">
+            Phụ Đề <span class="text-red-500">*</span>
+          </label>
+          <input type="text" name="subtitle" 
+                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                 placeholder="Giá thể sạch – Năng suất vượt trội" required>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">
+            Text Nút <span class="text-red-500">*</span>
+          </label>
+          <input type="text" name="buttonText" 
+                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                 placeholder="Khám phá sản phẩm" required>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">
+            Link Nút <span class="text-red-500">*</span>
+          </label>
+          <input type="text" name="buttonLink" 
+                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                 placeholder="/san-pham" required>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">
+            Màu Nút
+          </label>
+          <select name="buttonColor" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+            <option value="orange">Cam (Orange)</option>
+            <option value="green">Xanh (Green)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button type="submit" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors">
+          ➕ Thêm Banner
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  /* Smooth transitions */
+  input, select, button {
+    transition: all 0.2s ease;
+  }
+  
+  /* Focus states */
+  input:focus, select:focus {
+    outline: none;
+  }
+</style>
+{% endblock %}

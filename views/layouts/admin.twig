@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Admin Panel{% endblock %} - Mụn Dừa Hoàng Hiếu</title>
+  <link rel="stylesheet" href="/styles.css?v={{ "now"|date("U") }}">
+  <link rel="icon" type="image/svg+xml" href="/assets/image/logo.svg">
+  <style>
+    /* Mobile menu toggle */
+    #mobile-menu:checked ~ #sidebar {
+      transform: translateX(0);
+    }
+    #mobile-menu:checked ~ #menu-backdrop {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Mobile menu checkbox (hidden) -->
+  <input type="checkbox" id="mobile-menu" class="hidden">
+  
+  <!-- Mobile backdrop -->
+  <label for="mobile-menu" id="menu-backdrop" 
+         class="fixed inset-0 bg-black bg-opacity-50 z-20 opacity-0 pointer-events-none transition-opacity lg:hidden"></label>
+  
+  <!-- Sidebar -->
+  <aside id="sidebar" 
+         class="fixed top-0 left-0 w-64 h-full bg-green-700 text-white z-30 transform -translate-x-full lg:translate-x-0 transition-transform">
+    <div class="p-6 border-b border-green-600">
+      <div class="flex items-center space-x-3">
+        <div class="bg-white rounded-lg p-2 shadow-lg border-2 border-green-300">
+          <img src="/assets/image/logo.svg" alt="Logo" class="w-10 h-10">
+        </div>
+        <div>
+          <h1 class="text-xl font-bold">Admin Panel</h1>
+          <p class="text-sm text-green-200">Mụn Dừa Hoàng Hiếu</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- User info -->
+    {% if user %}
+    <div class="p-4 border-b border-green-600 bg-green-800">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center">
+          <span class="text-lg font-bold">{{ user.username[0]|upper }}</span>
+        </div>
+        <div>
+          <p class="font-semibold">{{ user.username }}</p>
+          <p class="text-xs text-green-200">{{ user.role|capitalize }}</p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    
+    <!-- Navigation -->
+    <nav class="p-4 space-y-2">
+      <a href="/admin/dashboard" 
+         class="block px-4 py-3 rounded-lg transition-colors hover:bg-green-600 {% if currentPath == '/admin/dashboard' %}bg-green-600{% endif %}">
+        <span class="text-lg">📊</span>
+        <span class="ml-3">Dashboard</span>
+      </a>
+      
+      <a href="/admin/content" 
+         class="block px-4 py-3 rounded-lg transition-colors hover:bg-green-600 {% if currentPath == '/admin/content' %}bg-green-600{% endif %}">
+        <span class="text-lg">📝</span>
+        <span class="ml-3">Nội dung</span>
+      </a>
+      
+      <a href="/admin/images" 
+         class="block px-4 py-3 rounded-lg transition-colors hover:bg-green-600 {% if currentPath == '/admin/images' %}bg-green-600{% endif %}">
+        <span class="text-lg">🖼️</span>
+        <span class="ml-3">Hình ảnh</span>
+      </a>
+      
+      <a href="/admin/data" 
+         class="block px-4 py-3 rounded-lg transition-colors hover:bg-green-600 {% if currentPath == '/admin/data' %}bg-green-600{% endif %}">
+        <span class="text-lg">📦</span>
+        <span class="ml-3">Dữ liệu</span>
+      </a>
+      
+      <a href="/admin/logs" 
+         class="block px-4 py-3 rounded-lg transition-colors hover:bg-green-600 {% if currentPath == '/admin/logs' %}bg-green-600{% endif %}">
+        <span class="text-lg">📋</span>
+        <span class="ml-3">Logs</span>
+      </a>
+      
+      <a href="/admin/backups" 
+         class="block px-4 py-3 rounded-lg transition-colors hover:bg-green-600 {% if currentPath == '/admin/backups' %}bg-green-600{% endif %}">
+        <span class="text-lg">🗄️</span>
+        <span class="ml-3">Backups</span>
+      </a>
+      
+      <hr class="border-green-600 my-4">
+      
+      <a href="/admin/users" 
+         class="block px-4 py-3 rounded-lg transition-colors hover:bg-green-600 {% if currentPath == '/admin/users' %}bg-green-600{% endif %}">
+        <span class="text-lg">👥</span>
+        <span class="ml-3">Tài khoản</span>
+      </a>
+      
+      <a href="/admin/change-password" 
+         class="block px-4 py-3 rounded-lg transition-colors hover:bg-green-600 {% if currentPath == '/admin/change-password' %}bg-green-600{% endif %}">
+        <span class="text-lg">🔑</span>
+        <span class="ml-3">Đổi mật khẩu</span>
+      </a>
+      
+      <hr class="border-green-600 my-4">
+      
+      <a href="/" target="_blank"
+         class="block px-4 py-3 rounded-lg transition-colors hover:bg-green-600">
+        <span class="text-lg">🌐</span>
+        <span class="ml-3">Xem website</span>
+      </a>
+      
+      <a href="/admin/logout" 
+         class="block px-4 py-3 rounded-lg transition-colors hover:bg-red-600 text-red-200">
+        <span class="text-lg">🚪</span>
+        <span class="ml-3">Đăng xuất</span>
+      </a>
+    </nav>
+  </aside>
+  
+  <!-- Main content -->
+  <div class="lg:ml-64">
+    <!-- Top bar (mobile) -->
+    <header class="bg-white shadow-sm lg:hidden">
+      <div class="flex items-center justify-between p-4">
+        <label for="mobile-menu" class="cursor-pointer">
+          <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </label>
+        <h2 class="text-lg font-bold text-gray-800">Admin Panel</h2>
+        <div class="w-6"></div>
+      </div>
+    </header>
+    
+    <!-- Page content -->
+    <main class="p-6">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  
+  {% block scripts %}{% endblock %}
+</body>
+</html>

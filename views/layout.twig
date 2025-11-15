@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Mụn Dừa Hoàng Hiếu{% endblock %}</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Mụn Dừa Hoàng Hiếu - Giá thể sạch, giúp cây khỏe, đất tốt, mùa vụ bội thu. Chuyên cung cấp mụn dừa xử lý chất lượng cao cho nông nghiệp.">
+  <meta name="keywords" content="mụn dừa, giá thể trồng cây, mụn dừa xử lý, xơ dừa, vỏ dừa, nông nghiệp sạch, Bến Tre">
+  <meta name="author" content="Mụn Dừa Hoàng Hiếu">
+  
+  <!-- Open Graph Meta Tags for Social Sharing -->
+  <meta property="og:title" content="Mụn Dừa Hoàng Hiếu - Giá thể sạch cho cây trồng">
+  <meta property="og:description" content="Giá thể mụn dừa tự nhiên, xử lý sạch, giữ ẩm tốt, giúp cây sinh trưởng khỏe mạnh. Sản phẩm thân thiện môi trường từ Bến Tre.">
+  <meta property="og:image" content="{{ siteUrl|default('https://munduahoanghieu.com') }}/assets/image/products/mun-dua-xu-ly/Mụn xử lý 1.jpg">
+  <meta property="og:url" content="{{ siteUrl|default('https://munduahoanghieu.com') }}{{ currentPath|default('') }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:site_name" content="Mụn Dừa Hoàng Hiếu">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mụn Dừa Hoàng Hiếu - Giá thể sạch cho cây trồng">
+  <meta name="twitter:description" content="Giá thể mụn dừa tự nhiên, xử lý sạch, giữ ẩm tốt, giúp cây sinh trưởng khỏe mạnh.">
+  <meta name="twitter:image" content="{{ siteUrl|default('https://munduahoanghieu.com') }}/assets/image/products/mun-dua-xu-ly/Mụn xử lý 1.jpg">
+  
+  <!-- Favicons - Using original logo -->
+  <link rel="icon" type="image/svg+xml" href="/assets/image/logo.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/image/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/image/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/image/logo.png">
+  <link rel="shortcut icon" href="/assets/image/logo.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/image/logo.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/image/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/image/logo.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/image/logo.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/image/logo512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/image/logo512.png">
+  <link rel="shortcut icon" type="image/png" href="/assets/image/logo.png" sizes="128x128">
+  <link href="/styles.css" rel="stylesheet">
+  <style>
+    /* Global Font Size - Optimized for farmers (easy reading) */
+    html {
+      font-size: 17px; /* Base size for desktop */
+    }
+    
+    /* Mobile: Slightly larger for easy reading on small screens */
+    @media (max-width: 767px) {
+      html {
+        font-size: 15px;
+      }
+      
+      body {
+        font-size: 1rem; /* 15px */
+        line-height: 1.6;
+      }
+      
+      p, li, span {
+        font-size: 1rem; /* 15px */
+      }
+      
+      h1 { font-size: 1.75rem; } /* 26.25px */
+      h2 { font-size: 1.5rem; }  /* 22.5px */
+      h3 { font-size: 1.25rem; } /* 18.75px */
+      h4 { font-size: 1.125rem; } /* 16.875px */
+    }
+    
+    /* Tablet: Comfortable reading size */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      html {
+        font-size: 16px;
+      }
+      
+      body {
+        font-size: 1rem; /* 16px */
+        line-height: 1.65;
+      }
+      
+      p, li, span {
+        font-size: 1rem; /* 16px */
+      }
+      
+      h1 { font-size: 2rem; }    /* 32px */
+      h2 { font-size: 1.625rem; } /* 26px */
+      h3 { font-size: 1.375rem; } /* 22px */
+      h4 { font-size: 1.1875rem; } /* 19px */
+    }
+    
+    /* Desktop: Professional size with good readability */
+    @media (min-width: 1024px) {
+      html {
+        font-size: 17px;
+      }
+      
+      body {
+        font-size: 1rem; /* 17px */
+        line-height: 1.7;
+      }
+      
+      p, li, span {
+        font-size: 1rem; /* 17px */
+      }
+      
+      h1 { font-size: 2.25rem; }  /* 38.25px */
+      h2 { font-size: 1.875rem; } /* 31.875px */
+      h3 { font-size: 1.5rem; }   /* 25.5px */
+      h4 { font-size: 1.25rem; }  /* 21.25px */
+    }
+    
+    /* Footer Responsive Layout */
+    @media (max-width: 768px) {
+      .footer-section {
+        margin-bottom: 1.5rem;
+      }
+    }
+    
+    /* Footer Slogan Hover */
+    .footer-slogan {
+      transition: color 0.3s ease-in-out;
+    }
+    
+    .footer-slogan:hover {
+      color: #15803d;
+    }
+    
+    /* Footer Tagline - Styled */
+    .footer-tagline {
+      text-align: center;
+      font-style: italic;
+      color: #166534;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 0.5rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    
+    .footer-tagline:hover {
+      color: #15803d;
+      transform: scale(1.02);
+      transition: all 0.3s ease;
+    }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+<body class="font-sans pt-36 bg-green-50 overflow-x-hidden">
+  <!-- Include Header Component -->
+  {% include 'components/header.twig' %}
+
+  <!-- Main Content -->
+  <main class="overflow-x-hidden">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-t from-green-50 via-lime-50 to-white text-gray-800 py-8 md:py-10 border-t-2 border-green-300 shadow-sm mt-12">
+    <div class="max-w-6xl mx-auto px-6 md:px-12">
+      <!-- Main Footer Content - 3 cột đều nhau với gap tốt hơn -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 lg:gap-12 mb-8">
+        
+        <!-- Cột 1: Logo + Mô Tả + Địa Chỉ -->
+        <div class="pr-0 md:pr-6">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="/assets/image/Footer/logo nho.png" alt="Mụn Dừa Hoàng Hiếu" class="w-12 h-12 rounded-full shadow-md flex-shrink-0">
+            <h3 class="text-green-700 font-bold text-lg border-b-2 border-green-600 pb-1 whitespace-nowrap">Mụn Dừa Hoàng Hiếu</h3>
+          </div>
+          <div class="text-xs text-gray-600 leading-relaxed space-y-1 mb-4">
+            <p class="font-medium text-green-700">Chuyên sản xuất và cung cấp giá thể mụn dừa sạch</p>
+            <p>Góp phần nâng cao năng suất và bảo vệ môi trường.</p>
+          </div>
+          <div class="text-sm text-gray-700">
+            <div class="flex items-start gap-2 transition-all duration-300 ease-out hover:-translate-x-[4px] hover:scale-[1.08] group cursor-pointer">
+              <span class="text-amber-600 flex-shrink-0 mt-0.5">🏠</span>
+              <div class="text-green-700 font-semibold">
+                <span class="block">Ấp Hội An, Xã Đa Phước Hội, Huyện Mỏ Cày Nam, Tỉnh Bến Tre</span>
+                <a href="https://www.google.com/maps/place/10%C2%B007'18.2%22N+106%C2%B019'09.3%22E/@10.1217194,106.3166822,17z/data=!3m1!4b1!4m4!3m3!8m2!3d10.1217194!4d106.3192571" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="text-blue-600 hover:text-blue-800 hover:underline text-xs mt-1 inline-block footer-glow-link">
+                  📍 Xem bản đồ
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cột 2: Thông Tin Liên Hệ -->
+        <div class="pr-0 md:pr-6">
+          <h4 class="text-green-700 font-semibold text-lg border-b-2 border-green-600 pb-1 mb-3 inline-block">
+            Liên Hệ
+          </h4>
+          <div class="space-y-2.5 text-sm text-gray-700">
+            <div class="flex items-center gap-2 transition-all duration-300 ease-out hover:-translate-x-[4px] hover:scale-[1.08] group cursor-pointer">
+              <span class="text-amber-600 text-base flex-shrink-0">☎️</span>
+              <span class="whitespace-nowrap">Hotline: <a href="tel:0984288512" class="text-green-700 font-semibold hover:no-underline hover:text-green-800 inline-block footer-glow-link">0984.288.512</a></span>
+            </div>
+            <div class="flex items-center gap-2 transition-all duration-300 ease-out hover:-translate-x-[4px] hover:scale-[1.08] group cursor-pointer">
+              <span class="text-amber-600 text-base flex-shrink-0">✉️</span>
+              <span class="whitespace-nowrap">Email: <a href="mailto:munduahoanghieu.vn@gmail.com" class="text-green-700 font-semibold hover:no-underline hover:text-green-800 inline-block footer-glow-link">munduahoanghieu.vn@gmail.com</a></span>
+            </div>
+            <div class="flex items-center gap-2 transition-all duration-300 ease-out hover:-translate-x-[4px] hover:scale-[1.08] group cursor-pointer">
+              <span class="text-amber-600 text-base flex-shrink-0">🌐</span>
+              <span class="whitespace-nowrap">Website: <a href="https://www.munduahoanghieu.com" class="text-green-700 font-medium hover:no-underline hover:text-green-800 inline-block footer-glow-link" target="_blank" rel="noopener noreferrer">munduahoanghieu.com</a></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cột 3: Mạng Xã Hội -->
+        <div>
+          <h4 class="text-green-700 font-semibold text-lg border-b-2 border-green-600 pb-1 mb-3 inline-block">
+            Mạng Xã Hội
+          </h4>
+          <div class="space-y-2.5">
+            <a href="https://www.facebook.com/mun.dua.hoang.hieu" target="_blank" 
+               class="flex items-center gap-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-x-[4px] hover:scale-[1.08] hover:no-underline group footer-social-fb" 
+               title="Facebook - Mụn Dừa Hoàng Hiếu">
+              <img src="/assets/image/Footer/Face.png" alt="Facebook" class="w-6 h-6 object-contain group-hover:scale-110 transition-transform duration-300">
+              <span>Facebook</span>
+            </a>
+            <a href="https://zalo.me/112949426040780264" target="_blank" 
+               class="flex items-center gap-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-x-[4px] hover:scale-[1.08] hover:no-underline group footer-social-zalo"
+               title="Zalo OA - Mụn Dừa Hoàng Hiếu">
+              <img src="/assets/image/Footer/zalo.png" alt="Zalo" class="w-6 h-6 object-contain group-hover:scale-110 transition-transform duration-300">
+              <span>Zalo OA</span>
+            </a>
+            <a href="https://www.youtube.com/channel/UCyBxXvx4Y8SvFeFFIHQ0xqg" target="_blank" 
+               class="flex items-center gap-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-x-[4px] hover:scale-[1.08] hover:no-underline group footer-social-yt"
+               title="YouTube - Mụn Dừa Hoàng Hiếu">
+              <img src="/assets/image/Footer/youtube.png" alt="YouTube" class="w-6 h-6 object-contain group-hover:scale-110 transition-transform duration-300">
+              <span>YouTube</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-green-300 my-6"></div>
+
+      <!-- Slogan Section -->
+      <div class="text-center mt-6 mb-4">
+        <p class="footer-slogan text-base md:text-lg text-green-800 font-medium italic">
+          🌿 "Giá thể sạch – Năng suất vượt trội – Đồng hành cùng nhà nông" 🌿
+        </p>
+      </div>
+
+      <!-- Copyright -->
+      <div class="text-center footer-bottom text-sm text-gray-600">
+        <p class="mb-2">
+          &copy; 2024 Mụn Dừa Hoàng Hiếu. Bảo lưu mọi quyền.
+        </p>
+        <p class="footer-tagline">
+          Làm bằng cả 💚 để nâng tầm giá trị nông sản Việt 🌾
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Common JavaScript -->
+  <script>
+    // Search functionality - redirect to search page
+    function performSearch() {
+      console.log('performSearch() called');
+      const desktopInput = document.getElementById('search-input-desktop');
+      const mobileInput = document.getElementById('search-input-mobile');
+      const mobileMenu = document.getElementById('mobile-menu');
+      let searchInput = desktopInput;
+      // Nếu mobile menu đang mở thì ưu tiên input mobile
+      if (mobileMenu && window.getComputedStyle(mobileMenu).display !== 'none') {
+        if (mobileInput) {
+          searchInput = mobileInput;
+          console.log('mobileInput active!');
+        }
+      } else {
+        console.log('desktopInput active!');
+      }
+      console.log('searchInput (final):', searchInput);
+      // Lưu value ngay lập tức
+      let query = '';
+      if (searchInput) {
+        query = searchInput.value.trim();
+        console.log('searchInput.value:', searchInput.value);
+        console.log('searchInput.value.trim():', query);
+      }
+      console.log('search query:', query);
+      console.log('query length:', query.length);
+      if (!query || query.length < 2) {
+        alert('Vui lòng nhập ít nhất 2 ký tự để tìm kiếm');
+        return;
+      }
+      // Redirect to search page
+      console.log('Redirecting to search page with query:', query);
+      window.location.href = `/search?q=${encodeURIComponent(query)}`;
+    }
+
+    function handleSearchKeyPress(event) {
+      console.log('handleSearchKeyPress() called, key:', event.key);
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        performSearch();
+      }
+    }
+
+    // Email functionality
+    function sendEmail() {
+      const subject = encodeURIComponent('Tư vấn sản phẩm mụn dừa');
+      const body = encodeURIComponent(`Xin chào Mụn Dừa Hoàng Hiếu,
+
+Tôi quan tâm đến các sản phẩm mụn dừa của công ty. Xin vui lòng tư vấn cho tôi về:
+- Sản phẩm phù hợp cho cây trồng của tôi
+- Giá cả và chính sách giao hàng
+- Hỗ trợ kỹ thuật
+
+Cảm ơn!`);
+      
+      window.open(`mailto:munduahoanghieu.vn@gmail.com?subject=${subject}&body=${body}`);
+    }
+  </script>
+  
+  <!-- Footer glow effects CSS -->
+  <style>
+    /* Footer link glow effects */
+    .footer-glow-link {
+      filter: drop-shadow(0 0 0px rgba(34,197,94,0.5));
+      transition: filter 0.3s ease, color 0.3s ease;
+    }
+    .footer-glow-link:hover {
+      filter: drop-shadow(0 0 12px rgba(34,197,94,0.5));
+      color: #15803d !important;
+    }
+    
+    /* Social media colors and glows */
+    .footer-social-fb {
+      color: #1877F2;
+      filter: drop-shadow(0 0 0px rgba(59,137,255,0.5));
+      transition: all 0.3s ease;
+    }
+    .footer-social-fb:hover {
+      color: #3b89ff;
+      filter: drop-shadow(0 0 12px rgba(59,137,255,0.5));
+    }
+    
+    .footer-social-zalo {
+      color: #0068FF;
+      filter: drop-shadow(0 0 0px rgba(51,144,255,0.5));
+      transition: all 0.3s ease;
+    }
+    .footer-social-zalo:hover {
+      color: #3390FF;
+      filter: drop-shadow(0 0 12px rgba(51,144,255,0.5));
+    }
+    
+    .footer-social-yt {
+      color: #FF0000;
+      filter: drop-shadow(0 0 0px rgba(255,51,51,0.55));
+      transition: all 0.3s ease;
+    }
+    .footer-social-yt:hover {
+      color: #FF3333;
+      filter: drop-shadow(0 0 12px rgba(255,51,51,0.55));
+    }
+  </style>
+  
+  {% block scripts %}{% endblock %}
+</body>
+</html>

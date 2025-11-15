@@ -1,0 +1,202 @@
+{% extends "layouts/admin.twig" %}
+
+{% block title %}Quản lý Nội dung{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+  <!-- Page Header -->
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-2">Quản lý Nội dung</h1>
+    <p class="text-gray-600">Chỉnh sửa thông tin website</p>
+  </div>
+  
+  <!-- Success Message -->
+  {% if success %}
+  <div class="bg-green-50 border border-green-200 text-green-700 px-6 py-4 rounded-lg mb-6 flex items-center">
+    <span class="text-2xl mr-3">✅</span>
+    <p class="font-semibold">{{ success }}</p>
+  </div>
+  {% endif %}
+  
+  <!-- Content Form -->
+  <form method="POST" action="/admin/content" class="space-y-6">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    
+    <!-- Site Information -->
+    <div class="bg-white rounded-2xl shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <span class="text-2xl mr-2">🌐</span>
+        Thông tin Website
+      </h2>
+      
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Tên Website</label>
+          <input 
+            type="text" 
+            name="siteName" 
+            value="{{ content.site.name }}"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            required
+          >
+        </div>
+        
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Slogan</label>
+          <input 
+            type="text" 
+            name="slogan" 
+            value="{{ content.site.slogan }}"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            required
+          >
+        </div>
+        
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Mô tả</label>
+          <textarea 
+            name="description" 
+            rows="3"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            required
+          >{{ content.site.description }}</textarea>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Keywords (SEO)</label>
+          <input 
+            type="text" 
+            name="keywords" 
+            value="{{ content.site.keywords }}"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            placeholder="keyword1, keyword2, keyword3"
+          >
+        </div>
+      </div>
+    </div>
+    
+    <!-- Contact Information -->
+    <div class="bg-white rounded-2xl shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <span class="text-2xl mr-2">📞</span>
+        Thông tin Liên hệ
+      </h2>
+      
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+          <input 
+            type="email" 
+            name="email" 
+            value="{{ content.contact.email }}"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            required
+          >
+        </div>
+        
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Số điện thoại</label>
+          <input 
+            type="tel" 
+            name="phone" 
+            value="{{ content.contact.phone }}"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            required
+          >
+        </div>
+        
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Địa chỉ</label>
+          <textarea 
+            name="address" 
+            rows="2"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            required
+          >{{ content.contact.address }}</textarea>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Giờ làm việc</label>
+          <input 
+            type="text" 
+            name="workHours" 
+            value="{{ content.contact.workHours }}"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            placeholder="Thứ 2 - Thứ 7: 8:00 - 17:00"
+          >
+        </div>
+      </div>
+    </div>
+    
+    <!-- Social Links -->
+    <div class="bg-white rounded-2xl shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <span class="text-2xl mr-2">🔗</span>
+        Liên kết Mạng xã hội
+      </h2>
+      
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Facebook</label>
+          <input 
+            type="url" 
+            name="facebook" 
+            value="{{ content.social.facebook }}"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            placeholder="https://facebook.com/..."
+          >
+        </div>
+        
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">Zalo</label>
+          <input 
+            type="url" 
+            name="zalo" 
+            value="{{ content.social.zalo }}"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            placeholder="https://zalo.me/..."
+          >
+        </div>
+        
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">YouTube</label>
+          <input 
+            type="url" 
+            name="youtube" 
+            value="{{ content.social.youtube }}"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            placeholder="https://youtube.com/@..."
+          >
+        </div>
+        
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">WhatsApp</label>
+          <input 
+            type="url" 
+            name="whatsapp" 
+            value="{{ content.social.whatsapp }}"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            placeholder="https://wa.me/..."
+          >
+        </div>
+      </div>
+    </div>
+    
+    <!-- Submit Button -->
+    <div class="flex justify-end space-x-4">
+      <a 
+        href="/admin/dashboard"
+        class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold rounded-lg transition-colors"
+      >
+        Hủy
+      </a>
+      <button 
+        type="submit"
+        class="px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors shadow-lg"
+      >
+        💾 Lưu thay đổi
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

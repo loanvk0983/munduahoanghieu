@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Markdown Integration - Mụn Dừa Hoàng Hiếu</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="font-sans pt-20 m-10">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full h-20 bg-green-50 shadow-md z-50">
+        <div class="container mx-auto h-full flex items-center justify-between px-4">
+            <div class="flex items-center">
+                <div class="w-20 h-16 bg-cover bg-center" 
+                     style="background-image: url('assets/image/logo.jpg'); background-position: top -16px left -24px;">
+                </div>
+                <h1 class="ml-4 text-2xl font-bold text-green-700">Test Markdown Integration</h1>
+            </div>
+            <nav>
+                <a href="index.html" class="text-green-700 hover:text-orange-600 mx-3">Trang chủ</a>
+                <a href="gioi-thieu.html" class="text-green-700 hover:text-orange-600 mx-3">Giới thiệu</a>
+                <a href="demo-json.html" class="text-green-700 hover:text-orange-600 mx-3">Demo JSON</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-3xl font-bold text-green-700 mb-6 text-center">Test Markdown Content Loading</h2>
+            
+            <!-- Test Controls -->
+            <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                <h3 class="text-lg font-semibold mb-3">Test Controls</h3>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="testMarkdownProducts()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                        Test Products (Markdown)
+                    </button>
+                    <button onclick="testMarkdownTestimonials()" class="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700">
+                        Test Testimonials (Markdown)  
+                    </button>
+                    <button onclick="testRawMarkdown()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                        Test Raw Markdown
+                    </button>
+                    <button onclick="compareJsonVsMarkdown()" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+                        Compare JSON vs Markdown
+                    </button>
+                    <button onclick="clearResults()" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">
+                        Clear Results
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div id="test-results" class="space-y-6">
+                <!-- Results will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Live Product Display -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-green-700 mb-4">Products from Markdown</h3>
+            <div id="markdown-products" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Live Testimonials Display -->  
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-2xl font-bold text-green-700 mb-4">Testimonials from Markdown</h3>
+            <div id="markdown-testimonials" class="space-y-4">
+                <!-- Testimonials will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/markdown-parser.js"></script>
+    <script src="js/content-manager.js"></script>
+    
+    <script>
+        let contentManager;
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            contentManager = new ContentManager();
+            loadInitialContent();
+        });
+
+        async function loadInitialContent() {
+            try {
+                // Load products from markdown
+                await loadMarkdownProducts();
+                
+                // Load testimonials from markdown
+                await loadMarkdownTestimonials();
+                
+                logResult('Initial content loaded successfully', 'success');
+            } catch (error) {
+                logResult(`Error loading initial content: ${error.message}`, 'error');
+            }
+        }
+
+        async function testMarkdownProducts() {
+            try {
+                const products = await contentManager.getProductsFromMarkdown();
+                logResult('Markdown Products Test', 'info');
+                logResult(JSON.stringify(products, null, 2), 'data');
+                
+                if (products && products.length > 0) {
+                    logResult(`✅ Successfully loaded ${products.length} products from markdown`, 'success');
+                } else {
+                    logResult('❌ No products found in markdown', 'error');
+                }
+            } catch (error) {
+                logResult(`❌ Error testing markdown products: ${error.message}`, 'error');
+            }
+        }
+
+        async function testMarkdownTestimonials() {
+            try {
+                const testimonials = await contentManager.getTestimonialsFromMarkdown();
+                logResult('Markdown Testimonials Test', 'info');
+                logResult(JSON.stringify(testimonials, null, 2), 'data');
+                
+                if (testimonials && testimonials.length > 0) {
+                    logResult(`✅ Successfully loaded ${testimonials.length} testimonials from markdown`, 'success');
+                } else {
+                    logResult('❌ No testimonials found in markdown', 'error');
+                }
+            } catch (error) {
+                logResult(`❌ Error testing markdown testimonials: ${error.message}`, 'error');
+            }
+        }
+
+        async function testRawMarkdown() {
+            try {
+                const rawContent = await contentManager.loadMarkdownContent('san-pham', 'raw');
+                logResult('Raw Markdown Content Test', 'info');
+                logResult(JSON.stringify(rawContent, null, 2), 'data');
+                
+                if (rawContent) {
+                    logResult('✅ Successfully parsed raw markdown content', 'success');
+                } else {
+                    logResult('❌ Failed to parse raw markdown', 'error');
+                }
+            } catch (error) {
+                logResult(`❌ Error testing raw markdown: ${error.message}`, 'error');
+            }
+        }
+
+        async function compareJsonVsMarkdown() {
+            try {
+                // Load from JSON
+                const jsonProducts = await contentManager.getProducts();
+                const jsonTestimonials = await contentManager.getTestimonials();
+                
+                // Load from Markdown  
+                const markdownProducts = await contentManager.getProductsFromMarkdown();
+                const markdownTestimonials = await contentManager.getTestimonialsFromMarkdown();
+                
+                logResult('JSON vs Markdown Comparison', 'info');
+                logResult(`JSON Products: ${jsonProducts?.length || 0}`, 'data');
+                logResult(`Markdown Products: ${markdownProducts?.length || 0}`, 'data');
+                logResult(`JSON Testimonials: ${jsonTestimonials?.length || 0}`, 'data');
+                logResult(`Markdown Testimonials: ${markdownTestimonials?.length || 0}`, 'data');
+                
+                if (markdownProducts?.length > 0 || markdownTestimonials?.length > 0) {
+                    logResult('✅ Markdown loading is working!', 'success');
+                } else {
+                    logResult('⚠️ Markdown loading might have issues', 'warning');
+                }
+            } catch (error) {
+                logResult(`❌ Error comparing sources: ${error.message}`, 'error');
+            }
+        }
+
+        async function loadMarkdownProducts() {
+            try {
+                const products = await contentManager.getProductsFromMarkdown();
+                const container = document.getElementById('markdown-products');
+                
+                if (!container) return;
+                
+                if (products && products.length > 0) {
+                    container.innerHTML = products.map(product => `
+                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                            <img src="${product.image || '/assets/image/products/default.jpg'}" 
+                                 alt="${product.name}" 
+                                 class="w-full h-48 object-cover rounded-lg mb-4"
+                                 onerror="this.src='/assets/image/logo.jpg'">
+                            <h4 class="font-bold text-lg text-green-700 mb-2">${product.name}</h4>
+                            <p class="text-gray-600 mb-2">${product.description}</p>
+                            <div class="space-y-1 mb-3">
+                                ${product.features.map(feature => `
+                                    <div class="text-sm text-gray-500">• ${feature}</div>
+                                `).join('')}
+                            </div>
+                            <div class="font-semibold text-orange-600">${product.price}</div>
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = '<div class="col-span-full text-center text-gray-500">Không có sản phẩm nào từ markdown</div>';
+                }
+            } catch (error) {
+                console.error('Error loading markdown products:', error);
+            }
+        }
+
+        async function loadMarkdownTestimonials() {
+            try {
+                const testimonials = await contentManager.getTestimonialsFromMarkdown(4);
+                const container = document.getElementById('markdown-testimonials');
+                
+                if (!container) return;
+                
+                if (testimonials && testimonials.length > 0) {
+                    container.innerHTML = testimonials.map(testimonial => `
+                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between mb-2">
+                                <div>
+                                    <h5 class="font-semibold text-green-700">${testimonial.name}</h5>
+                                    <div class="text-sm text-gray-500">${testimonial.location}</div>
+                                </div>
+                                <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                            </div>
+                            <p class="text-gray-600 mb-2">"${testimonial.content}"</p>
+                            <div class="text-sm text-orange-600">Sản phẩm: ${testimonial.product}</div>
+                            <div class="text-xs text-gray-400">${testimonial.date}</div>
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = '<div class="text-center text-gray-500">Không có đánh giá nào từ markdown</div>';
+                }
+            } catch (error) {
+                console.error('Error loading markdown testimonials:', error);
+            }
+        }
+
+        function logResult(message, type = 'info') {
+            const resultsContainer = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            
+            let bgColor = 'bg-gray-50';
+            let textColor = 'text-gray-700';
+            
+            switch (type) {
+                case 'success':
+                    bgColor = 'bg-green-50';
+                    textColor = 'text-green-700';
+                    break;
+                case 'error':
+                    bgColor = 'bg-red-50';
+                    textColor = 'text-red-700';
+                    break;
+                case 'warning':
+                    bgColor = 'bg-yellow-50';
+                    textColor = 'text-yellow-700';
+                    break;
+                case 'info':
+                    bgColor = 'bg-blue-50';
+                    textColor = 'text-blue-700';
+                    break;
+                case 'data':
+                    bgColor = 'bg-gray-100';
+                    textColor = 'text-gray-800';
+                    break;
+            }
+            
+            resultDiv.className = `p-3 rounded ${bgColor} ${textColor} mb-2`;
+            resultDiv.innerHTML = `
+                <div class="text-xs text-gray-500">${new Date().toLocaleTimeString()}</div>
+                <div class="${type === 'data' ? 'font-mono text-sm whitespace-pre-wrap' : ''}">${message}</div>
+            `;
+            
+            resultsContainer.appendChild(resultDiv);
+            resultsContainer.scrollTop = resultsContainer.scrollHeight;
+        }
+
+        function clearResults() {
+            document.getElementById('test-results').innerHTML = '';
+        }
+    </script>
+</body>
+</html>

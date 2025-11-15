@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giới thiệu - Mụn Dừa Hoàng Hiếu</title>
+  <link href="/styles.css" rel="stylesheet">
+</head>
+<body class="font-sans pt-20 m-10 bg-green-50">
+  <!-- Header giống trang chủ -->
+  <header class="fixed top-0 left-0 w-full h-20 bg-white shadow-md z-10">
+    <nav class="flex items-center px-4 py-2 h-full max-w-[1250px] mx-auto">
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2 mr-10">
+          <div class="h-16 w-16 bg-no-repeat bg-center" style="background-image: url('/assets/image/logo.jpg'); background-size: 180%; background-position: top -16px left -24px;"></div>
+          <div>
+            <div class="text-xl font-bold text-green-700 tracking-wide" data-company-name>MỤN DỪA HOÀNG HIẾU</div>
+            <div class="text-sm text-orange-600 font-medium italic" data-company-tagline>Giá thể sạch - Năng suất vượt trội</div>
+          </div>
+        </div>
+        <ul class="flex space-x-6">
+          <li><a href="/" class="text-green-800 hover:text-green-600 font-semibold text-sm tracking-wide uppercase">TRANG CHỦ</a></li>
+          <li><a href="/gioi-thieu" class="text-orange-600 font-semibold text-sm tracking-wide uppercase">GIỚI THIỆU</a></li>
+          <li><a href="/san-pham" class="text-green-800 hover:text-green-600 font-semibold text-sm tracking-wide uppercase">SẢN PHẨM</a></li>
+          <li><a href="/tin-tuc" class="text-green-800 hover:text-green-600 font-semibold text-sm tracking-wide uppercase">TIN TỨC</a></li>
+          <li><a href="/lien-he" class="text-green-800 hover:text-green-600 font-semibold text-sm tracking-wide uppercase">LIÊN HỆ</a></li>
+        </ul>
+      </div>
+      <div class="flex items-center space-x-2 ml-auto">
+        <input type="text" id="search-input" placeholder="Tìm kiếm..." class="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 text-sm" onkeypress="handleSearchKeyPress(event)">
+        <button onclick="performSearch()" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors duration-300 text-sm font-medium">
+          <svg class="w-4 h-4 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          Tìm
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-green-600 to-green-800 py-20 rounded-lg mb-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white" data-hero-title>
+        Cơ Sở Sản Xuất Mụn Dừa Hoàng Hiếu
+      </h1>
+      <p class="text-xl md:text-2xl font-medium text-yellow-200" data-hero-subtitle>
+        Niềm Tin Là Giá Trị Cốt Lõi!
+      </p>
+      <div class="mt-8">
+        <span class="inline-block bg-orange-500 text-white px-6 py-2 rounded-full font-semibold" data-hero-badge>
+          🌟 Uy Tín - Chất Lượng - Tận Tâm 🌟
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="container mx-auto max-w-6xl">
+    
+    <!-- Triết Lý Kinh Doanh -->
+    <section class="bg-white p-10 rounded-lg shadow-md mb-12">
+      <div class="flex items-center mb-8">
+        <div class="bg-green-600 text-white p-3 rounded-full mr-4">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <h2 class="text-4xl font-bold text-green-700">Triết Lý Của Chúng Tôi</h2>
+      </div>
+      
+      <div class="text-lg text-gray-700 leading-relaxed space-y-4">
+        <p>
+          Hoàng Hiếu hiểu rằng <span class="font-semibold text-green-600">sự tin tưởng của khách hàng</span> là nền tảng vững chắc cho sự phát triển lâu dài. Vì thế, chúng tôi luôn lấy niềm tin và sự hài lòng của khách hàng làm kim chỉ nam cho mọi hoạt động.
+        </p>
+        
+        <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+          <p class="font-semibold text-green-900 text-xl italic">
+            "Kinh doanh không chỉ là bán sản phẩm, mà còn là gửi gắm sự chân thành"
+          </p>
+        </div>
+        
+        <p>
+          Chính vì vậy, suốt những năm qua, chúng tôi không ngừng nỗ lực để mang đến những sản phẩm tốt nhất, giá cả hợp lý nhất và dịch vụ tận tâm nhất.
+        </p>
+      </div>
+    </section>
+
+    <!-- Cam Kết Của Chúng Tôi -->
+    <section class="bg-white p-10 rounded-lg shadow-md mb-12">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-green-700 mb-4">Bạn Sẽ Nhận Được Gì Khi Đến Với Hoàng Hiếu?</h2>
+        <div class="w-24 h-1 bg-orange-500 mx-auto rounded"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10">
+        <!-- Cam kết 1 -->
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-xl border border-green-200 hover:shadow-lg transition-shadow duration-300">
+          <div class="flex items-start space-x-5">
+            <div class="bg-green-600 text-white p-4 rounded-full flex-shrink-0">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-green-700 mb-4">🏆 Sản phẩm đạt tiêu chuẩn chất lượng cao</h3>
+              <p class="text-gray-800 text-lg leading-relaxed">
+                Chúng tôi chuyên cung cấp <strong>mụn dừa xử lý</strong> (tỷ lệ xơ-mụn đáp ứng theo yêu cầu của bạn). Ngoài ra còn có <strong>mụn dừa thô, vỏ dừa cắt chip, phân hữu cơ, trấu, tro trấu và đất sạch</strong>... Tất cả đều được làm cẩn thận, kỹ lưỡng, để bạn yên tâm sử dụng mà không phải bận lòng.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cam kết 2 -->
+        <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-xl border border-yellow-200 hover:shadow-lg transition-shadow duration-300">
+          <div class="flex items-start space-x-5">
+            <div class="bg-yellow-600 text-white p-4 rounded-full flex-shrink-0">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-yellow-700 mb-4">💰 Giá cả hợp túi tiền</h3>
+              <p class="text-gray-800 text-lg leading-relaxed">
+                Hoàng Hiếu hiểu rằng <strong>làm nông không dễ</strong>, nên chúng tôi luôn giữ mức giá phù hợp để mọi người đều có thể tiếp cận được những sản phẩm tốt mà không lo chi phí quá cao.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cam kết 3 -->
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-xl border border-blue-200 hover:shadow-lg transition-shadow duration-300">
+          <div class="flex items-start space-x-5">
+            <div class="bg-blue-600 text-white p-4 rounded-full flex-shrink-0">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-blue-700 mb-4">❤️ Dịch vụ tận tình như người nhà</h3>
+              <p class="text-gray-800 text-lg leading-relaxed">
+                Khi bạn cần, chúng tôi sẵn sàng có mặt để hỗ trợ. Từ <strong>tư vấn chọn sản phẩm</strong> cho đến <strong>giao hàng tận nơi</strong>, chúng tôi luôn cố gắng làm mọi thứ nhanh gọn, chu đáo để bạn hài lòng.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cam kết 4 -->
+        <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 p-8 rounded-xl border border-emerald-200 hover:shadow-lg transition-shadow duration-300">
+          <div class="flex items-start space-x-5">
+            <div class="bg-emerald-600 text-white p-4 rounded-full flex-shrink-0">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M4.946 2.171C3.954 1.179 2.354 1.179 1.362 2.171s-1 2.6-.008 3.592l8.662 8.662a1 1 0 001.414 0l8.662-8.662c.992-.992.992-2.6 0-3.592s-2.6-.992-3.592 0L12 6.671V2a1 1 0 10-2 0v4.671L5.5 2.171z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-emerald-700 mb-4">🌱 Đồng hành cùng môi trường</h3>
+              <p class="text-gray-800 text-lg leading-relaxed">
+                Mỗi sản phẩm của Hoàng Hiếu không chỉ giúp bạn <strong>cải thiện đất trồng</strong> hay <strong>nâng cao năng suất</strong>, mà còn góp phần <strong>làm xanh sạch môi trường</strong> – vì chúng tôi tin rằng, bảo vệ thiên nhiên chính là bảo vệ tương lai.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slogan & Call to Action -->
+    <section class="bg-gradient-to-r from-green-600 via-green-700 to-green-800 p-12 rounded-lg shadow-xl mb-12">
+      <div class="text-center">
+        <h2 class="text-4xl font-bold mb-6 text-white">
+          🌱 Hoàng Hiếu – Gieo chân thành, gặt niềm tin! 🌱
+        </h2>
+        <p class="text-xl leading-relaxed mb-8 max-w-4xl mx-auto text-gray-100">
+          Dù bạn là khách hàng lâu năm hay lần đầu ghé thăm, chúng tôi đều trân trọng như nhau. 
+          <span class="font-semibold text-yellow-300">Hãy để Hoàng Hiếu là bạn đồng hành tin cậy trên hành trình nông nghiệp của bạn!</span>
+        </p>
+        
+        <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+          <a href="/san-pham" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors duration-300 shadow-lg">
+            🛒 Xem Sản Phẩm
+          </a>
+          <a href="/lien-he" class="bg-white text-green-700 hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transition-colors duration-300 shadow-lg">
+            📞 Liên Hệ Ngay
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quy Trình Sản Xuất -->
+    <section class="bg-white p-10 rounded-lg shadow-md mb-12">
+      <h2 class="text-4xl font-bold text-green-700 text-center mb-12">Quy Trình Sản Xuất Khép Kín</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        
+        <!-- Bước 1 -->
+        <div class="text-center p-8 bg-gradient-to-b from-green-50 to-green-100 rounded-xl hover:shadow-lg transition-shadow duration-300">
+          <div class="bg-green-600 text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-green-700 mb-4">🥥 Thu Mua Nguyên Liệu</h3>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            Tuyển chọn trái dừa tươi từ các vườn dừa địa phương, đảm bảo nguồn gốc sạch và chất lượng đồng đều.
+          </p>
+        </div>
+
+        <!-- Bước 2 -->
+        <div class="text-center p-8 bg-gradient-to-b from-yellow-50 to-yellow-100 rounded-xl hover:shadow-lg transition-shadow duration-300">
+          <div class="bg-yellow-600 text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-yellow-700 mb-4">⚙️ Xử Lý & Tách Mụn</h3>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            Sử dụng công nghệ hiện đại để tách xơ và mụn theo tỷ lệ yêu cầu, vệ sinh sạch sẽ và an toàn thực phẩm.
+          </p>
+        </div>
+
+        <!-- Bước 3 -->
+        <div class="text-center p-8 bg-gradient-to-b from-blue-50 to-blue-100 rounded-xl hover:shadow-lg transition-shadow duration-300">
+          <div class="bg-blue-600 text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-blue-700 mb-4">📦 Đóng Gói & Giao Hàng</h3>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            Đóng gói cẩn thận, bảo quản đúng cách và giao hàng tận nơi với cam kết chất lượng không thay đổi.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Lời cam kết -->
+      <div class="mt-10 text-center bg-gradient-to-r from-green-600 to-green-700 p-6 rounded-lg">
+        <h4 class="text-2xl font-bold mb-3 text-white">🤝 Cam Kết Của Chúng Tôi</h4>
+        <p class="text-lg text-yellow-100">
+          "Mỗi sản phẩm đều được kiểm tra kỹ lưỡng trước khi đến tay bạn. Hoàng Hiếu luôn đặt <strong class="text-yellow-200">chất lượng</strong> và <strong class="text-yellow-200">sự hài lòng</strong> của khách hàng lên hàng đầu!"
+        </p>
+      </div>
+    </section>
+
+    <!-- Testimonials / Feedback -->
+    <section class="bg-gradient-to-br from-green-50 to-green-100 p-10 rounded-lg shadow-md mb-12">
+      <h2 class="text-4xl font-bold text-green-700 text-center mb-12">💬 Khách Hàng Nói Gì Về Chúng Tôi</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <!-- Testimonial 1 -->
+        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="flex items-center mb-6">
+            <div class="bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center mr-5">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-gray-800 mb-1">Anh Minh - Đồng Tháp</h4>
+              <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="text-gray-700 text-lg italic leading-relaxed">
+            "Tôi trồng dưa lưới và đã sử dụng mụn dừa của Hoàng Hiếu được 2 năm. Cây phát triển tốt, quả to và ngọt hơn hẳn. Tư vấn nhiệt tình, giao hàng đúng hẹn!"
+          </p>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="flex items-center mb-6">
+            <div class="bg-yellow-600 text-white w-16 h-16 rounded-full flex items-center justify-center mr-5">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-gray-800 mb-1">Chị Lan - Cần Thơ</h4>
+              <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="text-gray-700 text-lg italic leading-relaxed">
+            "Mụn dừa sạch sẽ, không mùi hôi như những nơi khác. Trồng rau màu cho kết quả vượt mong đợi. Giá cả hợp lý, sẽ tiếp tục ủng hộ Hoàng Hiếu!"
+          </p>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="flex items-center mb-6">
+            <div class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mr-5">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-gray-800 mb-1">Anh Tài - An Giang</h4>
+              <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="text-gray-700 text-lg italic leading-relaxed">
+            "Lần đầu dùng mụn dừa để trồng hoa lan. Kết quả ngoài mong đợi! Hoa nở đều, đẹp hơn. Anh Hiếu tư vấn rất tận tâm và chuyên nghiệp."
+          </p>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="flex items-center mb-6">
+            <div class="bg-emerald-600 text-white w-16 h-16 rounded-full flex items-center justify-center mr-5">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-gray-800 mb-1">Chị Hương - Long An</h4>
+              <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="text-gray-700 text-lg italic leading-relaxed">
+            "Vừa chất lượng vừa giá rẻ. Giao hàng nhanh, đóng gói cẩn thận. Trồng dâu tây cho năng suất cao. Cảm ơn team Hoàng Hiếu rất nhiều!"
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer giống trang chủ -->
+  <footer class="bg-green-800 text-white mt-16">
+    <div class="container mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Thông tin công ty -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-bold text-orange-400 mb-4">MỤN DỪA HOÀNG HIẾU</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            Giải pháp mụn dừa sạch và an toàn<br>cho nông nghiệp hữu cơ và bền vững.
+          </p>
+          <div class="flex items-start space-x-2 text-sm">
+            <svg class="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-gray-300">Ấp Hội An, Xã Đa Phước Hội,<br>Huyện Mỏ Cày Nam, Tỉnh Bến Tre</span>
+          </div>
+          <a href="tel:0984288512" class="flex items-center space-x-2 text-sm text-gray-300 hover:text-orange-400 transition-colors duration-300">
+            <svg class="w-4 h-4 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+            </svg>
+            <span>Hotline: 0984.288.512</span>
+          </a>
+        </div>
+
+        <!-- Sản phẩm chính -->
+        <div class="space-y-4">
+          <h4 class="text-lg font-semibold text-orange-400 mb-4">Sản Phẩm Chính</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/san-pham" class="text-gray-300 hover:text-orange-400 transition-colors duration-300 flex items-center">
+              <span class="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
+              Mụn dừa đã xử lý
+            </a></li>
+            <li><a href="/san-pham" class="text-gray-300 hover:text-orange-400 transition-colors duration-300 flex items-center">
+              <span class="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
+              Vỏ dừa cắt chip
+            </a></li>
+            <li><a href="/san-pham" class="text-gray-300 hover:text-orange-400 transition-colors duration-300 flex items-center">
+              <span class="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
+              Xơ dừa tự nhiên
+            </a></li>
+            <li><a href="/san-pham" class="text-gray-300 hover:text-orange-400 transition-colors duration-300 flex items-center">
+              <span class="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
+              Hỗn hợp theo yêu cầu
+            </a></li>
+          </ul>
+        </div>
+
+        <!-- Liên kết hữu ích -->
+        <div class="space-y-4">
+          <h4 class="text-lg font-semibold text-orange-400 mb-4">Liên Kết</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/" class="text-gray-300 hover:text-orange-400 transition-colors duration-300">Trang Chủ</a></li>
+            <li><a href="/gioi-thieu" class="text-gray-300 hover:text-orange-400 transition-colors duration-300">Giới Thiệu</a></li>
+            <li><a href="/san-pham" class="text-gray-300 hover:text-orange-400 transition-colors duration-300">Sản Phẩm</a></li>
+            <li><a href="/tin-tuc" class="text-gray-300 hover:text-orange-400 transition-colors duration-300">Tin Tức</a></li>
+            <li><a href="/lien-he" class="text-gray-300 hover:text-orange-400 transition-colors duration-300">Liên Hệ</a></li>
+          </ul>
+        </div>
+
+        <!-- Liên hệ & Mạng xã hội -->
+        <div class="space-y-4">
+          <h4 class="text-lg font-semibold text-orange-400 mb-4">Kết Nối</h4>
+          
+          <!-- Thông tin liên hệ nhanh -->
+          <div class="space-y-3 text-sm">
+            <a href="#" onclick="sendEmail()" class="flex items-center space-x-2 text-gray-300 hover:text-orange-400 transition-colors duration-300">
+              <svg class="w-4 h-4 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+              </svg>
+              <span>munduahoanghieu.vn@gmail.com</span>
+            </a>
+            <a href="https://zalo.me/112949426040780264" target="_blank" class="flex items-center space-x-2 text-gray-300 hover:text-orange-400 transition-colors duration-300">
+              <svg class="w-4 h-4 text-orange-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.479 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                <path d="M11.893 0C5.337 0 0 5.337 0 11.893c0 2.096.547 4.142 1.588 5.946L.057 24l6.305-1.654C8.098 23.5 10.059 24 12.05 24c6.556 0 11.892-5.335 11.893-11.892C23.945 5.652 18.708.444 11.893 0z"/>
+              </svg>
+              <span>Zalo OA: Mụn Dừa Hoàng Hiếu</span>
+            </a>
+          </div>
+
+          <!-- Mạng xã hội -->
+          <div class="flex space-x-4 mt-4">
+            <a href="https://www.facebook.com/mun.dua.hoang.hieu" target="_blank" class="bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors duration-300" title="Facebook - Mụn Dừa Hoàng Hiếu">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="https://zalo.me/112949426040780264" target="_blank" class="bg-blue-500 hover:bg-blue-600 p-2 rounded-full transition-colors duration-300" title="Zalo OA - Mụn Dừa Hoàng Hiếu">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.479 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                <path d="M11.893 0C5.337 0 0 5.337 0 11.893c0 2.096.547 4.142 1.588 5.946L.057 24l6.305-1.654C8.098 23.5 10.059 24 12.05 24c6.556 0 11.892-5.335 11.893-11.892C23.945 5.652 18.708.444 11.893 0z"/>
+              </svg>
+            </a>
+            <a href="https://wa.me/84984288512" target="_blank" class="bg-green-600 hover:bg-green-700 p-2 rounded-full transition-colors duration-300" title="WhatsApp">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654C8.115 23.509 10.058 24 12.048 24c6.624 0 11.99-5.334 11.99-11.893C24.043 5.78 21.533 1.738 17.472.382"/>
+              </svg>
+            </a>
+            <a href="https://www.youtube.com/channel/UCyBxXvx4Y8SvFeFFIHQ0xqg" target="_blank" class="bg-red-600 hover:bg-red-700 p-2 rounded-full transition-colors duration-300" title="YouTube - Mụn Dừa Hoàng Hiếu">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Call to Action -->
+          <div class="mt-6 p-3 bg-orange-600 rounded-lg">
+            <p class="text-sm font-medium text-white mb-2">🌱🤝 Tư vấn tận tình 💚</p>
+            <a href="/lien-he" class="text-xs text-orange-100 hover:text-white transition-colors duration-300">
+              Liên hệ ngay để được tư vấn sản phẩm phù hợp →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Đường phân cách -->
+      <div class="border-t border-green-700 mt-8 pt-6">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          
+          <!-- Copyright -->
+          <div class="text-sm text-gray-400 text-center md:text-left">
+            <p>&copy; 2025 Mụn Dừa Hoàng Hiếu. Tất cả quyền được bảo lưu.</p>
+          </div>
+
+          <!-- Cam kết chất lượng -->
+          <div class="flex items-center space-x-4 text-xs text-gray-400">
+            <span class="flex items-center space-x-1">
+              <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Chất lượng đảm bảo</span>
+            </span>
+            <span class="flex items-center space-x-1">
+              <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Giao hàng toàn quốc</span>
+            </span>
+            <span class="flex items-center space-x-1">
+              <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Tư vấn 24/7</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // Search functionality - same as homepage
+  function performSearch() {
+    const searchTerm = document.getElementById('search-input').value.trim();
+    
+    if (searchTerm === '') {
+      showSearchNotification('Vui lòng nhập từ khóa tìm kiếm!');
+      return;
+    }
+    
+    if (searchTerm.length < 2) {
+      showSearchNotification('Vui lòng nhập ít nhất 2 ký tự!');
+      return;
+    }
+
+    // Clear previous highlights
+    clearSearchHighlights();
+
+    // Search and highlight matches
+    const matches = highlightMatches(searchTerm);
+    
+    if (matches > 0) {
+      // Scroll to first match
+      const firstMatch = document.querySelector('.search-highlight');
+      if (firstMatch) {
+        firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      showSearchNotification(`✅ Tìm thấy ${matches} kết quả cho "${searchTerm}"`);
+    } else {
+      showSearchNotification(`❌ Không tìm thấy "${searchTerm}"`);
+    }
+  }
+
+  function highlightMatches(searchTerm) {
+    let matchCount = 0;
+    
+    // Get all text content elements (excluding header, script, style)
+    const elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, span, div, li, a');
+    
+    elements.forEach(element => {
+      // Skip if element has script, style, or is in header
+      if (element.closest('script, style, header')) {
+        return;
+      }
+      
+      const originalHTML = element.innerHTML;
+      const text = element.textContent || element.innerText;
+      
+      if (text.toLowerCase().includes(searchTerm.toLowerCase())) {
+        // Create regex to find all matches
+        const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, 'gi');
+        const newHTML = originalHTML.replace(regex, '<mark class="search-highlight" style="background-color: yellow; padding: 2px 4px; border-radius: 3px; font-weight: bold;">$1</mark>');
+        
+        if (newHTML !== originalHTML) {
+          element.innerHTML = newHTML;
+          const matches = (originalHTML.match(regex) || []).length;
+          matchCount += matches;
+        }
+      }
+    });
+
+    return matchCount;
+  }
+
+  function clearSearchHighlights() {
+    const highlights = document.querySelectorAll('.search-highlight');
+    highlights.forEach(highlight => {
+      const parent = highlight.parentNode;
+      parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+      parent.normalize();
+    });
+    
+    // Also remove any remaining mark tags
+    document.querySelectorAll('mark.search-highlight').forEach(mark => {
+      mark.outerHTML = mark.innerHTML;
+    });
+  }
+
+  function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function handleSearchKeyPress(event) {
+    if (event.key === 'Enter') {
+      performSearch();
+    }
+  }
+
+  function showSearchNotification(message) {
+    // Remove existing notification
+    const existing = document.getElementById('search-notification');
+    if (existing) {
+      existing.remove();
+    }
+
+    // Create notification
+    const notification = document.createElement('div');
+    notification.id = 'search-notification';
+    notification.style.cssText = `
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      background: #16a34a;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 9999;
+      font-weight: 500;
+      max-width: 300px;
+    `;
+    notification.textContent = message;
+
+    document.body.appendChild(notification);
+
+    // Auto remove after 4 seconds
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.style.opacity = '0';
+        notification.style.transition = 'opacity 0.3s';
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.remove();
+          }
+        }, 300);
+      }
+    }, 4000);
+  }
+
+  // Email function
+  function sendEmail() {
+    const subject = encodeURIComponent('Liên hệ tư vấn sản phẩm mụn dừa');
+    const body = encodeURIComponent('Xin chào Mụn Dừa Hoàng Hiếu,\n\nTôi muốn tư vấn về sản phẩm mụn dừa.\n\nVui lòng liên hệ lại với tôi.\n\nCảm ơn!');
+    const mailtoLink = `mailto:munduahoanghieu.vn@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = mailtoLink;
+  }
+</script>
+
+<!-- Load Content Manager -->
+<script src="/js/content-manager.js"></script>
+
+<script>
+  // Load page content from JSON
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const pageContent = await contentManager.getPageContent('about');
+      
+      // Update hero section if data exists
+      if (pageContent.hero) {
+        const heroTitle = document.querySelector('[data-hero-title]');
+        const heroSubtitle = document.querySelector('[data-hero-subtitle]');
+        const heroBadge = document.querySelector('[data-hero-badge]');
+        
+        if (heroTitle && pageContent.hero.title) heroTitle.textContent = pageContent.hero.title;
+        if (heroSubtitle && pageContent.hero.subtitle) heroSubtitle.textContent = pageContent.hero.subtitle;
+        if (heroBadge && pageContent.hero.badge) heroBadge.textContent = pageContent.hero.badge;
+      }
+      
+      console.log('✅ About page content loaded from JSON');
+    } catch (error) {
+      console.error('❌ Error loading about page content:', error);
+    }
+  });
+</script>
+
+</body>
+</html>

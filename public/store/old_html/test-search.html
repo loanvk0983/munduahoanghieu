@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Search</title>
+</head>
+<body>
+  <h1>Test Tìm Kiếm</h1>
+  
+  <div>
+    <input type="text" id="search-input" placeholder="Nhập từ khóa..." style="padding: 8px; width: 300px;">
+    <button onclick="performSearch()" style="padding: 8px 16px; background: green; color: white; border: none; cursor: pointer;">Tìm</button>
+  </div>
+  
+  <div id="results" style="margin-top: 20px; padding: 20px; border: 1px solid #ccc;"></div>
+  
+  <script>
+    // Mock data
+    const mockNewsData = [
+      {
+        id: 1,
+        title: 'Làm thế nào để phân biệt mụn dừa đã xử lý',
+        excerpt: 'Hướng dẫn chi tiết...',
+        content: 'Nội dung về mụn dừa xử lý',
+        cover: '/test.jpg',
+        date: '23/10/2025',
+        views: 0,
+        categoryName: 'Kỹ Thuật',
+        categories: ['techniques']
+      },
+      {
+        id: 2,
+        title: 'Những tác dụng của xơ dừa đối với cây trồng',
+        excerpt: 'Lợi ích của xơ dừa...',
+        content: 'Xơ dừa giúp cây trồng phát triển tốt',
+        cover: '/test.jpg',
+        date: '22/10/2025',
+        views: 0,
+        categoryName: 'Lợi Ích',
+        categories: ['benefits']
+      }
+    ];
+    
+    const tips = [
+      'Mẹo canh tác: Tưới nước đều đặn',
+      'Kỹ thuật bón phân hiệu quả'
+    ];
+    
+    const dailyTips = [
+      'Kiểm tra độ ẩm đất hàng ngày'
+    ];
+  </script>
+  
+  <script src="/js/news-search-simple.js"></script>
+  
+  <script>
+    // Override displaySearchResults for testing
+    function displaySearchResults(searchResults, query) {
+      const resultsDiv = document.getElementById('results');
+      
+      let html = '<h2>Kết quả tìm kiếm: "' + query + '"</h2>';
+      
+      if (searchResults.posts.length > 0) {
+        html += '<h3>Bài viết (' + searchResults.posts.length + ')</h3>';
+        searchResults.posts.forEach(post => {
+          html += '<div style="padding: 10px; margin: 5px 0; background: #f0f0f0;">';
+          html += '<strong>' + post.title + '</strong><br>';
+          html += post.excerpt;
+          html += '</div>';
+        });
+      }
+      
+      if (searchResults.tips.length > 0) {
+        html += '<h3>Mẹo (' + searchResults.tips.length + ')</h3>';
+        searchResults.tips.forEach(tip => {
+          html += '<div style="padding: 10px; margin: 5px 0; background: #fff3cd;">';
+          html += tip;
+          html += '</div>';
+        });
+      }
+      
+      if (searchResults.sections.length > 0) {
+        html += '<h3>Sections (' + searchResults.sections.length + ')</h3>';
+        searchResults.sections.forEach(section => {
+          html += '<div style="padding: 10px; margin: 5px 0; background: #d1ecf1;">';
+          html += section.icon + ' ' + section.title + '<br>';
+          html += '<small>' + section.description + '</small>';
+          html += '</div>';
+        });
+      }
+      
+      if (searchResults.posts.length === 0 && searchResults.tips.length === 0 && searchResults.sections.length === 0) {
+        html += '<p style="color: red;">Không tìm thấy kết quả nào!</p>';
+      }
+      
+      resultsDiv.innerHTML = html;
+    }
+    
+    function handleSearchKeyPress(event) {
+      if (event.key === 'Enter') {
+        performSearch();
+      }
+    }
+    
+    // Auto test on load
+    window.addEventListener('load', () => {
+      console.log('🧪 Testing search...');
+      console.log('mockNewsData:', mockNewsData);
+      console.log('tips:', tips);
+      console.log('typeof performSearch:', typeof performSearch);
+      
+      // Test search
+      document.getElementById('search-input').value = 'mụn dừa';
+      performSearch();
+    });
+  </script>
+</body>
+</html>

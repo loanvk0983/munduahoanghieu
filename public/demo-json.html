@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"      <div class="text-center">
+        <h3 class="text-xl font-bold text-orange-400 mb-2" data-company-name>MỤN DỪA HOÀNG HIẾU</h3>
+        <p class="text-gray-300 mb-4" data-company-tagline>Giá thể sạch - Năng suất vượt trội</p>
+        <a href="tel:0984288512" class="text-gray-300 hover:text-orange-400" data-company-phone>Hotline: 0984.288.512</a>
+      </div>ent="width=device-width, initial-scale=1.0">
+  <title>Demo - JSON Content Management</title>
+  <link href="/styles.css" rel="stylesheet">
+</head>
+<body class="font-sans pt-20 m-10 bg-green-50">
+  
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full h-20 bg-white shadow-md z-10">
+    <nav class="flex items-center px-4 py-2 h-full max-w-[1250px] mx-auto">
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2 mr-10">
+          <div class="h-16 w-16 bg-no-repeat bg-center" style="background-image: url('/assets/image/logo.jpg'); background-size: 180%; background-position: top -16px left -24px;"></div>
+          <div>
+            <div class="text-xl font-bold text-green-700 tracking-wide" data-company-name>MỤN DỪA HOÀNG HIẾU</div>
+            <div class="text-sm text-orange-600 font-medium italic" data-company-tagline>Giá thể sạch - Năng suất vượt trội</div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Demo Content Sections -->
+  <div class="container mx-auto max-w-6xl">
+    
+    <!-- Banner Test -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-green-700 mb-6">🎯 Banner Data Test</h2>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <button onclick="testBanners()" class="bg-green-600 text-white px-4 py-2 rounded-lg mb-4">Load Banners</button>
+        <div id="banner-test-result" class="text-gray-600">Nhấn button để load banner data từ JSON...</div>
+      </div>
+    </section>
+
+    <!-- Products Test -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-green-700 mb-6">🛒 Products Data Test</h2>
+      <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+        <div class="flex gap-4 mb-4">
+          <button onclick="testProducts()" class="bg-green-600 text-white px-4 py-2 rounded-lg">Load All Products</button>
+          <button onclick="testProducts('main')" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Main Products</button>
+          <button onclick="testProducts('secondary')" class="bg-yellow-600 text-white px-4 py-2 rounded-lg">Secondary</button>
+        </div>
+      </div>
+      <div id="products-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Products will be loaded here -->
+      </div>
+    </section>
+
+    <!-- Testimonials Test -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-green-700 mb-6">💬 Testimonials Data Test</h2>
+      <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+        <div class="flex gap-4 mb-4">
+          <button onclick="testTestimonials()" class="bg-green-600 text-white px-4 py-2 rounded-lg">Load All</button>
+          <button onclick="testTestimonials(2)" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Limit 2</button>
+        </div>
+      </div>
+      <div id="testimonials-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Testimonials will be loaded here -->
+      </div>
+    </section>
+
+    <!-- Company Info Test -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-green-700 mb-6">🏢 Company Data Test</h2>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <button onclick="testCompanyInfo()" class="bg-green-600 text-white px-4 py-2 rounded-lg mb-4">Load Company Info</button>
+        <div id="company-test-result" class="text-gray-600">Nhấn button để load thông tin công ty từ JSON...</div>
+      </div>
+    </section>
+
+    <!-- Page Content Test -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-green-700 mb-6">📄 Page Content Test</h2>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex gap-4 mb-4">
+          <button onclick="testPageContent('homepage')" class="bg-green-600 text-white px-4 py-2 rounded-lg">Homepage</button>
+          <button onclick="testPageContent('about')" class="bg-blue-600 text-white px-4 py-2 rounded-lg">About</button>
+        </div>
+        <div id="page-test-result" class="text-gray-600">Nhấn button để load nội dung trang từ JSON...</div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer with dynamic data -->
+  <footer class="bg-green-800 text-white mt-16">
+    <div class="container mx-auto px-4 py-8">
+      <div class="text-center">
+        <h3 class="text-xl font-bold text-orange-400 mb-2" data-company-name>MỤN DỪA HOÀNG HIẾU</h3>
+        <p class="text-gray-300 mb-4" data-company-tagline">Giá thể sạch - Năng suất vượt trội</p>
+        <a href="tel:0984288512" class="text-gray-300 hover:text-orange-400" data-company-phone>Hotline: 0984288512</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Load content manager -->
+  <script src="/js/content-manager.js"></script>
+  
+  <!-- Test functions -->
+  <script>
+    // Test banner loading
+    async function testBanners() {
+      try {
+        const banners = await contentManager.getBanners();
+        document.getElementById('banner-test-result').innerHTML = `
+          <h4 class="font-bold mb-2">✅ Loaded ${banners.length} banners:</h4>
+          <div class="space-y-2">
+            ${banners.map(banner => `
+              <div class="bg-gray-100 p-3 rounded">
+                <strong>${banner.title}</strong><br>
+                <span class="text-gray-600">${banner.subtitle}</span><br>
+                <span class="text-sm text-blue-600">${banner.image}</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      } catch (error) {
+        document.getElementById('banner-test-result').innerHTML = `❌ Error: ${error.message}`;
+      }
+    }
+
+    // Test products loading
+    async function testProducts(category = null) {
+      try {
+        await contentManager.renderProducts('products-container', category);
+        console.log(`✅ Products loaded${category ? ` (category: ${category})` : ''}`);
+      } catch (error) {
+        console.error('❌ Products error:', error);
+      }
+    }
+
+    // Test testimonials loading  
+    async function testTestimonials(limit = null) {
+      try {
+        await contentManager.renderTestimonials('testimonials-container', limit);
+        console.log(`✅ Testimonials loaded${limit ? ` (limit: ${limit})` : ''}`);
+      } catch (error) {
+        console.error('❌ Testimonials error:', error);
+      }
+    }
+
+    // Test company info loading
+    async function testCompanyInfo() {
+      try {
+        const company = await contentManager.getCompanyInfo();
+        document.getElementById('company-test-result').innerHTML = `
+          <h4 class="font-bold mb-2">✅ Company Info:</h4>
+          <div class="bg-gray-100 p-4 rounded space-y-2">
+            <p><strong>Tên:</strong> ${company.name}</p>
+            <p><strong>Slogan:</strong> ${company.tagline}</p>
+            <p><strong>Địa chỉ:</strong> ${company.address?.full}</p>
+            <p><strong>Điện thoại:</strong> ${company.contact?.phone}</p>
+            <p><strong>Email:</strong> ${company.contact?.email}</p>
+            <p><strong>Thành lập:</strong> ${company.founded}</p>
+            <p><strong>Chuyên môn:</strong></p>
+            <ul class="list-disc list-inside ml-4">
+              ${company.specialties?.map(specialty => `<li>${specialty}</li>`).join('') || ''}
+            </ul>
+          </div>
+        `;
+      } catch (error) {
+        document.getElementById('company-test-result').innerHTML = `❌ Error: ${error.message}`;
+      }
+    }
+
+    // Test page content loading
+    async function testPageContent(page) {
+      try {
+        const content = await contentManager.getPageContent(page);
+        document.getElementById('page-test-result').innerHTML = `
+          <h4 class="font-bold mb-2">✅ ${page.toUpperCase()} Content:</h4>
+          <div class="bg-gray-100 p-4 rounded">
+            <pre class="whitespace-pre-wrap text-sm">${JSON.stringify(content, null, 2)}</pre>
+          </div>
+        `;
+      } catch (error) {
+        document.getElementById('page-test-result').innerHTML = `❌ Error: ${error.message}`;
+      }
+    }
+  </script>
+
+</body>
+</html>

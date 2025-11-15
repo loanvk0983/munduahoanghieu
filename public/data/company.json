@@ -1,0 +1,49 @@
+{
+  "company": {
+    "name": "MỤN DỪA HOÀNG HIẾU",
+    "tagline": "Giá thể sạch - Năng suất vượt trội",
+    "description": "Giải pháp mụn dừa sạch và an toàn cho nông nghiệp hữu cơ và bền vững.",
+    "address": {
+      "full": "Ấp Hội An, Xã Đa Phước Hội, Huyện Mỏ Cày Nam, Tỉnh Bến Tre",
+      "district": "Mỏ Cày Nam",
+      "province": "Bến Tre",
+      "coordinates": {
+        "lat": 10.1217194,
+        "lng": 106.3192571,
+        "formatted": "10°07'18.2\"N 106°19'09.3\"E"
+      },
+      "maps_url": "https://www.google.com/maps/place/10%C2%B007'18.2%22N+106%C2%B019'09.3%22E/@10.1217194,106.3166822,17z/data=!3m1!4b1!4m4!3m3!8m2!3d10.1217194!4d106.3192571"
+    },
+    "contact": {
+      "phone": "0984288512",
+      "email": "munduahoanghieu.vn@gmail.com",
+      "hotline": "0984288512"
+    },
+    "social_media": {
+      "facebook": {
+        "url": "https://www.facebook.com/mun.dua.hoang.hieu",
+        "name": "Mụn Dừa Hoàng Hiếu"
+      },
+      "zalo": {
+        "url": "https://zalo.me/112949426040780264",
+        "name": "Zalo OA: Mụn Dừa Hoàng Hiếu"
+      },
+      "whatsapp": {
+        "url": "https://wa.me/84984288512",
+        "name": "WhatsApp"
+      },
+      "youtube": {
+        "url": "https://www.youtube.com/channel/UCyBxXvx4Y8SvFeFFIHQ0xqg",
+        "name": "YouTube - Mụn Dừa Hoàng Hiếu"
+      }
+    },
+    "business_hours": "Thứ 2 - Chủ nhật: 6:00 - 18:00",
+    "founded": "2020",
+    "specialties": [
+      "Mụn dừa xử lý chất lượng cao",
+      "Tư vấn giải pháp trồng trọt",
+      "Giao hàng toàn quốc",
+      "Hỗ trợ kỹ thuật 24/7"
+    ]
+  }
+}

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Video - Mụn Dừa Hoàng Hiếu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .video-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide-content {
+            text-align: center;
+            z-index: 10;
+            padding: 20px;
+            max-width: 900px;
+        }
+        
+        .slide-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            color: #16A34A;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            color: #6B7280;
+        }
+        
+        .slide-text {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin: 15px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.5);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #16A34A;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            line-height: 50px;
+            margin-right: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+            z-index: 5;
+        }
+        
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .control-btn {
+            padding: 10px 20px;
+            background: #16A34A;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .control-btn:hover {
+            background: #15803d;
+            transform: translateY(-2px);
+        }
+        
+        .slide-indicator {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.7);
+            padding: 10px 15px;
+            border-radius: 20px;
+            z-index: 20;
+        }
+        
+        .timeline {
+            position: fixed;
+            bottom: 100px;
+            left: 50px;
+            right: 50px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            z-index: 20;
+        }
+        
+        .timeline-progress {
+            height: 100%;
+            background: #16A34A;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        
+        /* Hiệu ứng đặc biệt */
+        .glow-effect {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #16A34A; }
+            to { text-shadow: 0 0 30px #16A34A, 0 0 40px #16A34A; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Mở đầu -->
+    <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('assets/image/gallery/process/2-Nguyen lieu.jpg');">
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h1 class="slide-title glow-effect">🌴 Mụn Dừa Hoàng Hiếu</h1>
+            <p class="slide-subtitle fade-in">Giá thể sạch – Năng suất vượt trội</p>
+        </div>
+    </div>
+    
+    <!-- Slide 2: Thu gom nguyên liệu -->
+    <div class="slide" style="background-image: url('assets/image/gallery/process/1-Vo dua.jpg');">
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2 class="slide-text slide-up"><span class="step-number">1</span>Thu gom vỏ dừa từ vùng nguyên liệu Bến Tre</h2>
+            <p class="slide-text slide-up">Chọn vỏ già, dày, không mốc để đảm bảo chất lượng</p>
+        </div>
+    </div>
+    
+    <!-- Slide 3: Tách xơ nghiền mụn -->
+    <div class="slide" style="background-image: url('assets/image/gallery/process/2-Nguyen lieu.jpg');">
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2 class="slide-text slide-up"><span class="step-number">2</span>Vỏ dừa được tách xơ, nghiền nhỏ bằng máy chuyên dụng</h2>
+            <p class="slide-text slide-up">Tạo ra mụn dừa thô tơi xốp và đồng đều</p>
+        </div>
+    </div>
+    
+    <!-- Slide 4: Rửa loại bỏ Tanin -->
+    <div class="slide" style="background-image: url('assets/image/gallery/process/3-Xa chat.jpg');">
+        <div class="overlay" style="background: linear-gradient(rgba(0,100,200,0.2), rgba(0,0,0,0.6));"></div>
+        <div class="slide-content">
+            <h2 class="slide-text slide-up"><span class="step-number">3</span>Rửa nhiều lần bằng nước sạch để loại bỏ Tanin và muối mặn</h2>
+            <p class="slide-text slide-up">Giảm EC, ổn định pH – an toàn cho cây trồng</p>
+        </div>
+    </div>
+    
+    <!-- Slide 5: Ủ sinh học phơi khô -->
+    <div class="slide" style="background-image: url('assets/image/gallery/process/4-Phoi kho tu nhien.jpg');">
+        <div class="overlay" style="background: linear-gradient(rgba(255,200,0,0.2), rgba(0,0,0,0.5));"></div>
+        <div class="slide-content">
+            <h2 class="slide-text slide-up"><span class="step-number">4</span>Ủ sinh học tự nhiên 30–45 ngày</h2>
+            <p class="slide-text slide-up">Phơi nắng để giữ màu nâu đỏ tự nhiên và độ tơi xốp</p>
+        </div>
+    </div>
+    
+    <!-- Slide 6: Kiểm định chất lượng -->
+    <div class="slide" style="background-image: url('assets/image/gallery/process/5-Kiem dinh chat luong.jpg');">
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2 class="slide-text slide-up"><span class="step-number">5</span>Mọi lô hàng được đo EC, pH nghiêm ngặt</h2>
+            <p class="slide-text slide-up">Chỉ sản phẩm đạt <strong style="color: #16A34A;">EC < 0.5</strong> mới được đóng gói</p>
+        </div>
+    </div>
+    
+    <!-- Slide 7: Đóng bao lưu kho -->
+    <div class="slide" style="background-image: url('assets/image/gallery/process/6-Luu kho..jpg');">
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2 class="slide-text slide-up"><span class="step-number">6</span>Mụn dừa được đóng bao bền chắc</h2>
+            <p class="slide-text slide-up">Bảo quản khô ráo – sẵn sàng giao hàng</p>
+        </div>
+    </div>
+    
+    <!-- Slide 8: Vận chuyển giao hàng -->
+    <div class="slide" style="background-image: url('assets/image/gallery/process/7- Van chuyen.jpg');">
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2 class="slide-text slide-up"><span class="step-number">7</span>🚛 Giao hàng toàn quốc</h2>
+            <p class="slide-text slide-up">Nhanh chóng – đúng hẹn – đảm bảo chất lượng</p>
+        </div>
+    </div>
+    
+    <!-- Slide 9: Ứng dụng thực tế -->
+    <div class="slide" style="background-image: linear-gradient(rgba(0,150,0,0.2), rgba(0,0,0,0.5)), url('assets/image/gallery/process/9-Uon cay giong.jpg');">
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2 class="slide-text slide-up"><span class="step-number">8</span>🌱 Ứng dụng rộng rãi trong nhà vườn và nông trại</h2>
+            <p class="slide-text slide-up">Cây bén rễ nhanh, giữ ẩm tốt, phát triển bền vững</p>
+        </div>
+    </div>
+    
+    <!-- Slide 10: Kết thúc -->
+    <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('assets/image/gallery/process/11-Mam xanh.jpg');">
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h1 class="slide-title glow-effect">🌴 Mụn Dừa Hoàng Hiếu</h1>
+            <p class="slide-subtitle">Giá thể sạch – Năng suất vượt trội</p>
+            <div class="slide-text" style="margin-top: 30px;">
+                <p>📞 0984.288.512</p>
+                <p>📧 munduahoanghieu@gmail.com</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Controls -->
+    <div class="controls">
+        <button class="control-btn" onclick="prevSlide()">◀ Trước</button>
+        <button class="control-btn" onclick="playPause()" id="playBtn">▶ Play</button>
+        <button class="control-btn" onclick="nextSlide()">Sau ▶</button>
+    </div>
+    
+    <!-- Slide indicator -->
+    <div class="slide-indicator">
+        <span id="current-slide">1</span> / <span id="total-slides">10</span>
+        <div style="margin-top: 5px; font-size: 12px;" id="timing">0:00 - 0:06</div>
+    </div>
+    
+    <!-- Timeline -->
+    <div class="timeline">
+        <div class="timeline-progress" id="progress"></div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let currentSlide = 0;
+        let isPlaying = false;
+        let playInterval;
+        
+        const slideTiming = [
+            {start: 0, end: 6},    // Mở đầu
+            {start: 6, end: 16},   // Thu gom
+            {start: 16, end: 26},  // Tách xơ
+            {start: 26, end: 36},  // Rửa
+            {start: 36, end: 48},  // Phơi khô
+            {start: 48, end: 56},  // Kiểm định
+            {start: 56, end: 66},  // Đóng bao
+            {start: 66, end: 76},  // Vận chuyển
+            {start: 76, end: 90},  // Ứng dụng
+            {start: 90, end: 100}  // Kết thúc
+        ];
+        
+        function showSlide(n) {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === n) {
+                    slide.classList.add('active');
+                }
+            });
+            
+            document.getElementById('current-slide').textContent = n + 1;
+            
+            const timing = slideTiming[n];
+            const minutes = Math.floor(timing.start / 60);
+            const seconds = timing.start % 60;
+            const endMinutes = Math.floor(timing.end / 60);
+            const endSeconds = timing.end % 60;
+            
+            document.getElementById('timing').textContent = 
+                `${minutes}:${seconds.toString().padStart(2, '0')} - ${endMinutes}:${endSeconds.toString().padStart(2, '0')}`;
+                
+            // Update progress
+            const progress = ((n + 1) / totalSlides) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+        
+        function playPause() {
+            const btn = document.getElementById('playBtn');
+            if (isPlaying) {
+                clearInterval(playInterval);
+                btn.textContent = '▶ Play';
+                isPlaying = false;
+            } else {
+                playInterval = setInterval(() => {
+                    nextSlide();
+                    if (currentSlide === 0) { // Đã về slide đầu
+                        clearInterval(playInterval);
+                        btn.textContent = '▶ Play';
+                        isPlaying = false;
+                    }
+                }, 3000); // 3 giây mỗi slide để demo
+                btn.textContent = '⏸ Pause';
+                isPlaying = true;
+            }
+        }
+        
+        // Initialize
+        document.getElementById('total-slides').textContent = totalSlides;
+        showSlide(0);
+        
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowRight':
+                    nextSlide();
+                    break;
+                case 'ArrowLeft':
+                    prevSlide();
+                    break;
+                case ' ':
+                    e.preventDefault();
+                    playPause();
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

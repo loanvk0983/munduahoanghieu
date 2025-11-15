@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng Dẫn Cập Nhật Nội Dung - Mụn Dừa Hoàng Hiếu</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="font-sans pt-20 m-10">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full h-20 bg-green-50 shadow-md z-50">
+        <div class="container mx-auto h-full flex items-center justify-between px-4">
+            <div class="flex items-center">
+                <div class="w-20 h-16 bg-cover bg-center" 
+                     style="background-image: url('assets/image/logo.jpg'); background-position: top -16px left -24px;">
+                </div>
+                <h1 class="ml-4 text-2xl font-bold text-green-700">Hướng Dẫn Cập Nhật Nội Dung</h1>
+            </div>
+            <nav>
+                <a href="index.html" class="text-green-700 hover:text-orange-600 mx-3">Trang chủ</a>
+                <a href="demo-markdown-update.html" class="text-green-700 hover:text-orange-600 mx-3">Demo</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto">
+        <!-- System Status -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-3xl font-bold text-green-700 mb-6 text-center">Trạng Thái Hệ Thống</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <h3 class="font-semibold text-blue-800 mb-2">📊 Trạng Thái</h3>
+                    <div id="system-status" class="text-blue-700">Đang kiểm tra...</div>
+                </div>
+                
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <h3 class="font-semibold text-green-800 mb-2">⏰ Cập Nhật Cuối</h3>
+                    <div id="last-update" class="text-green-700">Chưa có</div>
+                </div>
+                
+                <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                    <h3 class="font-semibold text-orange-800 mb-2">🔄 Auto-Refresh</h3>
+                    <div class="text-orange-700">
+                        <span id="auto-refresh-status">Bật (30s)</span>
+                        <button onclick="toggleAutoRefresh()" class="ml-2 px-2 py-1 bg-orange-600 text-white text-xs rounded">
+                            Bật/Tắt
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2 mb-4">
+                <button onclick="manualRefresh()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                    🔄 Cập Nhật Ngay
+                </button>
+                <button onclick="checkStatus()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                    📊 Kiểm Tra Trạng Thái
+                </button>
+                <button onclick="testFallback()" class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700">
+                    🧪 Test Fallback
+                </button>
+            </div>
+        </div>
+
+        <!-- Hướng Dẫn -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold text-green-700 mb-6">📚 Hướng Dẫn Cập Nhật Nội Dung</h2>
+            
+            <!-- Bước 1 -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-orange-600 mb-4">1️⃣ Cách Cập Nhật Thông Tin Liên Hệ</h3>
+                
+                <div class="bg-gray-50 border-l-4 border-orange-500 p-4 mb-4">
+                    <p class="font-semibold mb-2">📂 File cần chỉnh sửa:</p>
+                    <code class="bg-gray-200 px-2 py-1 rounded">content/pages/trang-chu.md</code>
+                </div>
+                
+                <div class="space-y-3">
+                    <div>
+                        <strong>Số điện thoại:</strong>
+                        <div class="bg-gray-100 p-3 rounded mt-1">
+                            <code>📞 **Hotline**: 0984.288.512</code>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <strong>Email:</strong>
+                        <div class="bg-gray-100 p-3 rounded mt-1">
+                            <code>📧 **Email**: munduahoanghieu.vn@gmail.com</code>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <strong>Địa chỉ:</strong>
+                        <div class="bg-gray-100 p-3 rounded mt-1">
+                            <code>📍 **Địa chỉ**: Ấp Hội An, Xã Đa Phước Hội, Huyện Mỏ Cày Nam, Tỉnh Bến Tre</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bước 2 -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-orange-600 mb-4">2️⃣ Sau Khi Chỉnh Sửa</h3>
+                
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm">1</span>
+                        <span>Lưu file markdown</span>
+                    </div>
+                    
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm">2</span>
+                        <span>Click nút <strong>"🔄 Cập Nhật Ngay"</strong> ở trên</span>
+                    </div>
+                    
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm">3</span>
+                        <span>Kiểm tra footer website đã cập nhật</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bước 3 -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-orange-600 mb-4">3️⃣ Hệ Thống Tự Động</h3>
+                
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <ul class="space-y-2 text-blue-800">
+                        <li>✅ <strong>Auto-refresh mỗi 30 giây</strong> - Website tự động kiểm tra và cập nhật</li>
+                        <li>✅ <strong>Fallback system</strong> - Nếu markdown lỗi → dùng JSON → dùng data mặc định</li>
+                        <li>✅ <strong>Không bao giờ mất nội dung</strong> - Luôn có backup data</li>
+                        <li>✅ <strong>Error handling</strong> - Xử lý lỗi tự động</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Các File Khác -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold text-green-700 mb-6">📁 Các File Nội Dung Khác</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-semibold text-orange-600 mb-2">Sản Phẩm</h4>
+                    <code class="text-sm bg-gray-100 p-2 rounded block mb-2">content/data/san-pham.md</code>
+                    <p class="text-sm text-gray-600">Danh sách sản phẩm, giá cả, mô tả</p>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-semibold text-orange-600 mb-2">Đánh Giá Khách Hàng</h4>
+                    <code class="text-sm bg-gray-100 p-2 rounded block mb-2">content/data/chung-thuc-khach-hang.md</code>
+                    <p class="text-sm text-gray-600">Testimonials, reviews từ khách hàng</p>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-semibold text-orange-600 mb-2">Quy Trình Sản Xuất</h4>
+                    <code class="text-sm bg-gray-100 p-2 rounded block mb-2">content/data/quy-trinh-cong-nghe.md</code>
+                    <p class="text-sm text-gray-600">Các bước sản xuất, công nghệ</p>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-semibold text-orange-600 mb-2">Hướng Dẫn Sử Dụng</h4>
+                    <code class="text-sm bg-gray-100 p-2 rounded block mb-2">content/data/huong-dan-su-dung.md</code>
+                    <p class="text-sm text-gray-600">Cách sử dụng sản phẩm</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logs -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-green-700 mb-6">📋 Logs Hoạt Động</h2>
+            <div id="activity-logs" class="space-y-2 max-h-64 overflow-y-auto bg-gray-50 p-4 rounded">
+                <!-- Logs will appear here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer hiện tại -->
+    <footer class="bg-green-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center space-y-4">
+                <h3 class="text-xl font-bold text-orange-400">MỤN DỪA HOÀNG HIẾU</h3>
+                <div class="space-y-2 text-sm">
+                    <div>📞 Hotline: <span data-contact="phone" class="text-orange-300">Đang tải...</span></div>
+                    <div>📧 Email: <span data-contact="email" class="text-orange-300">Đang tải...</span></div>
+                    <div>📍 <span data-contact="address" class="text-orange-300">Đang tải...</span></div>
+                </div>
+                <div class="text-xs text-gray-400">
+                    Footer này cập nhật từ: <span id="footer-source">markdown</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/markdown-parser.js"></script>
+    <script src="js/content-manager.js"></script>
+    <script src="js/markdown-content-loader.js"></script>
+    <script src="js/safe-content-manager.js"></script>
+    
+    <script>
+        let safeManager;
+        let autoRefreshInterval;
+        let autoRefreshEnabled = true;
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            safeManager = new SafeContentManager();
+            initializeSystem();
+        });
+
+        async function initializeSystem() {
+            try {
+                // Initial content load
+                await safeManager.updateFooterSafely();
+                updateStatusDisplay();
+                
+                // Start auto-refresh
+                startAutoRefresh();
+                
+                // Listen for content updates
+                window.addEventListener('contentUpdate', handleContentUpdate);
+                
+                logActivity('✅ System initialized successfully');
+            } catch (error) {
+                logActivity(`❌ System initialization failed: ${error.message}`);
+            }
+        }
+
+        async function manualRefresh() {
+            logActivity('🔄 Manual refresh triggered...');
+            try {
+                await safeManager.forceRefresh();
+                updateStatusDisplay();
+                logActivity('✅ Manual refresh completed');
+            } catch (error) {
+                logActivity(`❌ Manual refresh failed: ${error.message}`);
+            }
+        }
+
+        async function checkStatus() {
+            const status = safeManager.getUpdateStatus();
+            updateStatusDisplay();
+            logActivity(`📊 Status check: ${status.message}`);
+        }
+
+        async function testFallback() {
+            logActivity('🧪 Testing fallback system...');
+            
+            // Simulate markdown failure by clearing cache and causing errors
+            safeManager.clearCache();
+            safeManager.cache.clear();
+            
+            // Try to load with broken markdown
+            try {
+                await safeManager.safeLoadContent('contact');
+                logActivity('✅ Fallback system working correctly');
+            } catch (error) {
+                logActivity(`❌ Fallback test failed: ${error.message}`);
+            }
+        }
+
+        function startAutoRefresh() {
+            if (autoRefreshInterval) clearInterval(autoRefreshInterval);
+            
+            autoRefreshInterval = setInterval(async () => {
+                if (autoRefreshEnabled) {
+                    await safeManager.updateFooterSafely();
+                    updateStatusDisplay();
+                    logActivity('🔄 Auto-refresh completed');
+                }
+            }, 30000); // 30 seconds
+            
+            logActivity('⚡ Auto-refresh started (30s interval)');
+        }
+
+        function toggleAutoRefresh() {
+            autoRefreshEnabled = !autoRefreshEnabled;
+            const status = document.getElementById('auto-refresh-status');
+            
+            if (autoRefreshEnabled) {
+                status.textContent = 'Bật (30s)';
+                logActivity('▶️ Auto-refresh enabled');
+            } else {
+                status.textContent = 'Tắt';
+                logActivity('⏸️ Auto-refresh disabled');
+            }
+        }
+
+        function updateStatusDisplay() {
+            const status = safeManager.getUpdateStatus();
+            
+            document.getElementById('system-status').textContent = status.message;
+            document.getElementById('last-update').textContent = status.lastUpdate ? 
+                status.lastUpdate.toLocaleTimeString() : 'Chưa có';
+            
+            // Update footer source indicator
+            const footerSource = document.getElementById('footer-source');
+            switch (status.status) {
+                case 'success':
+                    footerSource.textContent = 'markdown ✅';
+                    footerSource.className = 'text-green-400';
+                    break;
+                case 'json-fallback':
+                    footerSource.textContent = 'JSON (fallback) ⚠️';
+                    footerSource.className = 'text-yellow-400';
+                    break;
+                case 'hardcoded-fallback':
+                    footerSource.textContent = 'hardcoded (fallback) 🆘';
+                    footerSource.className = 'text-red-400';
+                    break;
+                default:
+                    footerSource.textContent = 'unknown';
+                    footerSource.className = 'text-gray-400';
+            }
+        }
+
+        function handleContentUpdate(event) {
+            const { message, timestamp, status } = event.detail;
+            updateStatusDisplay();
+        }
+
+        function logActivity(message) {
+            const logs = document.getElementById('activity-logs');
+            const logEntry = document.createElement('div');
+            
+            logEntry.className = 'text-sm p-2 bg-white rounded border-l-4 border-blue-500';
+            logEntry.innerHTML = `
+                <span class="text-gray-500 text-xs">${new Date().toLocaleTimeString()}</span>
+                <span class="ml-2">${message}</span>
+            `;
+            
+            logs.insertBefore(logEntry, logs.firstChild);
+            
+            // Keep only last 20 logs
+            while (logs.children.length > 20) {
+                logs.removeChild(logs.lastChild);
+            }
+            
+            console.log(`[ContentManager] ${message}`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1176 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Trang chủ - Mụn Dừa Hoàng Hiếu{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+	<style>
+		/* WHY-BOX Icon Section Styles Override */
+		.why-item .icon-wrapper {
+			width: 110px !important;
+			height: 110px !important;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			opacity: 1 !important;
+			box-shadow: 0 0 12px rgba(0,0,0,0.08);
+			margin: 0 auto !important;
+		}
+		
+		.why-item .icon-wrapper i,
+		.why-item .icon-wrapper span {
+			font-size: 40px !important;
+		}
+		
+		.why-item:hover {
+			border: 2px solid #0FA958 !important;
+			transform: translateY(-4px);
+			transition: all 0.25s ease;
+		}
+		
+		.why-item {
+			text-align: center;
+		}
+		
+		/* Mobile Layout Optimization */
+		
+		/* Banner Section - Mobile Optimized */
+		.banner-content {
+			padding: 1.5rem 0.75rem;
+			max-width: 100%;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			color: white;
+		}
+		
+		.banner-title {
+			font-size: clamp(0.5rem, 3.5vw, 3.75rem) !important;
+			font-weight: 700 !important;
+			letter-spacing: -0.07em !important;
+
+1 !important;
+			text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+			text-align: center;
+			margin-bottom: clamp(0.5rem, 2vw, 1rem) !important;
+			white-space: nowrap !important;
+			overflow: visible !important;
+			max-width: 100% !important;
+			display: inline-block !important;
+		}
+		
+		/* Force single line on all mobile screens */
+		@media (max-width: 768px) {
+			.banner-title {
+				font-size: clamp(0.48rem, 3.3vw, 2.5rem) !important;
+				letter-spacing: -0.07em !important;
+			}
+		}
+		
+		/* Standard mobile phones (iPhone SE, Samsung A series) */
+		@media (max-width: 400px) {
+			.banner-title {
+				font-size: clamp(0.45rem, 3.1vw, 1.8rem) !important;
+				letter-spacing: -0.08em !important;
+			}
+		}
+		
+		/* Very small screens */
+		@media (max-width: 360px) {
+			.banner-title {
+				font-size: clamp(0.43rem, 3vw, 1.5rem) !important;
+				letter-spacing: -0.09em !important;
+			}
+		}
+		
+		/* Ultra small screens */
+		@media (max-width: 340px) {
+			.banner-title {
+				font-size: clamp(0.4rem, 2.8vw, 1.3rem) !important;
+				letter-spacing: -0.1em !important;
+			}
+		}
+		
+		.banner-subtitle {
+			font-size: clamp(0.4rem, 2.8vw, 1.5rem) !important;
+			line-height: 1.3 !important;
+			text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+			letter-spacing: -0.03em !important;
+			text-align: center;
+			margin-bottom: clamp(0.75rem, 2.5vw, 1.25rem) !important;
+			white-space: nowrap !important;
+			font-weight: 500 !important;
+			max-width: 100% !important;
+			display: inline-block !important;
+		}
+		
+		/* Mobile subtitle - single line enforced */
+		@media (max-width: 768px) {
+			.banner-subtitle {
+				font-size: clamp(0.38rem, 2.5vw, 1.2rem) !important;
+				letter-spacing: -0.03em !important;
+			}
+		}
+		
+		   @media (max-width: 400px) {
+			   .banner-subtitle {
+				   font-size: clamp(0.36rem, 2.3vw, 1rem) !important;
+			   }
+		   }
+			}
+		}
+		
+		   @media (max-width: 360px) {
+			   .banner-subtitle {
+				   font-size: clamp(0.34rem, 2.2vw, 0.9rem) !important;
+			   }
+		   }
+		
+		/* Main Section Title - "MỤN DỪA HOÀNG HIẾU" */
+		.main-title {
+			display: block;
+			font-size: clamp(1.25rem, 4.5vw, 1.875rem);
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			line-height: 1.25;
+			text-align: center;
+		}
+		
+		/* On very small screens, allow title to wrap naturally */
+		@media (max-width: 360px) {
+			.main-title {
+				font-size: 1.125rem;
+			}
+		}
+		
+		/* On medium mobile, keep on one line */
+		@media (min-width: 361px) {
+			.main-title {
+				white-space: nowrap;
+			}
+		}
+		
+		/* Company Mission - Balanced two-line layout */
+		.company-mission {
+			max-width: 260px;
+			margin: 0.75rem auto 0;
+			font-size: clamp(0.95rem, 3.5vw, 1.25rem);
+			line-height: 1.4;
+			text-align: center;
+		}
+		
+		@media (max-width: 360px) {
+			.company-mission {
+				max-width: 220px;
+				font-size: 0.875rem;
+			}
+		}
+		
+		/* Section Spacing - Consistent padding */
+		section {
+			padding-top: 1.5rem;
+			padding-bottom: 1.5rem;
+		}
+		
+		@media (min-width: 768px) {
+			section {
+				padding-top: 2rem;
+				padding-bottom: 2rem;
+			}
+			
+			.banner-content {
+				padding: 2rem;
+			}
+			
+			.company-mission {
+				max-width: none;
+			}
+		}
+		
+		/* Enhanced Hover Effects from Products Page */
+		.hover-card {
+			transition: all 0.3s ease-in-out !important;
+			transform: translateY(0) !important;
+			border: 2px solid transparent;
+		}
+		.hover-card:hover {
+			transform: translateY(-8px) scale(1.02) !important;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+			border-color: rgba(34, 197, 94, 0.3) !important;
+		}
+		
+		/* Image hover effects */
+		.hover-image {
+			transition: transform 0.3s ease-in-out !important;
+			transform: scale(1) !important;
+		}
+		.hover-image:hover {
+			transform: scale(1.08) !important;
+		}
+		
+		/* Gallery item enhanced hover */
+		.gallery-item {
+			transition: all 0.3s ease-in-out !important;
+			transform: translateY(0) !important;
+		}
+		.gallery-item:hover {
+			transform: translateY(-4px) scale(1.02) !important;
+			box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1) !important;
+		}
+		
+		/* Button hover effects */
+		.btn-hover {
+			transition: all 0.3s ease-in-out;
+		}
+		.btn-hover:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		}
+		
+		/* Banner overlay enhancement */
+		.banner-overlay {
+			background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.5));
+			/* backdrop-filter removed for Safari compatibility */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 1rem 0.5rem;
+		}
+		
+		/* CTA Button responsive sizing */
+		.cta-orange,
+		.cta-green {
+			padding: clamp(0.3rem, 0.8vw, 0.875rem) clamp(0.4rem, 1.5vw, 2rem) !important;
+			font-size: clamp(0.35rem, 1.2vw, 1.125rem) !important;
+			font-weight: 600 !important;
+			border-radius: 0.5rem;
+			display: inline-block !important;
+			white-space: nowrap !important;
+			margin-top: 0.5rem;
+			min-width: auto !important;
+			max-width: 98% !important;
+			text-align: center;
+			line-height: 1.2 !important;
+			letter-spacing: -0.04em !important;
+		}
+		
+		/* Specific mobile adjustments */
+		@media (max-width: 768px) {
+			.cta-orange,
+			.cta-green {
+				font-size: 1.15rem !important;
+				padding: 0.38rem 1.1rem !important;
+				letter-spacing: -0.04em !important;
+			}
+		}
+        
+		@media (max-width: 400px) {
+			.cta-orange,
+			.cta-green {
+				font-size: 1.05rem !important;
+				padding: 0.32rem 0.7rem !important;
+				letter-spacing: -0.05em !important;
+			}
+		}
+        
+		@media (max-width: 360px) {
+			.cta-orange,
+			.cta-green {
+				font-size: 0.95rem !important;
+				padding: 0.28rem 0.55rem !important;
+				letter-spacing: -0.06em !important;
+			}
+		}
+        
+		@media (max-width: 340px) {
+			.cta-orange,
+			.cta-green {
+				font-size: 0.9rem !important;
+				padding: 0.25rem 0.35rem !important;
+				letter-spacing: -0.07em !important;
+			}
+		}
+		
+		/* Orange CTA button hover animation */
+		.cta-orange {
+			background: #E65100;
+			transition: all 0.3s ease-in-out;
+		}
+		.cta-orange:hover {
+			background: #D84315;
+			transform: scale(1.05);
+			box-shadow: 0 8px 20px rgba(232, 81, 0, 0.4);
+		}
+		
+		/* Green CTA button */
+		.cta-green {
+			background: #2563eb !important;
+			border: none !important;
+			color: #fff !important;
+			transition: all 0.25s;
+		}
+		.cta-green:hover {
+			background: #1d4ed8 !important;
+			color: #fff !important;
+			box-shadow: 0 8px 20px rgba(37,99,235,0.18) !important;
+		}
+		
+		/* Tăng kích thước vòng tròn */
+		.why-item .icon-wrapper,
+		.why-box .why-item .icon-wrapper {
+			width: 120px !important;
+			height: 120px !important;
+			border-radius: 50% !important;
+			display: flex !important;
+			justify-content: center !important;
+			align-items: center !important;
+		}
+		
+		/* Tăng kích thước icon bên trong (icon là font system) */
+		.why-item .icon-wrapper i,
+		.why-item .icon-wrapper span,
+		.why-box .why-item .icon-wrapper i,
+		.why-box .why-item .icon-wrapper span {
+			font-size: 48px !important;  /* tăng 20–30% */
+			line-height: 1 !important;
+		}
+		
+		/* Hiệu ứng hover: viền xanh lá đậm + nâng nhẹ */
+		.why-item:hover,
+		.why-box .why-item:hover {
+			border: 3px solid #0FA958 !important;   /* xanh lá đậm */
+			box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1) !important;
+			transform: translateY(-6px) !important;
+			transition: all 0.25s ease !important;
+		}
+		
+		/* Override cho cấu trúc Tailwind hiện tại - Section "Tại Sao Chọn" */
+		/* Vòng tròn: giảm 15% (272px × 0.85 = 231px) */
+		section .group .rounded-full {
+			overflow: hidden !important;
+			border-radius: 50% !important;
+			aspect-ratio: 1 / 1 !important;
+			width: 231px !important;
+			height: 231px !important;
+			display: flex !important;
+			justify-content: center !important;
+			align-items: center !important;
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+		}
+		
+		/* Icon: 85% kích thước vòng tròn (231px × 0.85 = 196px font-size) */
+		section .group .rounded-full span {
+			font-size: 101px !important;
+			display: inline-block !important;
+			line-height: 1 !important;
+			transition: all 0.3s ease !important;
+		}
+		
+		/* Hover vào card: viền xanh lá đậm + scale rất nhẹ + shadow nhẹ */
+		section .group:hover {
+			border: 2px solid #0a8a2a !important;
+			transform: scale(1.015) !important;
+			box-shadow: 0 4px 14px rgba(0, 128, 0, 0.12) !important;
+			transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1) !important;
+		}
+		
+		/* Hover vào vòng tròn: KHÔNG scale, chỉ đổi viền xanh lá đậm */
+		section .group:hover .rounded-full {
+			border: 2px solid #0a8a2a !important;
+			transform: none !important;
+		}
+		
+		/* Không scale icon và vòng tròn khi hover */
+		.feature-icon,
+		.feature-circle,
+		section .group .rounded-full,
+		section .group .rounded-full span {
+			transform: none !important;
+		}
+		
+		/* Responsive - Tablet */
+		@media (min-width: 768px) and (max-width: 1023px) {
+			section .group .rounded-full {
+				width: 204px !important;
+				height: 204px !important;
+			}
+			section .group .rounded-full span {
+				font-size: 89px !important;
+			}
+			section .group h3 {
+				margin-top: 24px !important;
+			}
+			section .group p {
+				margin-top: 10px !important;
+				font-size: 1.08rem !important;
+			}
+		}
+		
+		/* Responsive - Mobile: giảm thêm 10% icon */
+		@media (max-width: 767px) {
+			section .group .rounded-full {
+				width: 170px !important;
+				height: 170px !important;
+			}
+			section .group .rounded-full span {
+				font-size: 75px !important;
+			}
+			section .group h3 {
+				margin-top: 20px !important;
+			}
+			section .group p {
+				margin-top: 10px !important;
+				font-size: 1.05rem !important;
+			}
+		}
+		
+		/* Responsive - Mobile nhỏ */
+		@media (max-width: 480px) {
+			section .group .rounded-full {
+				width: 136px !important;
+				height: 136px !important;
+			}
+			section .group .rounded-full span {
+				font-size: 60px !important;
+			}
+			section .group h3 {
+				margin-top: 16px !important;
+				font-size: 1rem !important;
+			}
+			section .group p {
+				margin-top: 8px !important;
+				font-size: 0.95rem !important;
+			}
+		}
+		/* --- UI update: 4 lý do chọn Mụn Dừa Hoàng Hiếu --- */
+section .group .rounded-full {
+	width: 185px !important; /* giảm 20% từ 231px */
+	height: 185px !important;
+}
+section .group .rounded-full span {
+	font-size: 81px !important; /* giảm 20% từ 101px */
+}
+
+/* Hover: border xanh lá đậm hơn, shadow nhẹ hơn */
+section .group:hover {
+  border: 1.5px solid #2ecc71 !important;
+  box-shadow: 0 4px 12px rgba(0,128,0,0.12) !important;
+  transform: scale(1.0) !important;
+}
+section .group:hover .rounded-full {
+  border: 1.5px solid #2ecc71 !important;
+}
+
+/* Tăng khoảng cách icon-tiêu đề */
+section .group h3 {
+  margin-top: 34px !important;
+}
+
+/* Mô tả: max-width, căn giữa, tăng khoảng cách */
+section .group p {
+  max-width: 260px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  margin-top: 17px !important;
+}
+
+/* Responsive grid cho 4 lý do chọn */
+@media (max-width: 1023px) {
+	section .group .rounded-full {
+		width: 148px !important;
+		height: 148px !important;
+	}
+	section .group .rounded-full span {
+		font-size: 65px !important;
+	}
+	section .grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+		gap: 18px !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+}
+@media (max-width: 767px) {
+	section .group .rounded-full {
+		width: 98px !important;
+		height: 98px !important;
+	}
+	section .group .rounded-full span {
+		font-size: 43px !important;
+	}
+	section .grid {
+		grid-template-columns: 1fr !important;
+		gap: 14px !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+	section .group {
+		max-width: 340px !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+}
+
+/* Đảm bảo mô tả, icon, tiêu đề luôn căn giữa và không vỡ dòng */
+section .group h3, section .group p {
+  text-align: center !important;
+  word-break: break-word !important;
+}
+section .group p {
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Responsive cho box slogan đầu trang */
+@media (max-width: 480px) {
+  .bg-gradient-to-r.from-green-50.to-orange-50.p-4.md\:p-6.rounded-xl.border-l-4.border-green-500,
+  .bg-gradient-to-r.from-green-50.to-orange-50.p-4.md\:p-6.rounded-xl.border-l-4.border-green-500 * {
+    max-width: 100vw !important;
+    width: 100% !important;
+    padding-left: 0.2rem !important;
+    padding-right: 0.2rem !important;
+    font-size: 0.93rem !important;
+    word-break: break-all !important;
+    white-space: normal !important;
+    overflow-x: auto !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Fix canh lề box slogan mobile nhỏ: full width, căn giữa, text-justify */
+@media (max-width: 480px) {
+  .bg-gradient-to-r.from-green-50.to-orange-50.p-4.md\:p-6.rounded-xl.border-l-4.border-green-500 {
+    margin-left: calc(-1 * (100vw - 100%) / 2) !important;
+    margin-right: calc(-1 * (100vw - 100%) / 2) !important;
+    width: 100vw !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+    border-radius: 0 !important;
+  }
+  .bg-gradient-to-r.from-green-50.to-orange-50.p-4.md\:p-6.rounded-xl.border-l-4.border-green-500 p {
+    text-align: justify !important;
+    font-size: 0.93rem !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* --- 4 Lý do chọn: Responsive circle & icon bằng biến CSS --- */
+:root {
+  --circle-size: 172px;
+  --icon-size: 84px;
+}
+@media (max-width: 1199px) {
+  :root {
+    --circle-size: 144px;
+    --icon-size: 64px;
+  }
+}
+@media (max-width: 767px) {
+  :root {
+    --circle-size: 112px;
+    --icon-size: 48px;
+  }
+}
+
+.circle {
+  width: var(--circle-size) !important;
+  height: var(--circle-size) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 auto !important;
+  transition: border 0.25s ease-out, box-shadow 0.25s ease-out;
+  background: inherit;
+}
+.circle span,
+.circle img,
+.circle svg {
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  font-size: var(--icon-size) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+}
+.circle:hover {
+  border: 3px solid #22c55e !important;
+  box-shadow: 0 0 12px rgba(34,197,94,0.35) !important;
+}
+
+/* Nút banner đầu: xanh dương đậm, hover xanh dương đậm hơn */
+/* Nút banner: style riêng từng loại */
+.banner-content .cta-orange {
+	background: #E65100 !important; /* cam đậm */
+	color: #fff !important;
+	border: none !important;
+	transition: all 0.25s;
+}
+.banner-content .cta-orange:hover {
+	background: #D84315 !important;
+	color: #fff !important;
+	box-shadow: 0 8px 20px rgba(232,81,0,0.18) !important;
+}
+.banner-content .cta-blue {
+	background: #2563eb !important; /* xanh dương đậm */
+	color: #fff !important;
+	border: none !important;
+	transition: all 0.25s;
+}
+.banner-content .cta-blue:hover {
+	background: #1d4ed8 !important;
+	color: #fff !important;
+	box-shadow: 0 8px 20px rgba(37,99,235,0.18) !important;
+}
+.banner-content .cta-green {
+	background: #0FA958 !important; /* xanh lá đậm */
+	color: #fff !important;
+	border: none !important;
+	transition: all 0.25s;
+}
+.banner-content .cta-green:hover {
+	background: #0C8A47 !important; /* xanh lá đậm hơn */
+	color: #fff !important;
+	box-shadow: 0 8px 20px rgba(15,169,88,0.18) !important;
+}
+
+/* Giảm vòng tròn 15% và icon tương ứng */
+:root {
+  --circle-size: 146px;
+  --icon-size: 63px;
+}
+@media (max-width: 1199px) {
+  :root {
+    --circle-size: 110px;
+    --icon-size: 48px;
+  }
+}
+@media (max-width: 767px) {
+  :root {
+    --circle-size: 85px;
+    --icon-size: 36px;
+  }
+}
+
+/* Fix input tìm kiếm trên mobile: font lớn, padding rộng, không bị che */
+@media (max-width: 767px) {
+  input[type="text"]#search-input-mobile,
+  input[type="text"]#search-input,
+  .search-input,
+  .header-search input {
+    font-size: 1rem !important;
+    padding: 0.6rem 0.8rem !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .header-search button,
+  .search-btn,
+  button[onclick="performSearch()"] {
+    font-size: 1rem !important;
+    padding: 0.6rem 0.8rem !important;
+  }
+}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<div class="font-sans flex flex-col gap-8">
+		<!-- Hero Section với Swiper Slideshow -->
+		<section class="bg-white shadow-lg overflow-hidden -mx-8 md:mx-0 md:rounded-lg">
+			<!-- Slider main container -->
+			<div class="swiper banner-swiper">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					{% if content.banners %}
+						{% for banner in content.banners %}
+							{% if banner.active %}
+							<!-- Slide {{ banner.id }} -->
+							<div class="swiper-slide">
+								<div class="banner relative w-full h-96 md:h-[500px] lg:h-[600px]">
+									<div class="banner-bg absolute inset-0">
+										<img src="{{ banner.image }}" alt="{{ banner.title }}" class="w-full h-full object-cover">
+									</div>
+									<div class="absolute inset-0 banner-overlay flex items-center justify-center">
+										<div class="banner-content">
+											<h{{ loop.index == 1 ? '1' : '2' }} class="banner-title">{{ banner.title }}</h{{ loop.index == 1 ? '1' : '2' }}>
+											<p class="banner-subtitle">{{ banner.subtitle }}</p>
+											{# Gán class theo buttonColor từ database #}
+											{% if banner.buttonColor == 'orange' %}
+												{% set btnClass = 'cta-orange' %}
+											{% elseif banner.buttonColor == 'blue' %}
+												{% set btnClass = 'cta-blue' %}
+											{% else %}
+												{% set btnClass = 'cta-green' %}
+											{% endif %}
+											<a href="{{ banner.buttonLink }}" class="{{ btnClass }}">
+												{{ banner.buttonText }}
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				</div>
+				
+				<!-- Pagination -->
+				<div class="swiper-pagination"></div>
+				
+				<!-- Navigation buttons -->
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
+			
+			<!-- Thông tin bổ sung về Hoàng Hiếu -->
+			{% if content.services and content.services.highlight %}
+			<div class="mt-6 md:mt-8 bg-gradient-to-r from-green-50 to-orange-50 p-4 md:p-6 rounded-xl border-l-4 border-green-500">
+				<div class="text-gray-700 leading-relaxed space-y-3">
+					<p class="text-base md:text-lg">
+						{{ content.services.highlight.icon }} <strong class="text-green-700">{{ content.services.highlight.title }}</strong>
+					</p>
+					<p class="text-sm md:text-base text-gray-600">
+						{{ content.services.highlight.description }}
+					</p>
+				</div>
+			</div>
+			{% endif %}
+		</section>
+		
+<!-- Tại Sao Chọn Mụn Dừa Hoàng Hiếu? (Lợi ích - UI mới, màu đậm, icon trắng, hover nổi bật) -->
+<section class="py-16 bg-green-100">
+	<div class="max-w-full mx-auto">
+		<h2 class="text-center text-2xl md:text-3xl font-bold text-green-700 mb-12">
+			Tại Sao Chọn Mụn Dừa Hoàng Hiếu?
+		</h2>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 w-full px-8">
+			<!-- 1: Chất lượng -->
+				<div class="group bg-white/40 backdrop-blur-sm rounded-xl p-8 shadow-md space-y-4 text-center flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:ring-8 hover:ring-green-600 hover:ring-offset-4 hover:ring-offset-white hover:shadow-2xl hover:shadow-green-300 aos-fade-up" data-aos="fade-up">
+					<div class="w-[320px] h-[320px] md:w-[360px] md:h-[360px] rounded-full flex flex-col items-center justify-center mx-auto shadow-lg text-black bg-white transition-all duration-300 group-hover:scale-110 leading-none overflow-visible">
+						<span class="text-[308px] leading-none">🏆</span>
+				</div>
+				<h3 class="text-green-700 font-semibold text-lg">Chất Lượng Đảm Bảo</h3>
+				<p class="text-gray-700 leading-relaxed break-words text-base md:text-lg max-w-xs mx-auto">
+				100% sản phẩm tự nhiên, quy trình xử lý được kiểm tra kỹ lưỡng.
+				</p>
+			</div>
+			<!-- 2: Thân thiện môi trường -->
+				<div class="group bg-white/40 backdrop-blur-sm rounded-xl p-8 shadow-md space-y-4 text-center flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:ring-8 hover:ring-green-600 hover:ring-offset-4 hover:ring-offset-white hover:shadow-2xl hover:shadow-green-300 aos-fade-up" data-aos="fade-up" data-aos-delay="100">
+					<div class="w-[320px] h-[320px] md:w-[360px] md:h-[360px] rounded-full flex flex-col items-center justify-center mx-auto shadow-lg text-white bg-green-600 transition-all duration-300 group-hover:scale-110 leading-none overflow-visible">
+						<span class="text-[308px] leading-none">💚</span>
+				</div>
+				<h3 class="text-green-700 font-semibold text-lg">Thân Thiện Môi Trường</h3>
+				<p class="text-gray-700 leading-relaxed break-words text-base md:text-lg max-w-xs mx-auto">
+				Nguyên liệu tự nhiên, hoàn toàn không sử dụng hóa chất độc hại.
+				</p>
+			</div>
+			<!-- 3: Giá cả hợp lý -->
+				<div class="group bg-white/40 backdrop-blur-sm rounded-xl p-8 shadow-md space-y-4 text-center flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:ring-8 hover:ring-green-600 hover:ring-offset-4 hover:ring-offset-white hover:shadow-2xl hover:shadow-green-300 aos-fade-up" data-aos="fade-up" data-aos-delay="200">
+					<div class="w-[320px] h-[320px] md:w-[360px] md:h-[360px] rounded-full flex flex-col items-center justify-center mx-auto shadow-lg text-white bg-orange-600 transition-all duration-300 group-hover:scale-110 leading-none overflow-visible">
+						<span class="text-[308px] leading-none">💰</span>
+				</div>
+				<h3 class="text-green-700 font-semibold text-lg">Giá Cả Hợp Lý</h3>
+				<p class="text-gray-700 leading-relaxed break-words text-base md:text-lg max-w-xs mx-auto">
+				Giá gốc từ nhà sản xuất, không qua trung gian.
+				</p>
+			</div>
+			<!-- 4: Đồng hành lâu dài -->
+				<div class="group bg-white/40 backdrop-blur-sm rounded-xl p-8 shadow-md space-y-4 text-center flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:ring-8 hover:ring-green-600 hover:ring-offset-4 hover:ring-offset-white hover:shadow-2xl hover:shadow-green-300 aos-fade-up" data-aos="fade-up" data-aos-delay="300">
+					<div class="w-[320px] h-[320px] md:w-[360px] md:h-[360px] rounded-full flex flex-col items-center justify-center mx-auto shadow-lg text-white bg-blue-500 transition-all duration-300 group-hover:scale-110 leading-none overflow-visible">
+						<span class="text-[308px] leading-none">🤝</span>
+				</div>
+				<h3 class="text-green-700 font-semibold text-lg">Đồng Hành Lâu Dài</h3>
+				<p class="text-gray-700 leading-relaxed break-words text-base md:text-lg max-w-xs mx-auto">
+				Luôn đồng hành cùng nhà vườn, phát triển bền vững.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+		<!-- Sản phẩm nổi bật -->
+		<section class="px-4 md:px-8 mt-12">
+			<div class="text-center mb-6 md:mb-8">
+				<h2 class="text-2xl md:text-3xl font-bold text-green-700 mb-3 md:mb-4">Sản Phẩm Nổi Bật</h2>
+				<p class="text-gray-600 text-base md:text-lg px-2">Khám phá các sản phẩm mụn dừa chất lượng cao của chúng tôi</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+				{% if content.featuredProducts %}
+					{% for product in content.featuredProducts %}
+					<div class="bg-white rounded-lg shadow-lg overflow-hidden hover-card cursor-pointer">
+						<div class="overflow-hidden">
+							<img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-48 object-cover hover-image" onerror="this.src='/assets/image/placeholder.jpg'">
+						</div>
+						<div class="p-4 md:p-6">
+							<h3 class="text-lg md:text-xl font-semibold text-green-700 mb-2">{{ product.name }}</h3>
+							<p class="text-sm md:text-base text-gray-600 mb-3 md:mb-4">{{ product.description }}</p>
+							<a href="{{ product.link }}" class="text-orange-600 hover:text-orange-700 font-semibold transition-colors duration-300 text-sm md:text-base">Xem chi tiết →</a>
+						</div>
+					</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+		</section>
+
+		<!-- Gallery Sản phẩm -->
+		<section class="px-4 md:px-8">
+			<div class="bg-white p-4 md:p-8 rounded-lg shadow-md">
+				<h2 class="text-3xl font-bold text-green-600 mb-8 text-center">Hình Ảnh Sản Phẩm</h2>
+				
+				<!-- Tabs Navigation -->
+				<div class="flex justify-center mb-8">
+					<div class="bg-white rounded-lg shadow-md p-1">
+						<button data-gallery="products" id="tab-products" class="gallery-tab px-6 py-2 rounded-md bg-green-500 text-white font-medium transition-all duration-300">Sản Phẩm</button>
+						<button data-gallery="results" id="tab-results" class="gallery-tab px-6 py-2 rounded-md text-gray-600 hover:text-white hover:bg-orange-500 font-semibold transition-all duration-300 shadow-sm hover:shadow-md">Kết Quả</button>
+					</div>
+				</div>
+
+				<!-- Gallery Grid -->
+				<div id="gallery-products" class="gallery-content">
+					<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+						{% if content.gallery and content.gallery.products %}
+							{% for item in content.gallery.products %}
+							<div class="bg-white rounded-lg overflow-hidden shadow-md gallery-item cursor-pointer">
+								<div class="overflow-hidden">
+									<img src="{{ item.image }}" alt="{{ item.alt }}" class="w-full h-48 object-cover hover-image" onerror="this.style.display='none'">
+								</div>
+								<div class="p-3">
+									<p class="text-sm font-medium text-gray-800">{{ item.caption }}</p>
+								</div>
+							</div>
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+                <div id="gallery-results" class="gallery-content hidden">
+					<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+						{% if content.gallery and content.gallery.results %}
+							{% for item in content.gallery.results %}
+							<div class="bg-white rounded-lg overflow-hidden shadow-md gallery-item cursor-pointer">
+								<div class="overflow-hidden">
+									<img src="{{ item.image }}" alt="{{ item.alt }}" class="w-full h-48 object-cover hover-image" onerror="this.style.display='none'">
+								</div>
+								<div class="p-3">
+									<p class="text-sm font-medium text-gray-800">{{ item.caption }}</p>
+								</div>
+							</div>
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Liên hệ nhanh -->
+		<section class="text-center bg-white rounded-lg shadow-lg p-4 md:p-8 mx-4 md:mx-8 mt-12">
+			{% if content.contactSection %}
+			<h2 class="text-3xl font-bold text-green-700 mb-4">{{ content.contactSection.title }}</h2>
+			<p class="text-gray-600 text-lg mb-6">{{ content.contactSection.subtitle }}</p>
+			<div class="flex flex-wrap justify-center gap-4">
+				{% for button in content.contactSection.buttons %}
+					{% if button.icon == '📞' %}
+						<a href="{{ button.link }}" class="inline-flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors duration-300 btn-hover">
+							<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+							</svg>
+							{{ button.text }}
+						</a>
+					{% elseif button.icon == '💬' %}
+						<a href="{{ button.link }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-300 btn-hover">
+							<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 24 24">
+								<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
+							</svg>
+							{{ button.text }}
+						</a>
+					{% elseif button.icon == '📧' %}
+						<a href="{{ button.link }}" class="inline-flex items-center px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors duration-300 btn-hover">
+							<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+							</svg>
+							{{ button.text }}
+						</a>
+					{% endif %}
+				{% endfor %}
+			</div>
+			{% endif %}
+		</section>
+	</div>
+
+	<!-- JavaScript cho trang home -->
+	
+	<!-- Load Swiper JS FIRST before any initialization scripts -->
+	<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+	
+	<script>
+		// Gallery functionality - Wrap in DOMContentLoaded
+		document.addEventListener('DOMContentLoaded', function() {
+			// Gallery switching function
+			function showGallery(type) {
+				try {
+					console.log('Switching to gallery:', type);
+					
+					// Hide all galleries
+					document.querySelectorAll('.gallery-content').forEach(gallery => {
+						gallery.classList.add('hidden');
+					});
+					
+					// Remove active state from all tabs
+					document.querySelectorAll('[id^="tab-"]').forEach(tab => {
+						tab.classList.remove('bg-green-500', 'text-white', 'shadow-md', 'bg-orange-500');
+						tab.classList.add('text-gray-600', 'shadow-sm');
+					});
+					
+					// Show selected gallery
+					const targetGallery = document.getElementById('gallery-' + type);
+					if (targetGallery) {
+						targetGallery.classList.remove('hidden');
+					} else {
+						console.error('Gallery not found:', 'gallery-' + type);
+					}
+					
+					// Set active tab
+					const activeTab = document.getElementById('tab-' + type);
+					if (activeTab) {
+						activeTab.classList.add('bg-green-500', 'text-white', 'shadow-md');
+						activeTab.classList.remove('text-gray-600', 'shadow-sm');
+					} else {
+						console.error('Tab not found:', 'tab-' + type);
+					}
+				} catch (error) {
+					console.error('Error in showGallery:', error);
+				}
+			}
+			
+			// Attach event listeners to gallery tabs
+			document.querySelectorAll('.gallery-tab').forEach(button => {
+				button.addEventListener('click', function() {
+					const galleryType = this.getAttribute('data-gallery');
+					showGallery(galleryType);
+				});
+			});
+			
+		console.log('Gallery functionality initialized');
+	});
+
+	// Search functionality already defined in layout.twig - removed duplicate		// Image lazy loading for banner
+		document.addEventListener('DOMContentLoaded', function() {
+			const images = document.querySelectorAll('.banner img');
+			images.forEach(img => {
+				img.addEventListener('load', function() {
+					this.classList.add('loaded');
+				});
+				
+				// If image is already loaded
+				if (img.complete) {
+					img.classList.add('loaded');
+				}
+			});
+		});
+	</script>
+
+
+	<script>
+		// Initialize Banner Swiper - wait for DOM and Swiper library
+		document.addEventListener('DOMContentLoaded', function() {
+			// Check if Swiper is loaded
+			if (typeof Swiper === 'undefined') {
+				console.error('Swiper library not loaded!');
+				return;
+			}
+			
+			const bannerSwiper = new Swiper('.banner-swiper', {
+				// Optional parameters
+				direction: 'horizontal',
+				loop: true,
+				autoplay: {
+					delay: 6000,
+					disableOnInteraction: false,
+					pauseOnMouseEnter: true,
+				},
+				effect: 'slide',
+				speed: 600,
+				
+				// Responsive breakpoints
+				slidesPerView: 1,
+				spaceBetween: 0,
+				centeredSlides: true,
+				
+				// If we need pagination
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true,
+					dynamicBullets: false,
+				},
+
+				// Navigation arrows
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+				
+				// Keyboard control
+				keyboard: {
+					enabled: true,
+				},
+				
+				// Mouse wheel control
+				mousewheel: false,
+				
+				// Touch ratio
+				touchRatio: 1,
+				
+				// Grab cursor
+				grabCursor: true,
+				
+				// Parallax effect
+				parallax: true,
+			});
+			
+			console.log('Swiper initialized successfully:', bannerSwiper);
+		});
+	</script>
+
+	<!-- CSS cho Swiper Banner -->
+	<style>
+		/* Banner Swiper Styling */
+		.banner-swiper {
+			width: 100%;
+			height: auto;
+		}
+		
+		.banner-swiper .swiper-slide {
+			position: relative;
+			overflow: hidden;
+		}
+		
+		/* Navigation Buttons */
+		.banner-swiper .swiper-button-next,
+		.banner-swiper .swiper-button-prev {
+			color: #fff;
+			background: rgba(0, 0, 0, 0.3);
+			border-radius: 50%;
+			width: 50px;
+			height: 50px;
+			margin-top: -25px;
+			transition: all 0.3s ease;
+		}
+		
+		.banner-swiper .swiper-button-next:hover,
+		.banner-swiper .swiper-button-prev:hover {
+			background: rgba(0, 0, 0, 0.6);
+			transform: scale(1.1);
+		}
+		
+		.banner-swiper .swiper-button-next::after,
+		.banner-swiper .swiper-button-prev::after {
+			font-size: 18px;
+			font-weight: bold;
+		}
+		
+		/* Pagination Dots */
+		.banner-swiper .swiper-pagination {
+			bottom: 20px !important;
+		}
+		
+		.banner-swiper .swiper-pagination-bullet {
+			width: 12px;
+			height: 12px;
+			background: rgba(255, 255, 255, 0.5);
+			opacity: 1;
+			transition: all 0.3s ease;
+		}
+		
+		.banner-swiper .swiper-pagination-bullet-active {
+			background: #fff;
+			transform: scale(1.2);
+		}
+		
+		/* Banner Image Styling */
+		.banner img {
+			transition: transform 0.3s ease;
+		}
+		
+		.banner:hover img {
+			transform: scale(1.05);
+		}
+		
+		/* Text Animation */
+		.banner .text-center {
+			animation: fadeInUp 1s ease-out;
+		}
+		
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(30px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+		
+		/* Responsive Design */
+		@media (max-width: 768px) {
+			.banner-swiper .swiper-button-next,
+			.banner-swiper .swiper-button-prev {
+				width: 40px;
+				height: 40px;
+				margin-top: -20px;
+			}
+			
+			.banner-swiper .swiper-button-next::after,
+			.banner-swiper .swiper-button-prev::after {
+				font-size: 14px;
+			}
+			
+			.banner h1 {
+				font-size: 2rem !important;
+			}
+			
+			.banner h2 {
+				font-size: 1.8rem !important;
+			}
+			
+			.banner p {
+				font-size: 1rem !important;
+			}
+		}
+		
+		/* Loading State */
+		.banner-swiper .swiper-slide img {
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+		
+		.banner-swiper .swiper-slide img.loaded {
+			opacity: 1;
+		}
+	</style>
+
+	<!-- AOS animation script -->
+	<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			if (window.AOS) AOS.init({ duration: 700, once: true, offset: 60 });
+		});
+	</script>
+
+{# Search input mobile đã có id="search-input-mobile" trong header.twig - không cần script này nữa #}
+
+{% endblock %}
+
+

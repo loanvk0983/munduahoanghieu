@@ -1,0 +1,184 @@
+{% extends 'layouts/admin.twig' %}
+
+{% block title %}Quản Lý Tài Khoản{% endblock %}
+
+{% block content %}
+<div class="p-8">
+  <!-- Header -->
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-2">👥 Quản Lý Tài Khoản</h1>
+    <p class="text-gray-600">Thêm, xóa và quản lý tài khoản quản trị viên</p>
+  </div>
+
+  <!-- Success/Error Messages -->
+  {% if success %}
+    <div class="mb-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative">
+      <span class="block sm:inline">✅ {{ success }}</span>
+    </div>
+  {% endif %}
+
+  {% if error %}
+    <div class="mb-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative">
+      <span class="block sm:inline">❌ {{ error }}</span>
+    </div>
+  {% endif %}
+
+  <!-- Add New User Form -->
+  <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+    <h2 class="text-xl font-semibold text-gray-800 mb-4">➕ Thêm Tài Khoản Mới</h2>
+    
+    <form method="POST" action="/admin/users/add" class="space-y-4">
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
+            Tên đăng nhập <span class="text-red-500">*</span>
+          </label>
+          <input type="text" id="username" name="username" required
+                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                 placeholder="admin2">
+        </div>
+        
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+            Mật khẩu <span class="text-red-500">*</span>
+          </label>
+          <input type="password" id="password" name="password" required minlength="6"
+                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                 placeholder="Tối thiểu 6 ký tự">
+        </div>
+        
+        <div>
+          <label for="role" class="block text-sm font-medium text-gray-700 mb-2">
+            Vai trò
+          </label>
+          <select id="role" name="role"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+            <option value="admin">Admin</option>
+            <option value="editor">Editor</option>
+          </select>
+        </div>
+      </div>
+      
+      <div>
+        <button type="submit"
+                class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-lg transition-colors">
+          ➕ Thêm Tài Khoản
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Users List -->
+  <div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="p-6 border-b border-gray-200">
+      <h2 class="text-xl font-semibold text-gray-800">📋 Danh Sách Tài Khoản</h2>
+    </div>
+    
+    <div class="overflow-x-auto">
+      <table class="w-full">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Tên đăng nhập
+            </th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Vai trò
+            </th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Ngày tạo
+            </th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Trạng thái
+            </th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Thao tác
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          {% for u in users %}
+          <tr class="hover:bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white font-bold mr-3">
+                  {{ u.username[0]|upper }}
+                </div>
+                <div>
+                  <div class="text-sm font-medium text-gray-900">{{ u.username }}</div>
+                  {% if u.username == user.username %}
+                    <span class="text-xs text-green-600 font-semibold">(Bạn)</span>
+                  {% endif %}
+                </div>
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full 
+                           {% if u.role == 'admin' %}bg-purple-100 text-purple-800{% else %}bg-blue-100 text-blue-800{% endif %}">
+                {{ u.role|capitalize }}
+              </span>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              {% if u.createdAt %}
+                {{ u.createdAt|date('d/m/Y H:i') }}
+              {% else %}
+                N/A
+              {% endif %}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              {% if u.lockedUntil and u.lockedUntil > "now"|date("U") %}
+                <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                  🔒 Đã khóa
+                </span>
+              {% elseif u.failedAttempts > 0 %}
+                <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                  ⚠️ {{ u.failedAttempts }} lần sai
+                </span>
+              {% else %}
+                <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                  ✅ Hoạt động
+                </span>
+              {% endif %}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm">
+              {% if u.username != user.username %}
+                <form method="POST" action="/admin/users/delete" class="inline-block"
+                      onsubmit="return confirm('Bạn có chắc muốn xóa tài khoản {{ u.username }}?');">
+                  <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                  <input type="hidden" name="username" value="{{ u.username }}">
+                  <button type="submit"
+                          class="text-red-600 hover:text-red-900 font-semibold">
+                    🗑️ Xóa
+                  </button>
+                </form>
+              {% else %}
+                <span class="text-gray-400 italic">Tài khoản hiện tại</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Info Box -->
+  <div class="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-4">
+    <div class="flex">
+      <div class="flex-shrink-0">
+        <span class="text-2xl">ℹ️</span>
+      </div>
+      <div class="ml-3">
+        <h3 class="text-sm font-semibold text-blue-800 mb-1">Lưu ý:</h3>
+        <ul class="text-sm text-blue-700 space-y-1">
+          <li>• Không thể xóa tài khoản đang đăng nhập</li>
+          <li>• Tài khoản bị khóa sau 5 lần đăng nhập sai trong 30 phút</li>
+          <li>• Mật khẩu phải có ít nhất 6 ký tự</li>
+          <li>• Vai trò "Admin" có toàn quyền quản trị hệ thống</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

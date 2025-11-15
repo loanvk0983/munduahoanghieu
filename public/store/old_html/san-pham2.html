@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sản Phẩm - Mụn Dừa Hoàng Hiếu</title>
+  <link href="/styles.css" rel="stylesheet">
+  <style>
+    .gallery-tab {
+      background-color: #f3f4f6;
+      color: #4B5563;
+      border: 2px solid #e5e7eb;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-tab:hover {
+      background-color: #e5f3f0;
+      color: #059669;
+      border-color: #059669;
+      transform: translateY(-1px);
+    }
+    .gallery-tab.active {
+      background-color: #059669 !important;
+      color: white !important;
+      border-color: #059669 !important;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+    }
+    .aspect-square {
+      aspect-ratio: 1 / 1;
+    }
+    .product-detail {
+      animation: fadeInUp 0.5s ease-out;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body class="font-sans pt-20 m-10 bg-green-50">
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full h-20 bg-white shadow-md z-10">
+    <nav class="flex items-center px-4 py-2 h-full max-w-[1250px] mx-auto">
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2 mr-10">
+          <div class="h-16 w-16 bg-no-repeat bg-center" style="background-image: url('/assets/image/logo.jpg'); background-size: 180%; background-position: top -16px left -24px;"></div>
+          <div>
+            <div class="text-xl font-bold text-green-700 tracking-wide" data-company-name>MỤN DỪA HOÀNG HIẾU</div>
+            <div class="text-sm text-orange-600 font-medium italic" data-company-tagline>Giá thể sạch - Năng suất vượt trội</div>
+          </div>
+        </div>
+        <ul class="flex space-x-6">
+          <li><a href="/" class="text-green-800 hover:text-green-600 font-semibold text-sm tracking-wide uppercase">TRANG CHỦ</a></li>
+          <li><a href="/gioi-thieu" class="text-green-800 hover:text-green-600 font-semibold text-sm tracking-wide uppercase">GIỚI THIỆU</a></li>
+          <li><a href="/san-pham" class="text-green-600 font-bold text-sm tracking-wide uppercase border-b-2 border-green-600 pb-1">SẢN PHẨM</a></li>
+          <li><a href="/tin-tuc" class="text-green-800 hover:text-green-600 font-semibold text-sm tracking-wide uppercase">TIN TỨC</a></li>
+          <li><a href="/lien-he" class="text-green-800 hover:text-green-600 font-semibold text-sm tracking-wide uppercase">LIÊN HỆ</a></li>
+          <li><a href="/huong-dan-cap-nhat" class="text-blue-600 hover:text-blue-700 font-semibold text-sm tracking-wide uppercase">HƯỚNG DẪN</a></li>
+        </ul>
+      </div>
+      <div class="flex items-center space-x-2 ml-auto">
+        <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm..." class="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 text-sm" onkeypress="handleSearchKeyPress(event)">
+        <button onclick="performSearch()" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors duration-300 text-sm font-medium">
+          <svg class="w-4 h-4 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          Tìm
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="py-16 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl mb-12">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h1 class="text-4xl font-bold text-green-800 mb-4">🥥 Sản Phẩm Mụn Dừa Chất Lượng Cao</h1>
+        <p class="text-lg text-gray-700 mb-8">Giải pháp toàn diện cho nông nghiệp hiện đại với mụn dừa xử lý sạch, an toàn</p>
+      </div>
+    </section>
+
+    <!-- Product Gallery -->
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-4">
+        <!-- Product Navigation -->
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <button onclick="showProductGallery('processed', event)" class="gallery-tab px-6 py-3 rounded-lg font-semibold text-sm transition-colors duration-300">Mụn Dừa Xử Lý</button>
+          <button onclick="showProductGallery('chips', event)" class="gallery-tab px-6 py-3 rounded-lg font-semibold text-sm transition-colors duration-300">Vỏ Dừa Cắt Chip</button>
+          <button onclick="showProductGallery('raw', event)" class="gallery-tab px-6 py-3 rounded-lg font-semibold text-sm transition-colors duration-300">Mụn Dừa Thô</button>
+          <button onclick="showProductGallery('custom', event)" class="gallery-tab px-6 py-3 rounded-lg font-semibold text-sm transition-colors duration-300">Sản Xuất Theo Yêu Cầu</button>
+        </div>
+
+        <!-- Product Images Gallery -->
+        <div id="gallery-container" class="grid md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+          <!-- Images will be loaded here -->
+        </div>
+
+        <!-- Product Details -->
+        <div id="product-details" class="bg-white rounded-xl shadow-lg p-8 mb-8" style="display: none;">
+          <!-- Details will be loaded here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Mụn Dừa Xử Lý Details -->
+    <div id="detail-processed" class="product-detail" style="display: none;">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="text-center mb-8">
+          <h3 class="text-3xl font-bold text-green-700 mb-4">🥥 Mụn Dừa Xử Lý</h3>
+          <p class="text-lg text-gray-600">Giá thể sạch, tơi xốp, giữ ẩm tốt và thoát nước nhanh, giúp cây trồng phát triển khỏe mạnh. Thích hợp cho rau sạch, hoa lan, dưa lưới, dâu tây và nhiều loại cây nông nghiệp. Giải pháp bền vững, an toàn, nâng cao năng suất và chất lượng nông sản.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <div>
+            <h4 class="text-2xl font-semibold text-green-700 mb-4">📋 Đặc Điểm Nổi Bật</h4>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start"><span class="text-green-600 mr-2">✅</span> Giá thể sạch, tơi xốp</li>
+              <li class="flex items-start"><span class="text-green-600 mr-2">✅</span> Giữ ẩm tốt và thoát nước nhanh</li>
+              <li class="flex items-start"><span class="text-green-600 mr-2">✅</span> Giải pháp bền vững, an toàn</li>
+              <li class="flex items-start"><span class="text-green-600 mr-2">✅</span> Nâng cao năng suất và chất lượng nông sản</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-2xl font-semibold text-green-700 mb-4">🌱 Ứng Dụng</h4>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start"><span class="text-green-600 mr-2">✅</span> <strong>Cây cảnh:</strong> Hoa lan, hoa mai</li>
+              <li class="flex items-start"><span class="text-green-600 mr-2">✅</span> Dưa lưới, dâu tây, ớt chuông, cà chua,...</li>
+              <li class="flex items-start"><span class="text-green-600 mr-2">✅</span> Nhiều loại cây nông nghiệp khác</li>
+              <li class="flex items-start"><span class="text-green-600 mr-2">✅</span> Cây trồng cao cấp</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-2xl font-semibold text-green-700 mb-4">⚖️ Tỉ Lệ Pha Trộn</h4>
+            <div class="bg-green-50 p-4 rounded-lg">
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li class="flex justify-between"><span>• 95% mụn - 5% xơ</span></li>
+                <li class="flex justify-between"><span>• 80% mụn - 20% xơ</span></li>
+                <li class="flex justify-between"><span>• 70% mụn - 30% xơ</span></li>
+                <li class="flex justify-between"><span>• 60% mụn - 40% xơ</span></li>
+                <li class="flex justify-between"><span>• 50% mụn - 50% xơ</span></li>
+                <li class="flex justify-between"><span>• 40% mụn - 60% xơ</span></li>
+                <li class="flex justify-between"><span>• 30% mụn - 70% xơ</span></li>
+                <li class="flex justify-between font-semibold text-green-700"><span>• Theo yêu cầu (Tư vấn tận tình)</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vỏ Dừa Cắt Chip Details -->
+    <div id="detail-chips" class="product-detail" style="display: none;">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="text-center mb-8">
+          <h3 class="text-3xl font-bold text-yellow-700 mb-4">🌰 Vỏ Dừa Cắt Chip</h3>
+          <p class="text-lg text-gray-600">Giá thể trồng cây sạch, kích thước 1–3cm hoặc theo yêu cầu</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <div>
+            <h4 class="text-2xl font-semibold text-yellow-700 mb-4">� Đặc Điểm Nổi Bật</h4>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start"><span class="text-yellow-600 mr-2">✅</span> Giá thể trồng cây sạch</li>
+              <li class="flex items-start"><span class="text-yellow-600 mr-2">✅</span> Kích thước 1–3cm hoặc theo yêu cầu</li>
+              <li class="flex items-start"><span class="text-yellow-600 mr-2">✅</span> 2 loại: chip đã qua xử lý và chip thô</li>
+              <li class="flex items-start"><span class="text-yellow-600 mr-2">✅</span> Giúp giữ ẩm, thoát nước nhanh</li>
+              <li class="flex items-start"><span class="text-yellow-600 mr-2">✅</span> Rễ cây phát triển khỏe mạnh</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-2xl font-semibold text-yellow-700 mb-4">🌱 Ứng Dụng</h4>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start"><span class="text-yellow-600 mr-2">✅</span> Giá thể hoa lan chuyên dụng</li>
+              <li class="flex items-start"><span class="text-yellow-600 mr-2">✅</span> Cây cảnh, bonsai cao cấp</li>
+              <li class="flex items-start"><span class="text-yellow-600 mr-2">✅</span> Nông nghiệp hữu cơ</li>
+              <li class="flex items-start"><span class="text-yellow-600 mr-2">✅</span> Nâng cao năng suất cây trồng</li>
+              <li class="flex items-start"><span class="text-yellow-600 mr-2">✅</span> Phát triển hệ thống rễ khỏe mạnh</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-2xl font-semibold text-yellow-700 mb-4">📊 Thông Tin Tóm Tắt</h4>
+            <div class="bg-yellow-50 p-4 rounded-lg">
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li class="flex justify-between"><span>✅ Kích thước: 1-3cm hoặc theo yêu cầu</span></li>
+                <li class="flex justify-between"><span>✅ 2 loại: chip xử lý & chip thô</span></li>
+                <li class="flex justify-between"><span>✅ Giữ ẩm, thoát nước nhanh</span></li>
+                <li class="flex justify-between font-semibold text-yellow-700"><span>✅ Phát triển rễ khỏe mạnh</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mụn Dừa Thô Details -->
+    <div id="detail-raw" class="product-detail" style="display: none;">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="text-center mb-8">
+          <h3 class="text-3xl font-bold text-orange-700 mb-4">🥥 Mụn Dừa Thô</h3>
+          <p class="text-lg text-gray-600">Nguyên liệu tự nhiên từ vỏ dừa, chưa xử lý, giàu hữu cơ</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <div>
+            <h4 class="text-2xl font-semibold text-orange-700 mb-4">🎯 Đặc Điểm Nổi Bật</h4>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start"><span class="text-orange-600 mr-2">✅</span> Nguyên liệu tự nhiên từ vỏ dừa</li>
+              <li class="flex items-start"><span class="text-orange-600 mr-2">✅</span> Chưa qua xử lý, giàu chất hữu cơ</li>
+              <li class="flex items-start"><span class="text-orange-600 mr-2">✅</span> Giữ ẩm tốt và tơi xốp</li>
+              <li class="flex items-start"><span class="text-orange-600 mr-2">✅</span> Bền vững, thân thiện môi trường</li>
+              <li class="flex items-start"><span class="text-orange-600 mr-2">✅</span> Giá thành hợp lý</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-2xl font-semibold text-orange-700 mb-4">🌱 Ứng Dụng</h4>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start"><span class="text-orange-600 mr-2">✅</span> Cải tạo đất trồng trọt</li>
+              <li class="flex items-start"><span class="text-orange-600 mr-2">✅</span> Phối trộn giá thể trồng rau</li>
+              <li class="flex items-start"><span class="text-orange-600 mr-2">✅</span> Hoa lan, cây cảnh</li>
+              <li class="flex items-start"><span class="text-orange-600 mr-2">✅</span> Nguyên liệu sản xuất mụn dừa xử lý</li>
+              <li class="flex items-start"><span class="text-orange-600 mr-2">✅</span> Nông nghiệp quy mô lớn</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-2xl font-semibold text-orange-700 mb-4">📦 Quy Cách & Ứng Dụng</h4>
+            <div class="bg-orange-50 p-4 rounded-lg">
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li class="flex justify-between"><span>✅ Quy cách: Theo yêu cầu (linh hoạt)</span></li>
+              </ul>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-3 mt-4">
+              <div class="text-center p-3 bg-orange-50 rounded-lg">
+                <div class="text-xl mb-1">🌱</div>
+                <div class="text-xs font-semibold text-orange-700">Cải tạo đất</div>
+                <div class="text-xs text-gray-600">Tăng độ tơi xốp</div>
+              </div>
+              <div class="text-center p-3 bg-orange-50 rounded-lg">
+                <div class="text-xl mb-1">🥬</div>
+                <div class="text-xs font-semibold text-orange-700">Phối giá thể</div>
+                <div class="text-xs text-gray-600">Trồng rau, hoa lan</div>
+              </div>
+              <div class="text-center p-3 bg-orange-50 rounded-lg">
+                <div class="text-xl mb-1">🏭</div>
+                <div class="text-xs font-semibold text-orange-700">Nguyên liệu</div>
+                <div class="text-xs text-gray-600">Sản xuất mụn xử lý</div>
+              </div>
+              <div class="text-center p-3 bg-orange-50 rounded-lg">
+                <div class="text-xl mb-1">🌿</div>
+                <div class="text-xs font-semibold text-orange-700">Hữu cơ</div>
+                <div class="text-xs text-gray-600">Giàu chất dinh dưỡng</div>
+              </div>
+              <div class="text-center p-3 bg-orange-50 rounded-lg">
+                <div class="text-xl mb-1">📏</div>
+                <div class="text-xs font-semibold text-orange-700">Quy mô lớn</div>
+                <div class="text-xs text-gray-600">Phù hợp diện tích rộng</div>
+              </div>
+              <div class="text-center p-3 bg-orange-50 rounded-lg">
+                <div class="text-xl mb-1">💡</div>
+                <div class="text-xs font-semibold text-orange-700">Tư vấn tận tình</div>
+                <div class="text-xs text-gray-600">Pha trộn theo yêu cầu</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-orange-50 p-6 rounded-lg">
+          <h4 class="text-2xl font-semibold text-orange-700 mb-4 text-center">📊 Thông Tin Tóm Tắt</h4>
+          <div class="grid md:grid-cols-3 gap-4 text-center">
+            <div class="bg-white p-4 rounded-lg">
+              <div class="text-orange-600 font-semibold">✅ 100% tự nhiên, chưa xử lý</div>
+            </div>
+            <div class="bg-white p-4 rounded-lg">
+              <div class="text-orange-600 font-semibold">✅ Giàu hữu cơ, giữ ẩm tốt</div>
+            </div>
+            <div class="bg-white p-4 rounded-lg">
+              <div class="text-orange-600 font-semibold">✅ Phối trộn đa mục đích</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sản Xuất Theo Yêu Cầu Details -->
+    <div id="detail-custom" class="product-detail" style="display: none;">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="text-center mb-8">
+          <h3 class="text-3xl font-bold text-purple-700 mb-4">🎯 Sản Xuất Theo Yêu Cầu</h3>
+          <p class="text-lg text-gray-600">Giải pháp tối ưu cho nhà vườn, doanh nghiệp trong nước và xuất khẩu</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div class="bg-purple-50 p-6 rounded-lg">
+            <h4 class="text-2xl font-semibold text-purple-700 mb-4">🔧 Thông Số Kỹ Thuật & Quy Cách</h4>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start"><span class="text-purple-600 mr-2">📊</span> <strong>Các loại tỉ lệ xơ-mụn có thể sản xuất</strong></li>
+              <li class="flex items-start"><span class="text-purple-600 mr-2">📏</span> <strong>Kích thước vỏ dừa chip theo yêu cầu</strong></li>
+              <li class="flex items-start"><span class="text-purple-600 mr-2">💧</span> <strong>Độ ẩm và pH tiêu chuẩn</strong></li>
+              <li class="flex items-start"><span class="text-purple-600 mr-2">📦</span> <strong>Quy cách đóng bao</strong></li>
+              <li class="flex items-start"><span class="text-purple-600 mr-2">⏰</span> <strong>Thời gian sản xuất và giao hàng</strong></li>
+            </ul>
+          </div>
+
+          <div class="bg-gradient-to-br from-purple-50 to-blue-50 p-6 rounded-lg">
+            <h4 class="text-2xl font-semibold text-purple-700 mb-4">🌟 Cam Kết Chất Lượng</h4>
+            <div class="space-y-4">
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-purple-600 rounded-full mr-3"></div>
+                <span class="text-gray-700">Chất lượng ổn định</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-purple-600 rounded-full mr-3"></div>
+                <span class="text-gray-700">Giá cả cạnh tranh</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-purple-600 rounded-full mr-3"></div>
+                <span class="text-gray-700">Giao hàng đúng tiến độ</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-purple-600 rounded-full mr-3"></div>
+                <span class="text-gray-700">Hợp tác lâu dài</span>
+              </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-white rounded-lg border border-purple-200">
+              <div class="text-center">
+                <div class="text-purple-700 font-semibold text-lg">🚀 Phục Vụ Đa Dạng</div>
+                <div class="text-sm text-gray-600 mt-2">Nhà vườn • Doanh nghiệp • Xuất khẩu</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ứng dụng sản phẩm -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">Ứng Dụng Sản Phẩm</h2>
+          <p class="text-gray-600">Mụn dừa của chúng tôi phù hợp cho nhiều loại cây trồng khác nhau</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="text-center p-6 bg-green-50 rounded-xl">
+            <div class="text-4xl mb-4">🍅</div>
+            <h3 class="text-xl font-semibold text-green-700 mb-2">Cây Ăn Trái</h3>
+            <p class="text-gray-600 text-sm">Dưa lưới, dâu tây, cà chua, ớt...</p>
+          </div>
+          <div class="text-center p-6 bg-blue-50 rounded-xl">
+            <div class="text-4xl mb-4">🌺</div>
+            <h3 class="text-xl font-semibold text-blue-700 mb-2">Hoa Kiểng</h3>
+            <p class="text-gray-600 text-sm">Lan, hồng, cúc, lily, tulip...</p>
+          </div>
+          <div class="text-center p-6 bg-yellow-50 rounded-xl">
+            <div class="text-4xl mb-4">🥬</div>
+            <h3 class="text-xl font-semibold text-yellow-700 mb-2">Rau Ăn Lá</h3>
+            <p class="text-gray-600 text-sm">Xà lách, cải, rau húng, rau mùi...</p>
+          </div>
+          <div class="text-center p-6 bg-purple-50 rounded-xl">
+            <div class="text-4xl mb-4">🌿</div>
+            <h3 class="text-xl font-semibold text-purple-700 mb-2">Cây Cảnh</h3>
+            <p class="text-gray-600 text-sm">Cây văn phòng, cây trong nhà...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gradient-to-r from-green-600 to-green-700 rounded-2xl mb-12">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Liên Hệ Tư Vấn Ngay</h2>
+        <p class="text-green-100 text-lg mb-8">Đội ngũ kỹ thuật sẵn sàng hỗ trợ bạn chọn sản phẩm phù hợp nhất</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button onclick="sendEmail()" class="px-8 py-3 bg-white text-green-700 font-semibold rounded-lg hover:bg-green-50 transition-colors duration-300">
+            📧 Gửi Email Tư Vấn
+          </button>
+          <a href="tel:0984288512" class="px-8 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-400 transition-colors duration-300">
+            📞 Gọi Ngay: 0984.288.512
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-green-400">Mụn Dừa Hoàng Hiếu</h3>
+          <p class="text-gray-300 mb-4">Chuyên sản xuất và phân phối mụn dừa chất lượng cao cho nông nghiệp hiện đại.</p>
+          <p class="text-sm text-gray-400">Ấp Hội An, Xã Đa Phước Hội<br>Huyện Mỏ Cày Nam, Tỉnh Bến Tre</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-green-400">Liên Hệ</h4>
+          <div class="space-y-2 text-gray-300">
+            <p>📞 Hotline: <a href="tel:0984288512" class="text-green-400 hover:text-green-300">0984.288.512</a></p>
+            <p>📧 Email: <a href="mailto:munduahoanghieu@gmail.com" class="text-green-400 hover:text-green-300">munduahoanghieu@gmail.com</a></p>
+            <p>🌐 Website: <a href="#" class="text-green-400 hover:text-green-300">munduahoanghieu.com</a></p>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-green-400">Mạng Xã Hội</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="text-blue-400 hover:text-blue-300">📘 Facebook</a>
+            <a href="#" class="text-green-400 hover:text-green-300">📱 Zalo OA</a>
+            <a href="#" class="text-red-400 hover:text-red-300">📺 YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+        <p>&copy; 2024 Mụn Dừa Hoàng Hiếu. Bảo lưu mọi quyền.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Product gallery data
+    const productGalleries = {
+      processed: [
+        {src: 'assets/image/products/mun-dua-xu-ly/Mụn xử lý 1.jpg', alt: 'Mụn dừa xử lý chất lượng cao'},
+        {src: 'assets/image/products/mun-dua-xu-ly/Mụn xử lý 2.jpg', alt: 'Mụn dừa kích thước đồng đều'},
+        {src: 'assets/image/products/mun-dua-xu-ly/Mụn xử lý 3.jpg', alt: 'Mụn dừa khử muối hoàn toàn'}
+      ],
+      chips: [
+        {src: 'assets/image/products/vo-dua-cat-chip/Vỏ dừa cắt chip 1.jpg', alt: 'Vỏ dừa cắt chip tự nhiên'},
+        {src: 'assets/image/products/vo-dua-cat-chip/Vỏ dừa cắt chip 2.jpg', alt: 'Chip dừa phủ gốc cây'},
+        {src: 'assets/image/products/vo-dua-cat-chip/Vỏ dừa cắt chip 3.jpg', alt: 'Chip dừa trang trí sân vườn'}
+      ],
+      raw: [
+        {src: 'assets/image/products/mun-dua-tho/Mụn dừa thô 1.jpg', alt: 'Mụn dừa thô nguyên liệu'},
+        {src: 'assets/image/products/mun-dua-tho/Mụn dừa thô 2.jpg', alt: 'Mụn dừa thô giá tiết kiệm'},
+        {src: 'assets/image/products/mun-dua-tho/Mụn dừa thô 3.jpg', alt: 'Mụn dừa thô pha trộn'}
+      ],
+      custom: [
+        {src: 'assets/image/products/san-xuat-theo-yeu-cau/custom-1.jpg', alt: 'Sản xuất theo yêu cầu'},
+        {src: 'assets/image/products/san-xuat-theo-yeu-cau/custom-2.jpg', alt: 'Tùy chỉnh kích thước hạt'},
+        {src: 'assets/image/products/san-xuat-theo-yeu-cau/custom-3.jpg', alt: 'Đóng gói theo quy cách riêng'}
+      ]
+    };
+
+    function clearAllProductDetails() {
+      // Hide all product details
+      const details = document.querySelectorAll('.product-detail');
+      details.forEach(detail => detail.style.display = 'none');
+      
+      // Hide main product details container
+      const container = document.getElementById('product-details');
+      if (container) {
+        container.style.display = 'none';
+      }
+    }
+
+    function showProductGallery(category, event) {
+      // Clear previous content first
+      clearAllProductDetails();
+      
+      // Small delay to ensure clearing is complete
+      setTimeout(() => {
+        // Update active tab
+        document.querySelectorAll('.gallery-tab').forEach(tab => {
+          tab.classList.remove('active');
+        });
+        
+        // Add active class to clicked tab
+        if (event && event.target) {
+          event.target.classList.add('active');
+        } else {
+          // Fallback: find the button for this category
+          const buttons = document.querySelectorAll('.gallery-tab');
+          buttons.forEach((btn, index) => {
+            if ((category === 'processed' && index === 0) ||
+                (category === 'chips' && index === 1) ||
+                (category === 'raw' && index === 2) ||
+                (category === 'custom' && index === 3)) {
+              btn.classList.add('active');
+            }
+          });
+        }
+
+        // Product descriptions
+        const productDescriptions = {
+          processed: {
+            title: '🥥 Mụn Dừa Xử Lý',
+            description: 'Giá thể sạch, tơi xốp, giữ ẩm tốt và thoát nước nhanh, giúp cây trồng phát triển khỏe mạnh. Thích hợp cho rau sạch, hoa lan, dưa lưới, dâu tây và nhiều loại cây nông nghiệp. Giải pháp bền vững, an toàn, nâng cao năng suất và chất lượng nông sản.'
+          },
+          chips: {
+            title: '🌰 Vỏ Dừa Cắt Chip',
+            description: 'Giá thể trồng cây sạch, kích thước 1–3cm hoặc theo yêu cầu. Có 2 loại: chip đã qua xử lý và chip thô, phù hợp làm giá thể hoa lan, cây cảnh,... và nông nghiệp hữu cơ. Sản phẩm giúp giữ ẩm, thoát nước nhanh, rễ cây phát triển khỏe mạnh, nâng cao năng suất.'
+          },
+          raw: {
+            title: '🥥 Mụn Dừa Thô',
+            description: 'Nguyên liệu tự nhiên từ vỏ dừa, chưa xử lý, giàu hữu cơ, giữ ẩm tốt và tơi xốp. Thích hợp cải tạo đất, phối trộn giá thể trồng rau, hoa lan, cây cảnh và làm nguyên liệu sản xuất mụn dừa xử lý.'
+          },
+          custom: {
+            title: '🎯 Sản Xuất Theo Yêu Cầu',
+            description: 'Chúng tôi nhận sản xuất mụn dừa, vỏ dừa cắt chip và giá thể theo yêu cầu khách hàng. Quy cách, kích thước và mức xử lý đa dạng, linh hoạt theo nhu cầu. Sản phẩm đảm bảo chất lượng ổn định, giá cả cạnh tranh, giao hàng đúng tiến độ. Với tinh thần hợp tác lâu dài, chúng tôi cam kết mang đến giải pháp tối ưu cho cả nhà vườn, doanh nghiệp trong nước và xuất khẩu.'
+          }
+        };
+
+        // Show gallery
+        const gallery = productGalleries[category];
+        const description = productDescriptions[category];
+        const container = document.getElementById('gallery-container');
+        
+        container.innerHTML = `
+          <!-- Product Description -->
+          <div class="col-span-full bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-6 mb-6">
+            <h3 class="text-2xl font-bold text-green-700 mb-3 text-center">${description.title}</h3>
+            <p class="text-gray-700 text-center leading-relaxed">${description.description}</p>
+          </div>
+        ` + gallery.map(img => `
+          <div class="group cursor-pointer">
+            <div class="aspect-square overflow-hidden rounded-lg shadow-lg">
+              <img src="${img.src}" alt="${img.alt}" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                   onclick="openImageModal('${img.src}', '${img.alt}')">
+            </div>
+            <p class="text-sm text-gray-600 mt-2 text-center">${img.alt}</p>
+          </div>
+        `).join('');
+
+        // Show detail button
+        container.innerHTML += `
+          <div class="col-span-full text-center mt-8">
+            <button onclick="showProductDetail('${category}')" 
+                    class="px-8 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors duration-300">
+              📋 Xem Chi Tiết Sản Phẩm
+            </button>
+          </div>
+        `;
+      }, 100);
+    }
+
+    function showProductDetail(category) {
+      clearAllProductDetails();
+      
+      setTimeout(() => {
+        // Show the specific detail section
+        const detailElement = document.getElementById(`detail-${category}`);
+        if (detailElement) {
+          detailElement.style.display = 'block';
+          // Smooth scroll to details
+          detailElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+
+    function hideProductDetail() {
+      clearAllProductDetails();
+    }
+
+    function openImageModal(src, alt) {
+      // Create modal overlay
+      const modal = document.createElement('div');
+      modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+      modal.onclick = () => modal.remove();
+      
+      modal.innerHTML = `
+        <div class="max-w-4xl max-h-full p-4">
+          <img src="${src}" alt="${alt}" class="max-w-full max-h-full object-contain rounded-lg">
+          <p class="text-white text-center mt-4">${alt}</p>
+        </div>
+      `;
+      
+      document.body.appendChild(modal);
+    }
+
+    // Search functionality
+    function performSearch() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      if (!query) return;
+
+      // Simple search highlighting
+      const content = document.body.innerHTML;
+      const highlighted = content.replace(new RegExp(query, 'gi'), `<mark>$&</mark>`);
+      document.body.innerHTML = highlighted;
+    }
+
+    function handleSearchKeyPress(event) {
+      if (event.key === 'Enter') {
+        performSearch();
+      }
+    }
+
+    // Email functionality
+    function sendEmail() {
+      const subject = encodeURIComponent('Tư vấn sản phẩm mụn dừa');
+      const body = encodeURIComponent(`Xin chào Mụn Dừa Hoàng Hiếu,
+
+Tôi quan tâm đến các sản phẩm mụn dừa của công ty. Xin vui lòng tư vấn cho tôi về:
+- Sản phẩm phù hợp cho cây trồng của tôi
+- Giá cả và chính sách giao hàng
+- Hỗ trợ kỹ thuật
+
+Cảm ơn!`);
+      
+      window.open(`mailto:munduahoanghieu@gmail.com?subject=${subject}&body=${body}`);
+    }
+
+    // Auto-show first gallery on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Auto-select first tab
+      document.querySelector('.gallery-tab').classList.add('active');
+      showProductGallery('processed');
+    });
+  </script>
+</body>
+</html>

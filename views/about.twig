@@ -1,0 +1,260 @@
+{% extends "layout.twig" %}
+
+{% block title %}Giới thiệu - Mụn Dừa Hoàng Hiếu{% endblock %}
+
+{% block head %}
+<style>
+/* Hover Effects */
+.hover-card {
+    transition: all 0.3s ease !important;
+    transform: translateY(0) !important;
+    border: 2px solid transparent;
+}
+.hover-card:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08) !important;
+    border-color: rgba(34, 197, 94, 0.3) !important;
+}
+
+.hover-image {
+    transition: transform 0.3s ease !important;
+    transform: scale(1) !important;
+}
+.hover-image:hover {
+    transform: scale(1.05) !important;
+}
+
+.gallery-item {
+    transition: all 0.3s ease !important;
+    transform: translateY(0) !important;
+}
+.gallery-item:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-green-600 to-green-800 py-20 rounded-lg mb-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white" data-hero-title>
+        Cơ Sở Sản Xuất Mụn Dừa Hoàng Hiếu
+      </h1>
+      <p class="text-xl md:text-2xl font-medium text-yellow-200" data-hero-subtitle>
+        Niềm Tin Là Giá Trị Cốt Lõi!
+      </p>
+      <div class="mt-8">
+        <span class="inline-block bg-orange-500 text-white px-6 py-2 rounded-full font-semibold" data-hero-badge>
+          🌟 Uy Tín - Chất Lượng - Tận Tâm 🌟
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="container mx-auto max-w-6xl">
+    
+    <!-- Triết Lý Kinh Doanh -->
+    <section class="bg-white p-10 rounded-lg shadow-md mb-12">
+      <div class="flex items-center mb-8">
+        <div class="bg-green-600 text-white p-3 rounded-full mr-4">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <h2 class="text-4xl font-bold text-green-700">{{ philosophy.title|default('Triết Lý Của Chúng Tôi') }}</h2>
+      </div>
+      
+      <div class="text-lg text-gray-700 leading-relaxed space-y-4">
+        <p>
+          Hoàng Hiếu hiểu rằng <span class="font-semibold text-green-600">sự tin tưởng của khách hàng</span> là nền tảng vững chắc cho sự phát triển lâu dài. Vì thế, chúng tôi luôn lấy niềm tin và sự hài lòng của khách hàng làm kim chỉ nam cho mọi hoạt động.
+        </p>
+        
+        <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+          <p class="font-semibold text-green-900 text-xl italic">
+            "{{ philosophy.quote|default('Kinh doanh không chỉ là bán sản phẩm, mà còn là gửi gắm sự chân thành') }}"
+          </p>
+        </div>
+        
+        <p>
+          Chính vì vậy, suốt những năm qua, chúng tôi không ngừng nỗ lực để mang đến những sản phẩm tốt nhất, giá cả hợp lý nhất và dịch vụ tận tâm nhất.
+        </p>
+      </div>
+    </section>
+
+    <!-- Cam Kết Của Chúng Tôi -->
+    <section class="bg-white p-4 md:p-8 lg:p-10 rounded-lg shadow-md mb-8 md:mb-12">
+      <div class="text-center mb-8 md:mb-12 px-2">
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-green-700 mb-3 md:mb-4 leading-tight">
+          Bạn Sẽ Nhận Được Gì<br class="md:hidden"> Khi Đến Với Hoàng Hiếu?
+        </h2>
+        <div class="w-16 md:w-24 h-1 bg-orange-500 mx-auto rounded"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-10">
+        <!-- Cam kết 1 -->
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-4 md:p-6 lg:p-8 rounded-xl border border-green-200 hover-card">
+          <div class="flex flex-col sm:flex-row items-start gap-3 md:gap-4 lg:gap-5">
+            <div class="bg-green-600 text-white p-3 md:p-4 rounded-full flex-shrink-0 self-center sm:self-start">
+              <svg class="w-6 h-6 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div class="w-full">
+              <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-green-700 mb-2 md:mb-3 lg:mb-4 text-center sm:text-left">
+                🏆 Sản phẩm đạt tiêu chuẩn chất lượng cao
+              </h3>
+              <p class="text-gray-800 text-sm md:text-base lg:text-lg leading-relaxed text-justify">
+                Chúng tôi chuyên cung cấp <strong>mụn dừa xử lý</strong> (tỷ lệ xơ-mụn đáp ứng theo yêu cầu của bạn). Ngoài ra còn có <strong>mụn dừa thô, vỏ dừa cắt chip, phân hữu cơ, trấu, tro trấu và đất sạch</strong>... Tất cả đều được làm cẩn thận, kỹ lưỡng, để bạn yên tâm sử dụng mà không phải bận lòng.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cam kết 2 -->
+        <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-4 md:p-6 lg:p-8 rounded-xl border border-yellow-200 hover-card">
+          <div class="flex flex-col sm:flex-row items-start gap-3 md:gap-4 lg:gap-5">
+            <div class="bg-yellow-600 text-white p-3 md:p-4 rounded-full flex-shrink-0 self-center sm:self-start">
+              <svg class="w-6 h-6 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"/>
+              </svg>
+            </div>
+            <div class="w-full">
+              <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-yellow-700 mb-2 md:mb-3 lg:mb-4 text-center sm:text-left">
+                💰 Giá cả hợp túi tiền
+              </h3>
+              <p class="text-gray-800 text-sm md:text-base lg:text-lg leading-relaxed text-justify">
+                Hoàng Hiếu hiểu rằng <strong>làm nông không dễ</strong>, nên chúng tôi luôn giữ mức giá phù hợp để mọi người đều có thể tiếp cận được những sản phẩm tốt mà không lo chi phí quá cao.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cam kết 3 -->
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-4 md:p-6 lg:p-8 rounded-xl border border-blue-200 hover-card">
+          <div class="flex flex-col sm:flex-row items-start gap-3 md:gap-4 lg:gap-5">
+            <div class="bg-blue-600 text-white p-3 md:p-4 rounded-full flex-shrink-0 self-center sm:self-start">
+              <svg class="w-6 h-6 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div class="w-full">
+              <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-blue-700 mb-2 md:mb-3 lg:mb-4 text-center sm:text-left">
+                ❤️ Dịch vụ tận tình như người nhà
+              </h3>
+              <p class="text-gray-800 text-sm md:text-base lg:text-lg leading-relaxed text-justify">
+                Khi bạn cần, chúng tôi sẵn sàng có mặt để hỗ trợ. Từ <strong>tư vấn chọn sản phẩm</strong> cho đến <strong>giao hàng tận nơi</strong>, chúng tôi luôn cố gắng làm mọi thứ nhanh gọn, chu đáo để bạn hài lòng.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cam kết 4 -->
+        <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 p-4 md:p-6 lg:p-8 rounded-xl border border-emerald-200 hover-card">
+          <div class="flex flex-col sm:flex-row items-start gap-3 md:gap-4 lg:gap-5">
+            <div class="bg-emerald-600 text-white p-3 md:p-4 rounded-full flex-shrink-0 self-center sm:self-start">
+              <svg class="w-6 h-6 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <div class="w-full">
+              <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-emerald-700 mb-2 md:mb-3 lg:mb-4 text-center sm:text-left">
+                🌟 Uy tín được khẳng định qua thời gian
+              </h3>
+              <p class="text-gray-800 text-sm md:text-base lg:text-lg leading-relaxed text-justify">
+                Nhiều năm hoạt động, chúng tôi tự hào có được sự tin tưởng từ rất nhiều khách hàng. <strong>Uy tín là thứ chúng tôi trân trọng nhất</strong> và luôn cố gắng bảo vệ.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Thông tin liên hệ nhanh -->
+    <section class="bg-gradient-to-r from-green-600 to-green-700 p-10 rounded-lg text-white text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4">Liên Hệ Với Chúng Tôi Ngay Hôm Nay</h2>
+      <p class="text-xl mb-8">Để được tư vấn miễn phí và nhận báo giá tốt nhất!</p>
+      
+      <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
+        <a href="tel:0984288512" class="px-8 py-4 rounded-full text-white text-lg transition-all duration-300 flex items-center w-full md:w-auto justify-center touch-manipulation shadow-md" style="background-color: #f97316; font-weight: 700;">
+          📞 0984.288.512
+        </a>
+        <button id="emailButton" class="px-8 py-4 rounded-full text-white text-lg transition-all duration-300 w-full md:w-auto touch-manipulation cursor-pointer shadow-md" style="background-color: #1E88E5; font-weight: 700;">
+          ✉️ Gửi Email Tư Vấn
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Email functionality - Compatible with mobile/tablet/desktop
+    document.addEventListener('DOMContentLoaded', function() {
+      const emailButton = document.getElementById('emailButton');
+      const phoneButton = document.querySelector('a[href="tel:0984288512"]');
+      
+      if (emailButton) {
+        // Add hover effect for email button
+        emailButton.addEventListener('mouseenter', function() {
+          this.style.backgroundColor = '#1565C0';
+          this.style.boxShadow = '0 6px 16px rgba(21, 101, 192, 0.3)';
+          this.style.transform = 'scale(1.02)';
+        });
+        
+        emailButton.addEventListener('mouseleave', function() {
+          this.style.backgroundColor = '#1E88E5';
+          this.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+          this.style.transform = 'scale(1)';
+        });
+        
+        emailButton.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevent any default behavior
+          
+          const email = 'munduahoanghieu.vn@gmail.com';
+          const subject = 'Tư vấn sản phẩm mụn dừa';
+          const body = `Xin chào Mụn Dừa Hoàng Hiếu,
+
+Tôi quan tâm đến các sản phẩm mụn dừa của công ty. Xin vui lòng tư vấn cho tôi về:
+- Sản phẩm phù hợp cho cây trồng của tôi
+- Giá cả và chính sách giao hàng
+- Hỗ trợ kỹ thuật
+
+Cảm ơn!`;
+          
+          // Create mailto link with proper encoding
+          const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          
+          // Try to open email client (works on mobile, tablet, desktop)
+          try {
+            // For mobile devices, create a temporary link and click it
+            const tempLink = document.createElement('a');
+            tempLink.href = mailtoLink;
+            tempLink.style.display = 'none';
+            document.body.appendChild(tempLink);
+            tempLink.click();
+            document.body.removeChild(tempLink);
+          } catch (error) {
+            // Fallback: direct window.location
+            window.location.href = mailtoLink;
+          }
+        });
+      }
+      
+      // Add hover effect for phone button
+      if (phoneButton) {
+        phoneButton.addEventListener('mouseenter', function() {
+          this.style.backgroundColor = '#ea580c';
+          this.style.boxShadow = '0 6px 16px rgba(234, 88, 12, 0.3)';
+          this.style.transform = 'scale(1.02)';
+        });
+        
+        phoneButton.addEventListener('mouseleave', function() {
+          this.style.backgroundColor = '#f97316';
+          this.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+          this.style.transform = 'scale(1)';
+        });
+      }
+    });
+  </script>
+{% endblock %}
