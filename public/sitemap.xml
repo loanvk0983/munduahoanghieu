@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://munduahoanghieu.com/</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://munduahoanghieu.com/assets/image/banner/banner1.jpg</image:loc>
+      <image:title>Mụn Dừa Hoàng Hiếu - Giải pháp nông nghiệp xanh</image:title>
+    </image:image>
+  </url>
+
+  <!-- Giới Thiệu -->
+  <url>
+    <loc>https://munduahoanghieu.com/gioi-thieu</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Sản Phẩm -->
+  <url>
+    <loc>https://munduahoanghieu.com/san-pham</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://munduahoanghieu.com/assets/image/products/mun-dua-xu-ly/1-Nguyên liệu mụn dừa xử lý.jpg</image:loc>
+      <image:title>Mụn Dừa Xử Lý - Sản phẩm chất lượng cao</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://munduahoanghieu.com/assets/image/products/vo-dua-cat-chip/1-Nguyên liệu vỏ dừa cắt chip.jpg</image:loc>
+      <image:title>Vỏ Dừa Cắt Chip - Giải pháp hiện đại</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://munduahoanghieu.com/assets/image/products/mun-dua-tho/1-Nguyên liệu mụn dừa thô.jpg</image:loc>
+      <image:title>Mụn Dừa Thô - Giá cả phải chăng</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://munduahoanghieu.com/assets/image/products/san-xuat-theo-yeu-cau/1-NL sản xuất theo yêu cầu.jpg</image:loc>
+      <image:title>Sản Xuất Theo Yêu Cầu - Tùy chỉnh linh hoạt</image:title>
+    </image:image>
+  </url>
+
+  <!-- Sản phẩm chi tiết -->
+  <url>
+    <loc>https://munduahoanghieu.com/mun-dua-xu-ly</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://munduahoanghieu.com/assets/image/products/mun-dua-xu-ly/1-Nguyên liệu mụn dừa xử lý.jpg</image:loc>
+      <image:title>Mụn Dừa Xử Lý - Chi tiết sản phẩm</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://munduahoanghieu.com/vo-dua-cat-chip</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://munduahoanghieu.com/assets/image/products/vo-dua-cat-chip/1-Nguyên liệu vỏ dừa cắt chip.jpg</image:loc>
+      <image:title>Vỏ Dừa Cắt Chip - Chi tiết sản phẩm</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://munduahoanghieu.com/mun-dua-tho</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://munduahoanghieu.com/assets/image/products/mun-dua-tho/1-Nguyên liệu mụn dừa thô.jpg</image:loc>
+      <image:title>Mụn Dừa Thô - Chi tiết sản phẩm</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://munduahoanghieu.com/san-xuat-theo-yeu-cau</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://munduahoanghieu.com/assets/image/products/san-xuat-theo-yeu-cau/1-NL sản xuất theo yêu cầu.jpg</image:loc>
+      <image:title>Sản Xuất Theo Yêu Cầu - Chi tiết sản phẩm</image:title>
+    </image:image>
+  </url>
+
+  <!-- Liên Hệ -->
+  <url>
+    <loc>https://munduahoanghieu.com/lien-he</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Tìm Kiếm -->
+  <url>
+    <loc>https://munduahoanghieu.com/search</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Tin Tức (News) - Nếu có nội dung tin -->
+  <url>
+    <loc>https://munduahoanghieu.com/tin-tuc</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

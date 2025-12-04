@@ -3,27 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Mụn Dừa Hoàng Hiếu{% endblock %}</title>
+  
+  <!-- SEO Title -->
+  <title>{{ seo_title|default('Mụn Dừa Hoàng Hiếu – Giá Thể Sạch – Năng Suất Vượt Trội') }}</title>
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Mụn Dừa Hoàng Hiếu - Giá thể sạch, giúp cây khỏe, đất tốt, mùa vụ bội thu. Chuyên cung cấp mụn dừa xử lý chất lượng cao cho nông nghiệp.">
-  <meta name="keywords" content="mụn dừa, giá thể trồng cây, mụn dừa xử lý, xơ dừa, vỏ dừa, nông nghiệp sạch, Bến Tre">
+  <meta name="description" content="{{ seo_description|default('Mụn Dừa Hoàng Hiếu cung cấp mụn dừa xử lý sạch, EC thấp, pH chuẩn, không tannin – phù hợp dưa lưới, dâu tây, ớt chuông, lan và nhiều mô hình nông nghiệp sạch.') }}">
+  <meta name="keywords" content="mụn dừa, mụn dừa xử lý, giá thể sạch, giá thể mụn dừa, dưa lưới giá thể, dâu tây giá thể, ớt chuông giá thể">
   <meta name="author" content="Mụn Dừa Hoàng Hiếu">
   
   <!-- Open Graph Meta Tags for Social Sharing -->
-  <meta property="og:title" content="Mụn Dừa Hoàng Hiếu - Giá thể sạch cho cây trồng">
-  <meta property="og:description" content="Giá thể mụn dừa tự nhiên, xử lý sạch, giữ ẩm tốt, giúp cây sinh trưởng khỏe mạnh. Sản phẩm thân thiện môi trường từ Bến Tre.">
-  <meta property="og:image" content="{{ siteUrl|default('https://munduahoanghieu.com') }}/assets/image/products/mun-dua-xu-ly/Mụn xử lý 1.jpg">
-  <meta property="og:url" content="{{ siteUrl|default('https://munduahoanghieu.com') }}{{ currentPath|default('') }}">
+  <meta property="og:title" content="{{ seo_title|default('Mụn Dừa Hoàng Hiếu – Giá Thể Sạch – Không Tannin') }}">
+  <meta property="og:description" content="{{ seo_description|default('Cơ sở sản xuất mụn dừa sạch, EC thấp, pH chuẩn, phù hợp trồng rau, trái và hoa kiểng.') }}">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ current_url|default('https://munduahoanghieu.com' ~ currentPath|default('')) }}">
+  <meta property="og:image" content="https://munduahoanghieu.com/assets/banner/cover.jpg">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:site_name" content="Mụn Dừa Hoàng Hiếu">
   
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mụn Dừa Hoàng Hiếu - Giá thể sạch cho cây trồng">
-  <meta name="twitter:description" content="Giá thể mụn dừa tự nhiên, xử lý sạch, giữ ẩm tốt, giúp cây sinh trưởng khỏe mạnh.">
-  <meta name="twitter:image" content="{{ siteUrl|default('https://munduahoanghieu.com') }}/assets/image/products/mun-dua-xu-ly/Mụn xử lý 1.jpg">
+  <meta name="twitter:title" content="{{ seo_title|default('Mụn Dừa Hoàng Hiếu') }}">
+  <meta name="twitter:description" content="{{ seo_description|default('Mụn dừa xử lý sạch – chuyên cung cấp giá thể chất lượng cao.') }}">
+  <meta name="twitter:image" content="https://munduahoanghieu.com/assets/banner/cover.jpg">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ current_url|default('https://munduahoanghieu.com' ~ currentPath|default('')) }}">
   
   <!-- Favicons - Using original logo -->
   <link rel="icon" type="image/svg+xml" href="/assets/image/logo.svg">
@@ -256,67 +261,6 @@
     </div>
   </footer>
 
-  <!-- Common JavaScript -->
-  <script>
-    // Search functionality - redirect to search page
-    function performSearch() {
-      console.log('performSearch() called');
-      const desktopInput = document.getElementById('search-input-desktop');
-      const mobileInput = document.getElementById('search-input-mobile');
-      const mobileMenu = document.getElementById('mobile-menu');
-      let searchInput = desktopInput;
-      // Nếu mobile menu đang mở thì ưu tiên input mobile
-      if (mobileMenu && window.getComputedStyle(mobileMenu).display !== 'none') {
-        if (mobileInput) {
-          searchInput = mobileInput;
-          console.log('mobileInput active!');
-        }
-      } else {
-        console.log('desktopInput active!');
-      }
-      console.log('searchInput (final):', searchInput);
-      // Lưu value ngay lập tức
-      let query = '';
-      if (searchInput) {
-        query = searchInput.value.trim();
-        console.log('searchInput.value:', searchInput.value);
-        console.log('searchInput.value.trim():', query);
-      }
-      console.log('search query:', query);
-      console.log('query length:', query.length);
-      if (!query || query.length < 2) {
-        alert('Vui lòng nhập ít nhất 2 ký tự để tìm kiếm');
-        return;
-      }
-      // Redirect to search page
-      console.log('Redirecting to search page with query:', query);
-      window.location.href = `/search?q=${encodeURIComponent(query)}`;
-    }
-
-    function handleSearchKeyPress(event) {
-      console.log('handleSearchKeyPress() called, key:', event.key);
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        performSearch();
-      }
-    }
-
-    // Email functionality
-    function sendEmail() {
-      const subject = encodeURIComponent('Tư vấn sản phẩm mụn dừa');
-      const body = encodeURIComponent(`Xin chào Mụn Dừa Hoàng Hiếu,
-
-Tôi quan tâm đến các sản phẩm mụn dừa của công ty. Xin vui lòng tư vấn cho tôi về:
-- Sản phẩm phù hợp cho cây trồng của tôi
-- Giá cả và chính sách giao hàng
-- Hỗ trợ kỹ thuật
-
-Cảm ơn!`);
-      
-      window.open(`mailto:munduahoanghieu.vn@gmail.com?subject=${subject}&body=${body}`);
-    }
-  </script>
-  
   <!-- Footer glow effects CSS -->
   <style>
     /* Footer link glow effects */
@@ -360,6 +304,200 @@ Cảm ơn!`);
       filter: drop-shadow(0 0 12px rgba(255,51,51,0.55));
     }
   </style>
+  
+  <!-- Global JavaScript - Must be after body elements are loaded -->
+  <script>
+    console.log('🟢 LAYOUT.TWIG SCRIPT START');
+    
+    // Cache input references
+    let cachedDesktopInput = null;
+    let cachedMobileInput = null;
+    
+    // Search functionality - redirect to search page
+    function performSearch() {
+      try {
+        console.log('🔍 performSearch() called (button click)');
+        
+        // Try all methods to get input
+        let searchInput = cachedDesktopInput || cachedMobileInput;
+        console.log('Cached inputs - Desktop:', cachedDesktopInput, 'Mobile:', cachedMobileInput);
+        
+        // If cache is null, try to get fresh
+        if (!searchInput) {
+          console.log('Cache empty, querying DOM...');
+          searchInput = document.getElementById('search-input') || document.getElementById('search-input-mobile');
+          console.log('DOM query result:', searchInput);
+        }
+        
+        if (!searchInput) {
+          console.error('❌ Không tìm thấy input search bằng ID!');
+          
+          // Last resort: try querySelectorAll
+          const allInputs = document.querySelectorAll('input[type="text"]');
+          console.log('All text inputs found:', allInputs.length);
+          
+          // Find input near the button that was clicked
+          for (let inp of allInputs) {
+            console.log('Checking input:', inp.id, inp.placeholder, inp.value);
+            if (inp.placeholder && inp.placeholder.includes('Tìm')) {
+              searchInput = inp;
+              console.log('✅ Found search input by placeholder:', inp);
+              break;
+            }
+          }
+          
+          if (!searchInput && allInputs.length > 0) {
+            // Try to find any input with value
+            for (let inp of allInputs) {
+              if (inp.value.trim()) {
+                searchInput = inp;
+                console.log('✅ Using input with value:', inp);
+                break;
+              }
+            }
+          }
+          
+          if (!searchInput) {
+            alert('Lỗi: Không tìm thấy ô tìm kiếm. Vui lòng tải lại trang.');
+            return;
+          }
+        }
+        
+        const query = searchInput.value.trim();
+        console.log('Search query:', query, 'length:', query.length);
+        
+        if (!query || query.length < 2) {
+          alert('Vui lòng nhập ít nhất 2 ký tự để tìm kiếm');
+          return;
+        }
+        
+        // Redirect to search page
+        console.log('🚀 Redirecting to /search?q=' + query);
+        window.location.href = `/search?q=${encodeURIComponent(query)}`;
+      } catch (error) {
+        console.error('❌ Error in performSearch:', error);
+        alert('Có lỗi xảy ra. Vui lòng thử lại.');
+      }
+    }
+    
+    console.log('🟢 performSearch() defined');
+
+    console.log('🟢 performSearch() defined');
+
+    function handleSearchKeyPress(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        // Pass the input element from event
+        const inputElement = event.target;
+        console.log('Enter pressed on input:', inputElement);
+        console.log('Input value from event:', inputElement.value);
+        performSearchWithInput(inputElement);
+      }
+    }
+    
+    // Wrapper that accepts input element directly
+    function performSearchWithInput(inputElement) {
+      try {
+        console.log('🔍 performSearchWithInput() called');
+        console.log('Input element received:', inputElement);
+        
+        if (!inputElement) {
+          console.error('❌ No input element provided');
+          performSearch(); // Fallback to original
+          return;
+        }
+        
+        const query = inputElement.value.trim();
+        console.log('Search query:', query);
+        
+        if (!query || query.length < 2) {
+          alert('Vui lòng nhập ít nhất 2 ký tự để tìm kiếm');
+          return;
+        }
+        
+        // Redirect to search page
+        console.log('🚀 Redirecting to /search?q=' + query);
+        window.location.href = `/search?q=${encodeURIComponent(query)}`;
+      } catch (error) {
+        console.error('❌ Error in performSearchWithInput:', error);
+        alert('Có lỗi xảy ra. Vui lòng thử lại.');
+      }
+    }
+    
+    console.log('🟢 handleSearchKeyPress() defined');
+    
+    // Wait for DOM to be fully loaded before attaching listeners
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSearchListeners);
+    } else {
+      // DOM already loaded
+      initSearchListeners();
+    }
+    
+    function initSearchListeners() {
+      // Attach event listeners after DOM is ready
+      try {
+        console.log('🔧 Attaching search event listeners...');
+        
+        // Desktop search input and button
+        cachedDesktopInput = document.getElementById('search-input');
+        const desktopBtn = document.getElementById('search-btn-desktop');
+        
+        if (cachedDesktopInput) {
+          console.log('✅ Desktop input found and cached');
+          cachedDesktopInput.addEventListener('keypress', handleSearchKeyPress);
+        } else {
+          console.warn('⚠️ Desktop search input not found');
+        }
+        
+        if (desktopBtn) {
+          desktopBtn.addEventListener('click', performSearch);
+          console.log('✅ Desktop search button listener attached');
+        } else {
+          console.warn('⚠️ Desktop search button not found');
+        }
+        
+        // Mobile search input and button
+        cachedMobileInput = document.getElementById('search-input-mobile');
+        const mobileBtn = document.getElementById('search-btn-mobile');
+        
+        if (cachedMobileInput) {
+          console.log('✅ Mobile input found and cached');
+          cachedMobileInput.addEventListener('keypress', handleSearchKeyPress);
+        } else {
+          console.warn('⚠️ Mobile search input not found');
+        }
+        
+        if (mobileBtn) {
+          mobileBtn.addEventListener('click', performSearch);
+          console.log('✅ Mobile search button listener attached');
+        } else {
+          console.warn('⚠️ Mobile search button not found');
+        }
+        
+        console.log('🟢 Event listeners setup complete');
+      } catch (error) {
+        console.error('❌ Error attaching event listeners:', error);
+      }
+    }
+
+    // Email functionality
+    function sendEmail() {
+      const subject = encodeURIComponent('Tư vấn sản phẩm mụn dừa');
+      const body = encodeURIComponent(`Xin chào Mụn Dừa Hoàng Hiếu,
+
+Tôi quan tâm đến các sản phẩm mụn dừa của công ty. Xin vui lòng tư vấn cho tôi về:
+- Sản phẩm phù hợp cho cây trồng của tôi
+- Giá cả và chính sách giao hàng
+- Hỗ trợ kỹ thuật
+
+Cảm ơn!`);
+      
+      window.open(`mailto:munduahoanghieu.vn@gmail.com?subject=${subject}&body=${body}`);
+    }
+    
+    console.log('🟢 LAYOUT.TWIG SCRIPT END');
+  </script>
   
   {% block scripts %}{% endblock %}
 </body>

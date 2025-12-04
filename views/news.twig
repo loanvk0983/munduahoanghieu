@@ -239,7 +239,13 @@
       <span id="top-info-tip">Giữ ẩm cho mụn dừa trước khi sử dụng</span>
     </div>
     <div class="info-item">
-      <span id="quickNews" class="info-quick-news">Đang tải tin nhanh...</span>
+      <span id="quickNews" class="info-quick-news">
+        {% if quickNewsData is defined and quickNewsData|length > 0 %}
+          {{ quickNewsData[0].title }}
+        {% else %}
+          Chưa có tin nhanh
+        {% endif %}
+      </span>
     </div>
     <div class="info-slogan">
       💚 Đồng hành cùng nhà nông - Lan tỏa nông nghiệp xanh 🌿
@@ -339,7 +345,28 @@
           <a href="#" onclick="filterByCategory('all'); document.querySelector('.news-list-view').scrollIntoView({behavior:'smooth',block:'start'}); return false;" class="text-sm text-green-600 hover:text-green-800 hover:underline transition-all duration-200">Xem tất cả →</a>
         </div>
         <div class="news-highlight-grid" id="news-highlight-grid">
-          <!-- Top three news cards rendered by JS -->
+          {% if allNewsData is defined and allNewsData|length > 0 %}
+            {% for news in allNewsData|slice(0, 3) %}
+              <div class="news-highlight-card" onclick="showPostDetailNew({{ news.id }})">
+                <div class="news-highlight-thumb">
+                  <img src="{{ news.cover }}" alt="{{ news.title }}" onerror="this.src='/assets/image/placeholder.jpg'">
+                </div>
+                <div class="news-highlight-body">
+                  <div class="news-highlight-meta">
+                    <span>📅 {{ news.date }}</span>
+                    <span>📁 {% if news.categoryName %}{{ news.categoryName }}{% else %}Tin Tức{% endif %}</span>
+                  </div>
+                  <h3>{{ news.title }}</h3>
+                  <p class="news-highlight-excerpt">{{ news.excerpt }}</p>
+                  <div class="news-highlight-meta">
+                    <span>👁️ {{ news.views }} lượt xem</span>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p style="text-align:center;color:#9ca3af;padding:1.5rem;grid-column:1/-1;">Chưa có bài viết nổi bật.</p>
+          {% endif %}
         </div>
       </div>
 
@@ -347,7 +374,24 @@
       <div class="news-list-view visible" id="news-list-view">
         <h2 class="news-list-title" id="news-section-title">📚 Tất Cả Bài Viết</h2>
         <div class="news-list-grid" id="news-list-grid">
-          <!-- News cards will be rendered here by JS -->
+          {% if allNewsData is defined and allNewsData|length > 0 %}
+            {% for news in allNewsData %}
+              <div class="news-list-card" onclick="showPostDetailNew({{ news.id }})">
+                <img src="{{ news.cover }}" alt="{{ news.title }}" class="news-list-card-img" onerror="this.src='/assets/image/placeholder.jpg'">
+                <div class="news-list-card-content">
+                  <h3 class="news-list-card-title">{{ news.title }}</h3>
+                  <p class="news-list-card-excerpt">{{ news.excerpt }}</p>
+                  <div class="news-list-card-meta">
+                    <span>📅 {{ news.date }}</span>
+                    <span>👁️ {{ news.views }} lượt xem</span>
+                    <span>📁 {% if news.categoryName %}{{ news.categoryName }}{% else %}Tin Tức{% endif %}</span>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p style="text-align:center;color:#9ca3af;padding:2rem;">Không có bài viết nào.</p>
+          {% endif %}
         </div>
       </div>
       
@@ -426,7 +470,16 @@
           <span>Bài Viết Liên Quan</span>
         </h3>
         <div class="related-list" id="related-posts-list">
-          <!-- Related posts rendered by JS -->
+          {% if allNewsData is defined and allNewsData|length > 0 %}
+            {% for news in allNewsData|slice(0, 5) %}
+              <div class="related-item" onclick="showPostDetailNew({{ news.id }})">
+                <div class="related-item-title">{{ news.title }}</div>
+                <div class="related-item-date">📅 {{ news.date }}</div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p style="color:#9ca3af;font-size:0.9rem;">Chưa có bài viết liên quan.</p>
+          {% endif %}
         </div>
       </div>
     </aside>
@@ -467,16 +520,6 @@
 {% endblock %}
 
 {% block scripts %}
-{% if quickNewsData is defined %}
-<script>
-  try {
-    window.__QUICK_NEWS__ = {{ quickNewsData|raw }};
-  } catch (e) {
-    console.warn('Error parsing quickNewsData', e);
-    window.__QUICK_NEWS__ = null;
-  }
-</script>
-{% endif %}
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -549,11 +592,15 @@ function previousTip() {
 function initQuickNewsRotator() {
   const el = document.getElementById('quickNews');
   if(!el) return;
-  let list = window.__QUICK_NEWS__||[];
+  
+  // Parse quick news from current page data (Twig has already rendered the first one)
+  // Build list from mockNewsData
+  let list = mockNewsData.map(item => item.title) || [];
   if(!list.length){ el.textContent='Chưa có tin nhanh'; return; }
-  let idx=-1; 
+  
+  let idx = 0; // Start from 0 since first is already rendered
   const next = ()=>{ 
-    idx=(idx+1)%list.length; 
+    idx = (idx + 1) % list.length;
     el.classList.add('quick-fade-out');
     setTimeout(()=>{
       el.textContent = list[idx]; 
@@ -562,8 +609,7 @@ function initQuickNewsRotator() {
       setTimeout(()=>el.classList.remove('quick-fade-in'), 220);
     }, 220);
   }; 
-  next(); 
-  setInterval(next,4000);
+  setInterval(next, 4000);
 }
 
 // ============ Banner Slider ============
@@ -582,218 +628,32 @@ function initBannerSlider(){
   }catch(e){console.warn('Swiper init failed',e);}
 }
 
-// ============ Mock News Data ============
-const mockNewsData = [
-  {
-    id: 1,
-    title: 'Làm thế nào để phân biệt mụn dừa đã xử lý và mụn dừa chưa xử lý',
-    excerpt: 'Hướng dẫn chi tiết cách nhận biết mụn dừa đã qua xử lý để đảm bảo chất lượng cho cây trồng...',
-    category: 'techniques',
-    categoryName: 'Kỹ Thuật',
-    categories: ['knowledge', 'techniques'],  // Kiến Thức Cơ Bản và Kỹ Thuật
-    date: '23/10/2025',
-    views: 0, // Will be updated from API
-    cover: '/assets/image/News/1.1-Mun%20da%20xu%20ly.jpg',
-    images: [
-      '/assets/image/News/1.1-Mun%20da%20xu%20ly.jpg',
-      '/assets/image/News/1.2-Mun%20chua%20xu%20ly.jpg'
-    ],
-    content: `
-      <h3 class="text-3xl font-bold text-green-700 mb-6">Phân Biệt Mụn Dừa Xử Lý & Chưa Xử Lý</h3>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6 shadow-lg">
-          <div class="text-center mb-4">
-            <span class="inline-block px-4 py-2 bg-orange-600 text-white rounded-full font-bold text-lg">✅ Mụn Đã Xử Lý</span>
-          </div>
-          <img src="/assets/image/News/1.1-Mun da xu ly.jpg" alt="Mụn đã xử lý" class="w-full rounded-lg shadow-md mb-4 hover:scale-105 transition-transform duration-300">
-          <div class="space-y-3 text-gray-800">
-            <div class="flex items-start gap-3">
-              <span class="text-2xl">🎨</span>
-              <div>
-                <strong class="text-orange-700">Màu sắc:</strong> NÂU ĐỎ đặc trưng
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-2xl">👋</span>
-              <div>
-                <strong class="text-orange-700">Cảm quan:</strong> MỀM MỊN, ẨM ƯỚT
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-2xl">💧</span>
-              <div>
-                <strong class="text-orange-700">Giữ nước:</strong> Ngâm nước có màu NHẠT/TRONG SUỐT
-              </div>
-            </div>
-          </div>
-        </div>
+// ============ Mock News Data (Now from Database) ============
+// Initialize from server-side data
+let mockNewsData = [];
+let quickNewsData = [];
 
-        <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 shadow-lg">
-          <div class="text-center mb-4">
-            <span class="inline-block px-4 py-2 bg-yellow-600 text-white rounded-full font-bold text-lg">⚠️ Mụn Chưa Xử Lý</span>
-          </div>
-          <img src="/assets/image/News/1.2-Mun chua xu ly.jpg" alt="Mụn chưa xử lý" class="w-full rounded-lg shadow-md mb-4 hover:scale-105 transition-transform duration-300">
-          <div class="space-y-3 text-gray-800">
-            <div class="flex items-start gap-3">
-              <span class="text-2xl">🎨</span>
-              <div>
-                <strong class="text-yellow-700">Màu sắc:</strong> VÀNG NHẠT
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-2xl">👋</span>
-              <div>
-                <strong class="text-yellow-700">Cảm quan:</strong> CỨNG, KHÔ RÁO
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-2xl">💧</span>
-              <div>
-                <strong class="text-yellow-700">Giữ nước:</strong> Ngâm nước có màu NÂU SẬM
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+// Load Quick News Data (JSON stringified version for JavaScript)
+{% if quickNewsDataJson is defined and quickNewsDataJson != '' %}
+try {
+  quickNewsData = {{ quickNewsDataJson|raw }};
+  console.log(`✅ Loaded ${quickNewsData.length} quick news items`);
+} catch (e) {
+  console.warn('Could not parse quick news data:', e);
+  quickNewsData = [];
+}
+{% endif %}
 
-      <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg mb-6">
-        <h4 class="text-xl font-bold text-blue-700 mb-4 flex items-center gap-2">
-          <span class="text-2xl">🔬</span> Kiểm Tra Định Lượng (Độ Chính Xác Cao)
-        </h4>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="bg-white p-4 rounded-lg shadow">
-            <div class="text-center mb-2 text-3xl">💦</div>
-            <h5 class="font-semibold text-center mb-2">Độ Ẩm</h5>
-            <p class="text-sm text-center">
-              <span class="text-green-600 font-bold">Xử lý: 70-80%</span><br>
-              <span class="text-gray-600">Chưa xử lý: 45-55%</span>
-            </p>
-          </div>
-          <div class="bg-white p-4 rounded-lg shadow">
-            <div class="text-center mb-2 text-3xl">⚡</div>
-            <h5 class="font-semibold text-center mb-2">Độ Dẫn Điện</h5>
-            <p class="text-sm text-center">
-              <span class="text-green-600 font-bold">Xử lý: ≤ 0.5</span><br>
-              <span class="text-gray-600">Chưa xử lý: > 2.5</span>
-            </p>
-          </div>
-          <div class="bg-white p-4 rounded-lg shadow">
-            <div class="text-center mb-2 text-3xl">🧪</div>
-            <h5 class="font-semibold text-center mb-2">Độ pH</h5>
-            <p class="text-sm text-center">
-              <span class="text-green-600 font-bold">Xử lý: 6-7</span><br>
-              <span class="text-gray-600">Chưa xử lý: 5.5-6.5</span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-green-50 rounded-lg p-6">
-        <p class="text-lg text-gray-700 leading-relaxed">
-          <strong class="text-green-700">💡 Lưu ý:</strong> Việc phân biệt đúng loại mụn dừa giúp bạn lựa chọn sản phẩm phù hợp 
-          cho từng loại cây trồng, đảm bảo hiệu quả canh tác tốt nhất và tránh gây hại cho cây.
-        </p>
-      </div>
-    `
-  },
-  {
-    id: 2,
-    title: 'Những tác dụng của xơ dừa đối với cây trồng',
-    excerpt: 'Xơ dừa không chỉ giúp giữ ẩm mà còn cải thiện cấu trúc đất, tăng cường hệ vi sinh...',
-    category: 'benefits',
-    categoryName: 'Lợi Ích & Môi Trường',
-    categories: ['benefits', 'techniques'],  // Lợi Ích & Môi Trường, Kỹ Thuật
-    date: '22/10/2025',
-    views: 980,
-    cover: '/assets/image/News/2.2-Tac%20dung%20cua%20xo%20dua.jpg',
-    images: [
-      '/assets/image/News/2.2-Tac%20dung%20cua%20xo%20dua.jpg'
-    ],
-    content: `
-      <h2>Lợi ích nổi bật</h2>
-      <p>Xơ dừa giữ ẩm tốt, giúp bộ rễ không bị sốc nhiệt khi thời tiết thay đổi. Các sợi lignin tạo ra độ thông thoáng, hạn chế úng rễ.</p>
-      <p>Trong canh tác hữu cơ, xơ dừa là vật liệu hỗ trợ tuyệt vời để phối trộn với phân trùn quế, phân chuồng hoai mục.</p>
-      <h2>Cách ứng dụng hiệu quả</h2>
-      <ul>
-        <li>Phối trộn xơ dừa với đất theo tỷ lệ 30-40% cho cây trồng chậu.</li>
-        <li>Dùng xơ dừa phủ gốc để giữ ẩm và hạn chế cỏ dại.</li>
-        <li>Ủ xơ dừa với chế phẩm vi sinh để tăng hàm lượng dinh dưỡng.</li>
-      </ul>
-    `
-  },
-  {
-    id: 3,
-    title: 'Một số lưu ý khi sử dụng mụn dừa',
-    excerpt: 'Để tối ưu hiệu quả sử dụng mụn dừa, bạn cần chú ý đến độ ẩm, pH, và cách trộn phối...',
-    category: 'techniques',
-    categoryName: 'Kỹ Thuật',
-    categories: ['knowledge', 'techniques', 'experience'],  // Kiến Thức, Kỹ Thuật và Kinh Nghiệm
-    date: '21/10/2025',
-    views: 1100,
-    cover: '/assets/image/News/3.1-Luu%20y.jpg',
-    images: [
-      '/assets/image/News/3.1-Luu%20y.jpg',
-      '/assets/image/News/3.2-Luu%20y.jpg',
-      '/assets/image/News/3.3-Luu%20y.jpg'
-    ],
-    content: `
-      <h2>Độ ẩm và thoát nước</h2>
-      <p>Luôn duy trì độ ẩm của mụn dừa khoảng 60-70%. Nếu quá khô, rễ sẽ khó hút nước; nếu quá ướt, dễ phát sinh nấm bệnh.</p>
-      <h2>Điều chỉnh pH</h2>
-      <p>Kiểm tra pH định kỳ và bổ sung vôi dolomite khi pH xuống dưới 5.5. Điều này giúp rễ hấp thụ dinh dưỡng tối ưu.</p>
-      <h2>Phối trộn dinh dưỡng</h2>
-      <p>Kết hợp mụn dừa với phân compost, phân hữu cơ hoặc phân tan chậm để cung cấp dinh dưỡng bền vững cho cây.</p>
-    `
-  },
-  {
-    id: 4,
-    title: 'Mụn dừa là gì và tại sao được sử dụng trong trồng cây',
-    excerpt: 'Tìm hiểu về nguồn gốc, đặc tính và ứng dụng của mụn dừa trong nông nghiệp hiện đại...',
-    category: 'knowledge',
-    categoryName: 'Kiến Thức Cơ Bản',
-    categories: ['knowledge', 'benefits'],  // Kiến Thức Cơ Bản và Lợi Ích & Môi Trường
-    date: '20/10/2025',
-    views: 1450,
-    cover: '/assets/image/News/4-1-Mua%20dua%20co%20tac%20dung%20gi.jpg',
-    images: [
-      '/assets/image/News/4-1-Mua%20dua%20co%20tac%20dung%20gi.jpg',
-      '/assets/image/News/4.2-Mua%20dua%20co%20tac%20dung%20gi.jpg'
-    ],
-    content: `
-      <h2>Nguồn gốc</h2>
-      <p>Mụn dừa được tách ra trong quá trình sơ chế vỏ dừa. Thay vì bỏ đi, phần phụ phẩm này được xử lý thành giá thể hữu ích.</p>
-      <h2>Ưu điểm vượt trội</h2>
-      <ul>
-        <li>Giữ ẩm tốt nhưng vẫn thông thoáng, giúp rễ phát triển mạnh.</li>
-        <li>Thân thiện môi trường vì tái sử dụng phụ phẩm nông nghiệp.</li>
-        <li>Dễ phối trộn cùng các vật liệu hữu cơ khác để tạo giá thể theo nhu cầu.</li>
-      </ul>
-      <p>Nhờ những ưu điểm này, mụn dừa được ứng dụng rộng rãi trong trồng rau sạch, hoa kiểng và nông nghiệp công nghệ cao.</p>
-    `
-  },
-  {
-    id: 5,
-    title: 'Những lợi ích của mụn dừa cho cây trồng và môi trường',
-    excerpt: 'Mụn dừa không chỉ tốt cho cây trồng mà còn góp phần bảo vệ môi trường bền vững...',
-    category: 'benefits',
-    categoryName: 'Lợi Ích & Môi Trường',
-    categories: ['benefits', 'experience'],  // Lợi Ích & Môi Trường và Kinh Nghiệm
-    date: '19/10/2025',
-    views: 890,
-    cover: '/assets/image/News/5-1-.jpg',
-    images: [
-      '/assets/image/News/5-1-.jpg'
-    ],
-    content: `
-      <h2>Lợi ích cho cây trồng</h2>
-      <p>Mụn dừa tạo môi trường thoáng khí, giàu hữu cơ, giúp bộ rễ khỏe mạnh và chống chịu sâu bệnh tốt hơn.</p>
-      <h2>Bảo vệ môi trường</h2>
-      <p>Việc tái chế vỏ dừa thành giá thể giúp giảm lượng chất thải nông nghiệp, góp phần giảm ô nhiễm đất và nước.</p>
-      <p>Khi kết hợp với canh tác hữu cơ, mụn dừa giúp xây dựng hệ sinh thái nông nghiệp bền vững.</p>
-    `
-  }
-];
+// Load All News Data (JSON stringified version for JavaScript)
+{% if allNewsDataJson is defined %}
+try {
+  mockNewsData = {{ allNewsDataJson|raw }};
+  console.log(`✅ Loaded ${mockNewsData.length} news articles from database`);
+} catch (e) {
+  console.warn('Could not parse database news data:', e);
+  mockNewsData = [];
+}
+{% endif %}
 
 let filteredNews = [...mockNewsData];
 let currentCategory = 'all';
@@ -828,41 +688,11 @@ function renderNewsList() {
   `).join('');
 }
 
-// ============ Render Functions (old - kept for compatibility) ============
+// ============ Render Functions (only used for filtering by category) ============
 function renderNewestPosts() {
-  const container = document.getElementById('news-highlight-grid');
-  if (!container) return;
-  
-  // Load latest views from localStorage
-  loadAllViewsFromLocalStorage();
-  
-  // Always show top 3 from ALL news, regardless of category filter
-  const allNews = mockNewsData;
-  if (!allNews.length) {
-    container.innerHTML = '<p style="text-align:center;color:#9ca3af;padding:1.5rem;">Chưa có bài viết nổi bật.</p>';
-    return;
-  }
-
-  const newest = allNews.slice(0, 3);
-  currentHighlightIds = newest.map(post => post.id);
-  container.innerHTML = newest.map(post => `
-    <div class="news-highlight-card" onclick="showPostDetailNew(${post.id})">
-      <div class="news-highlight-thumb">
-        <img src="${post.cover}" alt="${post.title}" onerror="this.src='/assets/image/placeholder.jpg'">
-      </div>
-      <div class="news-highlight-body">
-        <div class="news-highlight-meta">
-          <span>📅 ${post.date}</span>
-          <span>📁 ${post.categoryName}</span>
-        </div>
-        <h3>${post.title}</h3>
-        <p class="news-highlight-excerpt">${post.excerpt}</p>
-        <div class="news-highlight-meta">
-          <span>👁️ ${post.views} lượt xem</span>
-        </div>
-      </div>
-    </div>
-  `).join('');
+  // This function is no longer needed - HTML is now rendered by Twig
+  // Kept for backward compatibility if called by other code
+  console.log('renderNewestPosts: Already rendered by Twig');
 }
 
 function renderCategoryPosts() {
@@ -901,7 +731,6 @@ function renderRelatedPosts() {
   loadAllViewsFromLocalStorage();
 
   // Use filtered news for related posts (respecting category selection)
-  // Do NOT exclude highlight posts - show all posts in the filtered category
   const base = filteredNews;
   if (!base.length) {
     containers.forEach(el => el.innerHTML = '<p style="color:#9ca3af;font-size:0.9rem;">Chưa có bài viết liên quan.</p>');
@@ -1004,36 +833,48 @@ function filterByCategory(category) {
   renderRelatedPosts(); // Shows related to filtered category
 }
 
-// ============ View Tracking with localStorage ============
+// ============ View Tracking with Database ============
 function incrementPostView(postId) {
-  // Get views from localStorage
-  let postViews = JSON.parse(localStorage.getItem('postViews') || '{}');
+  // Send view increment to server
+  fetch(`/api/news/${postId}/view`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      console.log(`✅ View saved to DB: News #${postId} → ${data.views} views`);
+      // Update local data
+      const post = mockNewsData.find(p => p.id === postId);
+      if (post) {
+        post.views = data.views;
+      }
+      return data.views;
+    } else {
+      console.error('❌ Failed to save view:', data.error);
+      return null;
+    }
+  })
+  .catch(error => {
+    console.error('❌ Error sending view to server:', error);
+  });
   
-  // Increment view count
-  postViews[postId] = (postViews[postId] || 0) + 1;
-  
-  // Save back to localStorage
-  localStorage.setItem('postViews', JSON.stringify(postViews));
-  
-  // Update mockNewsData
+  // Optimistically return current view count from DB (already loaded)
   const post = mockNewsData.find(p => p.id === postId);
-  if (post) {
-    post.views = postViews[postId];
-  }
-  
-  return postViews[postId];
+  return post ? post.views : 0;
 }
 
 function getPostView(postId) {
-  const postViews = JSON.parse(localStorage.getItem('postViews') || '{}');
-  return postViews[postId] || 0;
+  // Views are already loaded from database, no need for localStorage
+  const post = mockNewsData.find(p => p.id === postId);
+  return post ? post.views : 0;
 }
 
 function loadAllViewsFromLocalStorage() {
-  const postViews = JSON.parse(localStorage.getItem('postViews') || '{}');
-  mockNewsData.forEach(post => {
-    post.views = postViews[post.id] || 0;
-  });
+  // No longer needed - views come directly from database
+  console.log('ℹ️ Views loaded from database');
 }
 
 function updateCardViews(postId, newViews) {
@@ -1059,13 +900,7 @@ function showPostDetailNew(postId) {
   const post = mockNewsData.find(p => p.id === postId);
   if (!post) return;
   
-  // Increment view count
-  const newViews = incrementPostView(postId);
-  
-  // Update the view count in the card IMMEDIATELY (before hiding)
-  updateCardViews(postId, newViews);
-  
-  // Mark as read in localStorage
+  // Mark as read in localStorage (for UI styling)
   let readPosts = JSON.parse(localStorage.getItem('readPosts') || '[]');
   if (!readPosts.includes(postId)) {
     readPosts.push(postId);
@@ -1090,12 +925,13 @@ function showPostDetailNew(postId) {
     detailView.classList.add('visible');
   }, 300);
   
-  // Populate content
+  // Populate content FIRST
   document.getElementById('post-title-new').textContent = post.title;
   document.getElementById('post-date-new').textContent = '📅 ' + post.date;
   document.getElementById('post-category-new').textContent = '📁 ' + post.categoryName;
-  document.getElementById('post-views-new').textContent = '👁️ ' + newViews + ' lượt xem';
+  document.getElementById('post-views-new').textContent = '👁️ ' + post.views + ' lượt xem';
   document.getElementById('post-content-new').innerHTML = post.content;
+  
   const galleryEl = document.getElementById('post-gallery');
   if (galleryEl) {
     if (post.images && post.images.length) {
@@ -1109,7 +945,33 @@ function showPostDetailNew(postId) {
     }
   }
   
-  // Scroll to detail view content (not page top) after transition
+  // Increment view count in database (async, no wait needed)
+  fetch(`/api/news/${postId}/view`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      console.log(`✅ View saved to DB: News #${postId} → ${data.views} views`);
+      // Update local data and display
+      const post = mockNewsData.find(p => p.id === postId);
+      if (post) {
+        post.views = data.views;
+      }
+      // Update view count display
+      document.getElementById('post-views-new').textContent = '👁️ ' + data.views + ' lượt xem';
+      // Update all card views
+      updateCardViews(postId, data.views);
+    }
+  })
+  .catch(error => {
+    console.error('⚠️ Warning: Could not save view to database:', error);
+  });
+  
+  // Scroll to detail view content after transition
   setTimeout(() => {
     detailView.scrollIntoView({behavior: 'smooth', block: 'start'});
   }, 350);
@@ -1403,7 +1265,7 @@ function initializePage() {
     console.error('❌ Daily tip elements not found!');
   }
   
-  // Quick news
+  // Quick news - Initialize quick news rotator with Twig-rendered data
   console.log('📰 Initializing quick news...');
   initQuickNewsRotator();
   
@@ -1414,25 +1276,7 @@ function initializePage() {
   localStorage.removeItem('readPosts');
   localStorage.removeItem('activePost');
   
-  // Render content
-  try {
-    renderNewsList();
-  } catch (e) {
-    console.error('Error in renderNewsList:', e);
-  }
-  
-  try {
-    renderNewestPosts();
-  } catch (e) {
-    console.error('Error in renderNewestPosts:', e);
-  }
-  
-  try {
-    renderCategoryPosts();
-  } catch (e) {
-    console.error('Error in renderCategoryPosts:', e);
-  }
-  
+  // Render related posts from current mockNewsData
   try {
     renderRelatedPosts();
   } catch (e) {
@@ -1462,7 +1306,7 @@ if (document.readyState === 'loading') {
 }
 </script>
 
-{# Import Simple Search #}
-<script src="/js/news-search-simple.js"></script>
+{# Import Simple Search - Add cache busting parameter #}
+<script src="/js/news-search-simple.js?v={{ 'now'|date('YmdHis') }}"></script>
 
 {% endblock %}

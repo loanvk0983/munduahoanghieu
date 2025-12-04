@@ -405,25 +405,6 @@ Tin nhắn được gửi từ website Mụn Dừa Hoàng Hiếu
     alert('Cảm ơn bạn đã liên hệ! Email của bạn sẽ được mở để gửi tin nhắn.');
 });
 
-// Search functionality - redirect to search page
-function performSearch() {
-    const searchInput = document.getElementById('search-input') || document.getElementById('search-input-mobile');
-    const searchTerm = searchInput ? searchInput.value.trim() : '';
-    
-    if (!searchTerm || searchTerm.length < 2) {
-        alert('Vui lòng nhập ít nhất 2 ký tự để tìm kiếm');
-        return;
-    }
-    
-    // Redirect to search page
-    window.location.href = `/search?q=${encodeURIComponent(searchTerm)}`;
-}
-
-function handleSearchKeyPress(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        performSearch();
-    }
-}
+// Search functionality inherited from layout.twig - no need to redefine
 </script>
 {% endblock %}

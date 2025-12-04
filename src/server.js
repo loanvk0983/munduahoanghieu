@@ -6,11 +6,13 @@ const session = require('express-session');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 
-const app = express();
-const PORT = process.env.PORT || 8080;
-const { greet } = require('./utils');
+// Load environment variables from config
+const config = require('../config/environment');
+const db = require('../lib/database');
 
-twig.cache(false); // Tắt cache trong quá trình phát triển
+const app = express();
+const PORT = config.PORT;
+const { greet } = require('./utils');
 
 // ============ Security Middleware ============
 // Disable CSP completely to allow inline event handlers
@@ -35,17 +37,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // ============ Session Management ============
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'munduahoanghieu-secret-key-change-in-production',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production', // HTTPS only in production
-    sameSite: 'strict',
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
-  }
-}));
+// console.log(config.SESSION_SECRET, config.SECURE_COOKIES, config.SAME_SITE, config.SESSION_MAX_AGE);
+// app.use(session({
+//   secret: config.SESSION_SECRET,
+//   resave: false,
+//   saveUninitialized: false,
+//   cookie: {
+//     httpOnly: true,
+//     secure: config.SECURE_COOKIES, // HTTPS only in production
+//     sameSite: config.SAME_SITE,
+//     maxAge: config.SESSION_MAX_AGE
+//   }
+// }));
 
 // Cấu hình Twig
 app.set('view engine', 'twig');
@@ -54,9 +57,34 @@ app.set('views', path.join(__dirname, '../views'));
 // Middleware để serve static files từ thư mục public
 app.use(express.static(path.join(__dirname, '../public')));
 
-// ============ Admin Routes ============
+// ============ SEO Middleware ============
+// Serve robots.txt
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.sendFile(path.join(__dirname, '../public/robots.txt'));
+});
+
+// Serve sitemap.xml
+app.get('/sitemap.xml', (req, res) => {
+  res.type('application/xml');
+  res.sendFile(path.join(__dirname, '../public/sitemap.xml'));
+});
+
+// Add SEO meta headers
+app.use((req, res, next) => {
+  // Set canonical URL
+  res.setHeader('Link', `<${req.protocol}://${req.get('host')}${req.originalUrl}>; rel="canonical"`);
+  next();
+});
+
+// ============ Routes ============
 const adminRoutes = require('./routes/admin');
+const homeRoutes = require('./routes/home');
+const newsRoutes = require('./routes/news');
+
 app.use('/admin', adminRoutes);
+app.use('/', homeRoutes);
+app.use('/tin-tuc', newsRoutes);
 
 // ============ Content Loader (Static JSON) ============
 // NEW ARCHITECTURE: Load directly from public/data/content.json
@@ -91,34 +119,19 @@ function loadContent() {
 }
 
 // ============ Public Routes (Static Content) ============
-app.get('/', async (req, res) => {
-  try {
-    // Load data from exported JSON (no API calls!)
-    const content = loadContent();
-    console.log('CONTENT:', content);
-    res.render('home', {
-      currentPage: 'home',
-      searchPlaceholder: 'Tìm kiếm...',
-      content: content,
-      config: { company: content.contact || {} },
-      siteUrl: content.contact?.website || 'https://munduahoanghieu.com',
-      currentPath: req.path
-    });
-  } catch (error) {
-    console.error('❌ Error loading home page:', error.message);
-    res.status(500).render('500', { 
-      error: 'Không thể tải nội dung trang chủ' 
-    });
-  }
-});
-
 app.get('/gioi-thieu', (req, res) => {
   res.render('about', {
     currentPage: 'about',
     philosophy: {
       title: 'Triết Lý Của Chúng Tôi',
       quote: 'Kinh doanh không chỉ là bán sản phẩm, mà còn là gửi gắm sự chân thành'
-    }
+    },
+    // SEO Data
+    seo_title: 'Giới Thiệu – Mụn Dừa Hoàng Hiếu – Niềm Tin Là Giá Trị Cốt Lõi',
+    seo_description: 'Cơ sở sản xuất Mụn Dừa Hoàng Hiếu từ Bến Tre – Lấy niềm tin và sự hài lòng của khách hàng làm kim chỉ nam. Sản phẩm uy tín, chất lượng cao, giá cả hợp lý, dịch vụ tận tâm.',
+    seo_keywords: 'giới thiệu mụn dừa hoàng hiếu, cơ sở sản xuất mụn dừa, mụn dừa Bến Tre, uy tín chất lượng, triết lý kinh doanh',
+    current_url: 'https://munduahoanghieu.com/gioi-thieu',
+    og_image: 'https://munduahoanghieu.com/assets/image/logo.svg'
   });
 });
 
@@ -133,6 +146,12 @@ app.get('/san-pham', (req, res) => {
       { key: 'raw', name: 'Mụn Dừa Thô' },
       { key: 'custom', name: 'Sản Xuất Theo Yêu Cầu' }
     ],
+    // SEO Data
+    seo_title: 'Sản Phẩm – Mụn Dừa Xử Lý – Vỏ Dừa Cắt Chip – Giá Thể Sạch',
+    seo_description: 'Danh mục sản phẩm mụn dừa chất lượng cao: Mụn Dừa Xử Lý (tơi xốp, EC thấp), Vỏ Dừa Cắt Chip (phủ bề mặt, giữ ẩm), Mụn Dừa Thô (giá rẻ), Sản Xuất Theo Yêu Cầu (tùy chỉnh linh hoạt).',
+    seo_keywords: 'mụn dừa xử lý, vỏ dừa cắt chip, mụn dừa thô, giá thể mụn dừa, sản phẩm mụn dừa, mụn dừa chất lượng cao',
+    current_url: 'https://munduahoanghieu.com/san-pham',
+    og_image: 'https://munduahoanghieu.com/assets/image/products/mun-dua-xu-ly/1-Nguyên liệu mụn dừa xử lý.jpg',
     productScript: `
       // Product gallery data
       const productGalleries = {
@@ -165,39 +184,29 @@ app.get('/san-pham', (req, res) => {
   res.render('products', productData);
 });
 
-app.get('/tin-tuc', (req, res) => {
-  // Try to load quick news from public data so client doesn't always need to fetch
-  let quickNews = [];
-  try {
-    const file = path.join(__dirname, '../public/data/news-quick.json');
-    if (fs.existsSync(file)) {
-      const raw = fs.readFileSync(file, 'utf8');
-      const parsed = JSON.parse(raw);
-      quickNews = parsed.quickNews || [];
-    }
-  } catch (err) {
-    console.warn('Could not read news-quick.json for server-side render:', err && err.message ? err.message : err);
-  }
-
-  res.render('news', {
-    currentPage: 'news',
-    searchPlaceholder: 'Tìm kiếm...',
-    // Inject JSON-encoded quick news for client bootstrap
-    quickNewsData: JSON.stringify(quickNews)
-  });
-});
-
 app.get('/lien-he', (req, res) => {
   res.render('contact', {
     currentPage: 'contact',
-    searchPlaceholder: 'Tìm kiếm...'
+    searchPlaceholder: 'Tìm kiếm...',
+    // SEO Data
+    seo_title: 'Liên Hệ – Mụn Dừa Hoàng Hiếu – Tư Vấn Miễn Phí – Hotline: 0984.288.512',
+    seo_description: 'Liên hệ Mụn Dừa Hoàng Hiếu để được tư vấn miễn phí về sản phẩm mụn dừa. Địa chỉ: Ấp Hội An, Xã Đa Phước Hội, Huyện Mỏ Cày Nam, Tỉnh Bến Tre. Hotline: 0984.288.512',
+    seo_keywords: 'liên hệ mụn dừa hoàng hiếu, tư vấn mụn dừa, hotline mụn dừa, địa chỉ mua mụn dừa Bến Tre, liên hệ giá thể',
+    current_url: 'https://munduahoanghieu.com/lien-he',
+    og_image: 'https://munduahoanghieu.com/assets/image/Footer/Face.png'
   });
 });
 
 app.get('/contact', (req, res) => {
   res.render('contact', {
     currentPage: 'contact',
-    searchPlaceholder: 'Tìm kiếm...'
+    searchPlaceholder: 'Tìm kiếm...',
+    // SEO Data
+    seo_title: 'Liên Hệ – Mụn Dừa Hoàng Hiếu – Tư Vấn Miễn Phí – Hotline: 0984.288.512',
+    seo_description: 'Liên hệ Mụn Dừa Hoàng Hiếu để được tư vấn miễn phí về sản phẩm mụn dừa. Địa chỉ: Ấp Hội An, Xã Đa Phước Hội, Huyện Mỏ Cày Nam, Tỉnh Bến Tre. Hotline: 0984.288.512',
+    seo_keywords: 'liên hệ mụn dừa hoàng hiếu, tư vấn mụn dừa, hotline mụn dừa, địa chỉ mua mụn dừa Bến Tre, liên hệ giá thể',
+    current_url: 'https://munduahoanghieu.com/lien-he',
+    og_image: 'https://munduahoanghieu.com/assets/image/Footer/Face.png'
   });
 });
 
@@ -360,7 +369,13 @@ app.get('/mun-dua-xu-ly', (req, res) => {
     currentPage: 'products',
     productFocus: 'processed',
     heroTitle: 'Sản Phẩm Mụn Dừa Chất Lượng Cao',
-    heroSubtitle: 'Giải pháp toàn diện cho nông nghiệp hiện đại với mụn dừa xử lý sạch, an toàn'
+    heroSubtitle: 'Giải pháp toàn diện cho nông nghiệp hiện đại với mụn dừa xử lý sạch, an toàn',
+    // SEO Data
+    seo_title: 'Mụn Dừa Xử Lý – Giá Thể Sạch, Tơi Xốp – EC Thấp, pH Chuẩn',
+    seo_description: 'Mụn Dừa Xử Lý chất lượng cao – giá thể sạch, tơi xốp, EC thấp, pH chuẩn. Phù hợp trồng lan, bon sai, dâu tây, dưa lưới và nhiều loại cây trồng. Không tannin, khử muối hoàn toàn.',
+    seo_keywords: 'mụn dừa xử lý, giá thể mụn dừa sạch, mụn dừa EC thấp, giá thể trồng lan, giá thể dưa lưới, mụn dừa không tannin',
+    current_url: 'https://munduahoanghieu.com/mun-dua-xu-ly',
+    og_image: 'https://munduahoanghieu.com/assets/image/products/mun-dua-xu-ly/1-Nguyên liệu mụn dừa xử lý.jpg'
   });
 });
 
@@ -369,7 +384,13 @@ app.get('/vo-dua-cat-chip', (req, res) => {
     currentPage: 'products',
     productFocus: 'chips',
     heroTitle: 'Sản Phẩm Mụn Dừa Chất Lượng Cao',
-    heroSubtitle: 'Giải pháp toàn diện cho nông nghiệp hiện đại với mụn dừa xử lý sạch, an toàn'
+    heroSubtitle: 'Giải pháp toàn diện cho nông nghiệp hiện đại với mụn dừa xử lý sạch, an toàn',
+    // SEO Data
+    seo_title: 'Vỏ Dừa Cắt Chip – Phủ Bề Mặt – Giữ Ẩm – Phòng Sâu Bệnh',
+    seo_description: 'Vỏ Dừa Cắt Chip kích thước 1-3cm – giá thể trồng cây sạch. Phủ bề mặt, giữ ẩm tốt, phòng sâu bệnh, trang trí cây cảnh. Phù hợp nông nghiệp hiện đại và làm vườn.',
+    seo_keywords: 'vỏ dừa cắt chip, chip dừa, giá thể phủ bề mặt, vỏ dừa giữ ẩm, chip dừa trang trí, vỏ dừa phòng sâu bệnh',
+    current_url: 'https://munduahoanghieu.com/vo-dua-cat-chip',
+    og_image: 'https://munduahoanghieu.com/assets/image/products/vo-dua-cat-chip/1-Nguyên liệu vỏ dừa cắt chip.jpg'
   });
 });
 
@@ -378,7 +399,13 @@ app.get('/mun-dua-tho', (req, res) => {
     currentPage: 'products',
     productFocus: 'raw',
     heroTitle: 'Sản Phẩm Mụn Dừa Chất Lượng Cao',
-    heroSubtitle: 'Giải pháp toàn diện cho nông nghiệp hiện đại với mụn dừa xử lý sạch, an toàn'
+    heroSubtitle: 'Giải pháp toàn diện cho nông nghiệp hiện đại với mụn dừa xử lý sạch, an toàn',
+    // SEO Data
+    seo_title: 'Mụn Dừa Thô – Nguyên Liệu Giá Rẻ – Quy Mô Lớn – Phân Hủy Tự Nhiên',
+    seo_description: 'Mụn Dừa Thô nguyên liệu, giá cả phải chăng, phân hủy tự nhiên. Thích hợp cho mô hình trồng trọt quy mô lớn, nông nghiệp công nghệ cao, cải tạo đất.',
+    seo_keywords: 'mụn dừa thô, mụn dừa giá rẻ, nguyên liệu mụn dừa, mụn dừa quy mô lớn, giá thể rẻ, mụn dừa nông nghiệp',
+    current_url: 'https://munduahoanghieu.com/mun-dua-tho',
+    og_image: 'https://munduahoanghieu.com/assets/image/products/mun-dua-tho/1-Nguyên liệu mụn dừa thô.jpg'
   });
 });
 
@@ -387,7 +414,13 @@ app.get('/san-xuat-theo-yeu-cau', (req, res) => {
     currentPage: 'products',
     productFocus: 'custom',
     heroTitle: 'Sản Phẩm Mụn Dừa Chất Lượng Cao',
-    heroSubtitle: 'Giải pháp toàn diện cho nông nghiệp hiện đại với mụn dừa xử lý sạch, an toàn'
+    heroSubtitle: 'Giải pháp toàn diện cho nông nghiệp hiện đại với mụn dừa xử lý sạch, an toàn',
+    // SEO Data
+    seo_title: 'Sản Xuất Theo Yêu Cầu – Tùy Chỉnh Mụn Dừa – Tỷ Lệ Trộn Linh Hoạt',
+    seo_description: 'Sản xuất mụn dừa theo yêu cầu khách hàng. Tỷ lệ trộn mụn/xơ linh hoạt từ 95/5 đến 50/50, kích thước và độ ẩm tùy chỉnh. Đáp ứng mọi nhu cầu nông nghiệp đặc biệt.',
+    seo_keywords: 'sản xuất mụn dừa theo yêu cầu, mụn dừa tùy chỉnh, đặt hàng mụn dừa, tỷ lệ trộn mụn xơ, mụn dừa custom',
+    current_url: 'https://munduahoanghieu.com/san-xuat-theo-yeu-cau',
+    og_image: 'https://munduahoanghieu.com/assets/image/products/san-xuat-theo-yeu-cau/1-NL sản xuất theo yêu cầu.jpg'
   });
 });
 

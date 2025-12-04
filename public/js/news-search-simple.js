@@ -7,7 +7,15 @@ let currentSearchQuery = '';
 function performSearch() {
   const desktopInput = document.getElementById('search-input');
   const mobileInput = document.getElementById('search-input-mobile');
+  
+  // Debug: Log giá trị của cả 2 input
+  console.log('desktopInput:', desktopInput);
+  console.log('desktopInput value:', desktopInput?.value);
+  console.log('mobileInput:', mobileInput);
+  console.log('mobileInput value:', mobileInput?.value);
+  
   const query = (desktopInput?.value || mobileInput?.value || '').trim().toLowerCase();
+  console.log('Final query:', query);
   
   if (!query) {
     alert('Vui lòng nhập từ khóa tìm kiếm');

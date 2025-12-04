@@ -1,0 +1,47 @@
+# Robots.txt for Mun Dua Hoang Hieu
+# Allow all search engine crawlers
+User-agent: *
+Allow: /
+Allow: /tin-tuc
+Allow: /san-pham
+Allow: /gioi-thieu
+Allow: /lien-he
+Allow: /search
+
+# Disallow sensitive areas
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /debug
+Disallow: /clear-cache
+Disallow: /force-update
+Disallow: /test-*
+Disallow: /demo-*
+Disallow: /api/*
+
+# Crawl delay (optional - adjust based on server capacity)
+Crawl-delay: 1
+
+# Request rate (optional)
+Request-rate: 1/1s
+
+# Sitemap location
+Sitemap: https://munduahoanghieu.com/sitemap.xml
+Sitemap: https://www.munduahoanghieu.com/sitemap.xml
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Facebook
+User-agent: facebookexternalhit
+Allow: /
+
+# Twitter
+User-agent: Twitterbot
+Allow: /
