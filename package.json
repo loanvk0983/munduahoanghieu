@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "build-css": "npx @tailwindcss/cli -i src/styles.css -o public/styles.css",
+    "build-css": "npx @tailwindcss/cli -i src/styles.css -o public/css/styles.css",
     "check-images": "node scripts/check-image-paths.js",
     "fix-images": "node scripts/fix-image-paths.js",
     "sync:content": "node scripts/sync-content.js",
@@ -31,6 +31,7 @@
     "json2csv": "^6.0.0-alpha.2",
     "multer": "^2.0.2",
     "node-cache": "^5.1.2",
+    "tailwindcss": "^4.1.18",
     "twig": "^1.17.1"
   },
   "devDependencies": {
