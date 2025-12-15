@@ -1,0 +1,142 @@
+/* Global Font Size - Optimized for farmers (easy reading) */
+    html {
+      font-size: 17px; /* Base size for desktop */
+    }
+
+    /* Mobile: Slightly larger for easy reading on small screens */
+    @media (max-width: 767px) {
+      html {
+        font-size: 15px;
+      }
+
+      body {
+        font-size: 1rem; /* 15px */
+        line-height: 1.6;
+      }
+
+      p, li, span {
+        font-size: 1rem; /* 15px */
+      }
+
+      h1 { font-size: 1.75rem; } /* 26.25px */
+      h2 { font-size: 1.5rem; }  /* 22.5px */
+      h3 { font-size: 1.25rem; } /* 18.75px */
+      h4 { font-size: 1.125rem; } /* 16.875px */
+    }
+
+    /* Tablet: Comfortable reading size */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      html {
+        font-size: 16px;
+      }
+
+      body {
+        font-size: 1rem; /* 16px */
+        line-height: 1.65;
+      }
+
+      p, li, span {
+        font-size: 1rem; /* 16px */
+      }
+
+      h1 { font-size: 2rem; }    /* 32px */
+      h2 { font-size: 1.625rem; } /* 26px */
+      h3 { font-size: 1.375rem; } /* 22px */
+      h4 { font-size: 1.1875rem; } /* 19px */
+    }
+
+    /* Desktop: Professional size with good readability */
+    @media (min-width: 1024px) {
+      html {
+        font-size: 17px;
+      }
+
+      body {
+        font-size: 1rem; /* 17px */
+        line-height: 1.7;
+      }
+
+      p, li, span {
+        font-size: 1rem; /* 17px */
+      }
+
+      h1 { font-size: 2.25rem; }  /* 38.25px */
+      h2 { font-size: 1.875rem; } /* 31.875px */
+      h3 { font-size: 1.5rem; }   /* 25.5px */
+      h4 { font-size: 1.25rem; }  /* 21.25px */
+    }
+
+    /* Footer Responsive Layout */
+    @media (max-width: 768px) {
+      .footer-section {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    /* Footer Slogan Hover */
+    .footer-slogan {
+      transition: color 0.3s ease-in-out;
+    }
+
+    .footer-slogan:hover {
+      color: #15803d;
+    }
+
+    /* Footer Tagline - Styled */
+    .footer-tagline {
+      text-align: center;
+      font-style: italic;
+      color: #166534;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 0.5rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    .footer-tagline:hover {
+      color: #15803d;
+      transform: scale(1.02);
+      transition: all 0.3s ease;
+    }
+
+    /* Footer link glow effects */
+    .footer-glow-link {
+      filter: drop-shadow(0 0 0px rgba(34,197,94,0.5));
+      transition: filter 0.3s ease, color 0.3s ease;
+    }
+    .footer-glow-link:hover {
+      filter: drop-shadow(0 0 12px rgba(34,197,94,0.5));
+      color: #15803d !important;
+    }
+
+    /* Social media colors and glows */
+    .footer-social-fb {
+      color: #1877F2;
+      filter: drop-shadow(0 0 0px rgba(59,137,255,0.5));
+      transition: all 0.3s ease;
+    }
+    .footer-social-fb:hover {
+      color: #3b89ff;
+      filter: drop-shadow(0 0 12px rgba(59,137,255,0.5));
+    }
+
+    .footer-social-zalo {
+      color: #0068FF;
+      filter: drop-shadow(0 0 0px rgba(51,144,255,0.5));
+      transition: all 0.3s ease;
+    }
+    .footer-social-zalo:hover {
+      color: #3390FF;
+      filter: drop-shadow(0 0 12px rgba(51,144,255,0.5));
+    }
+
+    .footer-social-yt {
+      color: #FF0000;
+      filter: drop-shadow(0 0 0px rgba(255,51,51,0.55));
+      transition: all 0.3s ease;
+    }
+    .footer-social-yt:hover {
+      color: #FF3333;
+      filter: drop-shadow(0 0 12px rgba(255,51,51,0.55));
+    }
