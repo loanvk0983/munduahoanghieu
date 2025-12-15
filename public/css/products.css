@@ -1,0 +1,253 @@
+  .product-menu-item {
+    background-color: #FFFFFF;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .product-menu-item:hover {
+    background-color: #D1FAE5 !important;
+    border-color: #16a34a;
+    transform: translateX(4px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    filter: brightness(105%);
+    transition: all 0.3s ease;
+  }
+  .product-menu-item.active {
+    background-color: #16A34A !important;
+    border-color: #16a34a !important;
+    border-left-color: #15803d !important;
+    border-left-width: 4px;
+    transform: translateX(4px);
+    box-shadow: 0 8px 25px rgba(22, 163, 74, 0.3);
+  }
+  /* Hover state - xanh vừa với xám */
+  .product-menu-item:hover .menu-title {
+    color: #15803D !important;
+  }
+  .product-menu-item:hover .menu-icon {
+    color: #15803D !important;
+  }
+  .product-menu-item:hover .menu-desc {
+    color: #16A34A !important;
+  }
+
+  /* Active state - trắng và xanh sáng */
+  .product-menu-item.active .menu-title {
+    color: #FFFFFF !important;
+  }
+  .product-menu-item.active .menu-icon {
+    color: #FFFFFF !important;
+  }
+  .product-menu-item.active .menu-desc {
+    color: #DCFCE7 !important;
+  }
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Video container - fixed size, always show poster */
+  .video-container {
+    position: relative;
+    overflow: hidden;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .video-player {
+    background-color: transparent;
+    object-fit: cover;
+  }
+
+  /* Ensure poster image always displays */
+  .video-player[poster] {
+    background-image: var(--poster-url);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .video-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .video-overlay {
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .video-container:hover .video-overlay {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .video-container:hover .zoom-icon {
+    opacity: 1 !important;
+    transform: scale(1.1);
+  }
+
+  .zoom-icon {
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Fixed sidebar layout */
+  .flex {
+    display: flex;
+  }
+  .h-screen {
+    height: 100vh;
+  }
+  .flex-shrink-0 {
+    flex-shrink: 0;
+  }
+  .flex-1 {
+    flex: 1;
+  }
+  .overflow-y-auto {
+    overflow-y: auto;
+  }
+
+  /* Full width layout */
+  .products-layout {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    position: relative;
+  }
+
+  /* Smooth transitions */
+  * {
+    transition: all 0.3s ease;
+  }
+
+  /* Custom scrollbar for better UX */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f9fafb;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #059669;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #047857;
+  }
+
+  /* Responsive sidebar styles */
+  @media (min-width: 1024px) {
+    .sidebar-desktop {
+      width: 340px;
+      max-width: 340px;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .sidebar-mobile {
+      width: 100%;
+      max-height: 200px;
+      overflow-x: auto;
+    }
+    .sidebar-mobile .space-y-4 {
+      display: flex;
+      gap: 12px;
+      padding-bottom: 8px;
+    }
+    .sidebar-mobile .product-menu-item {
+      min-width: 200px;
+      flex-shrink: 0;
+    }
+  }
+
+  /* Premium menu styling */
+  .product-menu-item {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-menu-item:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(25, 135, 84, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .product-menu-item:hover:before {
+    opacity: 1;
+  }
+
+  /* Content area styles */
+  .bg-gray-50 {
+    background-color: #f9fafb;
+  }
+  .product-detail {
+    animation: fadeInUp 0.5s ease-out;
+  }
+
+  /* Brand story animations and effects */
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.1);
+    }
+  }
+
+  .text-shadow-lg {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive gallery styles for mobile */
+  @media (max-width: 576px) {
+    /* Change gallery to 2 columns with 45% width each */
+    .grid.grid-cols-5 {
+      grid-template-columns: repeat(2, 45%);
+      gap: 10px;
+      justify-content: space-between;
+    }
+
+    /* Increase title font size */
+    .gallery-item-title {
+      font-size: 14px !important;
+    }
+
+    /* Ensure images maintain aspect ratio and cover properly */
+    .gallery-item img {
+      width: 100% !important;
+      height: 120px !important; /* Slightly taller for better visibility */
+      object-fit: cover !important;
+    }
+
+    /* Adjust item container height */
+    .gallery-item .h-40 {
+      height: 120px !important;
+    }
+  }

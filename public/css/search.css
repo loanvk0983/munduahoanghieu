@@ -1,0 +1,23 @@
+.category-filter-btn {
+  @apply bg-gray-100 text-gray-700;
+}
+.category-filter-btn:hover {
+  @apply bg-gray-200;
+}
+.category-filter-btn.active {
+  @apply bg-green-600 text-white shadow-md;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.result-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+mark {
+  @apply bg-yellow-200 px-1 rounded;
+}

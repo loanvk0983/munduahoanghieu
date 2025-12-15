@@ -6,14 +6,18 @@
   <title>{% block title %}Mụn Dừa Hoàng Hiếu{% endblock %}</title>
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Mụn Dừa Hoàng Hiếu - Giá thể sạch, giúp cây khỏe, đất tốt, mùa vụ bội thu. Chuyên cung cấp mụn dừa xử lý chất lượng cao cho nông nghiệp.">
+  <meta name="description" content="{% block description %}Mụn Dừa Hoàng Hiếu - Giá thể sạch, giúp cây khỏe, đất tốt, mùa vụ bội thu. Chuyên cung cấp mụn dừa xử lý chất lượng cao cho nông nghiệp.{% endblock %}">
   <meta name="keywords" content="mụn dừa, giá thể trồng cây, mụn dừa xử lý, xơ dừa, vỏ dừa, nông nghiệp sạch, Bến Tre">
   <meta name="author" content="Mụn Dừa Hoàng Hiếu">
+  <meta name="robots" content="index, follow">
   
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ siteUrl|default('https://munduahoanghieu.com') }}{{ currentPath|default('') }}">
+
   <!-- Open Graph Meta Tags for Social Sharing -->
-  <meta property="og:title" content="Mụn Dừa Hoàng Hiếu - Giá thể sạch cho cây trồng">
-  <meta property="og:description" content="Giá thể mụn dừa tự nhiên, xử lý sạch, giữ ẩm tốt, giúp cây sinh trưởng khỏe mạnh. Sản phẩm thân thiện môi trường từ Bến Tre.">
-  <meta property="og:image" content="{{ siteUrl|default('https://munduahoanghieu.com') }}/assets/image/products/mun-dua-xu-ly/Mụn xử lý 1.jpg">
+  <meta property="og:title" content="{% block og_title %}{{ block('title') }}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{{ block('description') }}{% endblock %}">
+  <meta property="og:image" content="{% block og_image %}{{ siteUrl|default('https://munduahoanghieu.com') }}/assets/image/products/mun-dua-xu-ly/Mụn xử lý 1.jpg{% endblock %}">
   <meta property="og:url" content="{{ siteUrl|default('https://munduahoanghieu.com') }}{{ currentPath|default('') }}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="vi_VN">
@@ -21,10 +25,33 @@
   
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mụn Dừa Hoàng Hiếu - Giá thể sạch cho cây trồng">
-  <meta name="twitter:description" content="Giá thể mụn dừa tự nhiên, xử lý sạch, giữ ẩm tốt, giúp cây sinh trưởng khỏe mạnh.">
-  <meta name="twitter:image" content="{{ siteUrl|default('https://munduahoanghieu.com') }}/assets/image/products/mun-dua-xu-ly/Mụn xử lý 1.jpg">
+  <meta name="twitter:title" content="{% block twitter_title %}{{ block('title') }}{% endblock %}">
+  <meta name="twitter:description" content="{% block twitter_description %}{{ block('description') }}{% endblock %}">
+  <meta name="twitter:image" content="{% block twitter_image %}{{ block('og_image') }}{% endblock %}">
   
+  <!-- JSON-LD Structured Data for Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mụn Dừa Hoàng Hiếu",
+    "url": "https://munduahoanghieu.com",
+    "logo": "https://munduahoanghieu.com/assets/image/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+84-984-288-512",
+      "contactType": "customer service",
+      "areaServed": "VN",
+      "availableLanguage": "Vietnamese"
+    },
+    "sameAs": [
+      "https://www.facebook.com/mun.dua.hoang.hieu",
+      "https://zalo.me/112949426040780264",
+      "https://www.youtube.com/channel/UCyBxXvx4Y8SvFeFFIHQ0xqg"
+    ]
+  }
+  </script>
+
   <!-- Favicons - Using original logo -->
   <link rel="icon" type="image/svg+xml" href="/assets/image/logo.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/image/logo.png">
@@ -39,109 +66,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/image/logo512.png">
   <link rel="shortcut icon" type="image/png" href="/assets/image/logo.png" sizes="128x128">
   <link href="/styles.css" rel="stylesheet">
-  <style>
-    /* Global Font Size - Optimized for farmers (easy reading) */
-    html {
-      font-size: 17px; /* Base size for desktop */
-    }
-    
-    /* Mobile: Slightly larger for easy reading on small screens */
-    @media (max-width: 767px) {
-      html {
-        font-size: 15px;
-      }
-      
-      body {
-        font-size: 1rem; /* 15px */
-        line-height: 1.6;
-      }
-      
-      p, li, span {
-        font-size: 1rem; /* 15px */
-      }
-      
-      h1 { font-size: 1.75rem; } /* 26.25px */
-      h2 { font-size: 1.5rem; }  /* 22.5px */
-      h3 { font-size: 1.25rem; } /* 18.75px */
-      h4 { font-size: 1.125rem; } /* 16.875px */
-    }
-    
-    /* Tablet: Comfortable reading size */
-    @media (min-width: 768px) and (max-width: 1023px) {
-      html {
-        font-size: 16px;
-      }
-      
-      body {
-        font-size: 1rem; /* 16px */
-        line-height: 1.65;
-      }
-      
-      p, li, span {
-        font-size: 1rem; /* 16px */
-      }
-      
-      h1 { font-size: 2rem; }    /* 32px */
-      h2 { font-size: 1.625rem; } /* 26px */
-      h3 { font-size: 1.375rem; } /* 22px */
-      h4 { font-size: 1.1875rem; } /* 19px */
-    }
-    
-    /* Desktop: Professional size with good readability */
-    @media (min-width: 1024px) {
-      html {
-        font-size: 17px;
-      }
-      
-      body {
-        font-size: 1rem; /* 17px */
-        line-height: 1.7;
-      }
-      
-      p, li, span {
-        font-size: 1rem; /* 17px */
-      }
-      
-      h1 { font-size: 2.25rem; }  /* 38.25px */
-      h2 { font-size: 1.875rem; } /* 31.875px */
-      h3 { font-size: 1.5rem; }   /* 25.5px */
-      h4 { font-size: 1.25rem; }  /* 21.25px */
-    }
-    
-    /* Footer Responsive Layout */
-    @media (max-width: 768px) {
-      .footer-section {
-        margin-bottom: 1.5rem;
-      }
-    }
-    
-    /* Footer Slogan Hover */
-    .footer-slogan {
-      transition: color 0.3s ease-in-out;
-    }
-    
-    .footer-slogan:hover {
-      color: #15803d;
-    }
-    
-    /* Footer Tagline - Styled */
-    .footer-tagline {
-      text-align: center;
-      font-style: italic;
-      color: #166534;
-      font-size: 14px;
-      line-height: 1.6;
-      margin-top: 0.5rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-    }
-    
-    .footer-tagline:hover {
-      color: #15803d;
-      transform: scale(1.02);
-      transition: all 0.3s ease;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/layout.css">
   {% block head %}{% endblock %}
 </head>
 <body class="font-sans pt-36 bg-green-50 overflow-x-hidden">
@@ -316,50 +241,6 @@ Cảm ơn!`);
       window.open(`mailto:munduahoanghieu.vn@gmail.com?subject=${subject}&body=${body}`);
     }
   </script>
-  
-  <!-- Footer glow effects CSS -->
-  <style>
-    /* Footer link glow effects */
-    .footer-glow-link {
-      filter: drop-shadow(0 0 0px rgba(34,197,94,0.5));
-      transition: filter 0.3s ease, color 0.3s ease;
-    }
-    .footer-glow-link:hover {
-      filter: drop-shadow(0 0 12px rgba(34,197,94,0.5));
-      color: #15803d !important;
-    }
-    
-    /* Social media colors and glows */
-    .footer-social-fb {
-      color: #1877F2;
-      filter: drop-shadow(0 0 0px rgba(59,137,255,0.5));
-      transition: all 0.3s ease;
-    }
-    .footer-social-fb:hover {
-      color: #3b89ff;
-      filter: drop-shadow(0 0 12px rgba(59,137,255,0.5));
-    }
-    
-    .footer-social-zalo {
-      color: #0068FF;
-      filter: drop-shadow(0 0 0px rgba(51,144,255,0.5));
-      transition: all 0.3s ease;
-    }
-    .footer-social-zalo:hover {
-      color: #3390FF;
-      filter: drop-shadow(0 0 12px rgba(51,144,255,0.5));
-    }
-    
-    .footer-social-yt {
-      color: #FF0000;
-      filter: drop-shadow(0 0 0px rgba(255,51,51,0.55));
-      transition: all 0.3s ease;
-    }
-    .footer-social-yt:hover {
-      color: #FF3333;
-      filter: drop-shadow(0 0 12px rgba(255,51,51,0.55));
-    }
-  </style>
   
   {% block scripts %}{% endblock %}
 </body>
