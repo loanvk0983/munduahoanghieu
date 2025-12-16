@@ -1,0 +1,381 @@
+<!-- Header Component -->
+<header class="fixed top-0 left-0 w-full h-auto md:h-24 bg-white shadow-md z-[9998]" style="padding-top: 10px; padding-bottom: 10px;">
+  <div class="max-w-[1250px] mx-auto px-2 md:px-4 py-2 relative">
+    <!-- Top Row: Logo + Menu + Search -->
+    <div class="flex items-center justify-between gap-2">
+      <!-- Logo Section -->
+      <div class="flex items-center gap-1.5 md:gap-3 flex-shrink-0 logo-container">
+        <img src="/assets/image/logo.svg" alt="Mụn Dừa Hoàng Hiếu" height="80" style="width:auto; height:80px; shape-rendering: geometricPrecision; text-rendering: geometricPrecision; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;" class="object-contain w-10 h-10 md:w-auto md:h-[80px] flex-shrink-0">
+        <div class="block logo-text-block">
+          <div class="logo-text text-green-700" data-company-name>MỤN DỪA HOÀNG HIẾU</div>
+          <div class="logo-slogan text-orange-600" data-company-tagline style="color: #D84315 !important; font-style: italic !important;">Giá thể sạch – Năng suất vượt trội</div>
+        </div>
+      </div>
+
+      <!-- Desktop Menu - 1 dòng, font size: mobile 15px, tablet 16px, desktop 17px -->
+      <nav class="hidden md:flex lg:flex-row items-center md:gap-x-2 lg:gap-x-4 xl:gap-x-6 lg:ml-8 xl:ml-12">
+        <a href="/" class="{% if currentPage == 'home' %}text-orange-600 font-semibold{% else %}text-green-800 hover:text-green-950 font-semibold transition-colors duration-300{% endif %} tracking-wide uppercase menu-split-text" style="font-size: 17px;">
+          <span>TRANG CHỦ</span>
+        </a>
+        <a href="/gioi-thieu" class="{% if currentPage == 'about' %}text-orange-600 font-semibold{% else %}text-green-800 hover:text-green-950 font-semibold transition-colors duration-300{% endif %} tracking-wide uppercase menu-split-text" style="font-size: 17px;">
+          <span>GIỚI THIỆU</span>
+        </a>
+        <a href="/san-pham" class="{% if currentPage == 'products' %}text-orange-600 font-semibold{% else %}text-green-800 hover:text-green-950 font-semibold transition-colors duration-300{% endif %} tracking-wide uppercase menu-split-text" style="font-size: 17px;">
+          <span>SẢN PHẨM</span>
+        </a>
+        <a href="/tin-tuc" class="{% if currentPage == 'news' %}text-orange-600 font-semibold{% else %}text-green-800 hover:text-green-950 font-semibold transition-colors duration-300{% endif %} tracking-wide uppercase menu-split-text" style="font-size: 17px;">
+          <span>TIN TỨC</span>
+        </a>
+        <a href="/lien-he" class="{% if currentPage == 'contact' %}text-orange-600 font-semibold{% else %}text-green-800 hover:text-green-950 font-semibold transition-colors duration-300{% endif %} tracking-wide uppercase menu-split-text" style="font-size: 17px;">
+          <span>LIÊN HỆ</span>
+        </a>
+      </nav>
+
+      <!-- Search Box Desktop/Tablet -->
+      <div class="hidden md:flex items-center space-x-2 ml-auto">
+        <input type="text" id="search-input-desktop" placeholder="{{ searchPlaceholder|default('Tìm kiếm...') }}" class="px-3 py-2 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 text-sm w-32 lg:w-auto" style="border: 1px solid #ccc; border-radius: 8px;" onkeypress="handleSearchKeyPress(event)">
+        <button onclick="performSearch()" title="Tìm kiếm" aria-label="Tìm kiếm" class="px-3 md:px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-medium transition-all duration-300 hover:bg-green-700 hover:shadow-lg" style="border-radius: 8px;">
+          <svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <span class="hidden lg:inline ml-1">Tìm</span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button - Only show on small screens -->
+      <button id="mobile-menu-btn" class="md:hidden flex-shrink-0 p-2 text-white bg-green-600 hover:bg-green-700 rounded-lg transition-colors shadow-md" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu - Relative positioning with border frame -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white border-2 border-green-600 rounded-lg mt-2 shadow-lg">
+      <div class="px-4 py-3">
+        <ul class="flex flex-col space-y-1">
+          <li><a href="/" class="block py-2 px-3 {% if currentPage == 'home' %}bg-orange-50 text-orange-600 font-semibold{% else %}text-green-800 hover:text-green-900{% endif %} rounded transition-all duration-300" style="font-size: 15px;">TRANG CHỦ</a></li>
+          <li><a href="/gioi-thieu" class="block py-2 px-3 {% if currentPage == 'about' %}bg-orange-50 text-orange-600 font-semibold{% else %}text-green-800 hover:text-green-900{% endif %} rounded transition-all duration-300" style="font-size: 15px;">GIỚI THIỆU</a></li>
+          <li><a href="/san-pham" class="block py-2 px-3 {% if currentPage == 'products' %}bg-orange-50 text-orange-600 font-semibold{% else %}text-green-800 hover:text-green-900{% endif %} rounded transition-all duration-300" style="font-size: 15px;">SẢN PHẨM</a></li>
+          <li><a href="/tin-tuc" class="block py-2 px-3 {% if currentPage == 'news' %}bg-orange-50 text-orange-600 font-semibold{% else %}text-green-800 hover:text-green-900{% endif %} rounded transition-all duration-300" style="font-size: 15px;">TIN TỨC</a></li>
+          <li><a href="/lien-he" class="block py-2 px-3 {% if currentPage == 'contact' %}bg-orange-50 text-orange-600 font-semibold{% else %}text-green-800 hover:text-green-900{% endif %} rounded transition-all duration-300" style="font-size: 15px;">LIÊN HỆ</a></li>
+        </ul>
+        <!-- Mobile Search -->
+        <div class="flex items-center gap-2 mt-3 pt-3 border-t border-gray-200">
+          <input type="text" id="search-input-mobile" placeholder="Tìm kiếm..." class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 text-sm" onkeypress="handleSearchKeyPress(event)">
+          <button onclick="performSearch()" title="Tìm kiếm" aria-label="Tìm kiếm" class="px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle with auto-close and dynamic body padding
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const body = document.body;
+    const header = document.querySelector('header');
+
+    if (menuBtn && mobileMenu) {
+      // Toggle menu
+      menuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isHidden = mobileMenu.classList.contains('hidden');
+
+        if (isHidden) {
+          // Opening menu - add extra padding to body
+          mobileMenu.classList.remove('hidden');
+          // Calculate menu height and add to body padding
+          setTimeout(() => {
+            const menuHeight = mobileMenu.offsetHeight;
+            body.style.paddingTop = `calc(9rem + ${menuHeight}px)`;
+          }, 10);
+        } else {
+          // Closing menu - reset body padding
+          mobileMenu.classList.add('hidden');
+          body.style.paddingTop = '9rem'; // pt-36 = 9rem
+        }
+      });
+
+      // Close menu when clicking outside (anywhere on document)
+      document.addEventListener('click', function(e) {
+        // Check if click is outside both menu and button
+        // BUT ALLOW clicks inside menu (including search box)
+        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            body.style.paddingTop = '9rem';
+          }
+        }
+      });
+
+      // Close menu when clicking on navigation links ONLY (not search elements)
+      const menuLinks = mobileMenu.querySelectorAll('ul a');
+      menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+          body.style.paddingTop = '9rem';
+        });
+      });
+    }
+  });
+</script>
+
+<style>
+  /* Header CSS - Updated: 2025-11-07 - Tablet Optimized */
+
+  /* Mobile Header Layout Optimization */
+  .logo-container {
+    max-width: 200px;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .logo-container {
+      max-width: none;
+    }
+  }
+
+  .logo-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  /* Mobile menu - Relative positioning with frame */
+  #mobile-menu {
+    position: relative !important;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  /* Mobile menu links hover - Bright green */
+  #mobile-menu a:hover {
+    color: #00a651 !important;
+    border-bottom: 1px solid #00a651;
+    background-color: #f0fdf4 !important; /* green-50 subtle background */
+    font-weight: 600;
+    transition: all 0.25s ease;
+  }
+
+  /* iPad Mini (768x1024), iPad Air (820x1180) - Menu 2 dòng, font nhỏ hơn */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    header {
+      height: auto !important;
+      min-height: 5rem !important;
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+
+    .menu-split-text {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      line-height: 1.1 !important;
+      gap: 0 !important;
+    }
+
+    nav a {
+      font-size: 14px !important; /* iPad: 14px để hiển thị nút tìm kiếm */
+      letter-spacing: 0.01em !important;
+      padding: 0.25rem 0.15rem !important;
+    }
+
+    nav a span {
+      display: block !important; /* 2 dòng */
+    }
+
+    /* Search box iPad */
+    #search-input-desktop {
+      width: 100px !important;
+      font-size: 13px !important;
+    }
+  }
+
+  /* Nest Hub (1024x600), Nest Hub Max (1280x800), iPad Pro (1024x1366) - Menu 2 dòng */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    header {
+      height: auto !important;
+      min-height: 4.5rem !important;
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+
+    .menu-split-text {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      line-height: 1.1 !important;
+      gap: 0 !important;
+    }
+
+    nav a {
+      font-size: 14px !important; /* Tablets: 14px, menu 2 dòng */
+      letter-spacing: 0.01em !important;
+      padding: 0.25rem 0.2rem !important;
+    }
+
+    nav a span {
+      display: block !important; /* 2 dòng */
+    }
+
+    /* Search box compact */
+    #search-input-desktop {
+      width: 90px !important;
+      font-size: 12px !important;
+      padding: 0.4rem 0.5rem !important;
+    }
+
+    /* Search button compact - FIX vượt khung */
+    button[onclick="performSearch()"] {
+      padding: 0.4rem 0.5rem !important;
+      font-size: 12px !important;
+    }
+
+    button[onclick="performSearch()"] span {
+      display: none !important; /* Ẩn chữ "Tìm" */
+    }
+
+    button[onclick="performSearch()"] svg {
+      margin: 0 !important;
+    }
+  }
+
+  /* Surface Pro 7 (912x1368) - Font to hơn, menu 2 dòng */
+  @media (min-width: 912px) and (max-width: 1023px) and (min-height: 1200px) {
+    header {
+      height: auto !important;
+      min-height: 5rem !important;
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+
+    .menu-split-text {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      line-height: 1.1 !important;
+      gap: 0 !important;
+    }
+
+    nav a {
+      font-size: 16px !important; /* Surface Pro: 16px to hơn */
+      letter-spacing: 0.01em !important;
+      padding: 0.3rem 0.2rem !important;
+    }
+
+    nav a span {
+      display: block !important; /* 2 dòng */
+    }
+
+    #search-input-desktop {
+      width: 110px !important;
+      font-size: 13px !important;
+    }
+  }
+
+  /* Desktop lớn (≥1280px) - Menu 1 dòng, font 17px */
+  @media (min-width: 1280px) {
+    .menu-split-text {
+      display: inline-flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+    }
+
+    nav a {
+      font-size: 17px !important; /* Desktop: 17px */
+      letter-spacing: 0.015em !important;
+      padding: 0.25rem 0.5rem !important;
+    }
+
+    nav a span {
+      display: inline !important;
+      white-space: nowrap !important;
+    }
+  }
+
+  /* Header must be above page content */
+  header {
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+    z-index: 9998 !important;
+    background-color: #fff !important;
+  }
+
+  /* Company Name */
+  .logo-text {
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  @media (min-width: 768px) {
+    .logo-text {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .logo-text {
+      font-size: 1.35rem;
+    }
+  }
+
+  /* Slogan - Orange color */
+  .logo-slogan {
+    display: block;
+    color: #D84315 !important;
+    font-size: 0.75rem;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 768px) {
+    .logo-slogan {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .logo-slogan {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* Menu hover effect - Bright green with border bottom */
+  nav a {
+    position: relative;
+    transition: all 0.25s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  nav a:hover {
+    color: #00a651 !important; /* Xanh sáng hơn */
+    border-bottom: 1px solid #00a651;
+    font-weight: 700;
+  }
+
+  /* Tablet hover - simplified */
+  @media (min-width: 768px) and (max-width: 1279px) {
+    nav a:hover {
+      background-color: transparent;
+      border-radius: 0;
+      padding: 0.25rem 0.375rem;
+    }
+  }
+</style>
