@@ -1,0 +1,371 @@
+{# Premium Hero Section with Swiper Carousel - Tailwind CSS v4 #}
+<section class="hero-section-wrapper relative w-full h-[80vh] overflow-hidden bg-gradient-to-br from-green-50 via-white to-green-50 py-0!">
+	
+	{# Swiper Container #}
+	<div class="swiper hero-premium-swiper h-full">
+		<div class="swiper-wrapper">
+			
+			{# Slide 1: Main Product Introduction #}
+			<div class="swiper-slide relative">
+				<div class="absolute inset-0 bg-gradient-to-r from-green-900/90 via-green-800/80 to-transparent z-10"></div>
+				<img src="/assets/image/banner/banner1.jpg" 
+					 alt="Mụn Dừa Hoàng Hiếu" 
+					 class="absolute inset-0 w-full h-full object-cover"
+					 onerror="this.src='/assets/image/placeholder.jpg'">
+				
+				<div class="relative z-20 h-full flex items-center">
+					<div class="container mx-auto px-6 md:px-12 lg:px-20">
+						<div class="max-w-3xl space-y-6 md:space-y-8">
+							{# Animated Badge #}
+							<div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full px-6 py-3 animate-pulse">
+								<span class="text-3xl">🥥</span>
+								<span class="text-white font-semibold text-sm md:text-base">100% Tự Nhiên - Chất Lượng Cao</span>
+							</div>
+							
+							{# Main Heading #}
+							<h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight drop-shadow-2xl">
+								Mụn Dừa<br>
+								<span class="text-yellow-300">Hoàng Hiếu</span>
+							</h1>
+							
+							{# Subheading #}
+							<p class="text-lg md:text-2xl text-white/95 font-medium leading-relaxed drop-shadow-lg max-w-2xl">
+								Sản phẩm mụn dừa tự nhiên, chất lượng cao từ vùng đất Bến Tre. 
+								Cam kết 100% nguyên chất, không hóa chất, giá tốt nhất thị trường.
+							</p>
+							
+							{# CTA Buttons #}
+							<div class="flex flex-wrap gap-4 pt-4">
+								<a href="tel:0123456789" 
+								   class="group relative inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-8 py-4 rounded-full shadow-2xl hover:shadow-orange-500/50 transform hover:scale-105 transition-all duration-300">
+									<svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+									</svg>
+									<span class="text-lg">Liên Hệ Ngay</span>
+								</a>
+								
+								<a href="/san-pham" 
+								   class="group inline-flex items-center gap-3 bg-white/20 backdrop-blur-md border-2 border-white hover:bg-white hover:text-green-700 text-white font-bold px-8 py-4 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300">
+									<span class="text-lg">Xem Sản Phẩm</span>
+									<svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+									</svg>
+								</a>
+							</div>
+							
+							{# Trust Indicators #}
+							<div class="flex flex-wrap items-center gap-6 pt-6 text-white/90">
+								<div class="flex items-center gap-2">
+									<span class="text-2xl">✓</span>
+									<span class="text-sm md:text-base font-medium">Chất lượng đảm bảo</span>
+								</div>
+								<div class="flex items-center gap-2">
+									<span class="text-2xl">✓</span>
+									<span class="text-sm md:text-base font-medium">Giá gốc nhà vườn</span>
+								</div>
+								<div class="flex items-center gap-2">
+									<span class="text-2xl">✓</span>
+									<span class="text-sm md:text-base font-medium">Giao hàng toàn quốc</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			{# Slide 2: Product Quality Focus #}
+			<div class="swiper-slide relative">
+				<div class="absolute inset-0 bg-gradient-to-l from-orange-900/90 via-orange-800/80 to-transparent z-10"></div>
+				<img src="/assets/image/banner/banner2.jpg" 
+					 alt="Chất lượng mụn dừa" 
+					 class="absolute inset-0 w-full h-full object-cover"
+					 onerror="this.src='/assets/image/placeholder.jpg'">
+				
+				<div class="relative z-20 h-full flex items-center justify-end">
+					<div class="container mx-auto px-6 md:px-12 lg:px-20">
+						<div class="max-w-3xl ml-auto space-y-6 md:space-y-8 text-right">
+							{# Quality Badge #}
+							<div class="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md border border-white/40 rounded-full px-8 py-4">
+								<span class="text-4xl">🏆</span>
+								<div class="text-left">
+									<div class="text-white font-black text-xl">CHẤT LƯỢNG</div>
+									<div class="text-white/90 text-sm font-medium">Được Kiểm Định</div>
+								</div>
+							</div>
+							
+							<h2 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight drop-shadow-2xl">
+								100% Tự Nhiên<br>
+								<span class="text-yellow-300">Không Hóa Chất</span>
+							</h2>
+							
+							<p class="text-lg md:text-2xl text-white/95 font-medium leading-relaxed drop-shadow-lg">
+								Quy trình sản xuất nghiêm ngặt, từ khâu thu hoạch đến chế biến. 
+								Đảm bảo sản phẩm đạt tiêu chuẩn ATTP cao nhất.
+							</p>
+							
+							{# Feature Grid #}
+							<div class="grid grid-cols-2 gap-4 pt-4">
+								<div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
+									<div class="text-5xl mb-3">🌱</div>
+									<div class="text-white font-bold text-lg mb-1">Nguyên Liệu</div>
+									<div class="text-white/80 text-sm">Dừa tươi Bến Tre</div>
+								</div>
+								<div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
+									<div class="text-5xl mb-3">⚡</div>
+									<div class="text-white font-bold text-lg mb-1">Quy Trình</div>
+									<div class="text-white/80 text-sm">Hiện đại, vệ sinh</div>
+								</div>
+							</div>
+							
+							<a href="/gioi-thieu" 
+							   class="inline-flex items-center gap-3 bg-white hover:bg-yellow-300 text-orange-700 font-bold px-8 py-4 rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300">
+								<span class="text-lg">Tìm Hiểu Thêm</span>
+								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			{# Slide 3: Competitive Pricing #}
+			<div class="swiper-slide relative">
+				<div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/80 to-transparent z-10"></div>
+				<img src="/assets/image/banner/banner3.jpg" 
+					 alt="Giá cả hợp lý" 
+					 class="absolute inset-0 w-full h-full object-cover"
+					 onerror="this.src='/assets/image/placeholder.jpg'">
+				
+				<div class="relative z-20 h-full flex items-center">
+					<div class="container mx-auto px-6 md:px-12 lg:px-20">
+						<div class="max-w-3xl space-y-6 md:space-y-8">
+							<div class="inline-flex items-center gap-3 bg-yellow-400/30 backdrop-blur-md border-2 border-yellow-400 rounded-full px-8 py-4 animate-bounce">
+								<span class="text-4xl">💰</span>
+								<span class="text-white font-black text-xl">GIÁ GỐC NHÀ VƯỜN</span>
+							</div>
+							
+							<h2 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight drop-shadow-2xl">
+								Giá Tốt Nhất<br>
+								<span class="text-yellow-300">Thị Trường</span>
+							</h2>
+							
+							<p class="text-lg md:text-2xl text-white/95 font-medium leading-relaxed drop-shadow-lg max-w-2xl">
+								Bỏ qua trung gian - Giá trực tiếp từ nhà sản xuất. 
+								Tiết kiệm chi phí, đảm bảo lợi nhuận tốt nhất cho bạn.
+							</p>
+							
+							{# Price Benefits #}
+							<div class="space-y-4 pt-4">
+								<div class="flex items-center gap-4 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+									<div class="flex-shrink-0 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+										<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+										</svg>
+									</div>
+									<div class="text-white">
+										<div class="font-bold text-lg">Không qua trung gian</div>
+										<div class="text-white/80 text-sm">Tiết kiệm 20-30% chi phí</div>
+									</div>
+								</div>
+								
+								<div class="flex items-center gap-4 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+									<div class="flex-shrink-0 w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+										<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+										</svg>
+									</div>
+									<div class="text-white">
+										<div class="font-bold text-lg">Ưu đãi số lượng lớn</div>
+										<div class="text-white/80 text-sm">Giảm giá đến 15% cho đơn hàng sỉ</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="flex flex-wrap gap-4 pt-4">
+								<a href="/lien-he" 
+								   class="group inline-flex items-center gap-3 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black font-black px-10 py-5 rounded-full shadow-2xl hover:shadow-yellow-500/50 transform hover:scale-105 transition-all duration-300">
+									<span class="text-xl">Báo Giá Ngay</span>
+									<svg class="w-7 h-7 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+									</svg>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		{# Navigation Controls - Premium Style #}
+		<div class="swiper-button-prev hero-nav-btn !w-16 !h-16 !bg-white/20 backdrop-blur-md !rounded-full border-2 border-white/40 hover:!bg-white hover:!border-white !text-white hover:!text-green-700 transition-all duration-300 after:!text-xl after:!font-black p-5"></div>
+		<div class="swiper-button-next hero-nav-btn !w-16 !h-16 !bg-white/20 backdrop-blur-md !rounded-full border-2 border-white/40 hover:!bg-white hover:!border-white !text-white hover:!text-green-700 transition-all duration-300 after:!text-xl after:!font-black p-5"></div>
+		
+		{# Pagination - Premium Style #}
+		<div class="swiper-pagination !bottom-8"></div>
+	</div>
+	
+</section>
+
+	{# Scroll Indicator #}
+	{# <div class="relative left-1/2 transform -translate-x-1/2 z-30 hidden md:block">
+		<div class="flex flex-col items-center gap-2 animate-bounce">
+			<span class="text-black/80 text-sm font-medium">Cuộn xuống</span>
+			<svg class="w-6 h-6 text-black/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+			</svg>
+		</div>
+	</div> #}
+
+{# Premium Swiper Initialization Script #}
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		if (typeof Swiper === 'undefined') {
+			console.error('Swiper library not loaded!');
+			return;
+		}
+		
+		const heroPremiumSwiper = new Swiper('.hero-premium-swiper', {
+			// Core parameters
+			direction: 'horizontal',
+			loop: true,
+			speed: 1000,
+			effect: 'fade',
+			fadeEffect: {
+				crossFade: true
+			},
+			
+			// Autoplay
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: false,
+				pauseOnMouseEnter: true,
+			},
+			
+			// Navigation
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			
+			// Pagination
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+				renderBullet: function (index, className) {
+					return '<span class="' + className + ' !w-4 !h-4 !bg-white/50 !border-2 !border-white hover:!bg-white transition-all duration-300"></span>';
+				},
+			},
+			
+			// Keyboard
+			keyboard: {
+				enabled: true,
+				onlyInViewport: true,
+			},
+			
+			// Mouse wheel
+			mousewheel: {
+				forceToAxis: true,
+			},
+			
+			// Touch
+			grabCursor: true,
+			touchRatio: 1,
+			
+			// Parallax
+			parallax: true,
+			
+			// Breakpoints for responsive design
+			breakpoints: {
+				320: {
+					slidesPerView: 1,
+				},
+				768: {
+					slidesPerView: 1,
+				},
+				1024: {
+					slidesPerView: 1,
+				},
+			},
+		});
+		
+		console.log('Premium Hero Swiper initialized successfully');
+	});
+</script>
+
+<style>
+	/* Custom Swiper Pagination Styles */
+	.hero-premium-swiper .swiper-pagination-bullet-active {
+		background: white !important;
+		width: 2rem !important;
+		border-radius: 1rem !important;
+	}
+	
+	/* Navigation buttons hover effect */
+	.hero-section-wrapper {
+		--nav-btn-opacity: 0;
+		--nav-btn-translate: 50px;
+	}
+	
+	.hero-section-wrapper:hover {
+		--nav-btn-opacity: 1;
+		--nav-btn-translate: 0;
+	}
+	
+	.hero-nav-btn {
+		opacity: var(--nav-btn-opacity) !important;
+		transform: translateX(var(--nav-btn-translate)) !important;
+		transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+		pointer-events: none;
+	}
+	
+	.hero-section-wrapper:hover .hero-nav-btn {
+		pointer-events: auto;
+	}
+	
+	.hero-nav-btn.swiper-button-prev {
+		left: 1.25rem !important;
+		transform: translateX(calc(-1 * var(--nav-btn-translate))) !important;
+	}
+	
+	.hero-nav-btn.swiper-button-next {
+		right: 1.25rem !important;
+	}
+	
+	/* Animation for elements */
+	@keyframes slideInLeft {
+		from {
+			opacity: 0;
+			transform: translateX(-50px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+	
+	@keyframes slideInRight {
+		from {
+			opacity: 0;
+			transform: translateX(50px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+	
+	.swiper-slide-active h1,
+	.swiper-slide-active h2 {
+		animation: slideInLeft 0.8s ease-out;
+	}
+	
+	.swiper-slide-active p {
+		animation: slideInLeft 1s ease-out 0.2s both;
+	}
+	
+	.swiper-slide-active .inline-flex {
+		animation: slideInLeft 1.2s ease-out 0.4s both;
+	}
+</style>
