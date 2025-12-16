@@ -9,67 +9,22 @@
 
 {% block content %}
 	<div class="font-sans flex flex-col gap-8">
-		<!-- Hero Section với Swiper Slideshow -->
-		<section class="bg-white shadow-lg overflow-hidden -mx-8 md:mx-0 md:rounded-lg">
-			<!-- Slider main container -->
-			<div class="swiper banner-swiper">
-				<!-- Additional required wrapper -->
-				<div class="swiper-wrapper">
-					{% if content.banners %}
-						{% for banner in content.banners %}
-							{% if banner.active %}
-							<!-- Slide {{ banner.id }} -->
-							<div class="swiper-slide">
-								<div class="banner relative w-full h-96 md:h-[500px] lg:h-[600px]">
-									<div class="banner-bg absolute inset-0">
-										<img src="{{ banner.image }}" alt="{{ banner.title }}" class="w-full h-full object-cover">
-									</div>
-									<div class="absolute inset-0 banner-overlay flex items-center justify-center">
-										<div class="banner-content">
-											<h{{ loop.index == 1 ? '1' : '2' }} class="banner-title">{{ banner.title }}</h{{ loop.index == 1 ? '1' : '2' }}>
-											<p class="banner-subtitle">{{ banner.subtitle }}</p>
-											{# Gán class theo buttonColor từ database #}
-											{% if banner.buttonColor == 'orange' %}
-												{% set btnClass = 'cta-orange' %}
-											{% elseif banner.buttonColor == 'blue' %}
-												{% set btnClass = 'cta-blue' %}
-											{% else %}
-												{% set btnClass = 'cta-green' %}
-											{% endif %}
-											<a href="{{ banner.buttonLink }}" class="{{ btnClass }}">
-												{{ banner.buttonText }}
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							{% endif %}
-						{% endfor %}
-					{% endif %}
-				</div>
-				
-				<!-- Pagination -->
-				<div class="swiper-pagination"></div>
-				
-				<!-- Navigation buttons -->
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-button-next"></div>
-			</div>
-			
-			<!-- Thông tin bổ sung về Hoàng Hiếu -->
-			{% if content.services and content.services.highlight %}
-			<div class="mt-6 md:mt-8 bg-gradient-to-r from-green-50 to-orange-50 p-4 md:p-6 rounded-xl border-l-4 border-green-500">
-				<div class="text-gray-700 leading-relaxed space-y-3">
-					<p class="text-base md:text-lg">
-						{{ content.services.highlight.icon }} <strong class="text-green-700">{{ content.services.highlight.title }}</strong>
-					</p>
-					<p class="text-sm md:text-base text-gray-600">
-						{{ content.services.highlight.description }}
-					</p>
-				</div>
-			</div>
-			{% endif %}
-		</section>
+		<!-- Hero Section Variations (Uncomment to preview others) -->
+
+		<!-- 1. Modern Swiper Carousel (Default) -->
+		{% include 'components/hero-section-1.twig' %}
+
+		<!-- 2. Static Split Screen (Uncomment to test) -->
+		{# {% include 'components/hero-section-2.twig' %} #}
+
+		<!-- 3. Static Overlay Centered (Uncomment to test) -->
+		{# {% include 'components/hero-section-3.twig' %} #}
+
+		<!-- 4. Floating Card / Boxed (Uncomment to test) -->
+		{# {% include 'components/hero-section-4.twig' %} #}
+
+		<!-- 5. Creative / Asymmetric (Uncomment to test) -->
+		{# {% include 'components/hero-section-5.twig' %} #}
 		
 <!-- Tại Sao Chọn Mụn Dừa Hoàng Hiếu? (Lợi ích - UI mới, màu đậm, icon trắng, hover nổi bật) -->
 <section class="py-16 bg-green-100">

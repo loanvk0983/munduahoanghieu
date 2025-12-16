@@ -1,0 +1,54 @@
+{# Hero Section 4: Floating Card / Boxed Layout #}
+{% set banner = content.banners|first %}
+<section class="relative bg-gray-100 py-12 md:py-20 md:rounded-2xl overflow-hidden shadow-lg">
+    <!-- Background Pattern/Image -->
+    <div class="absolute inset-0">
+        <img src="{{ banner.image }}" alt="Background" class="w-full h-full object-cover filter blur-[2px] opacity-20">
+        <div class="absolute inset-0 bg-green-900/5"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row max-w-6xl mx-auto">
+            <!-- Image Area -->
+            <div class="w-full md:w-5/12 relative h-64 md:h-auto order-1 md:order-2">
+                <img src="{{ banner.image }}" alt="{{ banner.title }}" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent md:hidden"></div>
+                <!-- Badge -->
+                <div class="absolute top-4 right-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded shadow-md">
+                    SẢN PHẨM MỚI
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="w-full md:w-7/12 p-8 md:p-12 lg:p-16 flex flex-col justify-center order-2 md:order-1 bg-white">
+                <div class="mb-6">
+                     <span class="text-green-600 font-bold uppercase tracking-widest text-xs">Mụn Dừa Hoàng Hiếu</span>
+                     <h1 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-800 mt-2 mb-4 leading-tight">
+                        {{ banner.title }}
+                     </h1>
+                     <div class="w-20 h-1 bg-orange-500 rounded"></div>
+                </div>
+
+                <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                    {{ banner.subtitle }}
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    {% set btnColorClass = 'bg-gray-900 hover:bg-gray-800' %}
+                    {% if banner.buttonColor == 'orange' %}
+                        {% set btnColorClass = 'bg-orange-600 hover:bg-orange-700' %}
+                    {% elseif banner.buttonColor == 'green' %}
+                        {% set btnColorClass = 'bg-green-700 hover:bg-green-800' %}
+                    {% endif %}
+
+                    <a href="{{ banner.buttonLink }}" class="{{ btnColorClass }} text-white px-8 py-3 rounded text-center transition shadow-lg">
+                        {{ banner.buttonText }}
+                    </a>
+                    <a href="#" class="px-8 py-3 rounded border border-gray-300 text-gray-700 hover:bg-gray-50 text-center transition">
+                        Tìm hiểu thêm
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

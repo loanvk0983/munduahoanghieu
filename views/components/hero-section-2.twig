@@ -1,0 +1,62 @@
+{# Hero Section 2: Static Split Layout #}
+{% set banner = content.banners|first %}
+<section class="bg-white overflow-hidden md:rounded-2xl shadow-xl">
+    <div class="flex flex-col md:flex-row h-auto md:h-[600px]">
+        <!-- Content Side (Left) -->
+        <div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center bg-gradient-to-br from-green-50 to-white relative">
+            <!-- Decorative Elements -->
+            <div class="absolute top-0 left-0 w-32 h-32 bg-green-100 rounded-br-full opacity-50"></div>
+
+            <div class="relative z-10 space-y-6">
+                <div class="flex items-center gap-2 text-green-600 font-bold uppercase tracking-wider text-sm">
+                    <span class="w-8 h-1 bg-green-600"></span>
+                    Mụn Dừa Hoàng Hiếu
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+                    {{ banner.title }}
+                </h1>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    {{ banner.subtitle }}
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    {% set btnColorClass = 'bg-green-700 hover:bg-green-800' %}
+                    {% if banner.buttonColor == 'orange' %}
+                        {% set btnColorClass = 'bg-orange-600 hover:bg-orange-700' %}
+                    {% elseif banner.buttonColor == 'blue' %}
+                        {% set btnColorClass = 'bg-blue-600 hover:bg-blue-700' %}
+                    {% endif %}
+
+                    <a href="{{ banner.buttonLink }}" class="{{ btnColorClass }} text-white px-8 py-3.5 rounded shadow-lg transition duration-300 text-center font-medium">
+                        {{ banner.buttonText }}
+                    </a>
+                    <a href="#contact" class="px-8 py-3.5 rounded border-2 border-green-700 text-green-700 hover:bg-green-50 transition duration-300 text-center font-medium">
+                        Tư vấn miễn phí
+                    </a>
+                </div>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="mt-12 pt-8 border-t border-gray-200 grid grid-cols-3 gap-4">
+                <div class="text-center">
+                    <span class="block text-2xl font-bold text-green-700">100%</span>
+                    <span class="text-xs text-gray-500 uppercase">Tự nhiên</span>
+                </div>
+                <div class="text-center border-l border-gray-200">
+                    <span class="block text-2xl font-bold text-green-700">ISO</span>
+                    <span class="text-xs text-gray-500 uppercase">Tiêu chuẩn</span>
+                </div>
+                <div class="text-center border-l border-gray-200">
+                    <span class="block text-2xl font-bold text-green-700">24/7</span>
+                    <span class="text-xs text-gray-500 uppercase">Hỗ trợ</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Side (Right) -->
+        <div class="w-full md:w-1/2 relative h-64 md:h-auto">
+            <img src="{{ banner.image }}" alt="{{ banner.title }}" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-green-900/10 mix-blend-multiply"></div>
+        </div>
+    </div>
+</section>
