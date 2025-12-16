@@ -1,7 +1,7 @@
 <!-- Header 1: Classic Business (Top Bar + Main Nav) -->
 <header class="w-full font-sans sticky top-0 z-50 shadow-sm bg-white">
     <!-- Top Bar -->
-    <div class="bg-green-800 text-white py-1 text-sm hidden md:block">
+    <div class="bg-green-800 text-white py-1 text-sm hidden lg:block">
         <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center gap-6">
                 <span class="flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg> munduahoanghieu.vn@gmail.com</span>
@@ -22,13 +22,13 @@
                 <a href="/" class="flex items-center gap-3 group">
                     <img class="h-14 w-14 object-contain" src="/assets/image/logo.svg" alt="Logo">
                     <div class="flex flex-col">
-                        <span class="text-green-800 font-bold text-xl uppercase tracking-wider">Mụn dừa Hoàng Hiếu</span>
+                        <div class="text-green-800 font-bold text-xl! uppercase tracking-wider">Mụn dừa Hoàng Hiếu</div>
                         <span class="text-orange-600 text-xs font-medium italic">Giá thể sạch – Năng suất vượt trội</span>
                     </div>
                 </a>
 
                 <!-- Nav -->
-                <nav class="hidden md:flex items-center space-x-8">
+                <nav class="hidden lg:flex items-center space-x-8">
                     {% for item in [
                         {'url': '/', 'text': 'Trang chủ', 'id': 'home'},
                         {'url': '/gioi-thieu', 'text': 'Giới thiệu', 'id': 'about'},
@@ -47,14 +47,14 @@
                 </nav>
 
                 <!-- Mobile Button -->
-                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-green-700">
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-600 hover:text-green-700">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
             <div class="px-4 py-3 space-y-1">
                 {% for item in [
                     {'url': '/', 'text': 'Trang chủ', 'id': 'home'},
