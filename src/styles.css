@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+body {
+  font-family: "Momo Trust Sans", sans-serif;
+}
+
+.font-display {
+  font-family: "Momo Trust Display", sans-serif;
+}
+
+.font-signature {
+  font-family: "Momo Signature", cursive;
+}
+
 /* Simple Banner Slideshow */
 .banner-container {
   height: 560px;

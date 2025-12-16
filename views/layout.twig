@@ -1,136 +1,155 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Mụn Dừa Hoàng Hiếu{% endblock %}</title>
-  
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="{% block description %}Mụn Dừa Hoàng Hiếu - Giá thể sạch, giúp cây khỏe, đất tốt, mùa vụ bội thu. Chuyên cung cấp mụn dừa xử lý chất lượng cao cho nông nghiệp.{% endblock %}">
-  <meta name="keywords" content="mụn dừa, giá thể trồng cây, mụn dừa xử lý, xơ dừa, vỏ dừa, nông nghiệp sạch, Bến Tre">
-  <meta name="author" content="Mụn Dừa Hoàng Hiếu">
-  <meta name="robots" content="index, follow">
-  
-  <!-- Canonical URL -->
-  <link rel="canonical" href="{{ siteUrl|default('https://munduahoanghieu.com') }}{{ currentPath|default('') }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Mụn Dừa Hoàng Hiếu{% endblock %}</title>
 
-  <!-- Open Graph Meta Tags for Social Sharing -->
-  <meta property="og:title" content="{% block og_title %}{{ block('title') }}{% endblock %}">
-  <meta property="og:description" content="{% block og_description %}{{ block('description') }}{% endblock %}">
-  <meta property="og:image" content="{% block og_image %}{{ siteUrl|default('https://munduahoanghieu.com') }}/assets/image/products/mun-dua-xu-ly/Mụn xử lý 1.jpg{% endblock %}">
-  <meta property="og:url" content="{{ siteUrl|default('https://munduahoanghieu.com') }}{{ currentPath|default('') }}">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="vi_VN">
-  <meta property="og:site_name" content="Mụn Dừa Hoàng Hiếu">
-  
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% block twitter_title %}{{ block('title') }}{% endblock %}">
-  <meta name="twitter:description" content="{% block twitter_description %}{{ block('description') }}{% endblock %}">
-  <meta name="twitter:image" content="{% block twitter_image %}{{ block('og_image') }}{% endblock %}">
-  
-  <!-- JSON-LD Structured Data for Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Mụn Dừa Hoàng Hiếu",
-    "url": "https://munduahoanghieu.com",
-    "logo": "https://munduahoanghieu.com/assets/image/logo.png",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+84-984-288-512",
-      "contactType": "customer service",
-      "areaServed": "VN",
-      "availableLanguage": "Vietnamese"
-    },
-    "sameAs": [
-      "https://www.facebook.com/mun.dua.hoang.hieu",
-      "https://zalo.me/112949426040780264",
-      "https://www.youtube.com/channel/UCyBxXvx4Y8SvFeFFIHQ0xqg"
-    ]
-  }
-  </script>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="{% block description %}Mụn Dừa Hoàng Hiếu - Giá thể sạch, giúp cây khỏe, đất tốt, mùa vụ bội thu. Chuyên cung cấp mụn dừa xử lý chất lượng cao cho nông nghiệp.{% endblock %}"
+    />
+    <meta
+      name="keywords"
+      content="mụn dừa, giá thể trồng cây, mụn dừa xử lý, xơ dừa, vỏ dừa, nông nghiệp sạch, Bến Tre"
+    />
+    <meta name="author" content="Mụn Dừa Hoàng Hiếu" />
+    <meta name="robots" content="index, follow" />
 
-  <!-- Favicons - Using original logo -->
-  <link rel="icon" type="image/svg+xml" href="/assets/image/logo.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/image/logo.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/image/logo.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/image/logo.png">
-  <link rel="shortcut icon" href="/assets/image/logo.png">
-  <link rel="icon" type="image/png" sizes="64x64" href="/assets/image/logo.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="/assets/image/logo.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/image/logo.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/image/logo.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/assets/image/logo512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/image/logo512.png">
-  <link rel="shortcut icon" type="image/png" href="/assets/image/logo.png" sizes="128x128">
-  <link href="/css/styles.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/layout.css">
-  {% block head %}{% endblock %}
-</head>
-<body class="font-sans bg-green-50 overflow-x-hidden">
-  <!-- Include Header Component -->
-  {% include 'components/header.twig' %}
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ siteUrl|default('https://munduahoanghieu.com') }}{{ currentPath|default('') }}" />
 
-  <!-- Main Content -->
-  <main class="overflow-x-hidden">
-    {% block content %}{% endblock %}
-  </main>
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="{% block og_title %}{{ block('title') }}{% endblock %}" />
+    <meta property="og:description" content="{% block og_description %}{{ block('description') }}{% endblock %}" />
+    <meta
+      property="og:image"
+      content="{% block og_image %}{{ siteUrl|default('https://munduahoanghieu.com') }}/assets/image/products/mun-dua-xu-ly/Mụn xử lý 1.jpg{% endblock %}"
+    />
+    <meta
+      property="og:url"
+      content="{{ siteUrl|default('https://munduahoanghieu.com') }}{{ currentPath|default('') }}"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:site_name" content="Mụn Dừa Hoàng Hiếu" />
 
-  <!-- Footer -->
-  <!-- Change component name to preview variations: footer-1.twig through footer-5.twig -->
-  {% include 'components/footer-1.twig' %}
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{% block twitter_title %}{{ block('title') }}{% endblock %}" />
+    <meta
+      name="twitter:description"
+      content="{% block twitter_description %}{{ block('description') }}{% endblock %}"
+    />
+    <meta name="twitter:image" content="{% block twitter_image %}{{ block('og_image') }}{% endblock %}" />
 
-  <!-- Common JavaScript -->
-  <script>
-    // Search functionality - redirect to search page
-    function performSearch() {
-      console.log('performSearch() called');
-      const desktopInput = document.getElementById('search-input-desktop');
-      const mobileInput = document.getElementById('search-input-mobile');
-      const mobileMenu = document.getElementById('mobile-menu');
-      let searchInput = desktopInput;
-      // Nếu mobile menu đang mở thì ưu tiên input mobile
-      if (mobileMenu && window.getComputedStyle(mobileMenu).display !== 'none') {
-        if (mobileInput) {
-          searchInput = mobileInput;
-          console.log('mobileInput active!');
+    <!-- JSON-LD Structured Data for Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Mụn Dừa Hoàng Hiếu",
+        "url": "https://munduahoanghieu.com",
+        "logo": "https://munduahoanghieu.com/assets/image/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+84-984-288-512",
+          "contactType": "customer service",
+          "areaServed": "VN",
+          "availableLanguage": "Vietnamese"
+        },
+        "sameAs": [
+          "https://www.facebook.com/mun.dua.hoang.hieu",
+          "https://zalo.me/112949426040780264",
+          "https://www.youtube.com/channel/UCyBxXvx4Y8SvFeFFIHQ0xqg"
+        ]
+      }
+    </script>
+
+    <!-- Favicons - Using original logo -->
+    <link rel="icon" type="image/svg+xml" href="/assets/image/logo.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/image/logo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/image/logo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/image/logo.png" />
+    <link rel="shortcut icon" href="/assets/image/logo.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/image/logo.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/image/logo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/image/logo.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/image/logo.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/image/logo512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/image/logo512.png" />
+    <link rel="shortcut icon" type="image/png" href="/assets/image/logo.png" sizes="128x128" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Momo+Signature&family=Momo+Trust+Display&family=Momo+Trust+Sans:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    {% block head %}{% endblock %}
+  </head>
+  <body class="font-sans bg-green-50 overflow-x-hidden">
+    <!-- Include Header Component -->
+    {% include 'components/header.twig' %}
+
+    <!-- Main Content -->
+    <main class="overflow-x-hidden">{% block content %}{% endblock %}</main>
+
+    <!-- Footer -->
+    <!-- Change component name to preview variations: footer-1.twig through footer-5.twig -->
+    {% include 'components/footer-2.twig' %}
+
+    <!-- Common JavaScript -->
+    <script>
+      // Search functionality - redirect to search page
+      function performSearch() {
+        console.log("performSearch() called");
+        const desktopInput = document.getElementById("search-input-desktop");
+        const mobileInput = document.getElementById("search-input-mobile");
+        const mobileMenu = document.getElementById("mobile-menu");
+        let searchInput = desktopInput;
+        // Nếu mobile menu đang mở thì ưu tiên input mobile
+        if (mobileMenu && window.getComputedStyle(mobileMenu).display !== "none") {
+          if (mobileInput) {
+            searchInput = mobileInput;
+            console.log("mobileInput active!");
+          }
+        } else {
+          console.log("desktopInput active!");
         }
-      } else {
-        console.log('desktopInput active!');
+        console.log("searchInput (final):", searchInput);
+        // Lưu value ngay lập tức
+        let query = "";
+        if (searchInput) {
+          query = searchInput.value.trim();
+          console.log("searchInput.value:", searchInput.value);
+          console.log("searchInput.value.trim():", query);
+        }
+        console.log("search query:", query);
+        console.log("query length:", query.length);
+        if (!query || query.length < 2) {
+          alert("Vui lòng nhập ít nhất 2 ký tự để tìm kiếm");
+          return;
+        }
+        // Redirect to search page
+        console.log("Redirecting to search page with query:", query);
+        window.location.href = `/search?q=${encodeURIComponent(query)}`;
       }
-      console.log('searchInput (final):', searchInput);
-      // Lưu value ngay lập tức
-      let query = '';
-      if (searchInput) {
-        query = searchInput.value.trim();
-        console.log('searchInput.value:', searchInput.value);
-        console.log('searchInput.value.trim():', query);
-      }
-      console.log('search query:', query);
-      console.log('query length:', query.length);
-      if (!query || query.length < 2) {
-        alert('Vui lòng nhập ít nhất 2 ký tự để tìm kiếm');
-        return;
-      }
-      // Redirect to search page
-      console.log('Redirecting to search page with query:', query);
-      window.location.href = `/search?q=${encodeURIComponent(query)}`;
-    }
 
-    function handleSearchKeyPress(event) {
-      console.log('handleSearchKeyPress() called, key:', event.key);
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        performSearch();
+      function handleSearchKeyPress(event) {
+        console.log("handleSearchKeyPress() called, key:", event.key);
+        if (event.key === "Enter") {
+          event.preventDefault();
+          performSearch();
+        }
       }
-    }
 
-    // Email functionality
-    function sendEmail() {
-      const subject = encodeURIComponent('Tư vấn sản phẩm mụn dừa');
-      const body = encodeURIComponent(`Xin chào Mụn Dừa Hoàng Hiếu,
+      // Email functionality
+      function sendEmail() {
+        const subject = encodeURIComponent("Tư vấn sản phẩm mụn dừa");
+        const body = encodeURIComponent(`Xin chào Mụn Dừa Hoàng Hiếu,
 
 Tôi quan tâm đến các sản phẩm mụn dừa của công ty. Xin vui lòng tư vấn cho tôi về:
 - Sản phẩm phù hợp cho cây trồng của tôi
@@ -138,11 +157,11 @@ Tôi quan tâm đến các sản phẩm mụn dừa của công ty. Xin vui lòn
 - Hỗ trợ kỹ thuật
 
 Cảm ơn!`);
-      
-      window.open(`mailto:munduahoanghieu.vn@gmail.com?subject=${subject}&body=${body}`);
-    }
-  </script>
-  
-  {% block scripts %}{% endblock %}
-</body>
+
+        window.open(`mailto:munduahoanghieu.vn@gmail.com?subject=${subject}&body=${body}`);
+      }
+    </script>
+
+    {% block scripts %}{% endblock %}
+  </body>
 </html>
