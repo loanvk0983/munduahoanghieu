@@ -161,16 +161,16 @@
 		}
 
 		/* Section Spacing - Consistent padding */
-		section {
+		/* section {
 			padding-top: 1.5rem;
 			padding-bottom: 1.5rem;
-		}
+		} */
 
 		@media (min-width: 768px) {
-			section {
+			/* section {
 				padding-top: 2rem;
 				padding-bottom: 2rem;
-			}
+			} */
 
 			.banner-content {
 				padding: 2rem;
