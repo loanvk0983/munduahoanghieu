@@ -1,0 +1,57 @@
+<!-- Problem Section Variation 4: Accordion/Interactive (Q&A Style) -->
+<section class="py-16 bg-green-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-green-900 mb-4">Vườn Cây Của Bạn Có Đang Gặp Phải?</h2>
+            <p class="text-green-700">Kiểm tra ngay các dấu hiệu phổ biến của việc sử dụng giá thể không đạt chuẩn.</p>
+        </div>
+
+        <div class="space-y-4">
+            <!-- Item 1 -->
+            <div class="group bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border border-green-100">
+                <div class="p-6 cursor-pointer flex justify-between items-center">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold">?</span>
+                        <h3 class="text-lg font-bold text-gray-800">Cây con trồng xuống bị vàng lá, héo rũ sau vài ngày?</h3>
+                    </div>
+                    <span class="text-green-500 transform group-hover:rotate-180 transition-transform duration-300">▼</span>
+                </div>
+                <div class="px-6 pb-6 pt-0 text-gray-600 border-t border-dashed border-gray-100 mt-2 hidden group-hover:block animate-fade-in">
+                    <p class="mt-4"><strong class="text-red-500">Nguyên nhân:</strong> Do mụn dừa chưa được xử lý hết chất chát (Tanin) và Lignin. Hai chất này làm bít lỗ khí khổng của rễ, khiến cây không hút được nước và dinh dưỡng.</p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="group bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border border-green-100">
+                <div class="p-6 cursor-pointer flex justify-between items-center">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold">?</span>
+                        <h3 class="text-lg font-bold text-gray-800">Tưới nước nhiều nhưng đất vẫn khô hoặc quá sũng nước?</h3>
+                    </div>
+                    <span class="text-green-500 transform group-hover:rotate-180 transition-transform duration-300">▼</span>
+                </div>
+                <div class="px-6 pb-6 pt-0 text-gray-600 border-t border-dashed border-gray-100 mt-2 hidden group-hover:block animate-fade-in">
+                    <p class="mt-4"><strong class="text-red-500">Nguyên nhân:</strong> Cấu trúc hạt mụn dừa không đồng đều hoặc bị mủn nát (mụn cũ). Điều này làm mất khả năng giữ ẩm cân bằng, gây úng rễ hoặc khô hạn cục bộ.</p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="group bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border border-green-100">
+                <div class="p-6 cursor-pointer flex justify-between items-center">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold">?</span>
+                        <h3 class="text-lg font-bold text-gray-800">Rễ cây bị đen đầu, thối nhũn?</h3>
+                    </div>
+                    <span class="text-green-500 transform group-hover:rotate-180 transition-transform duration-300">▼</span>
+                </div>
+                <div class="px-6 pb-6 pt-0 text-gray-600 border-t border-dashed border-gray-100 mt-2 hidden group-hover:block animate-fade-in">
+                    <p class="mt-4"><strong class="text-red-500">Nguyên nhân:</strong> Độ mặn (EC) trong giá thể quá cao. Muối mặn làm cháy đầu rễ non, tạo vết thương hở cho vi khuẩn tấn công gây thối rễ.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .animate-fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</section>
