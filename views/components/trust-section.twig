@@ -1,0 +1,35 @@
+<section class="py-16 bg-white border-b border-gray-100">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
+            <div class="max-w-2xl">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ content.trust.title | default('Đối tác tin cậy của nhà nông') }}</h2>
+                <div class="h-1 w-20 bg-green-600 rounded"></div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            {% for stat in content.trust.stats %}
+            <div class="bg-green-50 rounded-xl p-6 text-center transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                <div class="text-4xl font-bold text-green-700 mb-2">{{ stat.value }}</div>
+                <div class="text-gray-600 font-medium">{{ stat.label }}</div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Partners -->
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+             {% for partner in content.trust.partners %}
+                <!-- Placeholder for Logo if image fails, or use text if no logo provided -->
+                <div class="flex items-center space-x-2 group">
+                     {% if partner.logo %}
+                        <img src="{{ partner.logo }}" alt="{{ partner.name }}" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="text-xl font-bold text-gray-400 group-hover:text-green-700 hidden">{{ partner.name }}</span>
+                     {% else %}
+                        <span class="text-xl font-bold text-gray-400 group-hover:text-green-700">{{ partner.name }}</span>
+                     {% endif %}
+                </div>
+             {% endfor %}
+        </div>
+    </div>
+</section>

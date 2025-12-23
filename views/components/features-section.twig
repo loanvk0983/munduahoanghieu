@@ -1,0 +1,39 @@
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-green-600 font-bold tracking-wider uppercase text-sm mb-2 block">Tính Năng Nổi Bật</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Tại sao chọn mụn dừa Hoàng Hiếu?</h2>
+            <p class="text-lg text-gray-600">Những đặc tính ưu việt giúp sản phẩm của chúng tôi chinh phục những nhà nông khó tính nhất.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {% for feature in content.features %}
+            <div class="group p-8 rounded-2xl bg-white border border-gray-100 hover:border-green-200 hover:shadow-xl hover:shadow-green-900/5 transition-all duration-300 relative overflow-hidden">
+                <!-- Hover gradient background -->
+                <div class="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                <div class="relative z-10">
+                    <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 text-green-600">
+                         {% if feature.icon == 'check-circle' %}
+                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                         {% elseif feature.icon == 'droplet' %}
+                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                         {% elseif feature.icon == 'leaf' %}
+                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                         {% elseif feature.icon == 'sun' %}
+                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                         {% else %}
+                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                         {% endif %}
+                    </div>
+
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-700 transition-colors">{{ feature.title }}</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        {{ feature.description }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

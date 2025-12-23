@@ -49,7 +49,143 @@
     "buttonText": "Tìm hiểu thêm về chúng tôi →",
     "buttonLink": "/gioi-thieu"
   },
-  "featuredProducts": [],
+  "trust": {
+    "title": "Được tin dùng bởi hơn 1000+ nhà vườn",
+    "stats": [
+      {
+        "value": "1000+",
+        "label": "Nhà vườn tin dùng"
+      },
+      {
+        "value": "5000+",
+        "label": "Tấn sản phẩm/năm"
+      },
+      {
+        "value": "100%",
+        "label": "Hữu cơ tự nhiên"
+      },
+      {
+        "value": "63",
+        "label": "Tỉnh thành phân phối"
+      }
+    ],
+    "partners": [
+      { "name": "VietGap", "logo": "/assets/image/partners/vietgap.png" },
+      { "name": "GlobalGap", "logo": "/assets/image/partners/globalgap.png" },
+      { "name": "Organic", "logo": "/assets/image/partners/organic.png" },
+      { "name": "ISO 9001", "logo": "/assets/image/partners/iso9001.png" }
+    ]
+  },
+  "problem": {
+    "title": "Nỗi lo của người làm nông?",
+    "items": [
+        {
+            "title": "Đất thoái hóa, bạc màu",
+            "description": "Đất trồng lâu năm bị chai cứng, mất chất dinh dưỡng, khiến cây chậm phát triển.",
+            "icon": "warning"
+        },
+        {
+            "title": "Sâu bệnh hại rễ",
+            "description": "Giá thể không sạch chứa nấm bệnh, tuyến trùng gây hại bộ rễ cây trồng.",
+            "icon": "bug"
+        },
+        {
+            "title": "Chi phí phân bón cao",
+            "description": "Đất không giữ được dinh dưỡng khiến chi phí phân bón ngày càng tăng.",
+            "icon": "trending-up"
+        }
+    ]
+  },
+  "solution": {
+    "title": "Giải Pháp Từ Hoàng Hiếu",
+    "subtitle": "Mụn dừa xử lý - Nền tảng cho mùa màng bội thu",
+    "description": "Chúng tôi cung cấp giải pháp giá thể toàn diện, giúp cải tạo đất, tiết kiệm nước và phân bón.",
+    "benefits": [
+      {
+        "title": "Cải tạo đất trồng",
+        "description": "Giúp đất tơi xốp, thoáng khí, tăng khả năng giữ nước và dinh dưỡng.",
+        "icon": "sprout"
+      },
+      {
+        "title": "Sạch bệnh 100%",
+        "description": "Đã qua xử lý chát (Tannin, Lignin) và mầm bệnh, an toàn tuyệt đối cho rễ.",
+        "icon": "shield-check"
+      },
+      {
+        "title": "Tiết kiệm chi phí",
+        "description": "Giảm lượng nước tưới và phân bón thất thoát, tăng hiệu quả kinh tế.",
+        "icon": "piggy-bank"
+      }
+    ],
+    "image": "/assets/image/solution/solution-main.jpg"
+  },
+  "features": [
+      {
+        "icon": "check-circle",
+        "title": "Độ pH Ổn Định",
+        "description": "pH từ 5.5 - 6.5, môi trường lý tưởng cho hầu hết các loại cây trồng hấp thu dinh dưỡng."
+      },
+      {
+        "icon": "droplet",
+        "title": "Giữ Ẩm Tuyệt Vời",
+        "description": "Khả năng giữ nước gấp 8-10 lần trọng lượng, giúp cây chịu hạn tốt hơn."
+      },
+      {
+        "icon": "leaf",
+        "title": "Thân Thiện Môi Trường",
+        "description": "Tận dụng phế phẩm nông nghiệp, giảm rác thải, bảo vệ hệ sinh thái."
+      },
+      {
+        "icon": "sun",
+        "title": "Sạch & An Toàn",
+        "description": "Không chứa kim loại nặng, không vi sinh vật gây hại, an toàn cho người sử dụng."
+      }
+  ],
+  "howItWorks": {
+    "title": "Quy Trình Sản Xuất & Sử Dụng",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Tuyển Chọn Nguyên Liệu",
+        "description": "Vỏ dừa già được tuyển chọn kỹ lưỡng từ vùng nguyên liệu Bến Tre."
+      },
+      {
+        "step": "02",
+        "title": "Xử Lý & Nghiền Sàng",
+        "description": "Ngâm xả chát (Tannin), nghiền nhỏ và sàng lọc tạp chất kỹ càng."
+      },
+      {
+        "step": "03",
+        "title": "Kiểm Định & Đóng Gói",
+        "description": "Kiểm tra EC, pH trước khi đóng bao bì và vận chuyển đến khách hàng."
+      },
+      {
+        "step": "04",
+        "title": "Sử Dụng Hiệu Quả",
+        "description": "Phối trộn với đất hoặc dùng trực tiếp làm giá thể trồng cây công nghệ cao."
+      }
+    ]
+  },
+  "useCases": {
+    "title": "Ứng Dụng Thực Tế",
+    "cases": [
+      {
+        "title": "Trồng Dưa Lưới",
+        "description": "Giá thể chính trong các farm dưa lưới công nghệ cao, giúp kiểm soát dinh dưỡng tối ưu.",
+        "image": "/assets/image/gallery/results/dưa lưới.png"
+      },
+      {
+        "title": "Trồng Hoa Lan",
+        "description": "Thoáng khí, thoát nước tốt, giúp rễ lan phát triển mạnh, hạn chế thối rễ.",
+        "image": "/assets/image/gallery/results/hoa lan.png"
+      },
+      {
+        "title": "Ươm Cây Giống",
+        "description": "Môi trường sạch, tơi xốp giúp hạt nảy mầm đều, cây con khỏe mạnh.",
+        "image": "/assets/image/gallery/results/cà chua 1.jpg"
+      }
+    ]
+  },
   "services": {
     "title": "Mụn Dừa Hoàng Hiếu - Chuyên Cung Cấp",
     "mainDescription": "Chúng tôi chuyên cung cấp mụn dừa xử lý (tỷ lệ xơ-mụn đáp ứng theo yêu cầu của bạn). Ngoài ra còn có mụn dừa thô, vỏ dừa cắt chip, phân hữu cơ, trấu, tro trấu và đất sạch... Tất cả đều được làm cẩn thận, kỹ lưỡng, để bạn yên tâm sử dụng mà không phải bận lòng.",
@@ -119,6 +255,75 @@
       "avatarColor": "bg-emerald-600"
     }
   ],
+  "pricing": {
+    "title": "Bảng Giá Tham Khảo",
+    "subtitle": "Chính sách giá linh hoạt cho mọi nhu cầu",
+    "plans": [
+      {
+        "name": "Dùng Thử",
+        "price": "Liên Hệ",
+        "unit": "/ bao",
+        "description": "Dành cho khách hàng cá nhân, trồng rau tại nhà.",
+        "features": [
+          "Đóng bao 50dm3",
+          "Đã xử lý sạch",
+          "Giao hàng tận nơi",
+          "Tư vấn sử dụng"
+        ],
+        "highlight": false,
+        "cta": "Liên hệ ngay"
+      },
+      {
+        "name": "Nhà Vườn",
+        "price": "Ưu Đãi",
+        "unit": "/ tấn",
+        "description": "Giải pháp kinh tế cho farm quy mô vừa và nhỏ.",
+        "features": [
+          "Giá sỉ cạnh tranh",
+          "Hỗ trợ vận chuyển",
+          "Cam kết chất lượng",
+          "Tư vấn kỹ thuật"
+        ],
+        "highlight": true,
+        "cta": "Nhận báo giá"
+      },
+      {
+        "name": "Dự Án Lớn",
+        "price": "Tốt Nhất",
+        "unit": "/ container",
+        "description": "Hợp tác lâu dài, cung ứng số lượng lớn, xuất khẩu.",
+        "features": [
+          "Chiết khấu cao",
+          "Hợp đồng dài hạn",
+          "Sản xuất theo yêu cầu",
+          "Ưu tiên giao hàng"
+        ],
+        "highlight": false,
+        "cta": "Hợp tác ngay"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu Hỏi Thường Gặp",
+    "questions": [
+      {
+        "question": "Mụn dừa Hoàng Hiếu đã qua xử lý chưa?",
+        "answer": "Chúng tôi cung cấp cả mụn dừa đã xử lý (xả chát, cân bằng pH) và mụn dừa thô tùy theo nhu cầu của khách hàng. Sản phẩm đã xử lý có thể dùng ngay."
+      },
+      {
+        "question": "Tôi có thể yêu cầu tỷ lệ phối trộn riêng không?",
+        "answer": "Có. Chúng tôi nhận phối trộn tỷ lệ mụn/xơ hoặc thêm trấu, phân hữu cơ theo yêu cầu cụ thể của từng loại cây trồng và kỹ thuật canh tác."
+      },
+      {
+        "question": "Giao hàng đi tỉnh xa có đắt không?",
+        "answer": "Chúng tôi liên kết với các đơn vị vận chuyển và chành xe để có cước phí tốt nhất. Với đơn hàng số lượng lớn, chúng tôi có chính sách hỗ trợ vận chuyển."
+      },
+      {
+        "question": "Hạn sử dụng của mụn dừa là bao lâu?",
+        "answer": "Mụn dừa nếu bảo quản nơi khô ráo, thoáng mát có thể để được rất lâu (trên 1-2 năm) mà không ảnh hưởng nhiều đến chất lượng."
+      }
+    ]
+  },
   "news": [
     {
       "id": 16,

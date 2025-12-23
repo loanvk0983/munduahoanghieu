@@ -1,0 +1,29 @@
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{{ content.howItWorks.title | default('Quy Trình Hoạt Động') }}</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Quy trình kiểm soát chất lượng nghiêm ngặt từ khâu nguyên liệu đầu vào đến thành phẩm cuối cùng.</p>
+        </div>
+
+        <div class="relative">
+            <!-- Connecting Line (Desktop) -->
+            <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-green-200 -translate-y-1/2 z-0"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                {% for step in content.howItWorks.steps %}
+                <div class="relative group">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-2 text-center md:text-left">
+                        <!-- Step Number -->
+                        <div class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-xl mb-6 shadow-lg shadow-green-200 mx-auto md:mx-0 relative z-20 group-hover:scale-110 transition-transform">
+                            {{ step.step }}
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">{{ step.title }}</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">{{ step.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

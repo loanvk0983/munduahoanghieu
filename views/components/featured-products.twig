@@ -1,0 +1,68 @@
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-green-700 mb-4">Sản Phẩm Nổi Bật</h2>
+            <p class="text-gray-600 text-lg">Khám phá các sản phẩm mụn dừa chất lượng cao của chúng tôi</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {% if content.featuredProducts %}
+                {% for product in content.featuredProducts %}
+                <div class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl hover:border-green-200 transition-all duration-300">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='/assets/image/placeholder.jpg'">
+
+                        <!-- Overlay Action -->
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <a href="{{ product.link }}" class="px-6 py-2 bg-white text-green-700 font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-green-50">
+                                Xem chi tiết
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-green-700 transition-colors">{{ product.name }}</h3>
+                        <p class="text-sm text-gray-600 mb-4 line-clamp-2">{{ product.description }}</p>
+
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-green-600 font-bold">{{ product.price | default('Liên hệ') }}</span>
+                            <span class="text-xs text-gray-400">Xem thêm &rarr;</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                 <!-- Fallback if no products in content.featuredProducts, try content.products.main -->
+                 {% if content.products and content.products.main %}
+                    {% for product in content.products.main %}
+                    <div class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl hover:border-green-200 transition-all duration-300">
+                        <div class="relative overflow-hidden aspect-[4/3]">
+                            <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.src='/assets/image/placeholder.jpg'">
+                             <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <a href="/san-pham/{{ product.slug }}" class="px-6 py-2 bg-white text-green-700 font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-green-50">
+                                    Xem chi tiết
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-green-700 transition-colors">{{ product.name }}</h3>
+                            <p class="text-sm text-gray-600 mb-4 line-clamp-2">{{ product.description }}</p>
+                             <div class="flex items-center justify-between mt-auto">
+                                <span class="text-green-600 font-bold">{{ product.price }}</span>
+                                <span class="text-xs text-gray-400">Xem thêm &rarr;</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                 {% endif %}
+            {% endif %}
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="/san-pham" class="inline-flex items-center px-8 py-3 border border-green-600 text-green-600 font-semibold rounded-full hover:bg-green-600 hover:text-white transition-all duration-300">
+                Xem tất cả sản phẩm
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+    </div>
+</section>

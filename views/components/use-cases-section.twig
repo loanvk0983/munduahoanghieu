@@ -1,0 +1,36 @@
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
+            <div class="max-w-2xl">
+                <span class="text-green-600 font-bold uppercase tracking-wider text-sm mb-2 block">Dự án thực tế</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">{{ content.useCases.title | default('Ứng Dụng Thực Tế') }}</h2>
+            </div>
+            <a href="/tin-tuc" class="hidden md:inline-flex items-center font-semibold text-green-600 hover:text-green-700 transition-colors">
+                Xem tất cả bài viết
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {% for case in content.useCases.cases %}
+            <div class="group cursor-pointer">
+                <div class="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3]">
+                    <img src="{{ case.image }}" alt="{{ case.title }}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" onerror="this.src='https://placehold.co/600x400?text=Case+Study'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <span class="text-white font-semibold">Xem chi tiết</span>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-green-700 transition-colors">{{ case.title }}</h3>
+                <p class="text-gray-600 line-clamp-3">{{ case.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="mt-8 text-center md:hidden">
+             <a href="/tin-tuc" class="inline-flex items-center font-semibold text-green-600 hover:text-green-700 transition-colors">
+                Xem tất cả bài viết
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+    </div>
+</section>

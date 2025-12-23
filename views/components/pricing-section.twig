@@ -1,0 +1,38 @@
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{{ content.pricing.title | default('Bảng Giá Tham Khảo') }}</h2>
+            <p class="text-gray-600">{{ content.pricing.subtitle }}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {% for plan in content.pricing.plans %}
+            <div class="relative flex flex-col p-8 bg-white border {{ plan.highlight ? 'border-green-500 shadow-xl ring-2 ring-green-100 scale-105 z-10' : 'border-gray-200 shadow-sm' }} rounded-2xl transition-all duration-300 hover:shadow-lg">
+                {% if plan.highlight %}
+                <div class="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">Phổ biến nhất</div>
+                {% endif %}
+
+                <h3 class="text-xl font-bold text-gray-900 mb-2">{{ plan.name }}</h3>
+                <div class="mb-6">
+                    <span class="text-4xl font-bold {{ plan.highlight ? 'text-green-600' : 'text-gray-900' }}">{{ plan.price }}</span>
+                    {% if plan.unit %}<span class="text-gray-500 text-sm">{{ plan.unit }}</span>{% endif %}
+                </div>
+                <p class="text-gray-600 mb-6 text-sm">{{ plan.description }}</p>
+
+                <ul class="space-y-4 mb-8 flex-grow">
+                    {% for feature in plan.features %}
+                    <li class="flex items-center text-sm text-gray-600">
+                        <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        {{ feature }}
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <a href="/lien-he" class="block w-full py-3 px-6 text-center rounded-lg font-semibold transition-colors duration-300 {{ plan.highlight ? 'bg-green-600 text-white hover:bg-green-700' : 'bg-green-50 text-green-700 hover:bg-green-100' }}">
+                    {{ plan.cta }}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

@@ -9,136 +9,48 @@
 
 {% block content %}
 	<div class="flex flex-col">
-		<!-- Premium Hero Section - Ultra Modern Carousel -->
+		<!-- 1. Header (Already in layout.twig) -->
+
+        <!-- 2. Hero Section -->
 		{% include 'components/hero-section-premium.twig' %}
+
+        <!-- 3. Trust Section -->
+        {% include 'components/trust-section.twig' %}
 		
-<!-- Problem Section: 5 Variations Available -->
-<!-- Uncomment one to use, currently using variation 1 -->
+        <!-- 4. Problem Section -->
+        {% include 'components/problem-section_bak.twig' %}
 
-<!-- Variation 1: Grid Cards (Clean, Direct) -->
-{% include 'components/problem-section_bak.twig' %}
+        <!-- 5. Solution Section -->
+        {% include 'components/solution-section.twig' %}
 
-<!-- Variation 2: Split Layout (Visual "Before" Comparison) -->
-{# {% include 'components/problem-section-2.twig' %} #}
+        <!-- 6. Features Section -->
+        {% include 'components/features-section.twig' %}
 
-<!-- Variation 3: Warning/Alert Style (Urgency Focus) -->
-{# {% include 'components/problem-section-3.twig' %} #}
+        <!-- 7. How it works Section -->
+        {% include 'components/how-it-works-section.twig' %}
 
-<!-- Variation 4: Accordion/Interactive (Q&A Style) -->
-{# {% include 'components/problem-section-4.twig' %} #}
+        <!-- 8. Use cases Section -->
+        {% include 'components/use-cases-section.twig' %}
 
-<!-- Variation 5: Minimalist/Typography Focused -->
-{# {% include 'components/problem-section-5.twig' %} #}
+        <!-- Featured Products (Added) -->
+        {% include 'components/featured-products.twig' %}
 
-<!-- Backup of Original "Why Choose Us" Section: components/problem-section_bak.twig -->
+        <!-- 9. Testimonials Section -->
+        {% include 'components/testimonials-section.twig' %}
 
-		<!-- Sản phẩm nổi bật -->
-		<section class="px-4 md:px-8 mt-12">
-			<div class="text-center mb-6 md:mb-8">
-				<h2 class="text-2xl md:text-3xl font-bold text-green-700 mb-3 md:mb-4">Sản Phẩm Nổi Bật</h2>
-				<p class="text-gray-600 text-base md:text-lg px-2">Khám phá các sản phẩm mụn dừa chất lượng cao của chúng tôi</p>
-			</div>
+        <!-- Gallery (Added) -->
+        {% include 'components/gallery-section.twig' %}
 
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-				{% if content.featuredProducts %}
-					{% for product in content.featuredProducts %}
-					<div class="bg-white rounded-lg shadow-lg overflow-hidden hover-card cursor-pointer">
-						<div class="overflow-hidden">
-							<img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-48 object-cover hover-image" onerror="this.src='/assets/image/placeholder.jpg'">
-						</div>
-						<div class="p-4 md:p-6">
-							<h3 class="text-lg md:text-xl font-semibold text-green-700 mb-2">{{ product.name }}</h3>
-							<p class="text-sm md:text-base text-gray-600 mb-3 md:mb-4">{{ product.description }}</p>
-							<a href="{{ product.link }}" class="text-orange-600 hover:text-orange-700 font-semibold transition-colors duration-300 text-sm md:text-base">Xem chi tiết →</a>
-						</div>
-					</div>
-					{% endfor %}
-				{% endif %}
-			</div>
-		</section>
+        <!-- 10. Pricing Section -->
+        {% include 'components/pricing-section.twig' %}
 
-		<!-- Gallery Sản phẩm -->
-		<section class="px-4 md:px-8">
-			<div class="bg-white p-4 md:p-8 rounded-lg shadow-md">
-				<h2 class="text-3xl font-bold text-green-600 mb-8 text-center">Hình Ảnh Sản Phẩm</h2>
-				
-				<!-- Tabs Navigation -->
-				<div class="flex justify-center mb-8">
-					<div class="bg-white rounded-lg shadow-md p-1">
-						<button data-gallery="products" id="tab-products" class="gallery-tab px-6 py-2 rounded-md bg-green-500 text-white font-medium transition-all duration-300">Sản Phẩm</button>
-						<button data-gallery="results" id="tab-results" class="gallery-tab px-6 py-2 rounded-md text-gray-600 hover:text-white hover:bg-orange-500 font-semibold transition-all duration-300 shadow-sm hover:shadow-md">Kết Quả</button>
-					</div>
-				</div>
+        <!-- 11. FAQ Section -->
+        {% include 'components/faq-section.twig' %}
 
-				<!-- Gallery Grid -->
-				<div id="gallery-products" class="gallery-content">
-					<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-						{% if content.gallery and content.gallery.products %}
-							{% for item in content.gallery.products %}
-							<div class="bg-white rounded-lg overflow-hidden shadow-md gallery-item cursor-pointer">
-								<div class="overflow-hidden">
-									<img src="{{ item.image }}" alt="{{ item.alt }}" class="w-full h-48 object-cover hover-image" onerror="this.style.display='none'">
-								</div>
-								<div class="p-3">
-									<p class="text-sm font-medium text-gray-800">{{ item.caption }}</p>
-								</div>
-							</div>
-							{% endfor %}
-						{% endif %}
-					</div>
-				</div>
-                <div id="gallery-results" class="gallery-content hidden">
-					<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-						{% if content.gallery and content.gallery.results %}
-							{% for item in content.gallery.results %}
-							<div class="bg-white rounded-lg overflow-hidden shadow-md gallery-item cursor-pointer">
-								<div class="overflow-hidden">
-									<img src="{{ item.image }}" alt="{{ item.alt }}" class="w-full h-48 object-cover hover-image" onerror="this.style.display='none'">
-								</div>
-								<div class="p-3">
-									<p class="text-sm font-medium text-gray-800">{{ item.caption }}</p>
-								</div>
-							</div>
-							{% endfor %}
-						{% endif %}
-					</div>
-				</div>
-			</div>
-		</section>
+        <!-- 12. Final CTA Section -->
+		{% include 'components/cta-section.twig' %}
 
-		<!-- Liên hệ nhanh -->
-		<section class="text-center bg-white rounded-lg shadow-lg p-4 md:p-8 mx-4 md:mx-8 mt-12">
-			{% if content.contactSection %}
-			<h2 class="text-3xl font-bold text-green-700 mb-4">{{ content.contactSection.title }}</h2>
-			<p class="text-gray-600 text-lg mb-6">{{ content.contactSection.subtitle }}</p>
-			<div class="flex flex-wrap justify-center gap-4">
-				{% for button in content.contactSection.buttons %}
-					{% if button.icon == '📞' %}
-						<a href="{{ button.link }}" class="inline-flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors duration-300 btn-hover">
-							<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-							</svg>
-							{{ button.text }}
-						</a>
-					{% elseif button.icon == '💬' %}
-						<a href="{{ button.link }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-300 btn-hover">
-							<svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 24 24">
-								<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
-							</svg>
-							{{ button.text }}
-						</a>
-					{% elseif button.icon == '📧' %}
-						<a href="{{ button.link }}" class="inline-flex items-center px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors duration-300 btn-hover">
-							<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-							</svg>
-							{{ button.text }}
-						</a>
-					{% endif %}
-				{% endfor %}
-			</div>
-			{% endif %}
-		</section>
+        <!-- 13. Footer (Already in layout.twig) -->
 	</div>
 
 	<!-- JavaScript cho trang home -->
@@ -146,74 +58,6 @@
 	<!-- Load Swiper JS FIRST before any initialization scripts -->
 	<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 	
-	<script>
-		// Gallery functionality - Wrap in DOMContentLoaded
-		document.addEventListener('DOMContentLoaded', function() {
-			// Gallery switching function
-			function showGallery(type) {
-				try {
-					console.log('Switching to gallery:', type);
-					
-					// Hide all galleries
-					document.querySelectorAll('.gallery-content').forEach(gallery => {
-						gallery.classList.add('hidden');
-					});
-					
-					// Remove active state from all tabs
-					document.querySelectorAll('[id^="tab-"]').forEach(tab => {
-						tab.classList.remove('bg-green-500', 'text-white', 'shadow-md', 'bg-orange-500');
-						tab.classList.add('text-gray-600', 'shadow-sm');
-					});
-					
-					// Show selected gallery
-					const targetGallery = document.getElementById('gallery-' + type);
-					if (targetGallery) {
-						targetGallery.classList.remove('hidden');
-					} else {
-						console.error('Gallery not found:', 'gallery-' + type);
-					}
-					
-					// Set active tab
-					const activeTab = document.getElementById('tab-' + type);
-					if (activeTab) {
-						activeTab.classList.add('bg-green-500', 'text-white', 'shadow-md');
-						activeTab.classList.remove('text-gray-600', 'shadow-sm');
-					} else {
-						console.error('Tab not found:', 'tab-' + type);
-					}
-				} catch (error) {
-					console.error('Error in showGallery:', error);
-				}
-			}
-			
-			// Attach event listeners to gallery tabs
-			document.querySelectorAll('.gallery-tab').forEach(button => {
-				button.addEventListener('click', function() {
-					const galleryType = this.getAttribute('data-gallery');
-					showGallery(galleryType);
-				});
-			});
-			
-		console.log('Gallery functionality initialized');
-	});
-
-	// Search functionality already defined in layout.twig - removed duplicate		// Image lazy loading for banner
-		document.addEventListener('DOMContentLoaded', function() {
-			const images = document.querySelectorAll('.banner img');
-			images.forEach(img => {
-				img.addEventListener('load', function() {
-					this.classList.add('loaded');
-				});
-				
-				// If image is already loaded
-				if (img.complete) {
-					img.classList.add('loaded');
-				}
-			});
-		});
-	</script>
-
-
 	<script>
 		// Initialize Banner Swiper - wait for DOM and Swiper library
 		document.addEventListener('DOMContentLoaded', function() {
@@ -283,7 +127,4 @@
 			if (window.AOS) AOS.init({ duration: 700, once: true, offset: 60 });
 		});
 	</script>
-
-{# Search input mobile đã có id="search-input-mobile" trong header.twig - không cần script này nữa #}
-
 {% endblock %}
