@@ -794,9 +794,6 @@
   .h-\[300px\] {
     height: 300px;
   }
-  .h-\[320px\] {
-    height: 320px;
-  }
   .h-\[500px\] {
     height: 500px;
   }
@@ -904,9 +901,6 @@
   }
   .w-\[120\%\] {
     width: 120%;
-  }
-  .w-\[320px\] {
-    width: 320px;
   }
   .w-auto {
     width: auto;
@@ -1238,9 +1232,6 @@
   }
   .overflow-hidden {
     overflow: hidden;
-  }
-  .overflow-visible {
-    overflow: visible;
   }
   .overflow-x-auto {
     overflow-x: auto;
@@ -1719,12 +1710,6 @@
     background-color: color-mix(in srgb, #fff 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-white) 30%, transparent);
-    }
-  }
-  .bg-white\/40 {
-    background-color: color-mix(in srgb, #fff 40%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-white) 40%, transparent);
     }
   }
   .bg-white\/80 {
@@ -2371,9 +2356,6 @@
   .text-\[10px\] {
     font-size: 10px;
   }
-  .text-\[308px\] {
-    font-size: 308px;
-  }
   .leading-5 {
     --tw-leading: calc(var(--spacing) * 5);
     line-height: calc(var(--spacing) * 5);
@@ -2441,9 +2423,6 @@
   .tracking-widest {
     --tw-tracking: var(--tracking-widest);
     letter-spacing: var(--tracking-widest);
-  }
-  .break-words {
-    overflow-wrap: break-word;
   }
   .whitespace-nowrap {
     white-space: nowrap;
@@ -3041,6 +3020,14 @@
     &:hover {
       @media (hover: hover) {
         --tw-translate-y: calc(var(--spacing) * -1);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
+    }
+  }
+  .hover\:-translate-y-2 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-translate-y: calc(var(--spacing) * -2);
         translate: var(--tw-translate-x) var(--tw-translate-y);
       }
     }
@@ -3791,30 +3778,12 @@
       }
     }
   }
-  .hover\:ring-8 {
-    &:hover {
-      @media (hover: hover) {
-        --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(8px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-      }
-    }
-  }
   .hover\:shadow-blue-500\/30 {
     &:hover {
       @media (hover: hover) {
         --tw-shadow-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 30%, transparent);
         @supports (color: color-mix(in lab, red, red)) {
           --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-blue-500) 30%, transparent) var(--tw-shadow-alpha), transparent);
-        }
-      }
-    }
-  }
-  .hover\:shadow-green-300 {
-    &:hover {
-      @media (hover: hover) {
-        --tw-shadow-color: oklch(87.1% 0.15 154.449);
-        @supports (color: color-mix(in lab, red, red)) {
-          --tw-shadow-color: color-mix(in oklab, var(--color-green-300) var(--tw-shadow-alpha), transparent);
         }
       }
     }
@@ -3856,28 +3825,6 @@
         @supports (color: color-mix(in lab, red, red)) {
           --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-yellow-500) 50%, transparent) var(--tw-shadow-alpha), transparent);
         }
-      }
-    }
-  }
-  .hover\:ring-green-600 {
-    &:hover {
-      @media (hover: hover) {
-        --tw-ring-color: var(--color-green-600);
-      }
-    }
-  }
-  .hover\:ring-offset-4 {
-    &:hover {
-      @media (hover: hover) {
-        --tw-ring-offset-width: 4px;
-        --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-      }
-    }
-  }
-  .hover\:ring-offset-white {
-    &:hover {
-      @media (hover: hover) {
-        --tw-ring-offset-color: var(--color-white);
       }
     }
   }
@@ -4084,11 +4031,6 @@
       height: 85vh;
     }
   }
-  .md\:h-\[360px\] {
-    @media (width >= 48rem) {
-      height: 360px;
-    }
-  }
   .md\:h-\[500px\] {
     @media (width >= 48rem) {
       height: 500px;
@@ -4152,11 +4094,6 @@
   .md\:w-\[65\%\] {
     @media (width >= 48rem) {
       width: 65%;
-    }
-  }
-  .md\:w-\[360px\] {
-    @media (width >= 48rem) {
-      width: 360px;
     }
   }
   .md\:w-auto {
