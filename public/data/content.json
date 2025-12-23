@@ -1,602 +1,614 @@
 {
-  "_metadata": {
-    "exportedAt": "2025-11-15T05:13:08.837Z",
-    "version": "2.0.0",
-    "source": "cms_database",
-    "description": "Auto-exported from CMS SQLite database"
-  },
-  "banners": [
-    {
-      "id": 10,
-      "image": "/assets/image/banner/banner1.jpg",
-      "title": "MỤN DỪA HOÀNG HIẾU",
-      "subtitle": "Giá thể sạch – Năng suất vượt trội",
-      "buttonText": "Khám phá sản phẩm",
-      "buttonLink": "/san-pham",
-      "buttonColor": "green",
-      "active": true
+    "_metadata": {
+        "exportedAt": "2025-11-15T05:13:08.837Z",
+        "version": "2.0.0",
+        "source": "cms_database",
+        "description": "Auto-exported from CMS SQLite database"
     },
-    {
-      "id": 11,
-      "image": "/assets/image/banner/banner2.jpg",
-      "title": "NÔNG NGHIỆP XANH",
-      "subtitle": "Sản phẩm thân thiện với môi trường",
-      "buttonText": "Tìm hiểu thêm",
-      "buttonLink": "/gioi-thieu",
-      "buttonColor": "green",
-      "active": true
-    },
-    {
-      "id": 12,
-      "image": "/assets/image/banner/banner3.jpg",
-      "title": "CHẤT LƯỢNG ĐẢM BẢO",
-      "subtitle": "Cam kết 100% sản phẩm tự nhiên",
-      "buttonText": "Liên hệ ngay",
-      "buttonLink": "/lien-he",
-      "buttonColor": "green",
-      "active": true
-    }
-  ],
-  "about": {
-    "title": "MỤN DỪA HOÀNG HIẾU",
-    "subtitle": "GIẢI PHÁP NÔNG NGHIỆP XANH",
-    "mission": "ĐỒNG HÀNH CÙNG\nPHÁT TRIỂN BỀN VỮNG!",
-    "paragraphs": [
-      "Chúng tôi hiểu rằng mỗi hạt giống, mỗi cây trồng đều là tâm huyết của bạn và để cây khỏe, đất phải lành.",
-      "Từng sản phẩm ở đây đều được làm ra bằng cái tâm và sự chân thật, mong muốn mang đến cho bạn những gì tốt nhất để chăm sóc đất đai, cây trồng bằng những giải pháp nông nghiệp bền vững, hiệu quả và thân thiện với môi trường.",
-      "Không cần những lời hoa mỹ, chúng tôi tin rằng chất lượng và sự tận tâm sẽ nói lên tất cả."
-    ],
-    "buttonText": "Tìm hiểu thêm về chúng tôi →",
-    "buttonLink": "/gioi-thieu"
-  },
-  "trust": {
-    "title": "Được tin dùng bởi hơn 1000+ nhà vườn",
-    "stats": [
-      {
-        "value": "1000+",
-        "label": "Nhà vườn tin dùng"
-      },
-      {
-        "value": "5000+",
-        "label": "Tấn sản phẩm/năm"
-      },
-      {
-        "value": "100%",
-        "label": "Hữu cơ tự nhiên"
-      },
-      {
-        "value": "63",
-        "label": "Tỉnh thành phân phối"
-      }
-    ],
-    "partners": [
-      { "name": "VietGap", "logo": "/assets/image/partners/vietgap.png" },
-      { "name": "GlobalGap", "logo": "/assets/image/partners/globalgap.png" },
-      { "name": "Organic", "logo": "/assets/image/partners/organic.png" },
-      { "name": "ISO 9001", "logo": "/assets/image/partners/iso9001.png" }
-    ]
-  },
-  "problem": {
-    "title": "Nỗi lo của người làm nông?",
-    "items": [
+    "banners": [
         {
-            "title": "Đất thoái hóa, bạc màu",
-            "description": "Đất trồng lâu năm bị chai cứng, mất chất dinh dưỡng, khiến cây chậm phát triển.",
-            "icon": "warning"
+            "id": 10,
+            "image": "/assets/image/banner/banner1.jpg",
+            "title": "M\u1ee4N D\u1eeaA HO\u00c0NG HI\u1ebeU",
+            "subtitle": "Gi\u00e1 th\u1ec3 s\u1ea1ch \u2013 N\u0103ng su\u1ea5t v\u01b0\u1ee3t tr\u1ed9i",
+            "buttonText": "Kh\u00e1m ph\u00e1 s\u1ea3n ph\u1ea9m",
+            "buttonLink": "/san-pham",
+            "buttonColor": "green",
+            "active": true
         },
         {
-            "title": "Sâu bệnh hại rễ",
-            "description": "Giá thể không sạch chứa nấm bệnh, tuyến trùng gây hại bộ rễ cây trồng.",
-            "icon": "bug"
+            "id": 11,
+            "image": "/assets/image/banner/banner2.jpg",
+            "title": "N\u00d4NG NGHI\u1ec6P XANH",
+            "subtitle": "S\u1ea3n ph\u1ea9m th\u00e2n thi\u1ec7n v\u1edbi m\u00f4i tr\u01b0\u1eddng",
+            "buttonText": "T\u00ecm hi\u1ec3u th\u00eam",
+            "buttonLink": "/gioi-thieu",
+            "buttonColor": "green",
+            "active": true
         },
         {
-            "title": "Chi phí phân bón cao",
-            "description": "Đất không giữ được dinh dưỡng khiến chi phí phân bón ngày càng tăng.",
-            "icon": "trending-up"
+            "id": 12,
+            "image": "/assets/image/banner/banner3.jpg",
+            "title": "CH\u1ea4T L\u01af\u1ee2NG \u0110\u1ea2M B\u1ea2O",
+            "subtitle": "Cam k\u1ebft 100% s\u1ea3n ph\u1ea9m t\u1ef1 nhi\u00ean",
+            "buttonText": "Li\u00ean h\u1ec7 ngay",
+            "buttonLink": "/lien-he",
+            "buttonColor": "green",
+            "active": true
         }
-    ]
-  },
-  "solution": {
-    "title": "Giải Pháp Từ Hoàng Hiếu",
-    "subtitle": "Mụn dừa xử lý - Nền tảng cho mùa màng bội thu",
-    "description": "Chúng tôi cung cấp giải pháp giá thể toàn diện, giúp cải tạo đất, tiết kiệm nước và phân bón.",
-    "benefits": [
-      {
-        "title": "Cải tạo đất trồng",
-        "description": "Giúp đất tơi xốp, thoáng khí, tăng khả năng giữ nước và dinh dưỡng.",
-        "icon": "sprout"
-      },
-      {
-        "title": "Sạch bệnh 100%",
-        "description": "Đã qua xử lý chát (Tannin, Lignin) và mầm bệnh, an toàn tuyệt đối cho rễ.",
-        "icon": "shield-check"
-      },
-      {
-        "title": "Tiết kiệm chi phí",
-        "description": "Giảm lượng nước tưới và phân bón thất thoát, tăng hiệu quả kinh tế.",
-        "icon": "piggy-bank"
-      }
     ],
-    "image": "/assets/image/solution/solution-main.jpg"
-  },
-  "features": [
-      {
-        "icon": "check-circle",
-        "title": "Độ pH Ổn Định",
-        "description": "pH từ 5.5 - 6.5, môi trường lý tưởng cho hầu hết các loại cây trồng hấp thu dinh dưỡng."
-      },
-      {
-        "icon": "droplet",
-        "title": "Giữ Ẩm Tuyệt Vời",
-        "description": "Khả năng giữ nước gấp 8-10 lần trọng lượng, giúp cây chịu hạn tốt hơn."
-      },
-      {
-        "icon": "leaf",
-        "title": "Thân Thiện Môi Trường",
-        "description": "Tận dụng phế phẩm nông nghiệp, giảm rác thải, bảo vệ hệ sinh thái."
-      },
-      {
-        "icon": "sun",
-        "title": "Sạch & An Toàn",
-        "description": "Không chứa kim loại nặng, không vi sinh vật gây hại, an toàn cho người sử dụng."
-      }
-  ],
-  "howItWorks": {
-    "title": "Quy Trình Sản Xuất & Sử Dụng",
-    "steps": [
-      {
-        "step": "01",
-        "title": "Tuyển Chọn Nguyên Liệu",
-        "description": "Vỏ dừa già được tuyển chọn kỹ lưỡng từ vùng nguyên liệu Bến Tre."
-      },
-      {
-        "step": "02",
-        "title": "Xử Lý & Nghiền Sàng",
-        "description": "Ngâm xả chát (Tannin), nghiền nhỏ và sàng lọc tạp chất kỹ càng."
-      },
-      {
-        "step": "03",
-        "title": "Kiểm Định & Đóng Gói",
-        "description": "Kiểm tra EC, pH trước khi đóng bao bì và vận chuyển đến khách hàng."
-      },
-      {
-        "step": "04",
-        "title": "Sử Dụng Hiệu Quả",
-        "description": "Phối trộn với đất hoặc dùng trực tiếp làm giá thể trồng cây công nghệ cao."
-      }
-    ]
-  },
-  "useCases": {
-    "title": "Ứng Dụng Thực Tế",
-    "cases": [
-      {
-        "title": "Trồng Dưa Lưới",
-        "description": "Giá thể chính trong các farm dưa lưới công nghệ cao, giúp kiểm soát dinh dưỡng tối ưu.",
-        "image": "/assets/image/gallery/results/dưa lưới.png"
-      },
-      {
-        "title": "Trồng Hoa Lan",
-        "description": "Thoáng khí, thoát nước tốt, giúp rễ lan phát triển mạnh, hạn chế thối rễ.",
-        "image": "/assets/image/gallery/results/hoa lan.png"
-      },
-      {
-        "title": "Ươm Cây Giống",
-        "description": "Môi trường sạch, tơi xốp giúp hạt nảy mầm đều, cây con khỏe mạnh.",
-        "image": "/assets/image/gallery/results/cà chua 1.jpg"
-      }
-    ]
-  },
-  "services": {
-    "title": "Mụn Dừa Hoàng Hiếu - Chuyên Cung Cấp",
-    "mainDescription": "Chúng tôi chuyên cung cấp mụn dừa xử lý (tỷ lệ xơ-mụn đáp ứng theo yêu cầu của bạn). Ngoài ra còn có mụn dừa thô, vỏ dừa cắt chip, phân hữu cơ, trấu, tro trấu và đất sạch... Tất cả đều được làm cẩn thận, kỹ lưỡng, để bạn yên tâm sử dụng mà không phải bận lòng.",
+    "about": {
+        "title": "M\u1ee4N D\u1eeaA HO\u00c0NG HI\u1ebeU",
+        "subtitle": "GI\u1ea2I PH\u00c1P N\u00d4NG NGHI\u1ec6P XANH",
+        "mission": "\u0110\u1ed2NG H\u00c0NH C\u00d9NG\nPH\u00c1T TRI\u1ec2N B\u1ec0N V\u1eeeNG!",
+        "paragraphs": [
+            "Ch\u00fang t\u00f4i hi\u1ec3u r\u1eb1ng m\u1ed7i h\u1ea1t gi\u1ed1ng, m\u1ed7i c\u00e2y tr\u1ed3ng \u0111\u1ec1u l\u00e0 t\u00e2m huy\u1ebft c\u1ee7a b\u1ea1n v\u00e0 \u0111\u1ec3 c\u00e2y kh\u1ecfe, \u0111\u1ea5t ph\u1ea3i l\u00e0nh.",
+            "T\u1eebng s\u1ea3n ph\u1ea9m \u1edf \u0111\u00e2y \u0111\u1ec1u \u0111\u01b0\u1ee3c l\u00e0m ra b\u1eb1ng c\u00e1i t\u00e2m v\u00e0 s\u1ef1 ch\u00e2n th\u1eadt, mong mu\u1ed1n mang \u0111\u1ebfn cho b\u1ea1n nh\u1eefng g\u00ec t\u1ed1t nh\u1ea5t \u0111\u1ec3 ch\u0103m s\u00f3c \u0111\u1ea5t \u0111ai, c\u00e2y tr\u1ed3ng b\u1eb1ng nh\u1eefng gi\u1ea3i ph\u00e1p n\u00f4ng nghi\u1ec7p b\u1ec1n v\u1eefng, hi\u1ec7u qu\u1ea3 v\u00e0 th\u00e2n thi\u1ec7n v\u1edbi m\u00f4i tr\u01b0\u1eddng.",
+            "Kh\u00f4ng c\u1ea7n nh\u1eefng l\u1eddi hoa m\u1ef9, ch\u00fang t\u00f4i tin r\u1eb1ng ch\u1ea5t l\u01b0\u1ee3ng v\u00e0 s\u1ef1 t\u1eadn t\u00e2m s\u1ebd n\u00f3i l\u00ean t\u1ea5t c\u1ea3."
+        ],
+        "buttonText": "T\u00ecm hi\u1ec3u th\u00eam v\u1ec1 ch\u00fang t\u00f4i \u2192",
+        "buttonLink": "/gioi-thieu"
+    },
+    "trust": {
+        "title": "\u0110\u01b0\u1ee3c tin d\u00f9ng b\u1edfi h\u01a1n 1000+ nh\u00e0 v\u01b0\u1eddn",
+        "stats": [
+            {
+                "value": "1000+",
+                "label": "Nh\u00e0 v\u01b0\u1eddn tin d\u00f9ng"
+            },
+            {
+                "value": "5000+",
+                "label": "T\u1ea5n s\u1ea3n ph\u1ea9m/n\u0103m"
+            },
+            {
+                "value": "100%",
+                "label": "H\u1eefu c\u01a1 t\u1ef1 nhi\u00ean"
+            },
+            {
+                "value": "63",
+                "label": "T\u1ec9nh th\u00e0nh ph\u00e2n ph\u1ed1i"
+            }
+        ],
+        "partners": [
+            {
+                "name": "VietGap",
+                "logo": "/assets/image/partners/vietgap.png"
+            },
+            {
+                "name": "GlobalGap",
+                "logo": "/assets/image/partners/globalgap.png"
+            },
+            {
+                "name": "Organic",
+                "logo": "/assets/image/partners/organic.png"
+            },
+            {
+                "name": "ISO 9001",
+                "logo": "/assets/image/partners/iso9001.png"
+            }
+        ]
+    },
+    "problem": {
+        "title": "N\u1ed7i lo c\u1ee7a ng\u01b0\u1eddi l\u00e0m n\u00f4ng?",
+        "items": [
+            {
+                "title": "\u0110\u1ea5t tho\u00e1i h\u00f3a, b\u1ea1c m\u00e0u",
+                "description": "\u0110\u1ea5t tr\u1ed3ng l\u00e2u n\u0103m b\u1ecb chai c\u1ee9ng, m\u1ea5t ch\u1ea5t dinh d\u01b0\u1ee1ng, khi\u1ebfn c\u00e2y ch\u1eadm ph\u00e1t tri\u1ec3n.",
+                "icon": "warning"
+            },
+            {
+                "title": "S\u00e2u b\u1ec7nh h\u1ea1i r\u1ec5",
+                "description": "Gi\u00e1 th\u1ec3 kh\u00f4ng s\u1ea1ch ch\u1ee9a n\u1ea5m b\u1ec7nh, tuy\u1ebfn tr\u00f9ng g\u00e2y h\u1ea1i b\u1ed9 r\u1ec5 c\u00e2y tr\u1ed3ng.",
+                "icon": "bug"
+            },
+            {
+                "title": "Chi ph\u00ed ph\u00e2n b\u00f3n cao",
+                "description": "\u0110\u1ea5t kh\u00f4ng gi\u1eef \u0111\u01b0\u1ee3c dinh d\u01b0\u1ee1ng khi\u1ebfn chi ph\u00ed ph\u00e2n b\u00f3n ng\u00e0y c\u00e0ng t\u0103ng.",
+                "icon": "trending-up"
+            }
+        ]
+    },
+    "solution": {
+        "title": "Gi\u1ea3i Ph\u00e1p T\u1eeb Ho\u00e0ng Hi\u1ebfu",
+        "subtitle": "M\u1ee5n d\u1eeba x\u1eed l\u00fd - N\u1ec1n t\u1ea3ng cho m\u00f9a m\u00e0ng b\u1ed9i thu",
+        "description": "Ch\u00fang t\u00f4i cung c\u1ea5p gi\u1ea3i ph\u00e1p gi\u00e1 th\u1ec3 to\u00e0n di\u1ec7n, gi\u00fap c\u1ea3i t\u1ea1o \u0111\u1ea5t, ti\u1ebft ki\u1ec7m n\u01b0\u1edbc v\u00e0 ph\u00e2n b\u00f3n.",
+        "benefits": [
+            {
+                "title": "C\u1ea3i t\u1ea1o \u0111\u1ea5t tr\u1ed3ng",
+                "description": "Gi\u00fap \u0111\u1ea5t t\u01a1i x\u1ed1p, tho\u00e1ng kh\u00ed, t\u0103ng kh\u1ea3 n\u0103ng gi\u1eef n\u01b0\u1edbc v\u00e0 dinh d\u01b0\u1ee1ng.",
+                "icon": "sprout"
+            },
+            {
+                "title": "S\u1ea1ch b\u1ec7nh 100%",
+                "description": "\u0110\u00e3 qua x\u1eed l\u00fd ch\u00e1t (Tannin, Lignin) v\u00e0 m\u1ea7m b\u1ec7nh, an to\u00e0n tuy\u1ec7t \u0111\u1ed1i cho r\u1ec5.",
+                "icon": "shield-check"
+            },
+            {
+                "title": "Ti\u1ebft ki\u1ec7m chi ph\u00ed",
+                "description": "Gi\u1ea3m l\u01b0\u1ee3ng n\u01b0\u1edbc t\u01b0\u1edbi v\u00e0 ph\u00e2n b\u00f3n th\u1ea5t tho\u00e1t, t\u0103ng hi\u1ec7u qu\u1ea3 kinh t\u1ebf.",
+                "icon": "piggy-bank"
+            }
+        ],
+        "image": "/assets/image/solution/solution-main.jpg"
+    },
     "features": [
-      {
-        "icon": "✅",
-        "text": "Sản phẩm đạt tiêu chuẩn chất lượng cao - pH ổn định, không mùi hôi"
-      },
-      {
-        "icon": "💰",
-        "text": "Giá cả hợp túi tiền - Phù hợp với mọi quy mô nhà vườn"
-      },
-      {
-        "icon": "🚚",
-        "text": "Giao hàng nhanh chóng - Hỗ trợ vận chuyển toàn quốc"
-      },
-      {
-        "icon": "💚",
-        "text": "Tư vấn tận tình - Hỗ trợ kỹ thuật 24/7"
-      }
+        {
+            "icon": "check-circle",
+            "title": "\u0110\u1ed9 pH \u1ed4n \u0110\u1ecbnh",
+            "description": "pH t\u1eeb 5.5 - 6.5, m\u00f4i tr\u01b0\u1eddng l\u00fd t\u01b0\u1edfng cho h\u1ea7u h\u1ebft c\u00e1c lo\u1ea1i c\u00e2y tr\u1ed3ng h\u1ea5p thu dinh d\u01b0\u1ee1ng."
+        },
+        {
+            "icon": "droplet",
+            "title": "Gi\u1eef \u1ea8m Tuy\u1ec7t V\u1eddi",
+            "description": "Kh\u1ea3 n\u0103ng gi\u1eef n\u01b0\u1edbc g\u1ea5p 8-10 l\u1ea7n tr\u1ecdng l\u01b0\u1ee3ng, gi\u00fap c\u00e2y ch\u1ecbu h\u1ea1n t\u1ed1t h\u01a1n."
+        },
+        {
+            "icon": "leaf",
+            "title": "Th\u00e2n Thi\u1ec7n M\u00f4i Tr\u01b0\u1eddng",
+            "description": "T\u1eadn d\u1ee5ng ph\u1ebf ph\u1ea9m n\u00f4ng nghi\u1ec7p, gi\u1ea3m r\u00e1c th\u1ea3i, b\u1ea3o v\u1ec7 h\u1ec7 sinh th\u00e1i."
+        },
+        {
+            "icon": "sun",
+            "title": "S\u1ea1ch & An To\u00e0n",
+            "description": "Kh\u00f4ng ch\u1ee9a kim lo\u1ea1i n\u1eb7ng, kh\u00f4ng vi sinh v\u1eadt g\u00e2y h\u1ea1i, an to\u00e0n cho ng\u01b0\u1eddi s\u1eed d\u1ee5ng."
+        }
     ],
-    "highlight": {
-      "icon": "🌱",
-      "title": "Hoàng Hiếu – Gieo chân thành, gặt niềm tin!",
-      "description": "Dù bạn là khách hàng lâu năm hay lần đầu ghé thăm, chúng tôi đều trân trọng như nhau. Hãy để Hoàng Hiếu là bạn đồng hành tin cậy trên hành trình nông nghiệp của bạn!"
-    }
-  },
-  "testimonials": [
-    {
-      "name": "Anh Minh",
-      "location": "Đồng Tháp",
-      "region": "mien-tay",
-      "text": "Tôi trồng dưa lưới và đã sử dụng mụn dừa của Hoàng Hiếu được 2 năm. Cây phát triển tốt, quả to và ngọt hơn hẳn. Tư vấn nhiệt tình, giao hàng đúng hẹn!",
-      "rating": 5,
-      "crop": "Dưa lưới",
-      "usageDuration": "2 năm",
-      "avatarColor": "bg-green-600"
+    "howItWorks": {
+        "title": "Quy Tr\u00ecnh S\u1ea3n Xu\u1ea5t & S\u1eed D\u1ee5ng",
+        "steps": [
+            {
+                "step": "01",
+                "title": "Tuy\u1ec3n Ch\u1ecdn Nguy\u00ean Li\u1ec7u",
+                "description": "V\u1ecf d\u1eeba gi\u00e0 \u0111\u01b0\u1ee3c tuy\u1ec3n ch\u1ecdn k\u1ef9 l\u01b0\u1ee1ng t\u1eeb v\u00f9ng nguy\u00ean li\u1ec7u B\u1ebfn Tre."
+            },
+            {
+                "step": "02",
+                "title": "X\u1eed L\u00fd & Nghi\u1ec1n S\u00e0ng",
+                "description": "Ng\u00e2m x\u1ea3 ch\u00e1t (Tannin), nghi\u1ec1n nh\u1ecf v\u00e0 s\u00e0ng l\u1ecdc t\u1ea1p ch\u1ea5t k\u1ef9 c\u00e0ng."
+            },
+            {
+                "step": "03",
+                "title": "Ki\u1ec3m \u0110\u1ecbnh & \u0110\u00f3ng G\u00f3i",
+                "description": "Ki\u1ec3m tra EC, pH tr\u01b0\u1edbc khi \u0111\u00f3ng bao b\u00ec v\u00e0 v\u1eadn chuy\u1ec3n \u0111\u1ebfn kh\u00e1ch h\u00e0ng."
+            },
+            {
+                "step": "04",
+                "title": "S\u1eed D\u1ee5ng Hi\u1ec7u Qu\u1ea3",
+                "description": "Ph\u1ed1i tr\u1ed9n v\u1edbi \u0111\u1ea5t ho\u1eb7c d\u00f9ng tr\u1ef1c ti\u1ebfp l\u00e0m gi\u00e1 th\u1ec3 tr\u1ed3ng c\u00e2y c\u00f4ng ngh\u1ec7 cao."
+            }
+        ]
     },
-    {
-      "name": "Chị Lan",
-      "location": "Cần Thơ",
-      "region": "mien-tay",
-      "text": "Mụn dừa sạch sẽ, không mùi hôi như những nơi khác. Trồng rau màu cho kết quả vượt mong đợi. Giá cả hợp lý, sẽ tiếp tục ủng hộ Hoàng Hiếu!",
-      "rating": 5,
-      "crop": "Rau màu",
-      "usageDuration": "1 năm",
-      "avatarColor": "bg-yellow-600"
+    "useCases": {
+        "title": "\u1ee8ng D\u1ee5ng Th\u1ef1c T\u1ebf",
+        "cases": [
+            {
+                "title": "Tr\u1ed3ng D\u01b0a L\u01b0\u1edbi",
+                "description": "Gi\u00e1 th\u1ec3 ch\u00ednh trong c\u00e1c farm d\u01b0a l\u01b0\u1edbi c\u00f4ng ngh\u1ec7 cao, gi\u00fap ki\u1ec3m so\u00e1t dinh d\u01b0\u1ee1ng t\u1ed1i \u01b0u.",
+                "image": "/assets/image/gallery/results/d\u01b0a l\u01b0\u1edbi.png"
+            },
+            {
+                "title": "Tr\u1ed3ng Hoa Lan",
+                "description": "Tho\u00e1ng kh\u00ed, tho\u00e1t n\u01b0\u1edbc t\u1ed1t, gi\u00fap r\u1ec5 lan ph\u00e1t tri\u1ec3n m\u1ea1nh, h\u1ea1n ch\u1ebf th\u1ed1i r\u1ec5.",
+                "image": "/assets/image/gallery/results/hoa lan.png"
+            },
+            {
+                "title": "\u01af\u01a1m C\u00e2y Gi\u1ed1ng",
+                "description": "M\u00f4i tr\u01b0\u1eddng s\u1ea1ch, t\u01a1i x\u1ed1p gi\u00fap h\u1ea1t n\u1ea3y m\u1ea7m \u0111\u1ec1u, c\u00e2y con kh\u1ecfe m\u1ea1nh.",
+                "image": "/assets/image/gallery/results/c\u00e0 chua 1.jpg"
+            }
+        ]
     },
-    {
-      "name": "Anh Tài",
-      "location": "An Giang",
-      "region": "mien-tay",
-      "text": "Lần đầu dùng mụn dừa để trồng hoa lan. Kết quả ngoài mong đợi! Hoa nở đều, đẹp hơn. Anh Hiếu tư vấn rất tận tâm và chuyên nghiệp.",
-      "rating": 5,
-      "crop": "Hoa lan",
-      "usageDuration": "6 tháng",
-      "avatarColor": "bg-blue-600"
-    },
-    {
-      "name": "Chị Hương",
-      "location": "Long An",
-      "region": "mien-dong",
-      "text": "Vừa chất lượng vừa giá rẻ. Giao hàng nhanh, đóng gói cẩn thận. Trồng dâu tây cho năng suất cao. Cảm ơn team Hoàng Hiếu rất nhiều!",
-      "rating": 5,
-      "crop": "Dâu tây",
-      "usageDuration": "8 tháng",
-      "avatarColor": "bg-emerald-600"
-    }
-  ],
-  "pricing": {
-    "title": "Bảng Giá Tham Khảo",
-    "subtitle": "Chính sách giá linh hoạt cho mọi nhu cầu",
-    "plans": [
-      {
-        "name": "Dùng Thử",
-        "price": "Liên Hệ",
-        "unit": "/ bao",
-        "description": "Dành cho khách hàng cá nhân, trồng rau tại nhà.",
+    "services": {
+        "title": "M\u1ee5n D\u1eeba Ho\u00e0ng Hi\u1ebfu - Chuy\u00ean Cung C\u1ea5p",
+        "mainDescription": "Ch\u00fang t\u00f4i chuy\u00ean cung c\u1ea5p m\u1ee5n d\u1eeba x\u1eed l\u00fd (t\u1ef7 l\u1ec7 x\u01a1-m\u1ee5n \u0111\u00e1p \u1ee9ng theo y\u00eau c\u1ea7u c\u1ee7a b\u1ea1n). Ngo\u00e0i ra c\u00f2n c\u00f3 m\u1ee5n d\u1eeba th\u00f4, v\u1ecf d\u1eeba c\u1eaft chip, ph\u00e2n h\u1eefu c\u01a1, tr\u1ea5u, tro tr\u1ea5u v\u00e0 \u0111\u1ea5t s\u1ea1ch... T\u1ea5t c\u1ea3 \u0111\u1ec1u \u0111\u01b0\u1ee3c l\u00e0m c\u1ea9n th\u1eadn, k\u1ef9 l\u01b0\u1ee1ng, \u0111\u1ec3 b\u1ea1n y\u00ean t\u00e2m s\u1eed d\u1ee5ng m\u00e0 kh\u00f4ng ph\u1ea3i b\u1eadn l\u00f2ng.",
         "features": [
-          "Đóng bao 50dm3",
-          "Đã xử lý sạch",
-          "Giao hàng tận nơi",
-          "Tư vấn sử dụng"
+            {
+                "icon": "\u2705",
+                "text": "S\u1ea3n ph\u1ea9m \u0111\u1ea1t ti\u00eau chu\u1ea9n ch\u1ea5t l\u01b0\u1ee3ng cao - pH \u1ed5n \u0111\u1ecbnh, kh\u00f4ng m\u00f9i h\u00f4i"
+            },
+            {
+                "icon": "\ud83d\udcb0",
+                "text": "Gi\u00e1 c\u1ea3 h\u1ee3p t\u00fai ti\u1ec1n - Ph\u00f9 h\u1ee3p v\u1edbi m\u1ecdi quy m\u00f4 nh\u00e0 v\u01b0\u1eddn"
+            },
+            {
+                "icon": "\ud83d\ude9a",
+                "text": "Giao h\u00e0ng nhanh ch\u00f3ng - H\u1ed7 tr\u1ee3 v\u1eadn chuy\u1ec3n to\u00e0n qu\u1ed1c"
+            },
+            {
+                "icon": "\ud83d\udc9a",
+                "text": "T\u01b0 v\u1ea5n t\u1eadn t\u00ecnh - H\u1ed7 tr\u1ee3 k\u1ef9 thu\u1eadt 24/7"
+            }
         ],
-        "highlight": false,
-        "cta": "Liên hệ ngay"
-      },
-      {
-        "name": "Nhà Vườn",
-        "price": "Ưu Đãi",
-        "unit": "/ tấn",
-        "description": "Giải pháp kinh tế cho farm quy mô vừa và nhỏ.",
-        "features": [
-          "Giá sỉ cạnh tranh",
-          "Hỗ trợ vận chuyển",
-          "Cam kết chất lượng",
-          "Tư vấn kỹ thuật"
-        ],
-        "highlight": true,
-        "cta": "Nhận báo giá"
-      },
-      {
-        "name": "Dự Án Lớn",
-        "price": "Tốt Nhất",
-        "unit": "/ container",
-        "description": "Hợp tác lâu dài, cung ứng số lượng lớn, xuất khẩu.",
-        "features": [
-          "Chiết khấu cao",
-          "Hợp đồng dài hạn",
-          "Sản xuất theo yêu cầu",
-          "Ưu tiên giao hàng"
-        ],
-        "highlight": false,
-        "cta": "Hợp tác ngay"
-      }
-    ]
-  },
-  "faq": {
-    "title": "Câu Hỏi Thường Gặp",
-    "questions": [
-      {
-        "question": "Mụn dừa Hoàng Hiếu đã qua xử lý chưa?",
-        "answer": "Chúng tôi cung cấp cả mụn dừa đã xử lý (xả chát, cân bằng pH) và mụn dừa thô tùy theo nhu cầu của khách hàng. Sản phẩm đã xử lý có thể dùng ngay."
-      },
-      {
-        "question": "Tôi có thể yêu cầu tỷ lệ phối trộn riêng không?",
-        "answer": "Có. Chúng tôi nhận phối trộn tỷ lệ mụn/xơ hoặc thêm trấu, phân hữu cơ theo yêu cầu cụ thể của từng loại cây trồng và kỹ thuật canh tác."
-      },
-      {
-        "question": "Giao hàng đi tỉnh xa có đắt không?",
-        "answer": "Chúng tôi liên kết với các đơn vị vận chuyển và chành xe để có cước phí tốt nhất. Với đơn hàng số lượng lớn, chúng tôi có chính sách hỗ trợ vận chuyển."
-      },
-      {
-        "question": "Hạn sử dụng của mụn dừa là bao lâu?",
-        "answer": "Mụn dừa nếu bảo quản nơi khô ráo, thoáng mát có thể để được rất lâu (trên 1-2 năm) mà không ảnh hưởng nhiều đến chất lượng."
-      }
-    ]
-  },
-  "news": [
-    {
-      "id": 16,
-      "title": "Làm thế nào để phân biệt mụn dừa đã xử lý và mụn dừa chưa xử lý",
-      "slug": "phan-biet-mun-dua-xu-ly-chua-xu-ly",
-      "excerpt": "Hướng dẫn chi tiết cách nhận biết mụn dừa đã qua xử lý để đảm bảo chất lượng cho cây trồng...",
-      "content": "Mụn dừa đã xử lý thường có màu nâu sẫm đồng đều, không có mùi hôi, độ pH ổn định từ 5.5-6.5. Trong khi đó, mụn dừa chưa xử lý có màu sáng hơn, còn mùi hăng của tannin và pH thường cao hơn 7.0.",
-      "image": "/assets/image/News/1.1-Mun da xu ly.jpg",
-      "author": "Hoàng Hiếu",
-      "date": "2025-10-23",
-      "category": "Kỹ Thuật",
-      "readTime": "5 phút",
-      "tags": []
+        "highlight": {
+            "icon": "\ud83c\udf31",
+            "title": "Ho\u00e0ng Hi\u1ebfu \u2013 Gieo ch\u00e2n th\u00e0nh, g\u1eb7t ni\u1ec1m tin!",
+            "description": "D\u00f9 b\u1ea1n l\u00e0 kh\u00e1ch h\u00e0ng l\u00e2u n\u0103m hay l\u1ea7n \u0111\u1ea7u gh\u00e9 th\u0103m, ch\u00fang t\u00f4i \u0111\u1ec1u tr\u00e2n tr\u1ecdng nh\u01b0 nhau. H\u00e3y \u0111\u1ec3 Ho\u00e0ng Hi\u1ebfu l\u00e0 b\u1ea1n \u0111\u1ed3ng h\u00e0nh tin c\u1eady tr\u00ean h\u00e0nh tr\u00ecnh n\u00f4ng nghi\u1ec7p c\u1ee7a b\u1ea1n!"
+        }
     },
-    {
-      "id": 17,
-      "title": "Những tác dụng của xơ dừa đối với cây trồng",
-      "slug": "tac-dung-xo-dua-cay-trong",
-      "excerpt": "Xơ dừa không chỉ giúp đảm bảo thoát nước tốt, giữ ẩm hiệu quả mà còn cải thiện cấu trúc giá thể trồng...",
-      "content": "Xơ dừa có khả năng giữ nước gấp 8-10 lần trọng lượng, tạo độ thoáng khí tuyệt vời cho rễ cây. Ngoài ra, xơ dừa còn chứa kali, magiê và các khoáng chất vi lượng có lợi cho cây trồng.",
-      "image": "/assets/image/News/2.2-Tac dung cua xo dua.jpg",
-      "author": "Hoàng Hiếu",
-      "date": "2025-10-22",
-      "category": "Kinh Nghiệm",
-      "readTime": "4 phút",
-      "tags": []
-    },
-    {
-      "id": 18,
-      "title": "Một số lưu ý khi sử dụng mụn dừa",
-      "slug": "luu-y-su-dung-mun-dua",
-      "excerpt": "Để tận dụng tối đa hiệu quả của mụn dừa, cần chú ý một số điểm quan trọng trong quá trình sử dụng...",
-      "content": "Trước khi sử dụng, nên ngâm rửa mụn dừa với nước sạch 2-3 lần để loại bỏ tannin và muối dư. Sau đó phơi khô 1-2 ngày nắng nhẹ. Khi trộn giá thể, nên kết hợp mụn dừa với trấu hun hoặc phân hữu cơ theo tỷ lệ 70:30 để đạt hiệu quả tốt nhất.",
-      "image": "/assets/image/News/3.1-Luu y.jpg",
-      "author": "Hoàng Hiếu",
-      "date": "2025-10-21",
-      "category": "Kỹ Thuật",
-      "readTime": "6 phút",
-      "tags": []
-    },
-    {
-      "id": 19,
-      "title": "Mụn dừa là gì và tại sao nó được sử dụng trong trồng cây",
-      "slug": "mun-dua-la-gi-tai-sao-su-dung",
-      "excerpt": "Tìm hiểu về nguồn gốc, đặc tính và lý do mụn dừa trở thành lựa chọn hàng đầu cho nông nghiệp hữu cơ...",
-      "content": "Mụn dừa là phần cùi bên trong của vỏ trái dừa, được nghiền nhỏ thành dạng bột mịn. Với cấu trúc xốp, khả năng giữ nước tốt và thân thiện môi trường, mụn dừa đã trở thành giá thể lý tưởng thay thế đất trồng truyền thống trong nông nghiệp công nghệ cao.",
-      "image": "/assets/image/News/4-1-Mua dua co tac dung gi.jpg",
-      "author": "Hoàng Hiếu",
-      "date": "2025-10-20",
-      "category": "Môi Trường",
-      "readTime": "7 phút",
-      "tags": []
-    },
-    {
-      "id": 20,
-      "title": "Những lợi ích của mụn dừa cho cây trồng và môi trường",
-      "slug": "loi-ich-mun-dua-cay-trong-moi-truong",
-      "excerpt": "Mụn dừa không chỉ giúp cây phát triển tốt mà còn góp phần bảo vệ môi trường bền vững...",
-      "content": "Sử dụng mụn dừa giúp giảm lượng rác thải từ vỏ dừa, tiết kiệm nước tưới nhờ khả năng giữ ẩm cao, giảm sử dụng phân hóa học và tạo môi trường sinh trưởng lý tưởng cho vi sinh vật có lợi trong đất.",
-      "image": "/assets/image/News/5-1-.jpg",
-      "author": "Hoàng Hiếu",
-      "date": "2025-10-19",
-      "category": "Môi Trường",
-      "readTime": "5 phút",
-      "tags": []
-    }
-  ],
-  "company": {
-    "name": "MỤN DỪA HOÀNG HIẾU",
-    "tagline": "Giá thể sạch - Năng suất vượt trội",
-    "slogan": "Giá thể sạch - Năng suất vượt trội",
-    "description": "Giải pháp mụn dừa sạch và an toàn cho nông nghiệp hữu cơ và bền vững.",
-    "address": "Ấp Hội An, Xã Đa Phước Hội, Huyện Mỏ Cày Nam, Tỉnh Bến Tre",
-    "phone": "0984288512",
-    "email": "munduahoanghieu.vn@gmail.com",
-    "website": "https://munduahoanghieu.com",
-    "hotline": "0984.288.512",
-    "coordinates": {
-      "lat": 10.1217194,
-      "lng": 106.3192571,
-      "formatted": "10°07'18.2\"N 106°19'09.3\"E"
-    },
-    "maps_url": "",
-    "social_media": {
-      "facebook": "https://www.facebook.com/mun.dua.hoang.hieu",
-      "zalo": "https://zalo.me/112949426040780264",
-      "youtube": "https://www.youtube.com/channel/UCyBxXvx4Y8SvFeFFIHQ0xqg"
-    }
-  },
-  "products": {
-    "main": [
-      {
-        "id": 13,
-        "name": "Mụn dừa đã xử lý",
-        "slug": "mun-dua-xu-ly",
-        "description": "Tỷ lệ xơ-mụn đáp ứng theo yêu cầu của bạn",
-        "image": "/assets/image/products/noi-bat/1-Mun dua xu ly.jpg",
-        "price": "Liên hệ",
-        "category": "processed",
-        "features": []
-      },
-      {
-        "id": 14,
-        "name": "Vỏ dừa cắt chip",
-        "slug": "vo-dua-cat-chip",
-        "description": "Vỏ dừa được cắt thành từng miếng nhỏ, tiện lợi sử dụng",
-        "image": "/assets/image/products/noi-bat/2-Vo dua cat chip.jpg",
-        "price": "Liên hệ",
-        "category": "chips",
-        "features": []
-      },
-      {
-        "id": 15,
-        "name": "Mụn dừa thô",
-        "slug": "mun-dua-tho",
-        "description": "Nguyên liệu mụn dừa tự nhiên chưa qua xử lý",
-        "image": "/assets/image/products/noi-bat/3-Mun dua tho.jpg",
-        "price": "Liên hệ",
-        "category": "raw",
-        "features": []
-      },
-      {
-        "id": 16,
-        "name": "Sản xuất theo yêu cầu KH",
-        "slug": "san-xuat-theo-yeu-cau",
-        "description": "Phối trộn theo tỷ lệ và yêu cầu cụ thể của khách hàng",
-        "image": "/assets/image/products/noi-bat/4-Theo yeu cau.jpg",
-        "price": "Liên hệ",
-        "category": "custom",
-        "features": []
-      }
+    "testimonials": [
+        {
+            "name": "Anh Minh",
+            "location": "\u0110\u1ed3ng Th\u00e1p",
+            "region": "mien-tay",
+            "text": "T\u00f4i tr\u1ed3ng d\u01b0a l\u01b0\u1edbi v\u00e0 \u0111\u00e3 s\u1eed d\u1ee5ng m\u1ee5n d\u1eeba c\u1ee7a Ho\u00e0ng Hi\u1ebfu \u0111\u01b0\u1ee3c 2 n\u0103m. C\u00e2y ph\u00e1t tri\u1ec3n t\u1ed1t, qu\u1ea3 to v\u00e0 ng\u1ecdt h\u01a1n h\u1eb3n. T\u01b0 v\u1ea5n nhi\u1ec7t t\u00ecnh, giao h\u00e0ng \u0111\u00fang h\u1eb9n!",
+            "rating": 5,
+            "crop": "D\u01b0a l\u01b0\u1edbi",
+            "usageDuration": "2 n\u0103m",
+            "avatarColor": "bg-green-600"
+        },
+        {
+            "name": "Ch\u1ecb Lan",
+            "location": "C\u1ea7n Th\u01a1",
+            "region": "mien-tay",
+            "text": "M\u1ee5n d\u1eeba s\u1ea1ch s\u1ebd, kh\u00f4ng m\u00f9i h\u00f4i nh\u01b0 nh\u1eefng n\u01a1i kh\u00e1c. Tr\u1ed3ng rau m\u00e0u cho k\u1ebft qu\u1ea3 v\u01b0\u1ee3t mong \u0111\u1ee3i. Gi\u00e1 c\u1ea3 h\u1ee3p l\u00fd, s\u1ebd ti\u1ebfp t\u1ee5c \u1ee7ng h\u1ed9 Ho\u00e0ng Hi\u1ebfu!",
+            "rating": 5,
+            "crop": "Rau m\u00e0u",
+            "usageDuration": "1 n\u0103m",
+            "avatarColor": "bg-yellow-600"
+        },
+        {
+            "name": "Anh T\u00e0i",
+            "location": "An Giang",
+            "region": "mien-tay",
+            "text": "L\u1ea7n \u0111\u1ea7u d\u00f9ng m\u1ee5n d\u1eeba \u0111\u1ec3 tr\u1ed3ng hoa lan. K\u1ebft qu\u1ea3 ngo\u00e0i mong \u0111\u1ee3i! Hoa n\u1edf \u0111\u1ec1u, \u0111\u1eb9p h\u01a1n. Anh Hi\u1ebfu t\u01b0 v\u1ea5n r\u1ea5t t\u1eadn t\u00e2m v\u00e0 chuy\u00ean nghi\u1ec7p.",
+            "rating": 5,
+            "crop": "Hoa lan",
+            "usageDuration": "6 th\u00e1ng",
+            "avatarColor": "bg-blue-600"
+        },
+        {
+            "name": "Ch\u1ecb H\u01b0\u01a1ng",
+            "location": "Long An",
+            "region": "mien-dong",
+            "text": "V\u1eeba ch\u1ea5t l\u01b0\u1ee3ng v\u1eeba gi\u00e1 r\u1ebb. Giao h\u00e0ng nhanh, \u0111\u00f3ng g\u00f3i c\u1ea9n th\u1eadn. Tr\u1ed3ng d\u00e2u t\u00e2y cho n\u0103ng su\u1ea5t cao. C\u1ea3m \u01a1n team Ho\u00e0ng Hi\u1ebfu r\u1ea5t nhi\u1ec1u!",
+            "rating": 5,
+            "crop": "D\u00e2u t\u00e2y",
+            "usageDuration": "8 th\u00e1ng",
+            "avatarColor": "bg-emerald-600"
+        }
     ],
-    "categories": []
-  },
-  "contact": {
-    "company": "MỤN DỪA HOÀNG HIẾU",
-    "address": "Ấp Hội An, Xã Đa Phước Hội, Huyện Mỏ Cày Nam, Tỉnh Bến Tre",
-    "phone": "0984288512",
-    "email": "munduahoanghieu.vn@gmail.com",
-    "facebook": "",
-    "zalo": "",
-    "youtube": ""
-  },
-  "gallery": {
-    "products": [
-      {
-        "image": "/assets/image/gallery/products/1-Xu ly.jpg",
-        "alt": "Mụn dừa xử lý",
-        "caption": "Mụn dừa xử lý chất lượng cao"
-      },
-      {
-        "image": "/assets/image/gallery/products/2-Xu ly.jpg",
-        "alt": "Mụn dừa xử lý",
-        "caption": "Sản phẩm đạt tiêu chuẩn"
-      },
-      {
-        "image": "/assets/image/gallery/products/3-Chip.jpg",
-        "alt": "Vỏ dừa cắt chip",
-        "caption": "Vỏ dừa cắt chip đồng đều"
-      },
-      {
-        "image": "/assets/image/gallery/products/4-Chip.jpg",
-        "alt": "Vỏ dừa chip",
-        "caption": "Chip vỏ dừa tự nhiên"
-      },
-      {
-        "image": "/assets/image/gallery/products/5-Mun tho.jpg",
-        "alt": "Mụn dừa thô",
-        "caption": "Mụn dừa thô nguyên chất"
-      },
-      {
-        "image": "/assets/image/gallery/products/6-Mun tho.jpg",
-        "alt": "Mụn dừa thô",
-        "caption": "Nguyên liệu chất lượng"
-      },
-      {
-        "image": "/assets/image/gallery/products/7-Theo yeu cau.jpg",
-        "alt": "Sản xuất theo yêu cầu",
-        "caption": "Phối trộn theo yêu cầu"
-      },
-      {
-        "image": "/assets/image/gallery/products/8-Theo yeu cau.jpg",
-        "alt": "Theo yêu cầu",
-        "caption": "Tùy chỉnh linh hoạt"
-      }
+    "pricing": {
+        "title": "B\u1ea3ng Gi\u00e1 Tham Kh\u1ea3o",
+        "subtitle": "Ch\u00ednh s\u00e1ch gi\u00e1 linh ho\u1ea1t cho m\u1ecdi nhu c\u1ea7u",
+        "plans": [
+            {
+                "name": "D\u00f9ng Th\u1eed",
+                "price": "Li\u00ean H\u1ec7",
+                "unit": "/ bao",
+                "description": "D\u00e0nh cho kh\u00e1ch h\u00e0ng c\u00e1 nh\u00e2n, tr\u1ed3ng rau t\u1ea1i nh\u00e0.",
+                "features": [
+                    "\u0110\u00f3ng bao 50dm3",
+                    "\u0110\u00e3 x\u1eed l\u00fd s\u1ea1ch",
+                    "Giao h\u00e0ng t\u1eadn n\u01a1i",
+                    "T\u01b0 v\u1ea5n s\u1eed d\u1ee5ng"
+                ],
+                "highlight": false,
+                "cta": "Li\u00ean h\u1ec7 ngay"
+            },
+            {
+                "name": "Nh\u00e0 V\u01b0\u1eddn",
+                "price": "\u01afu \u0110\u00e3i",
+                "unit": "/ t\u1ea5n",
+                "description": "Gi\u1ea3i ph\u00e1p kinh t\u1ebf cho farm quy m\u00f4 v\u1eeba v\u00e0 nh\u1ecf.",
+                "features": [
+                    "Gi\u00e1 s\u1ec9 c\u1ea1nh tranh",
+                    "H\u1ed7 tr\u1ee3 v\u1eadn chuy\u1ec3n",
+                    "Cam k\u1ebft ch\u1ea5t l\u01b0\u1ee3ng",
+                    "T\u01b0 v\u1ea5n k\u1ef9 thu\u1eadt"
+                ],
+                "highlight": true,
+                "cta": "Nh\u1eadn b\u00e1o gi\u00e1"
+            },
+            {
+                "name": "D\u1ef1 \u00c1n L\u1edbn",
+                "price": "T\u1ed1t Nh\u1ea5t",
+                "unit": "/ container",
+                "description": "H\u1ee3p t\u00e1c l\u00e2u d\u00e0i, cung \u1ee9ng s\u1ed1 l\u01b0\u1ee3ng l\u1edbn, xu\u1ea5t kh\u1ea9u.",
+                "features": [
+                    "Chi\u1ebft kh\u1ea5u cao",
+                    "H\u1ee3p \u0111\u1ed3ng d\u00e0i h\u1ea1n",
+                    "S\u1ea3n xu\u1ea5t theo y\u00eau c\u1ea7u",
+                    "\u01afu ti\u00ean giao h\u00e0ng"
+                ],
+                "highlight": false,
+                "cta": "H\u1ee3p t\u00e1c ngay"
+            }
+        ]
+    },
+    "faq": {
+        "title": "C\u00e2u H\u1ecfi Th\u01b0\u1eddng G\u1eb7p",
+        "questions": [
+            {
+                "question": "M\u1ee5n d\u1eeba Ho\u00e0ng Hi\u1ebfu \u0111\u00e3 qua x\u1eed l\u00fd ch\u01b0a?",
+                "answer": "Ch\u00fang t\u00f4i cung c\u1ea5p c\u1ea3 m\u1ee5n d\u1eeba \u0111\u00e3 x\u1eed l\u00fd (x\u1ea3 ch\u00e1t, c\u00e2n b\u1eb1ng pH) v\u00e0 m\u1ee5n d\u1eeba th\u00f4 t\u00f9y theo nhu c\u1ea7u c\u1ee7a kh\u00e1ch h\u00e0ng. S\u1ea3n ph\u1ea9m \u0111\u00e3 x\u1eed l\u00fd c\u00f3 th\u1ec3 d\u00f9ng ngay."
+            },
+            {
+                "question": "T\u00f4i c\u00f3 th\u1ec3 y\u00eau c\u1ea7u t\u1ef7 l\u1ec7 ph\u1ed1i tr\u1ed9n ri\u00eang kh\u00f4ng?",
+                "answer": "C\u00f3. Ch\u00fang t\u00f4i nh\u1eadn ph\u1ed1i tr\u1ed9n t\u1ef7 l\u1ec7 m\u1ee5n/x\u01a1 ho\u1eb7c th\u00eam tr\u1ea5u, ph\u00e2n h\u1eefu c\u01a1 theo y\u00eau c\u1ea7u c\u1ee5 th\u1ec3 c\u1ee7a t\u1eebng lo\u1ea1i c\u00e2y tr\u1ed3ng v\u00e0 k\u1ef9 thu\u1eadt canh t\u00e1c."
+            },
+            {
+                "question": "Giao h\u00e0ng \u0111i t\u1ec9nh xa c\u00f3 \u0111\u1eaft kh\u00f4ng?",
+                "answer": "Ch\u00fang t\u00f4i li\u00ean k\u1ebft v\u1edbi c\u00e1c \u0111\u01a1n v\u1ecb v\u1eadn chuy\u1ec3n v\u00e0 ch\u00e0nh xe \u0111\u1ec3 c\u00f3 c\u01b0\u1edbc ph\u00ed t\u1ed1t nh\u1ea5t. V\u1edbi \u0111\u01a1n h\u00e0ng s\u1ed1 l\u01b0\u1ee3ng l\u1edbn, ch\u00fang t\u00f4i c\u00f3 ch\u00ednh s\u00e1ch h\u1ed7 tr\u1ee3 v\u1eadn chuy\u1ec3n."
+            },
+            {
+                "question": "H\u1ea1n s\u1eed d\u1ee5ng c\u1ee7a m\u1ee5n d\u1eeba l\u00e0 bao l\u00e2u?",
+                "answer": "M\u1ee5n d\u1eeba n\u1ebfu b\u1ea3o qu\u1ea3n n\u01a1i kh\u00f4 r\u00e1o, tho\u00e1ng m\u00e1t c\u00f3 th\u1ec3 \u0111\u1ec3 \u0111\u01b0\u1ee3c r\u1ea5t l\u00e2u (tr\u00ean 1-2 n\u0103m) m\u00e0 kh\u00f4ng \u1ea3nh h\u01b0\u1edfng nhi\u1ec1u \u0111\u1ebfn ch\u1ea5t l\u01b0\u1ee3ng."
+            }
+        ]
+    },
+    "news": [
+        {
+            "id": 16,
+            "title": "L\u00e0m th\u1ebf n\u00e0o \u0111\u1ec3 ph\u00e2n bi\u1ec7t m\u1ee5n d\u1eeba \u0111\u00e3 x\u1eed l\u00fd v\u00e0 m\u1ee5n d\u1eeba ch\u01b0a x\u1eed l\u00fd",
+            "slug": "phan-biet-mun-dua-xu-ly-chua-xu-ly",
+            "excerpt": "H\u01b0\u1edbng d\u1eabn chi ti\u1ebft c\u00e1ch nh\u1eadn bi\u1ebft m\u1ee5n d\u1eeba \u0111\u00e3 qua x\u1eed l\u00fd \u0111\u1ec3 \u0111\u1ea3m b\u1ea3o ch\u1ea5t l\u01b0\u1ee3ng cho c\u00e2y tr\u1ed3ng...",
+            "content": "M\u1ee5n d\u1eeba \u0111\u00e3 x\u1eed l\u00fd th\u01b0\u1eddng c\u00f3 m\u00e0u n\u00e2u s\u1eabm \u0111\u1ed3ng \u0111\u1ec1u, kh\u00f4ng c\u00f3 m\u00f9i h\u00f4i, \u0111\u1ed9 pH \u1ed5n \u0111\u1ecbnh t\u1eeb 5.5-6.5. Trong khi \u0111\u00f3, m\u1ee5n d\u1eeba ch\u01b0a x\u1eed l\u00fd c\u00f3 m\u00e0u s\u00e1ng h\u01a1n, c\u00f2n m\u00f9i h\u0103ng c\u1ee7a tannin v\u00e0 pH th\u01b0\u1eddng cao h\u01a1n 7.0.",
+            "image": "/assets/image/News/1.1-Mun da xu ly.jpg",
+            "author": "Ho\u00e0ng Hi\u1ebfu",
+            "date": "2025-10-23",
+            "category": "K\u1ef9 Thu\u1eadt",
+            "readTime": "5 ph\u00fat",
+            "tags": []
+        },
+        {
+            "id": 17,
+            "title": "Nh\u1eefng t\u00e1c d\u1ee5ng c\u1ee7a x\u01a1 d\u1eeba \u0111\u1ed1i v\u1edbi c\u00e2y tr\u1ed3ng",
+            "slug": "tac-dung-xo-dua-cay-trong",
+            "excerpt": "X\u01a1 d\u1eeba kh\u00f4ng ch\u1ec9 gi\u00fap \u0111\u1ea3m b\u1ea3o tho\u00e1t n\u01b0\u1edbc t\u1ed1t, gi\u1eef \u1ea9m hi\u1ec7u qu\u1ea3 m\u00e0 c\u00f2n c\u1ea3i thi\u1ec7n c\u1ea5u tr\u00fac gi\u00e1 th\u1ec3 tr\u1ed3ng...",
+            "content": "X\u01a1 d\u1eeba c\u00f3 kh\u1ea3 n\u0103ng gi\u1eef n\u01b0\u1edbc g\u1ea5p 8-10 l\u1ea7n tr\u1ecdng l\u01b0\u1ee3ng, t\u1ea1o \u0111\u1ed9 tho\u00e1ng kh\u00ed tuy\u1ec7t v\u1eddi cho r\u1ec5 c\u00e2y. Ngo\u00e0i ra, x\u01a1 d\u1eeba c\u00f2n ch\u1ee9a kali, magi\u00ea v\u00e0 c\u00e1c kho\u00e1ng ch\u1ea5t vi l\u01b0\u1ee3ng c\u00f3 l\u1ee3i cho c\u00e2y tr\u1ed3ng.",
+            "image": "/assets/image/News/2.2-Tac dung cua xo dua.jpg",
+            "author": "Ho\u00e0ng Hi\u1ebfu",
+            "date": "2025-10-22",
+            "category": "Kinh Nghi\u1ec7m",
+            "readTime": "4 ph\u00fat",
+            "tags": []
+        },
+        {
+            "id": 18,
+            "title": "M\u1ed9t s\u1ed1 l\u01b0u \u00fd khi s\u1eed d\u1ee5ng m\u1ee5n d\u1eeba",
+            "slug": "luu-y-su-dung-mun-dua",
+            "excerpt": "\u0110\u1ec3 t\u1eadn d\u1ee5ng t\u1ed1i \u0111a hi\u1ec7u qu\u1ea3 c\u1ee7a m\u1ee5n d\u1eeba, c\u1ea7n ch\u00fa \u00fd m\u1ed9t s\u1ed1 \u0111i\u1ec3m quan tr\u1ecdng trong qu\u00e1 tr\u00ecnh s\u1eed d\u1ee5ng...",
+            "content": "Tr\u01b0\u1edbc khi s\u1eed d\u1ee5ng, n\u00ean ng\u00e2m r\u1eeda m\u1ee5n d\u1eeba v\u1edbi n\u01b0\u1edbc s\u1ea1ch 2-3 l\u1ea7n \u0111\u1ec3 lo\u1ea1i b\u1ecf tannin v\u00e0 mu\u1ed1i d\u01b0. Sau \u0111\u00f3 ph\u01a1i kh\u00f4 1-2 ng\u00e0y n\u1eafng nh\u1eb9. Khi tr\u1ed9n gi\u00e1 th\u1ec3, n\u00ean k\u1ebft h\u1ee3p m\u1ee5n d\u1eeba v\u1edbi tr\u1ea5u hun ho\u1eb7c ph\u00e2n h\u1eefu c\u01a1 theo t\u1ef7 l\u1ec7 70:30 \u0111\u1ec3 \u0111\u1ea1t hi\u1ec7u qu\u1ea3 t\u1ed1t nh\u1ea5t.",
+            "image": "/assets/image/News/3.1-Luu y.jpg",
+            "author": "Ho\u00e0ng Hi\u1ebfu",
+            "date": "2025-10-21",
+            "category": "K\u1ef9 Thu\u1eadt",
+            "readTime": "6 ph\u00fat",
+            "tags": []
+        },
+        {
+            "id": 19,
+            "title": "M\u1ee5n d\u1eeba l\u00e0 g\u00ec v\u00e0 t\u1ea1i sao n\u00f3 \u0111\u01b0\u1ee3c s\u1eed d\u1ee5ng trong tr\u1ed3ng c\u00e2y",
+            "slug": "mun-dua-la-gi-tai-sao-su-dung",
+            "excerpt": "T\u00ecm hi\u1ec3u v\u1ec1 ngu\u1ed3n g\u1ed1c, \u0111\u1eb7c t\u00ednh v\u00e0 l\u00fd do m\u1ee5n d\u1eeba tr\u1edf th\u00e0nh l\u1ef1a ch\u1ecdn h\u00e0ng \u0111\u1ea7u cho n\u00f4ng nghi\u1ec7p h\u1eefu c\u01a1...",
+            "content": "M\u1ee5n d\u1eeba l\u00e0 ph\u1ea7n c\u00f9i b\u00ean trong c\u1ee7a v\u1ecf tr\u00e1i d\u1eeba, \u0111\u01b0\u1ee3c nghi\u1ec1n nh\u1ecf th\u00e0nh d\u1ea1ng b\u1ed9t m\u1ecbn. V\u1edbi c\u1ea5u tr\u00fac x\u1ed1p, kh\u1ea3 n\u0103ng gi\u1eef n\u01b0\u1edbc t\u1ed1t v\u00e0 th\u00e2n thi\u1ec7n m\u00f4i tr\u01b0\u1eddng, m\u1ee5n d\u1eeba \u0111\u00e3 tr\u1edf th\u00e0nh gi\u00e1 th\u1ec3 l\u00fd t\u01b0\u1edfng thay th\u1ebf \u0111\u1ea5t tr\u1ed3ng truy\u1ec1n th\u1ed1ng trong n\u00f4ng nghi\u1ec7p c\u00f4ng ngh\u1ec7 cao.",
+            "image": "/assets/image/News/4-1-Mua dua co tac dung gi.jpg",
+            "author": "Ho\u00e0ng Hi\u1ebfu",
+            "date": "2025-10-20",
+            "category": "M\u00f4i Tr\u01b0\u1eddng",
+            "readTime": "7 ph\u00fat",
+            "tags": []
+        },
+        {
+            "id": 20,
+            "title": "Nh\u1eefng l\u1ee3i \u00edch c\u1ee7a m\u1ee5n d\u1eeba cho c\u00e2y tr\u1ed3ng v\u00e0 m\u00f4i tr\u01b0\u1eddng",
+            "slug": "loi-ich-mun-dua-cay-trong-moi-truong",
+            "excerpt": "M\u1ee5n d\u1eeba kh\u00f4ng ch\u1ec9 gi\u00fap c\u00e2y ph\u00e1t tri\u1ec3n t\u1ed1t m\u00e0 c\u00f2n g\u00f3p ph\u1ea7n b\u1ea3o v\u1ec7 m\u00f4i tr\u01b0\u1eddng b\u1ec1n v\u1eefng...",
+            "content": "S\u1eed d\u1ee5ng m\u1ee5n d\u1eeba gi\u00fap gi\u1ea3m l\u01b0\u1ee3ng r\u00e1c th\u1ea3i t\u1eeb v\u1ecf d\u1eeba, ti\u1ebft ki\u1ec7m n\u01b0\u1edbc t\u01b0\u1edbi nh\u1edd kh\u1ea3 n\u0103ng gi\u1eef \u1ea9m cao, gi\u1ea3m s\u1eed d\u1ee5ng ph\u00e2n h\u00f3a h\u1ecdc v\u00e0 t\u1ea1o m\u00f4i tr\u01b0\u1eddng sinh tr\u01b0\u1edfng l\u00fd t\u01b0\u1edfng cho vi sinh v\u1eadt c\u00f3 l\u1ee3i trong \u0111\u1ea5t.",
+            "image": "/assets/image/News/5-1-.jpg",
+            "author": "Ho\u00e0ng Hi\u1ebfu",
+            "date": "2025-10-19",
+            "category": "M\u00f4i Tr\u01b0\u1eddng",
+            "readTime": "5 ph\u00fat",
+            "tags": []
+        }
     ],
-    "results": [
-      {
-        "image": "/assets/image/gallery/results/dưa lưới.png",
-        "alt": "Dưa lưới",
-        "caption": "Dưa lưới phát triển tốt"
-      },
-      {
-        "image": "/assets/image/gallery/results/Cà chua.png",
-        "alt": "Cà chua",
-        "caption": "Cà chua trái to đều"
-      },
-      {
-        "image": "/assets/image/gallery/results/ớt chuông.png",
-        "alt": "Ớt chuông",
-        "caption": "Ớt chuông năng suất cao"
-      },
-      {
-        "image": "/assets/image/gallery/results/hoa lan.png",
-        "alt": "Hoa lan",
-        "caption": "Hoa lan nở đẹp"
-      },
-      {
-        "image": "/assets/image/gallery/results/Dưa vàng.png",
-        "alt": "Dưa vàng",
-        "caption": "Dưa vàng chất lượng"
-      },
-      {
-        "image": "/assets/image/gallery/results/cà chua 1.jpg",
-        "alt": "Cà chua",
-        "caption": "Vườn cà chua xanh tốt"
-      },
-      {
-        "image": "/assets/image/gallery/results/dâu tây.png",
-        "alt": "Dâu tây",
-        "caption": "Dâu tây quả ngọt"
-      },
-      {
-        "image": "/assets/image/gallery/results/lan tim.png",
-        "alt": "Lan tím",
-        "caption": "Lan tím nở rộ"
-      }
-    ]
-  },
-  "whyChooseUs": {
-    "title": "Tại Sao Chọn Mụn Dừa Hoàng Hiếu?",
-    "reasons": [
-      {
-        "icon": "🏆",
-        "title": "Chất Lượng Đảm Bảo",
-        "description": "Sản phẩm được kiểm định, đạt chuẩn cho nông nghiệp hữu cơ"
-      },
-      {
-        "icon": "💚",
-        "title": "Thân Thiện Môi Trường",
-        "description": "100% từ nguyên liệu tự nhiên, không hóa chất độc hại"
-      },
-      {
-        "icon": "💰",
-        "title": "Giá Cả Cạnh Tranh",
-        "description": "Giá tốt nhất thị trường với chất lượng vượt trội"
-      },
-      {
-        "icon": "🚚",
-        "title": "Vận Chuyển Toàn Quốc",
-        "description": "Giao hàng nhanh chóng, hỗ trợ vận chuyển mọi miền"
-      }
-    ]
-  },
-  "contactSection": {
-    "title": "Liên Hệ Với Chúng Tôi",
-    "subtitle": "Chúng tôi luôn sẵn sàng hỗ trợ bạn",
-    "buttons": [
-      {
-        "icon": "📞",
-        "text": "Gọi ngay",
-        "link": "tel:0984288512"
-      },
-      {
-        "icon": "💬",
-        "text": "Chat Zalo",
-        "link": "https://zalo.me/112949426040780264"
-      },
-      {
-        "icon": "📧",
-        "text": "Email",
-        "link": "mailto:munduahoanghieu.vn@gmail.com"
-      }
-    ]
-  }
+    "company": {
+        "name": "M\u1ee4N D\u1eeaA HO\u00c0NG HI\u1ebeU",
+        "tagline": "Gi\u00e1 th\u1ec3 s\u1ea1ch - N\u0103ng su\u1ea5t v\u01b0\u1ee3t tr\u1ed9i",
+        "slogan": "Gi\u00e1 th\u1ec3 s\u1ea1ch - N\u0103ng su\u1ea5t v\u01b0\u1ee3t tr\u1ed9i",
+        "description": "Gi\u1ea3i ph\u00e1p m\u1ee5n d\u1eeba s\u1ea1ch v\u00e0 an to\u00e0n cho n\u00f4ng nghi\u1ec7p h\u1eefu c\u01a1 v\u00e0 b\u1ec1n v\u1eefng.",
+        "address": "\u1ea4p H\u1ed9i An, X\u00e3 \u0110a Ph\u01b0\u1edbc H\u1ed9i, Huy\u1ec7n M\u1ecf C\u00e0y Nam, T\u1ec9nh B\u1ebfn Tre",
+        "phone": "0984288512",
+        "email": "munduahoanghieu.vn@gmail.com",
+        "website": "https://munduahoanghieu.com",
+        "hotline": "0984.288.512",
+        "coordinates": {
+            "lat": 10.1217194,
+            "lng": 106.3192571,
+            "formatted": "10\u00b007'18.2\"N 106\u00b019'09.3\"E"
+        },
+        "maps_url": "",
+        "social_media": {
+            "facebook": "https://www.facebook.com/mun.dua.hoang.hieu",
+            "zalo": "https://zalo.me/112949426040780264",
+            "youtube": "https://www.youtube.com/channel/UCyBxXvx4Y8SvFeFFIHQ0xqg"
+        }
+    },
+    "products": {
+        "main": [
+            {
+                "id": 13,
+                "name": "M\u1ee5n d\u1eeba \u0111\u00e3 x\u1eed l\u00fd",
+                "slug": "mun-dua-xu-ly",
+                "description": "T\u1ef7 l\u1ec7 x\u01a1-m\u1ee5n \u0111\u00e1p \u1ee9ng theo y\u00eau c\u1ea7u c\u1ee7a b\u1ea1n",
+                "image": "/assets/image/products/noi-bat/1-Mun dua xu ly.jpg",
+                "price": "Li\u00ean h\u1ec7",
+                "category": "processed",
+                "features": []
+            },
+            {
+                "id": 14,
+                "name": "V\u1ecf d\u1eeba c\u1eaft chip",
+                "slug": "vo-dua-cat-chip",
+                "description": "V\u1ecf d\u1eeba \u0111\u01b0\u1ee3c c\u1eaft th\u00e0nh t\u1eebng mi\u1ebfng nh\u1ecf, ti\u1ec7n l\u1ee3i s\u1eed d\u1ee5ng",
+                "image": "/assets/image/products/noi-bat/2-Vo dua cat chip.jpg",
+                "price": "Li\u00ean h\u1ec7",
+                "category": "chips",
+                "features": []
+            },
+            {
+                "id": 15,
+                "name": "M\u1ee5n d\u1eeba th\u00f4",
+                "slug": "mun-dua-tho",
+                "description": "Nguy\u00ean li\u1ec7u m\u1ee5n d\u1eeba t\u1ef1 nhi\u00ean ch\u01b0a qua x\u1eed l\u00fd",
+                "image": "/assets/image/products/noi-bat/3-Mun dua tho.jpg",
+                "price": "Li\u00ean h\u1ec7",
+                "category": "raw",
+                "features": []
+            },
+            {
+                "id": 16,
+                "name": "S\u1ea3n xu\u1ea5t theo y\u00eau c\u1ea7u KH",
+                "slug": "san-xuat-theo-yeu-cau",
+                "description": "Ph\u1ed1i tr\u1ed9n theo t\u1ef7 l\u1ec7 v\u00e0 y\u00eau c\u1ea7u c\u1ee5 th\u1ec3 c\u1ee7a kh\u00e1ch h\u00e0ng",
+                "image": "/assets/image/products/noi-bat/4-Theo yeu cau.jpg",
+                "price": "Li\u00ean h\u1ec7",
+                "category": "custom",
+                "features": []
+            }
+        ],
+        "categories": []
+    },
+    "contact": {
+        "company": "M\u1ee4N D\u1eeaA HO\u00c0NG HI\u1ebeU",
+        "address": "\u1ea4p H\u1ed9i An, X\u00e3 \u0110a Ph\u01b0\u1edbc H\u1ed9i, Huy\u1ec7n M\u1ecf C\u00e0y Nam, T\u1ec9nh B\u1ebfn Tre",
+        "phone": "0984288512",
+        "email": "munduahoanghieu.vn@gmail.com",
+        "facebook": "",
+        "zalo": "",
+        "youtube": ""
+    },
+    "gallery": {
+        "products": [
+            {
+                "image": "/assets/image/gallery/products/1-Xu ly.jpg",
+                "alt": "M\u1ee5n d\u1eeba x\u1eed l\u00fd",
+                "caption": "M\u1ee5n d\u1eeba x\u1eed l\u00fd ch\u1ea5t l\u01b0\u1ee3ng cao"
+            },
+            {
+                "image": "/assets/image/gallery/products/2-Xu ly.jpg",
+                "alt": "M\u1ee5n d\u1eeba x\u1eed l\u00fd",
+                "caption": "S\u1ea3n ph\u1ea9m \u0111\u1ea1t ti\u00eau chu\u1ea9n"
+            },
+            {
+                "image": "/assets/image/gallery/products/3-Chip.jpg",
+                "alt": "V\u1ecf d\u1eeba c\u1eaft chip",
+                "caption": "V\u1ecf d\u1eeba c\u1eaft chip \u0111\u1ed3ng \u0111\u1ec1u"
+            },
+            {
+                "image": "/assets/image/gallery/products/4-Chip.jpg",
+                "alt": "V\u1ecf d\u1eeba chip",
+                "caption": "Chip v\u1ecf d\u1eeba t\u1ef1 nhi\u00ean"
+            },
+            {
+                "image": "/assets/image/gallery/products/5-Mun tho.jpg",
+                "alt": "M\u1ee5n d\u1eeba th\u00f4",
+                "caption": "M\u1ee5n d\u1eeba th\u00f4 nguy\u00ean ch\u1ea5t"
+            },
+            {
+                "image": "/assets/image/gallery/products/6-Mun tho.jpg",
+                "alt": "M\u1ee5n d\u1eeba th\u00f4",
+                "caption": "Nguy\u00ean li\u1ec7u ch\u1ea5t l\u01b0\u1ee3ng"
+            },
+            {
+                "image": "/assets/image/gallery/products/7-Theo yeu cau.jpg",
+                "alt": "S\u1ea3n xu\u1ea5t theo y\u00eau c\u1ea7u",
+                "caption": "Ph\u1ed1i tr\u1ed9n theo y\u00eau c\u1ea7u"
+            },
+            {
+                "image": "/assets/image/gallery/products/8-Theo yeu cau.jpg",
+                "alt": "Theo y\u00eau c\u1ea7u",
+                "caption": "T\u00f9y ch\u1ec9nh linh ho\u1ea1t"
+            }
+        ],
+        "results": [
+            {
+                "image": "/assets/image/gallery/results/d\u01b0a l\u01b0\u1edbi.png",
+                "alt": "D\u01b0a l\u01b0\u1edbi",
+                "caption": "D\u01b0a l\u01b0\u1edbi ph\u00e1t tri\u1ec3n t\u1ed1t"
+            },
+            {
+                "image": "/assets/image/gallery/results/C\u00e0 chua.png",
+                "alt": "C\u00e0 chua",
+                "caption": "C\u00e0 chua tr\u00e1i to \u0111\u1ec1u"
+            },
+            {
+                "image": "/assets/image/gallery/results/\u1edbt chu\u00f4ng.png",
+                "alt": "\u1edat chu\u00f4ng",
+                "caption": "\u1edat chu\u00f4ng n\u0103ng su\u1ea5t cao"
+            },
+            {
+                "image": "/assets/image/gallery/results/hoa lan.png",
+                "alt": "Hoa lan",
+                "caption": "Hoa lan n\u1edf \u0111\u1eb9p"
+            },
+            {
+                "image": "/assets/image/gallery/results/D\u01b0a v\u00e0ng.png",
+                "alt": "D\u01b0a v\u00e0ng",
+                "caption": "D\u01b0a v\u00e0ng ch\u1ea5t l\u01b0\u1ee3ng"
+            },
+            {
+                "image": "/assets/image/gallery/results/c\u00e0 chua 1.jpg",
+                "alt": "C\u00e0 chua",
+                "caption": "V\u01b0\u1eddn c\u00e0 chua xanh t\u1ed1t"
+            },
+            {
+                "image": "/assets/image/gallery/results/d\u00e2u t\u00e2y.png",
+                "alt": "D\u00e2u t\u00e2y",
+                "caption": "D\u00e2u t\u00e2y qu\u1ea3 ng\u1ecdt"
+            },
+            {
+                "image": "/assets/image/gallery/results/lan tim.png",
+                "alt": "Lan t\u00edm",
+                "caption": "Lan t\u00edm n\u1edf r\u1ed9"
+            }
+        ]
+    },
+    "whyChooseUs": {
+        "title": "T\u1ea1i Sao Ch\u1ecdn M\u1ee5n D\u1eeba Ho\u00e0ng Hi\u1ebfu?",
+        "reasons": [
+            {
+                "icon": "\ud83c\udfc6",
+                "title": "Ch\u1ea5t L\u01b0\u1ee3ng \u0110\u1ea3m B\u1ea3o",
+                "description": "S\u1ea3n ph\u1ea9m \u0111\u01b0\u1ee3c ki\u1ec3m \u0111\u1ecbnh, \u0111\u1ea1t chu\u1ea9n cho n\u00f4ng nghi\u1ec7p h\u1eefu c\u01a1"
+            },
+            {
+                "icon": "\ud83d\udc9a",
+                "title": "Th\u00e2n Thi\u1ec7n M\u00f4i Tr\u01b0\u1eddng",
+                "description": "100% t\u1eeb nguy\u00ean li\u1ec7u t\u1ef1 nhi\u00ean, kh\u00f4ng h\u00f3a ch\u1ea5t \u0111\u1ed9c h\u1ea1i"
+            },
+            {
+                "icon": "\ud83d\udcb0",
+                "title": "Gi\u00e1 C\u1ea3 C\u1ea1nh Tranh",
+                "description": "Gi\u00e1 t\u1ed1t nh\u1ea5t th\u1ecb tr\u01b0\u1eddng v\u1edbi ch\u1ea5t l\u01b0\u1ee3ng v\u01b0\u1ee3t tr\u1ed9i"
+            },
+            {
+                "icon": "\ud83d\ude9a",
+                "title": "V\u1eadn Chuy\u1ec3n To\u00e0n Qu\u1ed1c",
+                "description": "Giao h\u00e0ng nhanh ch\u00f3ng, h\u1ed7 tr\u1ee3 v\u1eadn chuy\u1ec3n m\u1ecdi mi\u1ec1n"
+            }
+        ]
+    },
+    "contactSection": {
+        "title": "Li\u00ean H\u1ec7 V\u1edbi Ch\u00fang T\u00f4i",
+        "subtitle": "Ch\u00fang t\u00f4i lu\u00f4n s\u1eb5n s\u00e0ng h\u1ed7 tr\u1ee3 b\u1ea1n",
+        "buttons": [
+            {
+                "icon": "\ud83d\udcde",
+                "text": "G\u1ecdi ngay",
+                "link": "tel:0984288512"
+            },
+            {
+                "icon": "\ud83d\udcac",
+                "text": "Chat Zalo",
+                "link": "https://zalo.me/112949426040780264"
+            },
+            {
+                "icon": "\ud83d\udce7",
+                "text": "Email",
+                "link": "mailto:munduahoanghieu.vn@gmail.com"
+            }
+        ]
+    }
 }
