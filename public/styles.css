@@ -165,6 +165,9 @@
     font-variation-settings: var(--default-font-variation-settings, normal);
     -webkit-tap-highlight-color: transparent;
   }
+  body{
+    overflow-y: scroll;
+  }
   hr {
     height: 0;
     color: inherit;

@@ -1,11 +1,13 @@
 <section class="py-16 bg-white border-b border-gray-100">
     <div class="container mx-auto px-4 md:px-8 max-w-7xl">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-5">
             <div class="max-w-2xl">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ content.trust.title | default('Đối tác tin cậy của nhà nông') }}</h2>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 font-signature">{{ content.trust.title | default('Đối tác tin cậy của nhà nông') }}</h2>
                 <div class="h-1 w-20 bg-green-600 rounded"></div>
             </div>
         </div>
+
+        <div class="mb-12 text-lg">Trong nhiều năm qua, Mụn Dừa Hoàng Hiếu đã trở thành lựa chọn quen thuộc của nhiều nhà vườn nhờ giá thể mụn dừa sạch, ổn định và dễ sử dụng. Sản phẩm được phân phối rộng khắp, phục vụ đa dạng mô hình trồng từ nhỏ lẻ đến sản xuất quy mô lớn.</div>
 
         <!-- Stats -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
@@ -18,7 +20,7 @@
         </div>
 
         <!-- Partners -->
-        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+        {#<div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
              {% for partner in content.trust.partners %}
                 <!-- Placeholder for Logo if image fails, or use text if no logo provided -->
                 <div class="flex items-center space-x-2 group">
@@ -30,6 +32,6 @@
                      {% endif %}
                 </div>
              {% endfor %}
-        </div>
+        </div>#}
     </div>
 </section>

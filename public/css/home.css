@@ -360,13 +360,6 @@
 			transition: all 0.3s ease !important;
 		}
 
-		/* Hover vào card: viền xanh lá đậm + scale rất nhẹ + shadow nhẹ */
-		section .group:hover {
-			transform: scale(1.015) !important;
-			box-shadow: 0 4px 14px rgba(0, 128, 0, 0.12) !important;
-			transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1) !important;
-		}
-
 		/* Không scale icon và vòng tròn khi hover */
 		.feature-icon,
 		.feature-circle,
@@ -436,12 +429,6 @@ section .group .rounded-full {
 }
 section .group .rounded-full span {
 	font-size: 81px !important; /* giảm 20% từ 101px */
-}
-
-/* Hover: border xanh lá đậm hơn, shadow nhẹ hơn */
-section .group:hover {
-  box-shadow: 0 4px 12px rgba(0,128,0,0.12) !important;
-  transform: scale(1.0) !important;
 }
 
 /* Tăng khoảng cách icon-tiêu đề */
