@@ -119,13 +119,13 @@
                 "icon": "sprout"
             },
             {
-                "title": "Sạch bệnh 100%",
-                "description": "Hạn chế mầm bệnh: Đã qua xử lý, giúp môi trường rễ sạch và ổn định hơn.",
+                "title": "Hạn chế mầm bệnh",
+                "description": "Đã qua xử lý, giúp môi trường rễ sạch và ổn định hơn.",
                 "icon": "shield-check"
             },
             {
                 "title": "Tiết kiệm chi phí",
-                "description": "Tiết kiệm chi phí: Giảm thất thoát nước và phân bón, tái sử dụng nhiều mùa vụ.",
+                "description": "Giảm thất thoát nước và phân bón, tái sử dụng nhiều mùa vụ.",
                 "icon": "piggy-bank"
             }
         ],
